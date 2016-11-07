@@ -14,6 +14,10 @@ import CoreMotion
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
+    // MARK: -Temporary Booleans for TESTING
+    let sfx:Bool = true
+    
+    
     var starfield:SKEmitterNode!
     var player:SKSpriteNode!
     var gameTimer:Timer!
@@ -21,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel:SKLabelNode!
     var score:Int = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
+            scoreLabel.text = "Score: \(score) m"
         }
     }
     
@@ -50,12 +54,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
          starfield.zPosition = -1;
          */
         
+        
+        // Set up game background
         let bg = roadBackground()
         bg.position = CGPoint(x: 0.0, y: 0.0)
         self.addChild(bg)
         bg.zPosition = -1;
         bg.start()
         
+        // Set up background Audio
+        if sfx {
+            let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+            bgAudio.autoplayLooped = true;
+            self.addChild(bgAudio)
+        }
         
         
         player = SKSpriteNode(imageNamed: "shuttle")
@@ -236,6 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        score += 1
     }
     
 }

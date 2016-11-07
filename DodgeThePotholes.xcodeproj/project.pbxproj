@@ -20,6 +20,8 @@
 		2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */; };
 		2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */; };
 		2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */; };
+		2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3441DD1377400FE789A /* born-lucky.wav */; };
+		2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roadBackground.swift; sourceTree = "<group>"; };
+		2C7CC3441DD1377400FE789A /* born-lucky.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "born-lucky.wav"; sourceTree = "<group>"; };
+		2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "hot-pursuit.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +82,9 @@
 				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
 				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
 				2C1BFE401DD104BE00ECBBB8 /* Assets.xcassets */,
-				2C1BFE4B1DD1061300ECBBB8 /* explosion.mp3 */,
+				2C7CC3431DD136B600FE789A /* AudioFiles */,
 				2C1BFE4C1DD1061300ECBBB8 /* Explosion.sks */,
 				2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */,
-				2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */,
 				2C1BFE421DD104BE00ECBBB8 /* LaunchScreen.storyboard */,
 				2C1BFE451DD104BE00ECBBB8 /* Info.plist */,
 			);
@@ -94,6 +97,17 @@
 				2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */,
 			);
 			name = SceneNodeClasses;
+			sourceTree = "<group>";
+		};
+		2C7CC3431DD136B600FE789A /* AudioFiles */ = {
+			isa = PBXGroup;
+			children = (
+				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
+				2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */,
+				2C7CC3441DD1377400FE789A /* born-lucky.wav */,
+				2C1BFE4B1DD1061300ECBBB8 /* explosion.mp3 */,
+			);
+			name = AudioFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,8 +177,10 @@
 				2C1BFE411DD104BE00ECBBB8 /* Assets.xcassets in Resources */,
 				2C1BFE441DD104BE00ECBBB8 /* LaunchScreen.storyboard in Resources */,
 				2C1BFE501DD1061300ECBBB8 /* Explosion.sks in Resources */,
+				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
 				2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
+				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +358,7 @@
 				2C1BFE4A1DD104BE00ECBBB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

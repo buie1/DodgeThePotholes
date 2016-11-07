@@ -28,7 +28,7 @@ class roadBackground: SKSpriteNode {
     }
     
     func start(){
-        let moveDown = SKAction.moveBy(x: 0.0, y: -frame.size.height/4, duration: 1.0)
+        let moveDown = SKAction.moveBy(x: 0.0, y: -frame.size.height/4, duration: 1.5)
         let restart = SKAction.moveBy(x: 0.0, y: frame.size.height/4, duration: 0)
         let moveSeq = SKAction.sequence([moveDown, restart])
         run(SKAction.repeatForever(moveSeq))
