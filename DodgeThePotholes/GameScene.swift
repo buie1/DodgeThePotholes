@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        player = SKSpriteNode(imageNamed: "shuttle")
+        player = SKSpriteNode(imageNamed: "viper")
         // We're not adding a physics body b/c its not interacting with the physical world
         
         
