@@ -25,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleAliens = ["traffic_cone","alien2","alien3"]
+    var possibleObstacles = ["traffic_cone","alien2","alien3"]
     
     let alienCategory:UInt32 = 0x1 << 1
     let photonTorpedoCategory:UInt32 = 0x1 << 0
@@ -100,9 +100,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addAlien(){
-        possibleAliens = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAliens) as! [String]
+        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         // Always gives us a random alien
-        let alien = SKSpriteNode(imageNamed: possibleAliens[0])
+        let alien = SKSpriteNode(imageNamed: possibleObstacles[0])
         
         
         // should be dynamic but hardcoded right now
