@@ -25,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleAliens = ["alien","alien2","alien3"]
+    var possibleAliens = ["traffic_cone","alien2","alien3"]
     
     let alienCategory:UInt32 = 0x1 << 1
     let photonTorpedoCategory:UInt32 = 0x1 << 0
