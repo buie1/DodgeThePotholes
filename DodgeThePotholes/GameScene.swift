@@ -14,6 +14,10 @@ import CoreMotion
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
+    // MARK: -Temporary Booleans for TESTING
+    let sfx:Bool = true
+    
+    
     var starfield:SKEmitterNode!
     var player:SKSpriteNode!
     var gameTimer:Timer!
@@ -21,11 +25,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel:SKLabelNode!
     var score:Int = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
+            scoreLabel.text = "Score: \(score) m"
         }
     }
     
-    var possibleAliens = ["bush1","hole1","tree1"]
+    var possibleObstacles = ["traffic_cone","alien2","alien3"]
     
     let alienCategory:UInt32 = 0x1 << 1
     let photonTorpedoCategory:UInt32 = 0x1 << 0
@@ -50,12 +54,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
          starfield.zPosition = -1;
          */
         
+        
+        // Set up game background
         let bg = roadBackground()
         bg.position = CGPoint(x: 0.0, y: 0.0)
         self.addChild(bg)
         bg.zPosition = -1;
         bg.start()
         
+        // Set up background Audio
+        if sfx {
+            let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+            bgAudio.autoplayLooped = true;
+            self.addChild(bgAudio)
+        }
         
         
         player = SKSpriteNode(imageNamed: "car1")
@@ -100,9 +112,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addAlien(){
-        possibleAliens = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAliens) as! [String]
+        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         // Always gives us a random alien
-        let alien = SKSpriteNode(imageNamed: possibleAliens[0])
+        let alien = SKSpriteNode(imageNamed: possibleObstacles[0])
         
         
         // should be dynamic but hardcoded right now
@@ -236,6 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        score += 1
     }
     
 }
