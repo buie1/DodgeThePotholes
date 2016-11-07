@@ -20,7 +20,7 @@ class roadBackground: SKSpriteNode {
         super.init(texture: text, color: UIColor.clear, size: text.size())
         self.size = CGSize(width: 2*frame.size.width+100, height: 4*frame.size.height)
         //let screenSize = UIScreen.main.bounds
-        //self.size = CGSize(width: screenSize.width, height: screenSize.height)
+        //self.size = CGSize(width: self.screenSize.width, height: self.screenSize.height)
     }
     
     required init?(coder aDecoder: NSCoder){
@@ -28,7 +28,7 @@ class roadBackground: SKSpriteNode {
     }
     
     func start(){
-        let moveDown = SKAction.moveBy(x: 0.0, y: -frame.size.height/4, duration: 1.5)
+        let moveDown = SKAction.moveBy(x: 0.0, y: -frame.size.height/4, duration: 2.0)
         let restart = SKAction.moveBy(x: 0.0, y: frame.size.height/4, duration: 0)
         let moveSeq = SKAction.sequence([moveDown, restart])
         run(SKAction.repeatForever(moveSeq))
