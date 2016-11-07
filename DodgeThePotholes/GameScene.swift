@@ -25,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleAliens = ["alien","alien2","alien3"]
+    var possibleAliens = ["bush1","hole1","tree1"]
     
     let alienCategory:UInt32 = 0x1 << 1
     let photonTorpedoCategory:UInt32 = 0x1 << 0
@@ -58,7 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-        player = SKSpriteNode(imageNamed: "shuttle")
+        player = SKSpriteNode(imageNamed: "car1")
         // We're not adding a physics body b/c its not interacting with the physical world
         
         
