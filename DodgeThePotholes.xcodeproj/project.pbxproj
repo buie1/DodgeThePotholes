@@ -55,6 +55,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C1060191DD1756A00668D23 /* Game Scene */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BFE351DD104BE00ECBBB8 /* GameScene.sks */,
+				2C1BFE391DD104BE00ECBBB8 /* GameScene.swift */,
+			);
+			name = "Game Scene";
+			sourceTree = "<group>";
+		};
+		2C10601A1DD1759000668D23 /* Sprite Particles */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BFE371DD104BE00ECBBB8 /* Actions.sks */,
+				2C1BFE4C1DD1061300ECBBB8 /* Explosion.sks */,
+				2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */,
+			);
+			name = "Sprite Particles";
+			sourceTree = "<group>";
+		};
 		2C1BFE271DD104BE00ECBBB8 = {
 			isa = PBXGroup;
 			children = (
@@ -75,16 +94,13 @@
 			isa = PBXGroup;
 			children = (
 				2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */,
-				2C1BFE351DD104BE00ECBBB8 /* GameScene.sks */,
-				2C1BFE371DD104BE00ECBBB8 /* Actions.sks */,
-				2C1BFE531DD1062800ECBBB8 /* SceneNodeClasses */,
-				2C1BFE391DD104BE00ECBBB8 /* GameScene.swift */,
 				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
+				2C1060191DD1756A00668D23 /* Game Scene */,
+				2C1BFE531DD1062800ECBBB8 /* SceneNodeClasses */,
+				2C10601A1DD1759000668D23 /* Sprite Particles */,
 				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
 				2C1BFE401DD104BE00ECBBB8 /* Assets.xcassets */,
 				2C7CC3431DD136B600FE789A /* AudioFiles */,
-				2C1BFE4C1DD1061300ECBBB8 /* Explosion.sks */,
-				2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */,
 				2C1BFE421DD104BE00ECBBB8 /* LaunchScreen.storyboard */,
 				2C1BFE451DD104BE00ECBBB8 /* Info.plist */,
 			);
