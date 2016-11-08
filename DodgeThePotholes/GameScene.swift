@@ -67,6 +67,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
         // https://developer.apple.com/reference/spritekit/skshader
+        // http://chrislanguage.blogspot.com/2015/02/fragment-shaders-with-spritekit.html
+        // https://www.raywenderlich.com/70208/opengl-es-pixel-shaders-tutorial
+        
         //let shader = SKShader(fileNamed: "shader_water_movement.fsh")
         //bg.shader = shader
         
