@@ -12,15 +12,15 @@ import SpriteKit
 
 class roadBackground: SKSpriteNode {
     
-    init() {
+    init(size: CGSize) {
         let text = SKTexture(imageNamed: "road_long")
 
         // MARK: We need a way to make this more dynamic
         
         super.init(texture: text, color: UIColor.clear, size: text.size())
-        self.size = CGSize(width: 2*frame.size.width+100, height: 4*frame.size.height)
+        self.size = CGSize(width: size.width, height: 4*size.height)
         //let screenSize = UIScreen.main.bounds
-        //self.size = CGSize(width: screenSize.width, height: screenSize.height)
+        //self.size = CGSize(width: 2*screenSize.size.width, height: 4*screenSize.size.height)
     }
     
     required init?(coder aDecoder: NSCoder){

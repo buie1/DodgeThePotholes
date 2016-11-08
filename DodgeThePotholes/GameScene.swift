@@ -56,8 +56,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         // Set up game background
-        let bg = roadBackground()
+        let bg = roadBackground(size: self.size)
         bg.position = CGPoint(x: 0.0, y: 0.0)
+        //bg.size.height = 4*self.size.height
+        //bg.size.width = self.size.width
         self.addChild(bg)
         bg.zPosition = -1;
         bg.start()
