@@ -16,9 +16,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: -Temporary Booleans for TESTING
     let sfx:Bool = true
+    let noWrap:Bool = true
     
     
-    var starfield:SKEmitterNode!
     var player:SKSpriteNode!
     var gameTimer:Timer!
     
@@ -61,6 +61,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(bg)
         bg.zPosition = -1;
         bg.start()
+        
+        // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
+        // jab165 11/8/16
+        // https://developer.apple.com/reference/spritekit/skshader
+        //let shader = SKShader(fileNamed: "shader_water_movement.fsh")
+        //bg.shader = shader
         
         // Set up background Audio
         if sfx {
@@ -237,11 +243,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Is this dynamic enough?
     override func didSimulatePhysics() {
         player.position.x += xAcceleration * 50
-        
-        if player.position.x < -self.size.width/2 {
-            player.position = CGPoint(x: self.size.width/2 - 20, y:player.position.y)
-        }else if player.position.x > self.size.width/2 {
-            player.position = CGPoint(x: -self.size.width/2 + 20, y: player.position.y)
+        if noWrap{
+            if player.position.x < -self.size.width/2 + player.frame.width/4 {
+                player.position = CGPoint(x: -self.size.width/2 + player.frame.width/4, y:player.position.y)
+            }else if player.position.x > self.size.width/2 - player.frame.width/4{
+                player.position = CGPoint(x: self.size.width/2 - player.frame.width/4, y: player.position.y)
+            }
+        }else{
+            if player.position.x < -self.size.width/2 {
+                player.position = CGPoint(x: self.size.width/2 - 20, y:player.position.y)
+            }else if player.position.x > self.size.width/2 {
+                player.position = CGPoint(x: -self.size.width/2 + 20, y: player.position.y)
+            }
         }
     }
     
