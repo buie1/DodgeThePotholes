@@ -21,6 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player:SKSpriteNode!
     var gameTimer:Timer!
+    var gameTimer2:Timer!
     
     var scoreLabel:SKLabelNode!
     var score:Int = 0 {
@@ -31,11 +32,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var possibleObstacles = ["traffic_cone","alien2","alien3"]
     
-    let alienCategory:UInt32 = 0x1 << 1
-    let photonTorpedoCategory:UInt32 = 0x1 << 0
-    
-    
-    
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -43,18 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
-        /*
-         // Starfield background
-         starfield = SKEmitterNode(fileNamed: "Starfield")
-         // MAKE DYNAMIC
-         starfield.position = CGPoint(x: 0, y: 1472)
-         starfield.advanceSimulationTime(10)
-         self.addChild(starfield)
-         
-         starfield.zPosition = -1;
-         */
-        
-        
+
         // Set up game background
         let bg = roadBackground(size: self.size)
         bg.position = CGPoint(x: 0.0, y: 0.0)
@@ -101,9 +86,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(scoreLabel)
         
         // MARK: - GameTimer code
+        // aparently a better way to implement this is with SKActions and using a "wait" time
+        // instead of the gametimers
+        
+        
         
         gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
-        
+        gameTimer2 = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
         
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
@@ -116,6 +105,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         
+        
+    }
+    // MARK: - Police can be considered a street Obstacle. So may make a more general function later
+    // jab165 11/8/16
+    func addPolice(){
         
     }
     
