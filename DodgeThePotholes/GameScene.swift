@@ -56,8 +56,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         // Set up game background
-        let bg = roadBackground()
+        let bg = roadBackground(size: self.size)
         bg.position = CGPoint(x: 0.0, y: 0.0)
+        //bg.size.height = 4*self.size.height
+        //bg.size.width = self.size.width
         self.addChild(bg)
         bg.zPosition = -1;
         bg.start()
@@ -76,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        player = SKSpriteNode(imageNamed: "viper")
+        player = SKSpriteNode(imageNamed: "car1")
         // We're not adding a physics body b/c its not interacting with the physical world
         
         
