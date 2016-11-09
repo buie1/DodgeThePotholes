@@ -29,7 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["traffic_cone","alien2","alien3"]
+    var possibleObstacles = ["traffic_cone","obstical","pothole"]
     
     let alienCategory:UInt32 = 0x1 << 1
     let photonTorpedoCategory:UInt32 = 0x1 << 0
@@ -105,9 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // MARK: - GameTimer code
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
-        
-        
+        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -120,6 +118,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
+    }
+    
+    func addPothole(){
+        let pothole = Pothole(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
+        self.addChild(pothole.node)
+        var actionArray = [SKAction]()
+        actionArray.append(pothole.action)
+        pothole.node.run(SKAction.sequence(actionArray))
+    }
+
+    
+    
+    func addTrafficCone(){
+        let trafficCone = TrafficCone(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
+        self.addChild(trafficCone.node)
+        var actionArray = [SKAction]()
+        actionArray.append(trafficCone.action)
+        trafficCone.node.run(SKAction.sequence(actionArray))
+
+    }
+    
+    func addObastacle(){
+        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
+        switch possibleObstacles[0] {
+        case "traffic_cone":
+            addTrafficCone()
+            break
+        case "obstical":
+            addPothole()
+            break
+        case "pothole":
+            break
+        default:
+            addPothole()
+            break
+        }
     }
     
     func addAlien(){
