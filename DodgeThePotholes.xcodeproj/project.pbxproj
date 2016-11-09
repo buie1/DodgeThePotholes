@@ -30,6 +30,10 @@
 		2CB7A5571DD193810029B800 /* shader_water_reflection.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A5551DD193810029B800 /* shader_water_reflection.fsh */; };
 		2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55A1DD194F80029B800 /* shader1.fs */; };
 		2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55D1DD19F7A0029B800 /* start.wav */; };
+		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
+		CAC19F681DD26AED007A7197 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F671DD26AED007A7197 /* Obstacles.swift */; };
+		CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* TrafficCone.swift */; };
+		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +62,10 @@
 		2CB7A5551DD193810029B800 /* shader_water_reflection.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_water_reflection.fsh; sourceTree = "<group>"; };
 		2CB7A55A1DD194F80029B800 /* shader1.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader1.fs; sourceTree = "<group>"; };
 		2CB7A55D1DD19F7A0029B800 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
+		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
+		CAC19F671DD26AED007A7197 /* Obstacles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
+		CAC19F691DD27E9E007A7197 /* TrafficCone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrafficCone.swift; path = DodgeThePotholes/TrafficCone.swift; sourceTree = "<group>"; };
+		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pothole.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,10 @@
 		2C1BFE271DD104BE00ECBBB8 = {
 			isa = PBXGroup;
 			children = (
+				CAC19F6B1DD28456007A7197 /* Pothole.swift */,
+				CA5233961DD2C90C00D2F59D /* Dog.swift */,
+				CAC19F671DD26AED007A7197 /* Obstacles.swift */,
+				CAC19F691DD27E9E007A7197 /* TrafficCone.swift */,
 				2C1BFE321DD104BE00ECBBB8 /* DodgeThePotholes */,
 				2C1BFE311DD104BE00ECBBB8 /* Products */,
 			);
@@ -254,11 +266,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */,
 				2C1BFE3A1DD104BE00ECBBB8 /* GameScene.swift in Sources */,
 				2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */,
 				2CB7A54F1DD17B6B0029B800 /* MenuScene.swift in Sources */,
 				2C1BFE3C1DD104BE00ECBBB8 /* GameViewController.swift in Sources */,
+				CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */,
+				CAC19F681DD26AED007A7197 /* Obstacles.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
+				CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
