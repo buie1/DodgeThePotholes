@@ -13,7 +13,7 @@ class MenuScene: SKScene {
     var newGameButtonNode:SKSpriteNode!
     var settingsButtonNode:SKSpriteNode!
     var gameCenterButtonNode:SKSpriteNode!
-
+    
     
     override func didMove(to view: SKView) {
 

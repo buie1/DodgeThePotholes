@@ -14,3 +14,4 @@ import UIKit
 // MARK: Physics Categories
 let alienCategory:UInt32 = 0x1 << 1
 let photonTorpedoCategory:UInt32 = 0x1 << 0
+

@@ -10,7 +10,7 @@ import SpriteKit
 
 class policeCar: SKSpriteNode{
     
-    var textureAtlas = SKTextureAtlas(named: "police")
+    var textureAtlas = SKTextureAtlas(named: "Police.atlas")
     var textureArray = [SKTexture]()
     
     init(){
@@ -20,9 +20,10 @@ class policeCar: SKSpriteNode{
         }
         
         super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 175, height: 175))
-        //self.yScale = fabs(self.yScale) * -1
+        self.yScale = fabs(self.yScale) * -1
+        self.position = CGPoint(x: 0, y: UIScreen.main.bounds.size.height/2+self.size.height/2)
         
-        //self.begin()
+        self.begin()
                 
     }
     
@@ -31,8 +32,14 @@ class policeCar: SKSpriteNode{
     }
     
     func begin() {
-        let flash = SKAction.repeatForever(SKAction.animate(withNormalTextures: textureArray, timePerFrame: 1))
-        self.run(flash)
+        let flash = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.3),
+                                    count:5)
+        let moveAction = SKAction.move(by: CGVector(dx:0,
+                                                    dy: -2*UIScreen.main.bounds.size.height), duration: 3.0)
+        let group = SKAction.group([flash,moveAction])
+        let removeAction = SKAction.removeFromParent()
+        self.run(SKAction.sequence([group,removeAction]))
+ 
     }
     
 }
