@@ -95,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
-        gameTimer2 = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
+        gameTimer2 = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
         
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
@@ -113,6 +113,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Police can be considered a street Obstacle. So may make a more general function later
     // jab165 11/8/16
     func addPolice(){
+
+        
+        
+        
+        // should be dynamic but hardcoded right now
+        // MAKE DYNAMIC
+        let police = policeCar()
+        let randomPolicePosition = GKRandomDistribution(lowestValue: Int(-self.frame.size.width/4) + Int(police.size.width/2),
+                                                       highestValue: Int(-police.size.width/2))
+        let position = CGFloat(randomPolicePosition.nextInt())
+        
+        police.position = CGPoint(x:position ,y:self.frame.size.height/2 + police.size.height)
+        police.move(dest: CGPoint(x: police.position.x, y: -self.frame.size.height/2 - police.size.height))
+        
+        // position alien off the screen
+        
+        //Need to create physics body
+        police.physicsBody = SKPhysicsBody(rectangleOf: police.size)
+        police.physicsBody?.isDynamic = true
+        // Need the bitmask to determine when being hit by torpedo.
+        
+        police.physicsBody?.categoryBitMask = alienCategory // of alien category
+        police.physicsBody?.contactTestBitMask = photonTorpedoCategory // object that collides with alien
+        police.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
+        self.addChild(police)        
+        
         
     }
     

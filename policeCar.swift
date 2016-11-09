@@ -21,21 +21,21 @@ class policeCar: SKSpriteNode{
         
         super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 175, height: 175))
         self.yScale = fabs(self.yScale) * -1
-        self.position = CGPoint(x: 0, y: UIScreen.main.bounds.size.height/2+self.size.height/2)
         
-        self.begin()
-                
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func begin() {
+    // We will probably need a function that takes the duration as a parameter to adjust as the 
+    // levels increase speed
+    func move(dest: CGPoint) {
         let flash = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.3),
                                     count:5)
-        let moveAction = SKAction.move(by: CGVector(dx:0,
-                                                    dy: -2*UIScreen.main.bounds.size.height), duration: 3.0)
+        /*let moveAction = SKAction.move(by: CGVector(dx:0,
+                                                    dy: -2*UIScreen.main.bounds.size.height), duration: 6)*/
+        let moveAction = SKAction.move(to: dest, duration: 3)
         let group = SKAction.group([flash,moveAction])
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([group,removeAction]))
