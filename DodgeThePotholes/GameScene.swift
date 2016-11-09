@@ -29,7 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["traffic_cone","obstical","pothole"]
+    var possibleObstacles = ["traffic_cone","pothole", "dog"]
     
     let alienCategory:UInt32 = 0x1 << 1
     let photonTorpedoCategory:UInt32 = 0x1 << 0
@@ -145,15 +145,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "traffic_cone":
             addTrafficCone()
             break
-        case "obstical":
+        case "pothole":
             addPothole()
             break
-        case "pothole":
+        case "dog":
+            addDog()
             break
         default:
             addPothole()
             break
         }
+    }
+    
+    func addDog(){
+        let dog = Dog(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
+        self.addChild(dog.node)
+        var actionArray = [SKAction]()
+        actionArray.append(dog.action)
+        dog.node.run(SKAction.sequence(actionArray))
+        dog.runAnimation()
     }
     
     func addAlien(){

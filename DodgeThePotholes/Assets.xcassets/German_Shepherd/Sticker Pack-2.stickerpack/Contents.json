@@ -1,0 +1,20 @@
+{
+  "stickers" : [
+    {
+      "filename" : "Shepherdwalk.sticker"
+    },
+    {
+      "filename" : "Shepherdwalk_2x.sticker"
+    },
+    {
+      "filename" : "Shepherdwalk_3x.sticker"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "grid-size" : "small"
+  }
+}

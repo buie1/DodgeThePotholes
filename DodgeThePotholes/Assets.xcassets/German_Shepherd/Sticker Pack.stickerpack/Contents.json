@@ -1,0 +1,20 @@
+{
+  "stickers" : [
+    {
+      "filename" : "Shepherdrun.sticker"
+    },
+    {
+      "filename" : "Shepherdrun_2x.sticker"
+    },
+    {
+      "filename" : "Shepherdrun_3x.sticker"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "grid-size" : "small"
+  }
+}
