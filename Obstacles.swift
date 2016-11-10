@@ -29,8 +29,8 @@ enum positionRange {
 
 enum obstacleBitmasks: UInt32 {
     case none = 0x0
-    case generic = 0x1
-    case torpedo = 0x2
+    case generic = 0x2
+    case torpedo = 0x1
 }
 
 enum obstacleType {
