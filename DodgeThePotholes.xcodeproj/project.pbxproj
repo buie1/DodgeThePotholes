@@ -26,6 +26,9 @@
 		2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */; };
 		2C8B90D31DD275D6001C944A /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8B90D21DD275D6001C944A /* GameKit.framework */; };
 		2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B90D41DD27D01001C944A /* GlobalConstants.swift */; };
+		2C8B90D71DD4C2A7001C944A /* car_horn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C8B90D61DD4C2A7001C944A /* car_horn.wav */; };
+		2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C8B90D81DD50BF6001C944A /* carskid.wav */; };
+		2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C8B90D91DD50BF7001C944A /* police_s.wav */; };
 		2CB7A54F1DD17B6B0029B800 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A54E1DD17B6A0029B800 /* MenuScene.swift */; };
 		2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A5521DD192E20029B800 /* shaderBlur.fsh */; };
 		2CB7A5561DD193810029B800 /* shader_water_movement.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A5541DD193810029B800 /* shader_water_movement.fsh */; };
@@ -62,6 +65,9 @@
 		2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "hot-pursuit.wav"; sourceTree = "<group>"; };
 		2C8B90D21DD275D6001C944A /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		2C8B90D41DD27D01001C944A /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlobalConstants.swift; path = ../GlobalConstants.swift; sourceTree = "<group>"; };
+		2C8B90D61DD4C2A7001C944A /* car_horn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = car_horn.wav; sourceTree = "<group>"; };
+		2C8B90D81DD50BF6001C944A /* carskid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carskid.wav; sourceTree = "<group>"; };
+		2C8B90D91DD50BF7001C944A /* police_s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = police_s.wav; sourceTree = "<group>"; };
 		2CB7A54E1DD17B6A0029B800 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		2CB7A5521DD192E20029B800 /* shaderBlur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shaderBlur.fsh; sourceTree = "<group>"; };
 		2CB7A5541DD193810029B800 /* shader_water_movement.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_water_movement.fsh; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 		2C7CC3431DD136B600FE789A /* AudioFiles */ = {
 			isa = PBXGroup;
 			children = (
+				2C8B90D81DD50BF6001C944A /* carskid.wav */,
+				2C8B90D91DD50BF7001C944A /* police_s.wav */,
+				2C8B90D61DD4C2A7001C944A /* car_horn.wav */,
 				2CB7A55D1DD19F7A0029B800 /* start.wav */,
 				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
 				2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */,
@@ -285,6 +294,7 @@
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
+				2C8B90D71DD4C2A7001C944A /* car_horn.wav in Resources */,
 				2CB7A5621DD2475D0029B800 /* Police.atlas in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
@@ -295,9 +305,11 @@
 				2C1BFE501DD1061300ECBBB8 /* Explosion.sks in Resources */,
 				2C10601C1DD175FC00668D23 /* MenuScene.sks in Resources */,
 				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
+				2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */,
 				2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */,
 				2CB7A5571DD193810029B800 /* shader_water_reflection.fsh in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
+				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,12 +13,16 @@ import UIKit
 
 // MARK: Physics Categories
 /*let alienCategory:UInt32 = 0x1 << 1
-let photonTorpedoCategory:UInt32 = 0x1 << 0
 enum obstacleBitmasks: UInt32 {
     case none = 0x0
     case generic = 0x1
     case torpedo = 0x2
 }*/
+
+// MARK: Physics Categories
+// update when adding new physics categories for the physics bodies
+
+let photonTorpedoCategory:UInt32 = 0x100
 
 enum PhysicsCategory:UInt32 {
     case None               = 0
@@ -32,4 +36,27 @@ enum PhysicsCategory:UInt32 {
     //case Jump               = UniqueID
     //case BlackIce           = UniqueID
     
+}
+
+enum positionRange {
+    enum pothole: CGFloat {
+        case low = -0.25
+        case high = 0.25
+    }
+    
+    enum trafficCone: CGFloat {
+        case low = -0.375
+        case high = 0.375
+    }
+    
+    enum dog: CGFloat {
+        case low = -1
+        case high = 1
+    }
+}
+
+enum obstacleType {
+    case pothole
+    case trafficCone
+    case dog
 }

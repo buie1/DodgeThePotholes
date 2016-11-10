@@ -8,30 +8,7 @@
 
 import SpriteKit
 import GameplayKit
-import CoreMotion
 
-enum positionRange {
-    enum pothole: CGFloat {
-        case low = -0.25
-        case high = 0.25
-    }
-    
-    enum trafficCone: CGFloat {
-        case low = -0.375
-        case high = 0.375
-    }
-    
-    enum dog: CGFloat {
-        case low = -1
-        case high = 1
-    }
-}
-
-enum obstacleType {
-    case pothole
-    case trafficCone
-    case dog
-}
 
 class Obstacle {
     var node: SKSpriteNode!

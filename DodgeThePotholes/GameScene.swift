@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["traffic_cone","pothole", "dog"]
+    var possibleObstacles = ["traffic_cone","pothole", "dog","police"]
     
     
     let motionManager = CMMotionManager()
@@ -72,6 +72,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // MAKE DYNAMIC
         player.position = CGPoint(x: 0, y: -1*player.size.height/2 - 500)
+        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
+        player.physicsBody?.isDynamic = true
+        player.zPosition = 1
+        player.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue | PhysicsCategory.MoveableObstacle.rawValue
+        player.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         //player.position = CGPoint(x: self.frame.size.width / 2, y: player.size.height / 2 + 20)
         
         self.addChild(player)
@@ -82,8 +88,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // MARK: - For score
         scoreLabel = SKLabelNode(text: "Score: 0")
         scoreLabel.position = CGPoint(x:-200, y: self.frame.height / 2 - 60)
-        scoreLabel.fontName = "AmericanTypewriter-Bold"
-        scoreLabel.fontSize = 35
+        scoreLabel.fontName = "PressStart2P"
+        scoreLabel.fontSize = 24
         scoreLabel.fontColor = UIColor.white
         score = 0;
         self.addChild(scoreLabel)
@@ -93,8 +99,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // instead of the gametimers
         
 
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
-        gameTimer2 = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
+        //gameTimer2 = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -113,8 +119,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addPolice(){
 
         
-        
-        
         // should be dynamic but hardcoded right now
         // MAKE DYNAMIC
         let police = policeCar()
@@ -124,12 +128,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         police.position = CGPoint(x:position ,y:self.frame.size.height/2 + police.size.height)
         police.move(dest: CGPoint(x: police.position.x, y: -self.frame.size.height/2 - police.size.height))
-        
-        // position alien off the screen
-        
-        //Need to create physics body
-        police.physicsBody = SKPhysicsBody(rectangleOf: police.size)
-        police.physicsBody?.isDynamic = true
+
 
         self.addChild(police)
         
@@ -167,6 +166,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "dog":
             addDog()
             break
+        case "police":
+            addPolice()
+            break
         default:
             addPothole()
             break
@@ -181,7 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dog.node.run(SKAction.sequence(actionArray))
         dog.runAnimation()
     }
-    
+    /*
     func addAlien(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         // Always gives us a random alien
@@ -220,7 +222,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         alien.run(SKAction.sequence(actionArray))
         
         
-    }
+    }*/
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -241,7 +243,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         torpedoNode.physicsBody?.isDynamic = true
         
         torpedoNode.physicsBody?.categoryBitMask = photonTorpedoCategory // of torpedo category
-        torpedoNode.physicsBody?.contactTestBitMask = alienCategory // object that collides with torpedo
+        torpedoNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue // object that collides with torpedo
         torpedoNode.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
         torpedoNode.physicsBody?.usesPreciseCollisionDetection = true
         
@@ -261,25 +263,43 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody:SKPhysicsBody
-        var secondBody:SKPhysicsBody
-        
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        }else{
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        if (firstBody.categoryBitMask & photonTorpedoCategory) != 0 &&
-            (secondBody.categoryBitMask & alienCategory) != 0 {
+        // Step 1. Bitiwse OR the bodies' categories to find out what kind of contact we have
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        switch contactMask {
             
-            // Function for what happens when torpedo and alien collide
-            torpedoDidCollideWithAlien(torpedoNode: firstBody.node as! SKSpriteNode,
-                                       alienNode: secondBody.node as! SKSpriteNode)
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.Obstacle.rawValue:
+            
+            // Step 2. Disambiguate the bodies in the contact
+            print("handle collision with car ")
+
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                //handleCollision(enemy: contact.bodyA.node as SKSpriteNode,
+                //                bullet: contact.bodyB.node as SKSpriteNode)
+                
+                print("handle collision with car A")
+                
+            } else {
+                //handleCollision(enemy: contact.bodyB.node as SKSpriteNode, bullet: contact.bodyA.node as SKSpriteNode)
+                print("handle collision with car B")
+
+            }
+            
+            //1. Lose a life and
             
             
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
+            
+            // Here we don't care which body is which, the scene is ending
+            print("car hit moveable object")
+            
+        default:
+            
+            // Nobody expects this, so satisfy the compiler and catch
+            // ourselves if we do something we didn't plan to
+            //fatalError("other collision: \(contactMask)")
+            
+            
+            print("other collision: \(contactMask)")
         }
     }
     

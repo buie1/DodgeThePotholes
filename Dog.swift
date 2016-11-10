@@ -24,7 +24,7 @@ class Dog: Obstacle {
         
         self.node.physicsBody?.isDynamic =  true
         self.node.physicsBody?.categoryBitMask = PhysicsCategory.MoveableObstacle.rawValue
-        self.node.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue | PhysicsCategory.Horn.rawValue
+        self.node.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue// | PhysicsCategory.Horn.rawValue
         self.node.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.node.physicsBody?.usesPreciseCollisionDetection = true
 
