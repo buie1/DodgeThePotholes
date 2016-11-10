@@ -23,9 +23,11 @@ class Dog: Obstacle {
         self.node.physicsBody = SKPhysicsBody(rectangleOf: thisObstacle.size)
         
         self.node.physicsBody?.isDynamic =  true
-        self.node.physicsBody?.categoryBitMask = obstacleBitmasks.generic.rawValue //0x1 << 1
-        self.node.physicsBody?.contactTestBitMask = obstacleBitmasks.torpedo.rawValue //0x1 << 0
-        self.node.physicsBody?.collisionBitMask = obstacleBitmasks.none.rawValue // 0x0
+        self.node.physicsBody?.categoryBitMask = PhysicsCategory.MoveableObstacle.rawValue
+        self.node.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue | PhysicsCategory.Horn.rawValue
+        self.node.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
+        self.node.physicsBody?.usesPreciseCollisionDetection = true
+
         
         self.animationDuration = 6
         self.action = SKAction.move(to: CGPoint(x: self.position, y: -frameHeight/2 - thisObstacle.size.height), duration: self.animationDuration)

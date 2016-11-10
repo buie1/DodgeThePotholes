@@ -27,12 +27,6 @@ enum positionRange {
     }
 }
 
-enum obstacleBitmasks: UInt32 {
-    case none = 0x0
-    case generic = 0x1
-    case torpedo = 0x2
-}
-
 enum obstacleType {
     case pothole
     case trafficCone
@@ -53,13 +47,14 @@ class Obstacle {
         self.randomPosition = GKRandomDistribution(lowestValue: -414 + Int(thisObstacle.size.width),highestValue: 414 - Int(thisObstacle.size.width))
         self.position = CGFloat(self.randomPosition.nextInt())
         self.node.position = CGPoint(x: self.position, y:frameHeight/2 + thisObstacle.size.height)
+        /*
         self.node.physicsBody = SKPhysicsBody(rectangleOf: thisObstacle.size)
         
         self.node.physicsBody?.isDynamic =  true
-        self.node.physicsBody?.categoryBitMask = 0x1 << 1 //FIXME: PeterMurphy --
+        self.node.physicsBody?.categoryBitMask = PhysicsCategor
         self.node.physicsBody?.contactTestBitMask = 0x1 << 0
         self.node.physicsBody?.collisionBitMask = 0
-        
+        */
         self.animationDuration = 6
         self.action = SKAction.move(to: CGPoint(x: self.position, y: -frameHeight/2 - thisObstacle.size.height), duration: self.animationDuration)
     }

@@ -130,12 +130,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Need to create physics body
         police.physicsBody = SKPhysicsBody(rectangleOf: police.size)
         police.physicsBody?.isDynamic = true
-        // Need the bitmask to determine when being hit by torpedo.
-        
-        police.physicsBody?.categoryBitMask = alienCategory // of alien category
-        police.physicsBody?.contactTestBitMask = photonTorpedoCategory // object that collides with alien
-        police.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
-        self.addChild(police)        
+
+        self.addChild(police)
         
         
     }
