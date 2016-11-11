@@ -39,7 +39,7 @@ class GameOver: SKScene {
             let nodesArray = self.nodes(at: location)
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             
-            if nodesArray.first?.name == "NewGameButton" {
+            if nodesArray.first?.name == "newGameButton" {
                 self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
                 let gameScene = GameScene(size: self.size)
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
