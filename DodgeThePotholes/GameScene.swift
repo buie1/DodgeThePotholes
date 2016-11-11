@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: -Temporary Booleans for TESTING
-    let sfx:Bool = preferences.bool(forKey: "sfx")
+    let music:Bool = preferences.bool(forKey: "music")
     let noWrap:Bool = true
     
     
@@ -73,7 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //bg.shader = shader
         
         // Set up background Audio
-        if sfx {
+        if music {
             let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
             bgAudio.autoplayLooped = true;
             self.addChild(bgAudio)

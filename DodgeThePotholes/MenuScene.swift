@@ -31,7 +31,7 @@ class MenuScene: SKScene {
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             
             if nodesArray.first?.name == "NewGameButton" {
-                if(preferences.bool(forKey: "music") == true){
+                if(preferences.bool(forKey: "sfx") == true){
                     self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
                 }
                 let gameScene = GameScene(size: self.size)
@@ -39,7 +39,6 @@ class MenuScene: SKScene {
                 self.view?.presentScene(gameScene, transition: transition)
             }
             else if nodesArray.first?.name == "SettingsButton"{
-                print("Settings Button Was Pushed")
                 let settingsScene = SKScene(fileNamed: "SettingsScene")
                 settingsScene?.scaleMode = .aspectFill
                 self.view?.presentScene(settingsScene!, transition: transition)
