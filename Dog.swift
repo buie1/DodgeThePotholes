@@ -10,43 +10,82 @@ import SpriteKit
 import GameplayKit
 import CoreMotion
 
-class Dog {
+class Dog: MoveableObstacle, ObstacleCreate {
     
-    /*
+    enum dog: CGFloat {
+        case low = -1
+        case high = 1
+    }
     
-    override init(frameHeight: CGFloat, frameWidth: CGFloat){
-        super.init(frameHeight: frameHeight, frameWidth: frameWidth)
-        let thisObstacle = SKSpriteNode(imageNamed: "Shepherd_run_1.imageset") //creating dummy obstacle because some methods cannot read in 'self.obstacle'
-        self.node = thisObstacle
-        self.node.setScale(3)
-        self.randomPosition = GKRandomDistribution(lowestValue: Int(frameWidth * positionRange.dog.low.rawValue) + Int(thisObstacle.size.width),highestValue: Int(frameWidth * positionRange.dog.high.rawValue) - Int(thisObstacle.size.width))
-        self.position = CGFloat(self.randomPosition.nextInt())
-        self.node.position = CGPoint(x: self.position, y:frameHeight/2 + thisObstacle.size.height)
-        /*
-        self.node.physicsBody = SKPhysicsBody(rectangleOf: thisObstacle.size)
+    var textureAtlas = SKTextureAtlas(named: "German_Shepherd_Run")
+    var textureArray = [SKTexture]()
+    
+    var orientation: CGFloat = 1
+    
+    init(size: CGSize, duration:TimeInterval){
         
-        self.node.physicsBody?.isDynamic =  true
-        self.node.physicsBody?.categoryBitMask = PhysicsCategory.MoveableObstacle.rawValue
-        self.node.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue// | PhysicsCategory.Horn.rawValue
-        self.node.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
-        self.node.physicsBody?.usesPreciseCollisionDetection = true*/
+        for i in 1...textureAtlas.textureNames.count{
+            let name = "Shepherd_run_\(i)"
+            textureArray.append(SKTexture(imageNamed: name))
+        }
         
-        self.animationDuration = 6
-        self.action = SKAction.move(to: CGPoint(x: self.position, y: -frameHeight/2 - thisObstacle.size.height), duration: self.animationDuration)
+        super.init(texture: SKTexture(imageNamed:"Shepherd_default-1"), color: UIColor.clear, size: CGSize(width :60, height:60))
+        generatePosition(size)
+        initPhysicsBody()
+
+        
+        begin(size,duration)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func runAnimation(){
-        var textureArray = [SKTexture]()
-        let picArray: [String] = ["Shepherd_run_1.imageset", "Shepherd_run_2.imageset", "Shepherd_run_3.imageset", "Shepherd_run_4.imageset", "Shepherd_run_5.imageset"]
-        for pic in picArray {
-            textureArray.append(SKTexture(imageNamed: pic))
+    
+    
+    func generatePosition(_ size:CGSize){
+        let rand = arc4random_uniform(2)
+        if rand == 0{
+            orientation = -1
+        } else{
+            orientation = 1
         }
-        let action = SKAction.animate(with: textureArray, timePerFrame: 0.1)
-        self.node.run(SKAction.repeatForever(action))
+        self.position = CGPoint(x: orientation*(size.width*0.375 - self.size.width/2), y: size.height/2 + self.size.height)
+        self.xScale = fabs(self.xScale) * orientation
+        //self.position = CGPoint(x:CGFloat(rand.nextInt()),y:size.height/2 + self.size.height/2)
     }
- */
+    
+    func initPhysicsBody(){
+        self.physicsBody?.isDynamic = true
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.MoveableObstacle.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue | PhysicsCategory.Horn.rawValue
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
+        self.physicsBody?.usesPreciseCollisionDetection = true
+    }
+    
+    
+    func begin(_ size:CGSize, _ dur: TimeInterval){
+        
+        let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
+        let moveAction = SKAction.moveTo(y: -size.height/2 - self.size.height, duration: dur)
+        let runDir = SKAction.moveTo(x: 0, duration: dur*0.75)
+        // Add barking sounds
+        let runGroup = SKAction.group([run,runDir,moveAction])
+        
+        let removeAction = SKAction.removeFromParent()
+        self.run(SKAction.sequence([runGroup,removeAction]))
+        
+    }
+    
+    override func runAway(_ Size:CGSize, _ dur: TimeInterval){
+        self.xScale = -1*orientation
+        let runAway = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.1), count: 10)
+        let runDir = SKAction.moveTo(x:orientation*(Size.width/2 + self.size.width), duration: dur*0.25)
+        let moveAction = SKAction.moveTo(y: -Size.height/2 - self.size.height, duration: dur/2)
+        let runAction = SKAction.group([runAway,runDir,moveAction])
+        let removeAction = SKAction.removeFromParent()
+        self.run(SKAction.sequence([runAction,removeAction]))
+
+    }
 }

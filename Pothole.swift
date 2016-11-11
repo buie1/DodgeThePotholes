@@ -45,7 +45,7 @@ class Pothole: SKSpriteNode, ObstacleCreate {
     
     
     func begin(_ size:CGSize, _ dur: TimeInterval){
-        let moveAction = SKAction.moveBy(x: 0, y: -size.height/2 * CGFloat(1/dur), duration: dur)
+        let moveAction = SKAction.moveTo(y: -size.height/2 + self.size.height, duration: dur)
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([moveAction,removeAction]))
         

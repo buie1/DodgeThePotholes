@@ -30,13 +30,13 @@
 		2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C8B90D91DD50BF7001C944A /* police_s.wav */; };
 		2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C8B90DC1DD516C3001C944A /* car_honk.mp3 */; };
 		2C8B90DF1DD54950001C944A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B90DE1DD54950001C944A /* Player.swift */; };
+		2C8B90E31DD56856001C944A /* MoveableObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B90E21DD56856001C944A /* MoveableObstacle.swift */; };
 		2CB7A54F1DD17B6B0029B800 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A54E1DD17B6A0029B800 /* MenuScene.swift */; };
 		2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A5521DD192E20029B800 /* shaderBlur.fsh */; };
 		2CB7A5561DD193810029B800 /* shader_water_movement.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A5541DD193810029B800 /* shader_water_movement.fsh */; };
 		2CB7A5571DD193810029B800 /* shader_water_reflection.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A5551DD193810029B800 /* shader_water_reflection.fsh */; };
 		2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55A1DD194F80029B800 /* shader1.fs */; };
 		2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55D1DD19F7A0029B800 /* start.wav */; };
-		2CB7A5621DD2475D0029B800 /* Police.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A5611DD2475D0029B800 /* Police.atlas */; };
 		2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A5631DD247F60029B800 /* PoliceCar.swift */; };
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
 		CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* TrafficCone.swift */; };
@@ -69,13 +69,13 @@
 		2C8B90D91DD50BF7001C944A /* police_s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = police_s.wav; sourceTree = "<group>"; };
 		2C8B90DC1DD516C3001C944A /* car_honk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = car_honk.mp3; sourceTree = "<group>"; };
 		2C8B90DE1DD54950001C944A /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		2C8B90E21DD56856001C944A /* MoveableObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveableObstacle.swift; sourceTree = "<group>"; };
 		2CB7A54E1DD17B6A0029B800 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		2CB7A5521DD192E20029B800 /* shaderBlur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shaderBlur.fsh; sourceTree = "<group>"; };
 		2CB7A5541DD193810029B800 /* shader_water_movement.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_water_movement.fsh; sourceTree = "<group>"; };
 		2CB7A5551DD193810029B800 /* shader_water_reflection.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_water_reflection.fsh; sourceTree = "<group>"; };
 		2CB7A55A1DD194F80029B800 /* shader1.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader1.fs; sourceTree = "<group>"; };
 		2CB7A55D1DD19F7A0029B800 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
-		2CB7A5611DD2475D0029B800 /* Police.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Police.atlas; sourceTree = "<group>"; };
 		2CB7A5631DD247F60029B800 /* PoliceCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoliceCar.swift; path = ../PoliceCar.swift; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* TrafficCone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCone.swift; sourceTree = "<group>"; };
@@ -136,7 +136,6 @@
 				2C8B90D41DD27D01001C944A /* GlobalConstants.swift */,
 				2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */,
 				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
-				2CB7A5601DD246BE0029B800 /* Image Atlases */,
 				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
 				2C1060191DD1756A00668D23 /* Game Scene */,
 				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
@@ -205,14 +204,6 @@
 			name = "Menu Scene";
 			sourceTree = "<group>";
 		};
-		2CB7A5601DD246BE0029B800 /* Image Atlases */ = {
-			isa = PBXGroup;
-			children = (
-				2CB7A5611DD2475D0029B800 /* Police.atlas */,
-			);
-			name = "Image Atlases";
-			sourceTree = "<group>";
-		};
 		2CB7A5651DD262D40029B800 /* Obstacle Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +211,7 @@
 				CA5233961DD2C90C00D2F59D /* Dog.swift */,
 				CAC19F691DD27E9E007A7197 /* TrafficCone.swift */,
 				2CB7A5631DD247F60029B800 /* PoliceCar.swift */,
+				2C8B90E21DD56856001C944A /* MoveableObstacle.swift */,
 			);
 			name = "Obstacle Classes";
 			sourceTree = "<group>";
@@ -294,7 +286,6 @@
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
-				2CB7A5621DD2475D0029B800 /* Police.atlas in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
 				2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */,
@@ -322,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8B90DF1DD54950001C944A /* Player.swift in Sources */,
+				2C8B90E31DD56856001C944A /* MoveableObstacle.swift in Sources */,
 				CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */,
 				2C1BFE3A1DD104BE00ECBBB8 /* GameScene.swift in Sources */,
 				2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */,

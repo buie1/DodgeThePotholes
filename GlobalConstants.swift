@@ -46,11 +46,6 @@ enum positionRange {
         case low = -0.375
         case high = 0.375
     }
-    
-    enum dog: CGFloat {
-        case low = -1
-        case high = 1
-    }
 }
 
 enum obstacleType {
