@@ -156,10 +156,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
-/*
         case "pothole":
             addPothole()
             break
+        /*
         case "dog":
             addDog()
             break
@@ -346,11 +346,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         score += 1
-        
-        var speed = 0.0;
-        if score % 1000 == 0{
-           speed += 0.1
-        }
         
     }
     

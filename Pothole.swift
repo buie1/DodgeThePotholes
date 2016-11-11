@@ -30,7 +30,7 @@ class Pothole: SKSpriteNode, ObstacleCreate {
     
     
     func generatePosition(_ size:CGSize){
-        let rand = GKRandomDistribution(lowestValue: Int(-size.width*pothole.low.rawValue) + Int(self.size.width/2),highestValue: Int(size.width*pothole.high.rawValue) - Int(self.size.width/2))
+        let rand = GKRandomDistribution(lowestValue: Int(size.width*pothole.low.rawValue) + Int(self.size.width/2),highestValue: Int(size.width*pothole.high.rawValue) - Int(self.size.width/2))
         self.position = CGPoint(x:CGFloat(rand.nextInt()),y:size.height/2 + self.size.height/2)
     }
     
