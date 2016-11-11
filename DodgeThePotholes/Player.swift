@@ -25,7 +25,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         }
         
         
-        super.init(texture: SKTexture(imageNamed:"car"), color: UIColor.clear, size: CGSize(width : 125, height:125))
+        super.init(texture: SKTexture(imageNamed:"car"), color: UIColor.clear, size: CGSize(width : 125/2, height:125))
         generatePosition(size)
         initPhysicsBody()
     }

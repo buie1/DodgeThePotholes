@@ -20,7 +20,7 @@ class policeCar: SKSpriteNode, ObstacleCreate {
             textureArray.append(SKTexture(imageNamed: name))
         }
         
-        super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 175, height: 175))
+        super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 156/2, height: 156))
         self.yScale = fabs(self.yScale) * -1
         self.zPosition = 1 
         initPhysicsBody()

@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameOver: SKScene {
+class GameOverScene: SKScene {
     
     var score:Int = 0
     var gameOverLabelNode:SKLabelNode!
@@ -43,6 +43,7 @@ class GameOver: SKScene {
                 self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
                 let gameScene = GameScene(size: self.size)
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                gameScene.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene, transition: transition)
             }
         }
