@@ -41,6 +41,7 @@ class Pothole: SKSpriteNode, ObstacleCreate {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue // object that collides with alien
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
+        
     }
     
     

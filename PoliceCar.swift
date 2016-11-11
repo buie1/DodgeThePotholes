@@ -48,6 +48,8 @@ class policeCar: SKSpriteNode, ObstacleCreate {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle.rawValue // of alien category
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue // object that collides with alien
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue // Not sure what this is doing... yet
+        self.physicsBody?.usesPreciseCollisionDetection = true
+
     }
     
     func begin(_ size: CGSize, _ dur: TimeInterval) {

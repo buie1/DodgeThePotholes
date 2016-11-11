@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let noWrap:Bool = true
     
     
-    var player:SKSpriteNode!
+    var player:Player!
     var gameTimer:Timer!
     var gameTimer2:Timer!
 
@@ -79,23 +79,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(bgAudio)
         }
         
-        player = SKSpriteNode(imageNamed: "car1")
+        player = Player(size: self.size)
         // We're not adding a physics body b/c its not interacting with the physical world
         
-        
-        // MAKE DYNAMIC
-        player.position = CGPoint(x: 0, y: -1*player.size.height/2 - 500)
-        player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
-        player.physicsBody?.isDynamic = true
-        player.zPosition = 1
-        player.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue | PhysicsCategory.MoveableObstacle.rawValue
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
-        //player.position = CGPoint(x: self.frame.size.width / 2, y: player.size.height / 2 + 20)
-        
         self.addChild(player)
+        
+        // MARK: Physics World
+        
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self; // include SKPhysicsContactDelegate
+        self.view?.showsPhysics = true;
         
         
         // MARK: - For score
@@ -125,7 +118,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // instead of the gametimers
         
 
-        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
         //gameTimer2 = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
@@ -134,7 +127,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let accerometerData = data {
                 let acceleration = accerometerData.acceleration
                 self.xAcceleration = CGFloat(acceleration.x) * 0.75 + self.xAcceleration * 0/25
-                
             }
         }
         
@@ -346,7 +338,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // This function is to wrap around the screen
     // Is this dynamic enough?
     override func didSimulatePhysics() {
-        player.position.x += xAcceleration * 50
+        self.player.position.x += xAcceleration * 50
+        
         if noWrap{
             if player.position.x < -self.size.width/2 + player.frame.width/4 {
                 player.position = CGPoint(x: -self.size.width/2 + player.frame.width/4, y:player.position.y)
