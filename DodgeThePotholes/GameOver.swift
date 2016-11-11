@@ -13,7 +13,7 @@ class GameOver: SKScene {
     var score:Int = 0
     var gameOverLabelNode:SKLabelNode!
     var scoreLabelNode:SKLabelNode!
-    
+    var newGameButtonNode:SKSpriteNode!
     
     override func didMove(to view: SKView) {
         
@@ -24,6 +24,9 @@ class GameOver: SKScene {
         scoreLabelNode = self.childNode(withName: "scoreLabel") as! SKLabelNode!
         scoreLabelNode.fontName = "PressStart2p"
         scoreLabelNode.text = "\(score)"
+        
+        newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
+        newGameButtonNode.texture = SKTexture(imageNamed: "newGameButton")
 
         
     }
@@ -42,13 +45,6 @@ class GameOver: SKScene {
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 self.view?.presentScene(gameScene, transition: transition)
             }
-            else if nodesArray.first?.name == "SettingsButton"{
-                print("Settings Button Was Pushed")
-                let settingsScene = SKScene(fileNamed: "SettingsScene")
-                settingsScene?.scaleMode = .aspectFill
-                self.view?.presentScene(settingsScene!, transition: transition)
-            }
-            
         }
     }
 }
