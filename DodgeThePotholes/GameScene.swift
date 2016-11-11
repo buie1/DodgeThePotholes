@@ -30,7 +30,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["traffic_cone","pothole", "dog","police"]
+    var possibleObstacles = ["pothole"]
+    //var possibleObstacles = ["traffic_cone","pothole", "dog","police"]
     
     
     let motionManager = CMMotionManager()
@@ -116,6 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     // MARK: - Police can be considered a street Obstacle. So may make a more general function later
     // jab165 11/8/16
+    /*
     func addPolice(){
 
         
@@ -134,17 +136,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    
+    */
     func addPothole(){
-        let pothole = Pothole(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
-        self.addChild(pothole.node)
-        var actionArray = [SKAction]()
-        actionArray.append(pothole.action)
-        pothole.node.run(SKAction.sequence(actionArray))
+        let pothole = Pothole(size:self.frame.size, duration: 2)
+        self.addChild(pothole)
     }
 
     
-    
+ /*
     func addTrafficCone(){
         let trafficCone = TrafficCone(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
         self.addChild(trafficCone.node)
@@ -153,13 +152,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         trafficCone.node.run(SKAction.sequence(actionArray))
 
     }
-    
+*/
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
-        case "traffic_cone":
-            addTrafficCone()
-            break
+/*
         case "pothole":
             addPothole()
             break
@@ -169,12 +166,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "police":
             addPolice()
             break
+        case "traffic_cone":
+            addTrafficCone()
+            break*/
         default:
             addPothole()
             break
         }
     }
-    
+/*
     func addDog(){
         let dog = Dog(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
         self.addChild(dog.node)
@@ -183,7 +183,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dog.node.run(SKAction.sequence(actionArray))
         dog.runAnimation()
     }
-    /*
     func addAlien(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         // Always gives us a random alien
@@ -233,9 +232,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Firing Torpedo
     
     func fireTorpedo(){
-        self.run(SKAction.playSoundFileNamed("torpedo.mp3", waitForCompletion: false))
+        self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
         
-        let torpedoNode = SKSpriteNode(imageNamed: "torpedo")
+        let torpedoNode = SKSpriteNode(imageNamed: "carHorn")
         torpedoNode.position = player.position
         torpedoNode.position.y += 5
         
@@ -249,7 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(torpedoNode)
         
-        let animationDuration:TimeInterval = 0.4 //Can be calculated depending on screen size
+        let animationDuration:TimeInterval = 1 //Can be calculated depending on screen size
         
         var actionArray = [SKAction]()
         
@@ -347,6 +346,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         score += 1
+        
+        var speed = 0.0;
+        if score % 1000 == 0{
+           speed += 0.1
+        }
+        
     }
     
 }

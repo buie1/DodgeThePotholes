@@ -38,11 +38,9 @@ enum PhysicsCategory:UInt32 {
     
 }
 
+// MARK: Ranges for Object generation
 enum positionRange {
-    enum pothole: CGFloat {
-        case low = -0.25
-        case high = 0.25
-    }
+
     
     enum trafficCone: CGFloat {
         case low = -0.375
@@ -59,4 +57,12 @@ enum obstacleType {
     case pothole
     case trafficCone
     case dog
+}
+
+
+// MARK: Protocols
+protocol ObstacleCreate {
+    func generatePosition(_ size:CGSize)
+    func initPhysicsBody()
+    func begin(_ size:CGSize, _ dur: TimeInterval)
 }
