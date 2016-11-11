@@ -38,6 +38,8 @@
 		2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55A1DD194F80029B800 /* shader1.fs */; };
 		2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55D1DD19F7A0029B800 /* start.wav */; };
 		2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A5631DD247F60029B800 /* PoliceCar.swift */; };
+		54FB84141DD58DC800AFBF7C /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54FB84131DD58DC800AFBF7C /* GameOver.sks */; };
+		54FB84171DD58E1E00AFBF7C /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB84161DD58E1E00AFBF7C /* GameOver.swift */; };
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
 		CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* TrafficCone.swift */; };
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
@@ -83,6 +85,8 @@
 		2CB7A55A1DD194F80029B800 /* shader1.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader1.fs; sourceTree = "<group>"; };
 		2CB7A55D1DD19F7A0029B800 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
 		2CB7A5631DD247F60029B800 /* PoliceCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoliceCar.swift; path = ../PoliceCar.swift; sourceTree = "<group>"; };
+		54FB84131DD58DC800AFBF7C /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
+		54FB84161DD58E1E00AFBF7C /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* TrafficCone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				2C8B90D41DD27D01001C944A /* GlobalConstants.swift */,
 				2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */,
 				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
+				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
 				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
 				2C1060191DD1756A00668D23 /* Game Scene */,
 				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
@@ -229,6 +234,15 @@
 				2C8B90E21DD56856001C944A /* MoveableObstacle.swift */,
 			);
 			name = "Obstacle Classes";
+			sourceTree = "<group>";
+		};
+		54FB84151DD58DF900AFBF7C /* GameOver Scene */ = {
+			isa = PBXGroup;
+			children = (
+				54FB84131DD58DC800AFBF7C /* GameOver.sks */,
+				54FB84161DD58E1E00AFBF7C /* GameOver.swift */,
+			);
+			name = "GameOver Scene";
 			sourceTree = "<group>";
 		};
 		EE8353A51DD5851E003ED2E4 /* Audio Scene */ = {
@@ -343,6 +357,7 @@
 				2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */,
 				2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */,
 				2CB7A5571DD193810029B800 /* shader_water_reflection.fsh in Resources */,
+				54FB84141DD58DC800AFBF7C /* GameOver.sks in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
@@ -372,6 +387,7 @@
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
 				EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */,
+				54FB84171DD58E1E00AFBF7C /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
