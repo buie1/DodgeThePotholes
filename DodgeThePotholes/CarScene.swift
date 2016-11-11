@@ -40,15 +40,23 @@ class CarScene: SKScene{
             
             if nodesArray.first?.name == "Car1"{
                 currentCar = "Car1"
+                preferences.setValue(currentCar, forKey: "car")
+                preferences.synchronize()
             }
             else if nodesArray.first?.name == "Car2"{
                 currentCar = "Car2"
+                preferences.setValue(currentCar, forKey: "car")
+                preferences.synchronize()
             }
             else if nodesArray.first?.name == "Car3"{
                 currentCar = "Car3"
+                preferences.setValue(currentCar, forKey: "car")
+                preferences.synchronize()
             }
             else if nodesArray.first?.name == "Car4"{
                 currentCar = "Car4"
+                preferences.setValue(currentCar, forKey: "car")
+                preferences.synchronize()
             }
             let settingsScene = SKScene(fileNamed: "SettingsScene")
             settingsScene?.scaleMode = .aspectFit

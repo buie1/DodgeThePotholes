@@ -14,10 +14,8 @@ class MenuScene: SKScene {
     var settingsButtonNode:SKSpriteNode!
     var gameCenterButtonNode:SKSpriteNode!
     
-    
     override func didMove(to view: SKView) {
 
-        
         newGameButtonNode = self.childNode(withName: "NewGameButton") as! SKSpriteNode!
         settingsButtonNode = self.childNode(withName: "SettingsButton") as! SKSpriteNode!
         gameCenterButtonNode = self.childNode(withName: "GameCenterButton") as! SKSpriteNode!
@@ -47,4 +45,6 @@ class MenuScene: SKScene {
         
         }
     }
+    
+
 }
