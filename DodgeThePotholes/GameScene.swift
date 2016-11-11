@@ -45,6 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
     
+    var gameSpeed: CGFloat = 2.0
+    
     
     
     override func didMove(to view: SKView) {
@@ -56,7 +58,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //bg.size.width = self.size.width
         self.addChild(bg)
         bg.zPosition = -1;
-        bg.start()
+        bg.start(duration: gameSpeed)
+        
+        // TIMER TO PERIODICALLY SPEED UP GAME
+        _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
         
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
@@ -170,14 +175,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // should be dynamic but hardcoded right now
         // MAKE DYNAMIC
-        let police = policeCar(size:self.size, duration:2)
+        let police = policeCar(size:self.size, duration:TimeInterval(gameSpeed))
         //police.position = CGPoint(x:position ,y:self.frame.size.height/2 + police.size.height)
         //police.move(dest: CGPoint(x: police.position.x, y: -self.frame.size.height/2 - police.size.height))
         self.addChild(police)
     }
     
     func addPothole(){
-        let pothole = Pothole(size:self.size, duration: 2)
+        let pothole = Pothole(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(pothole)
     }
 
@@ -214,7 +219,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     func addDog(){
-        let dog = Dog(size:self.frame.size, duration: 2)
+        let dog = Dog(size:self.frame.size, duration: TimeInterval(gameSpeed))
         self.addChild(dog)
     }
     
@@ -363,5 +368,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score += 1
         
     }
+    
+    func updateBackground(){
+        // Set up game background
+        let bg = roadBackground(size: self.size)
+        bg.position = CGPoint(x: 0.0, y: 0.0)
+        //bg.size.height = 4*self.size.height
+        //bg.size.width = self.size.width
+        self.addChild(bg)
+        bg.zPosition = -1;
+        
+        if(gameSpeed > 0.2){
+        gameSpeed -= 0.1
+        bg.start(duration: gameSpeed)
+        print("current game speed is \n")
+        print(gameSpeed)
+        }
+        else{
+        bg.loopForever(duration: gameSpeed)
+        }
+    }
+ 
     
 }
