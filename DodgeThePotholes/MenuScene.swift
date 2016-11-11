@@ -31,7 +31,9 @@ class MenuScene: SKScene {
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             
             if nodesArray.first?.name == "NewGameButton" {
-                self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
+                if(preferences.bool(forKey: "music") == true){
+                    self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
+                }
                 let gameScene = GameScene(size: self.size)
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 self.view?.presentScene(gameScene, transition: transition)

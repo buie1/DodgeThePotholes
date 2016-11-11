@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: -Temporary Booleans for TESTING
-    let sfx:Bool = true
+    let sfx:Bool = preferences.bool(forKey: "sfx")
     let noWrap:Bool = true
     
     
