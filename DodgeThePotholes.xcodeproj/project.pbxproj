@@ -41,6 +41,12 @@
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
 		CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* TrafficCone.swift */; };
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
+		EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353A61DD58586003ED2E4 /* AudioScene.sks */; };
+		EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353A71DD58586003ED2E4 /* AudioScene.swift */; };
+		EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */; };
+		EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */; };
+		EE8353B21DD58643003ED2E4 /* CarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353B01DD58643003ED2E4 /* CarScene.sks */; };
+		EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353B11DD58643003ED2E4 /* CarScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +86,12 @@
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* TrafficCone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
+		EE8353A61DD58586003ED2E4 /* AudioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AudioScene.sks; sourceTree = "<group>"; };
+		EE8353A71DD58586003ED2E4 /* AudioScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioScene.swift; sourceTree = "<group>"; };
+		EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsScene.sks; sourceTree = "<group>"; };
+		EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
+		EE8353B01DD58643003ED2E4 /* CarScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CarScene.sks; sourceTree = "<group>"; };
+		EE8353B11DD58643003ED2E4 /* CarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +151,9 @@
 				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
 				2C1060191DD1756A00668D23 /* Game Scene */,
 				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
+				EE8353AF1DD5862E003ED2E4 /* Car Scene */,
+				EE8353A51DD5851E003ED2E4 /* Audio Scene */,
+				EE8353AA1DD58593003ED2E4 /* Settings Scene */,
 				2C1BFE531DD1062800ECBBB8 /* SceneNodeClasses */,
 				2C10601A1DD1759000668D23 /* Sprite Particles */,
 				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
@@ -216,6 +231,33 @@
 			name = "Obstacle Classes";
 			sourceTree = "<group>";
 		};
+		EE8353A51DD5851E003ED2E4 /* Audio Scene */ = {
+			isa = PBXGroup;
+			children = (
+				EE8353A61DD58586003ED2E4 /* AudioScene.sks */,
+				EE8353A71DD58586003ED2E4 /* AudioScene.swift */,
+			);
+			name = "Audio Scene";
+			sourceTree = "<group>";
+		};
+		EE8353AA1DD58593003ED2E4 /* Settings Scene */ = {
+			isa = PBXGroup;
+			children = (
+				EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */,
+				EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */,
+			);
+			name = "Settings Scene";
+			sourceTree = "<group>";
+		};
+		EE8353AF1DD5862E003ED2E4 /* Car Scene */ = {
+			isa = PBXGroup;
+			children = (
+				EE8353B01DD58643003ED2E4 /* CarScene.sks */,
+				EE8353B11DD58643003ED2E4 /* CarScene.swift */,
+			);
+			name = "Car Scene";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,6 +327,7 @@
 				2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */,
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
+				EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
@@ -295,6 +338,7 @@
 				2C1BFE441DD104BE00ECBBB8 /* LaunchScreen.storyboard in Resources */,
 				2C1BFE501DD1061300ECBBB8 /* Explosion.sks in Resources */,
 				2C10601C1DD175FC00668D23 /* MenuScene.sks in Resources */,
+				EE8353B21DD58643003ED2E4 /* CarScene.sks in Resources */,
 				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
 				2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */,
 				2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */,
@@ -302,6 +346,7 @@
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
+				EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8B90DF1DD54950001C944A /* Player.swift in Sources */,
+				EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */,
 				2C8B90E31DD56856001C944A /* MoveableObstacle.swift in Sources */,
 				CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */,
 				2C1BFE3A1DD104BE00ECBBB8 /* GameScene.swift in Sources */,
@@ -321,9 +367,11 @@
 				2C1BFE3C1DD104BE00ECBBB8 /* GameViewController.swift in Sources */,
 				CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */,
 				CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */,
+				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
+				EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

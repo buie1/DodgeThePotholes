@@ -30,13 +30,19 @@ class MenuScene: SKScene {
         if let location = touch?.location(in: self) {
             
             let nodesArray = self.nodes(at: location)
+            let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             
             if nodesArray.first?.name == "NewGameButton" {
                 self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
-                let transition = SKTransition.flipHorizontal(withDuration: 1.0)
                 let gameScene = GameScene(size: self.size)
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 self.view?.presentScene(gameScene, transition: transition)
+            }
+            else if nodesArray.first?.name == "SettingsButton"{
+                print("Settings Button Was Pushed")
+                let settingsScene = SKScene(fileNamed: "SettingsScene")
+                settingsScene?.scaleMode = .aspectFill
+                self.view?.presentScene(settingsScene!, transition: transition)
             }
         
         }
