@@ -28,12 +28,30 @@ class roadBackground: SKSpriteNode {
     }
     
     func start(duration: CGFloat){
+        print("starting new level")
         let moveDown = SKAction.moveBy(x: 0.0, y: -frame.size.height/4, duration: TimeInterval(duration))
         let restart = SKAction.moveBy(x: 0.0, y: frame.size.height/4, duration: 0)
         let moveSeq = SKAction.sequence([moveDown, restart])
         //run(SKAction.repeatForever(moveSeq))
         self.removeAllActions()
         run(SKAction.repeat(moveSeq, count: 50))
+    }
+    
+    func changeLevel(duration: CGFloat){
+        let level = SKTexture(imageNamed: "ruralLevel")
+        let levelTransition = SKTexture(imageNamed: "ruralLevelTransition")
+        let moveDown = SKAction.moveBy(x: 0.0, y: -frame.size.height/4, duration: TimeInterval(duration))
+        let restart = SKAction.moveBy(x: 0.0, y: frame.size.height/4, duration: 0)
+        let moveSeq = SKAction.sequence([moveDown, restart])
+        self.texture = levelTransition
+        //run(SKAction.wait(forDuration: TimeInterval(duration)))
+        //self.texture = level
+        self.removeAllActions()
+        run(SKAction.repeat(moveSeq, count: 1),
+            completion: {
+            self.texture = level
+        }
+        )
     }
     
     func loopForever(duration: CGFloat){

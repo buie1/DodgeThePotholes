@@ -48,6 +48,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameSpeed: CGFloat = 2.0
     
     
+    // Day Night Cycle:
+    //  1:LevelOne
+    //  2:TransitionLevelTwo
+    //  3:LevelTwo
+    let levelArray = [1,2,3]
+    var levelIndx = 0
+    
+    
     
     override func didMove(to view: SKView) {
 
@@ -367,9 +375,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    
+    // background gets updated every 10 secs
     func updateBackground(){
         // Set up game background
+
         let bg = roadBackground(size: self.size)
+        let levelOne = SKTexture(imageNamed: "road_long")
+        let levelTwo = SKTexture(imageNamed: "ruralLevel")
         bg.position = CGPoint(x: 0.0, y: 0.0)
         //bg.size.height = 4*self.size.height
         //bg.size.width = self.size.width
@@ -378,7 +391,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if(gameSpeed > 0.2){
         gameSpeed -= 0.1
-        bg.start(duration: gameSpeed)
+            if(levelIndx < levelArray.count){
+                levelIndx += 1
+            }
+            else{
+                levelIndx = 0
+            }
+            // STAY AT THE SAME DAY/NIGHT
+            if(levelArray[levelIndx] == 1){
+                bg.start(duration: gameSpeed)
+            }
+            // CHANGE INTO THE NEXT DAY/NIGHT
+            if(levelArray[levelIndx] == 2){
+                print("Changing Day")
+                bg.changeLevel(duration: gameSpeed)
+            }
+            // STAY AT THE SAME LEVEL
+            if(levelArray[levelIndx] == 3){
+                bg.texture = levelTwo
+                bg.changeLevel(duration: gameSpeed)
+            }
+        
         print("current game speed is \n")
         print(gameSpeed)
         }
