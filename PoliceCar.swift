@@ -45,9 +45,9 @@ class policeCar: SKSpriteNode, ObstacleCreate {
     func initPhysicsBody() {
         self.physicsBody?.isDynamic = true
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle.rawValue // of alien category
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue // object that collides with alien
-        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue // Not sure what this is doing... yet
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
 
     }

@@ -40,7 +40,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog"]
+    var possibleObstacles = ["pothole","coin"]
+
+    //var possibleObstacles = ["pothole", "police","dog","coin"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -79,9 +81,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(bgAudio)
         }
         
-        player = Player(size: self.size)
-        // We're not adding a physics body b/c its not interacting with the physical world
+        // MARK: Player on Screen
         
+        player = Player(size: self.size)
         self.addChild(player)
         
         // MARK: Physics World
@@ -119,7 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
 
         gameTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
-        //gameTimer2 = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
+
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -165,11 +167,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    // MARK: - Police can be considered a street Obstacle. So may make a more general function later
-    // jab165 11/8/16
+    // MARK: Add Obstalces and Other GameplayItems to Screen
     func addPolice(){
-
-        
         // should be dynamic but hardcoded right now
         // MAKE DYNAMIC
         let police = policeCar(size:self.size, duration:TimeInterval(gameSpeed))
@@ -182,6 +181,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let pothole = Pothole(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(pothole)
     }
+    func addDog(){
+        let dog = Dog(size:self.frame.size, duration: TimeInterval(gameSpeed))
+        self.addChild(dog)
+    }
+    func addCoinPattern(){
+        let coins = CoinPattern(scene:self, duration:TimeInterval(gameSpeed))
+        self.addChild(coins)
+    }
+
 
     
  /*
@@ -206,6 +214,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "dog":
             addDog()
             break
+        case "coin":
+            addCoinPattern()
+            break
             /*
         case "traffic_cone":
             addTrafficCone()
@@ -215,10 +226,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         }
     }
-    func addDog(){
-        let dog = Dog(size:self.frame.size, duration: TimeInterval(gameSpeed))
-        self.addChild(dog)
-    }
+
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -299,6 +307,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else{
                 hornDidHitMoveableObstacle(horn: contact.bodyB.node as! SKSpriteNode,
                                            obj: contact.bodyA.node as! MoveableObstacle)
+            }
+            
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.Coin.rawValue:
+            print("Car hit a coin")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Horn.rawValue {
+                // do nothing rn
+            }else{
+                //do nothing agian
             }
             
         default:

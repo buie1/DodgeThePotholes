@@ -46,6 +46,11 @@ enum positionRange {
         case low = -0.375
         case high = 0.375
     }
+    
+    enum moneyRange:CGFloat {
+        case low = -0.5
+        case high = 0.5
+    }
 }
 
 enum obstacleType {

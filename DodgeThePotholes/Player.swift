@@ -45,7 +45,8 @@ class Player: SKSpriteNode, ObstacleCreate {
         self.physicsBody?.isDynamic = true
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue | PhysicsCategory.MoveableObstacle.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue | PhysicsCategory.MoveableObstacle.rawValue |
+            PhysicsCategory.Coin.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
     }
