@@ -222,39 +222,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fireTorpedo()
+        honkHorn()
     }
     
     
-    // MARK: - Firing Torpedo
+    // MARK: - honking horn
     
-    func fireTorpedo(){
+    func honkHorn(){
         self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
         
-        let torpedoNode = SKSpriteNode(imageNamed: "carHorn")
-        torpedoNode.position = player.position
-        torpedoNode.position.y += 5
+        let hornNode = SKSpriteNode(imageNamed: "carHorn")
+        hornNode.position = player.position
+        hornNode.position.y += 5
         
-        torpedoNode.physicsBody = SKPhysicsBody(circleOfRadius: torpedoNode.size.width / 2)
-        torpedoNode.physicsBody?.isDynamic = true
+        hornNode.physicsBody = SKPhysicsBody(circleOfRadius: hornNode.size.width * 5)
+        hornNode.physicsBody?.isDynamic = true
         
-        torpedoNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue // of torpedo category
-        torpedoNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue // object that collides with torpedo
-        torpedoNode.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
-        torpedoNode.physicsBody?.usesPreciseCollisionDetection = true
+        hornNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue // of torpedo category
+        hornNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue // object that collides with torpedo
+        hornNode.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
+        hornNode.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.addChild(torpedoNode)
+        self.addChild(hornNode)
         
         let animationDuration:TimeInterval = 1 //Can be calculated depending on screen size
         
         var actionArray = [SKAction]()
         
-        actionArray.append(SKAction.move(to: CGPoint(x: player.position.x,
-                                                     y: self.frame.size.height/2 + torpedoNode.size.height),
-                                         duration: animationDuration))
-        actionArray.append(SKAction.removeFromParent())
-        torpedoNode.run(SKAction.sequence(actionArray))
         
+        actionArray.append(SKAction.move(to: CGPoint(x: player.position.x,
+                                                     y: /*self.frame.size.height +*/ hornNode.size.height),
+                                         duration: animationDuration))
+        actionArray.append(SKAction.resize(toWidth: hornNode.size.width * 15, duration: animationDuration))
+        let group = SKAction.group(actionArray)
+        var actionArray2 = [SKAction]()
+        actionArray2.append(group)
+        actionArray2.append(SKAction.removeFromParent())
+        hornNode.run(SKAction.sequence(actionArray2))
+        
+
     }
     
     
