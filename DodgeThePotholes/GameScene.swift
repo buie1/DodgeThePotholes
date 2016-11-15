@@ -15,26 +15,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: -Temporary Booleans for TESTING
-    let sfx:Bool = true
+    let music:Bool = preferences.bool(forKey: "music")
     let noWrap:Bool = true
     
     
-    var player:SKSpriteNode!
+    var player:Player!
     var gameTimer:Timer!
     var gameTimer2:Timer!
+
     
+    // MARK: HUD Variables
     var scoreLabel:SKLabelNode!
+    var moneyLabel:SKLabelNode!
+    var livesArray:[SKSpriteNode]!
+
+    var money:Int = 0 {
+        didSet {
+            moneyLabel.text = "Money: $ \(money)"
+        }
+    }
     var score:Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score) m"
         }
     }
     
-    var possibleObstacles = ["traffic_cone","pothole", "dog"]
-    
+    var possibleObstacles = ["pothole", "police","dog"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
+    
+    var gameSpeed: CGFloat = 2.0
     
     
     
@@ -47,7 +58,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //bg.size.width = self.size.width
         self.addChild(bg)
         bg.zPosition = -1;
-        bg.start()
+        bg.start(duration: gameSpeed)
+        
+        // TIMER TO PERIODICALLY SPEED UP GAME
+        _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
         
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
@@ -59,42 +73,53 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //bg.shader = shader
         
         // Set up background Audio
-        if sfx {
+        if music {
             let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
             bgAudio.autoplayLooped = true;
             self.addChild(bgAudio)
         }
         
-        
-        player = SKSpriteNode(imageNamed: "car1")
+        player = Player(size: self.size)
         // We're not adding a physics body b/c its not interacting with the physical world
         
-        
-        // MAKE DYNAMIC
-        player.position = CGPoint(x: 0, y: -1*player.size.height/2 - 500)
-        //player.position = CGPoint(x: self.frame.size.width / 2, y: player.size.height / 2 + 20)
-        
         self.addChild(player)
+        
+        // MARK: Physics World
+        
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self; // include SKPhysicsContactDelegate
+        self.view?.showsPhysics = true;
         
         
         // MARK: - For score
         scoreLabel = SKLabelNode(text: "Score: 0")
-        scoreLabel.position = CGPoint(x:-200, y: self.frame.height / 2 - 60)
-        scoreLabel.fontName = "AmericanTypewriter-Bold"
-        scoreLabel.fontSize = 35
+        scoreLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60)
+        scoreLabel.fontName = "PressStart2P"
+        scoreLabel.fontSize = 24
         scoreLabel.fontColor = UIColor.white
         score = 0;
         self.addChild(scoreLabel)
+        
+        // MARK: - For Money
+        moneyLabel = SKLabelNode(text: "Money: 0")
+        moneyLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*2)
+        moneyLabel.fontName = "PressStart2P"
+        moneyLabel.fontSize = 24
+        moneyLabel.fontColor = UIColor.white
+        money = 0;
+        self.addChild(moneyLabel)
+        
+        
+        addLives()
+
         
         // MARK: - GameTimer code
         // aparently a better way to implement this is with SKActions and using a "wait" time
         // instead of the gametimers
         
 
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
-        gameTimer2 = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
+        //gameTimer2 = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector (addPolice), userInfo:nil, repeats:true)
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -102,54 +127,64 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let accerometerData = data {
                 let acceleration = accerometerData.acceleration
                 self.xAcceleration = CGFloat(acceleration.x) * 0.75 + self.xAcceleration * 0/25
-                
             }
         }
         
         
     }
+    
+    // MARK: Initialize Lives
+    func addLives (){
+        
+        livesArray = [SKSpriteNode]()
+        
+        for live in 1 ... 3 {
+            let liveNode = SKSpriteNode(imageNamed: "wheel")
+            liveNode.name = "live\(live)"
+            liveNode.position = CGPoint(x: self.frame.size.width/2 - 30 - CGFloat((4 - live)) * liveNode.size.width, y: self.frame.size.height/2 - 60)
+            liveNode.size = CGSize(width: 4*scoreLabel.frame.size.height, height: 4*scoreLabel.frame.size.height)
+            self.addChild(liveNode)
+            livesArray.append(liveNode)
+        }
+    }
+    
+    func loseLife() {
+        let lifeNode = self.livesArray.first
+        lifeNode!.removeFromParent()
+        self.livesArray.removeFirst()
+        
+        if self.livesArray.count == 0 {
+            //let transition = SKTransition.flipHorizontal(withDuration: 0.5)
+            print("GAME OVER")
+            let transition = SKTransition.flipHorizontal(withDuration: 0.5)
+            let gameOver = SKScene(fileNamed: "GameOverScene") as! GameOverScene
+            gameOver.score = self.score
+            gameOver.scaleMode = .aspectFill
+            self.view?.presentScene(gameOver, transition: transition)
+        }
+    }
+    
+    
     // MARK: - Police can be considered a street Obstacle. So may make a more general function later
     // jab165 11/8/16
     func addPolice(){
 
         
-        
-        
         // should be dynamic but hardcoded right now
         // MAKE DYNAMIC
-        let police = policeCar()
-        let randomPolicePosition = GKRandomDistribution(lowestValue: Int(-self.frame.size.width/4) + Int(police.size.width/2),
-                                                       highestValue: Int(-police.size.width/2))
-        let position = CGFloat(randomPolicePosition.nextInt())
-        
-        police.position = CGPoint(x:position ,y:self.frame.size.height/2 + police.size.height)
-        police.move(dest: CGPoint(x: police.position.x, y: -self.frame.size.height/2 - police.size.height))
-        
-        // position alien off the screen
-        
-        //Need to create physics body
-        police.physicsBody = SKPhysicsBody(rectangleOf: police.size)
-        police.physicsBody?.isDynamic = true
-        // Need the bitmask to determine when being hit by torpedo.
-        
-        police.physicsBody?.categoryBitMask = alienCategory // of alien category
-        police.physicsBody?.contactTestBitMask = photonTorpedoCategory // object that collides with alien
-        police.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
-        self.addChild(police)        
-        
-        
+        let police = policeCar(size:self.size, duration:TimeInterval(gameSpeed))
+        //police.position = CGPoint(x:position ,y:self.frame.size.height/2 + police.size.height)
+        //police.move(dest: CGPoint(x: police.position.x, y: -self.frame.size.height/2 - police.size.height))
+        self.addChild(police)
     }
     
     func addPothole(){
-        let pothole = Pothole(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
-        self.addChild(pothole.node)
-        var actionArray = [SKAction]()
-        actionArray.append(pothole.action)
-        pothole.node.run(SKAction.sequence(actionArray))
+        let pothole = Pothole(size:self.size, duration:TimeInterval(gameSpeed))
+        self.addChild(pothole)
     }
 
     
-    
+ /*
     func addTrafficCone(){
         let trafficCone = TrafficCone(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
         self.addChild(trafficCone.node)
@@ -158,72 +193,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         trafficCone.node.run(SKAction.sequence(actionArray))
 
     }
-    
+*/
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
-        case "traffic_cone":
-            addTrafficCone()
-            break
         case "pothole":
             addPothole()
+            break
+        case "police":
+            addPolice()
             break
         case "dog":
             addDog()
             break
+            /*
+        case "traffic_cone":
+            addTrafficCone()
+            break*/
         default:
             addPothole()
             break
         }
     }
-    
     func addDog(){
-        let dog = Dog(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
-        self.addChild(dog.node)
-        var actionArray = [SKAction]()
-        actionArray.append(dog.action)
-        dog.node.run(SKAction.sequence(actionArray))
-        dog.runAnimation()
-    }
-    
-    func addAlien(){
-        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
-        // Always gives us a random alien
-        let alien = SKSpriteNode(imageNamed: possibleObstacles[0])
-        
-        
-        // should be dynamic but hardcoded right now
-        // MAKE DYNAMIC
-        let randomAlienPosition = GKRandomDistribution(lowestValue: -414 + Int(alien.size.width),
-                                                       highestValue: 414 - Int(alien.size.width))
-        let position = CGFloat(randomAlienPosition.nextInt())
-        
-        // position alien off the screen
-        alien.position = CGPoint(x: position, y:self.frame.size.height/2 + alien.size.height)
-        
-        //Need to create physics body
-        alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-        alien.physicsBody?.isDynamic = true
-        // Need the bitmask to determine when being hit by torpedo.
-        
-        alien.physicsBody?.categoryBitMask = alienCategory // of alien category
-        alien.physicsBody?.contactTestBitMask = photonTorpedoCategory // object that collides with alien
-        alien.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
-        
-        self.addChild(alien)
-        
-        let animationDuration:TimeInterval = 6
-        
-        //Array of actions of aliens
-        var actionArray = [SKAction]()
-        
-        actionArray.append(SKAction.move(to: CGPoint(x: position,
-                                                     y: -self.frame.size.height/2 - alien.size.height),
-                                         duration: animationDuration))
-        actionArray.append(SKAction.removeFromParent())
-        alien.run(SKAction.sequence(actionArray))
-        
-        
+        let dog = Dog(size:self.frame.size, duration: TimeInterval(gameSpeed))
+        self.addChild(dog)
     }
     
     
@@ -235,23 +229,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Firing Torpedo
     
     func fireTorpedo(){
-        self.run(SKAction.playSoundFileNamed("torpedo.mp3", waitForCompletion: false))
+        self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
         
-        let torpedoNode = SKSpriteNode(imageNamed: "torpedo")
+        let torpedoNode = SKSpriteNode(imageNamed: "carHorn")
         torpedoNode.position = player.position
         torpedoNode.position.y += 5
         
         torpedoNode.physicsBody = SKPhysicsBody(circleOfRadius: torpedoNode.size.width / 2)
         torpedoNode.physicsBody?.isDynamic = true
         
-        torpedoNode.physicsBody?.categoryBitMask = photonTorpedoCategory // of torpedo category
-        torpedoNode.physicsBody?.contactTestBitMask = alienCategory // object that collides with torpedo
+        torpedoNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue // of torpedo category
+        torpedoNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue // object that collides with torpedo
         torpedoNode.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
         torpedoNode.physicsBody?.usesPreciseCollisionDetection = true
         
         self.addChild(torpedoNode)
         
-        let animationDuration:TimeInterval = 0.4 //Can be calculated depending on screen size
+        let animationDuration:TimeInterval = 1 //Can be calculated depending on screen size
         
         var actionArray = [SKAction]()
         
@@ -265,53 +259,92 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody:SKPhysicsBody
-        var secondBody:SKPhysicsBody
-        
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        }else{
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        if (firstBody.categoryBitMask & photonTorpedoCategory) != 0 &&
-            (secondBody.categoryBitMask & alienCategory) != 0 {
+        // Step 1. Bitiwse OR the bodies' categories to find out what kind of contact we have
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        switch contactMask {
             
-            // Function for what happens when torpedo and alien collide
-            torpedoDidCollideWithAlien(torpedoNode: firstBody.node as! SKSpriteNode,
-                                       alienNode: secondBody.node as! SKSpriteNode)
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.Obstacle.rawValue:
+            
+            // Step 2. Disambiguate the bodies in the contact
+            print("handle collision with car ")
+
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
+            carDidHitObstacle(car: contact.bodyA.node as! SKSpriteNode,
+                                       obj: contact.bodyB.node as! SKSpriteNode)
+            } else{
+            carDidHitObstacle(car: contact.bodyB.node as! SKSpriteNode,
+                                       obj: contact.bodyA.node as! SKSpriteNode)
+            }
             
             
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
+            
+            // Here we don't care which body is which, the scene is ending
+            print("car hit moveable object")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
+                carDidHitMoveableObstacle(car: contact.bodyA.node as! SKSpriteNode,
+                                  obj: contact.bodyB.node as! MoveableObstacle)
+            } else{
+                carDidHitMoveableObstacle(car: contact.bodyB.node as! SKSpriteNode,
+                                  obj: contact.bodyA.node as! MoveableObstacle)
+            }
+            
+            
+            
+        case PhysicsCategory.Horn.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
+            print("horn hit movabale object")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Horn.rawValue {
+                hornDidHitMoveableObstacle(horn: contact.bodyA.node as! SKSpriteNode,
+                                           obj: contact.bodyB.node as! MoveableObstacle)
+            } else{
+                hornDidHitMoveableObstacle(horn: contact.bodyB.node as! SKSpriteNode,
+                                           obj: contact.bodyA.node as! MoveableObstacle)
+            }
+            
+        default:
+            
+            // Nobody expects this, so satisfy the compiler and catch
+            // ourselves if we do something we didn't plan to
+            //fatalError("other collision: \(contactMask)")
+            
+            
+            print("other collision: \(contactMask)")
         }
     }
     
-    func torpedoDidCollideWithAlien (torpedoNode:SKSpriteNode, alienNode:SKSpriteNode){
+    // MARK: Collision Handlers
+    
+    func hornDidHitMoveableObstacle(horn:SKSpriteNode, obj:MoveableObstacle){
         
-        let explosion = SKEmitterNode(fileNamed: "Explosion")!
-        explosion.position = alienNode.position
-        self.addChild(explosion)
-        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
-        
-        torpedoNode.removeFromParent()
-        alienNode.removeFromParent()
-        
-        // We need to let explosion run and then remove it
-        self.run(SKAction.wait(forDuration: 2)){
-            explosion.removeFromParent()
-        }
-        
-        score += 5 // Increase the score!
-        
+        horn.removeFromParent()
+        obj.removeAllActions()
+        obj.runAway(self.frame.size, 2)
         
     }
+    
+    
+    func carDidHitObstacle(car:SKSpriteNode, obj:SKSpriteNode){
+        
+        loseLife()
+        obj.removeFromParent()
+        
+    }
+    
+    func carDidHitMoveableObstacle(car:SKSpriteNode, obj:SKSpriteNode){
+        
+        loseLife()
+        obj.removeFromParent()
+        
+    }
+    
+    
     
     
     // This function is to wrap around the screen
     // Is this dynamic enough?
     override func didSimulatePhysics() {
-        player.position.x += xAcceleration * 50
+        self.player.position.x += xAcceleration * 50
+        
         if noWrap{
             if player.position.x < -self.size.width/2 + player.frame.width/4 {
                 player.position = CGPoint(x: -self.size.width/2 + player.frame.width/4, y:player.position.y)
@@ -331,6 +364,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         score += 1
+        
     }
+    
+    func updateBackground(){
+        // Set up game background
+        let bg = roadBackground(size: self.size)
+        bg.position = CGPoint(x: 0.0, y: 0.0)
+        //bg.size.height = 4*self.size.height
+        //bg.size.width = self.size.width
+        self.addChild(bg)
+        bg.zPosition = -1;
+        
+        if(gameSpeed > 0.2){
+        gameSpeed -= 0.1
+        bg.start(duration: gameSpeed)
+        print("current game speed is \n")
+        print(gameSpeed)
+        }
+        else{
+        bg.loopForever(duration: gameSpeed)
+        }
+    }
+ 
     
 }

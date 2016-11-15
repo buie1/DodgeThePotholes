@@ -8,17 +8,26 @@
 
 import SpriteKit
 
-class MenuScene: SKScene {
+class GameOverScene: SKScene {
     
+    var score:Int = 0
+    var gameOverLabelNode:SKLabelNode!
+    var scoreLabelNode:SKLabelNode!
     var newGameButtonNode:SKSpriteNode!
-    var settingsButtonNode:SKSpriteNode!
-    var gameCenterButtonNode:SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        
+        
+        gameOverLabelNode = self.childNode(withName: "gameOverLabel") as! SKLabelNode!
+        gameOverLabelNode.fontName = "PressStart2p"
+        
+        scoreLabelNode = self.childNode(withName: "scoreLabel") as! SKLabelNode!
+        scoreLabelNode.fontName = "PressStart2p"
+        scoreLabelNode.text = "\(score)"
+        
+        newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
+        newGameButtonNode.texture = SKTexture(imageNamed: "newGameButton")
 
-        newGameButtonNode = self.childNode(withName: "NewGameButton") as! SKSpriteNode!
-        settingsButtonNode = self.childNode(withName: "SettingsButton") as! SKSpriteNode!
-        gameCenterButtonNode = self.childNode(withName: "GameCenterButton") as! SKSpriteNode!
         
     }
     
@@ -30,22 +39,15 @@ class MenuScene: SKScene {
             let nodesArray = self.nodes(at: location)
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             
-            if nodesArray.first?.name == "NewGameButton" {
+            if nodesArray.first?.name == "newGameButton" {
                 if(preferences.bool(forKey: "sfx") == true){
                     self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
                 }
                 let gameScene = GameScene(size: self.size)
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                gameScene.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene, transition: transition)
             }
-            else if nodesArray.first?.name == "SettingsButton"{
-                let settingsScene = SKScene(fileNamed: "SettingsScene")
-                settingsScene?.scaleMode = .aspectFill
-                self.view?.presentScene(settingsScene!, transition: transition)
-            }
-        
         }
     }
-    
-
 }

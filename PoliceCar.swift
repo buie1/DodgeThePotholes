@@ -7,20 +7,25 @@
 //
 
 import SpriteKit
+import GameplayKit
 
-class policeCar: SKSpriteNode{
+class policeCar: SKSpriteNode, ObstacleCreate {
     
-    var textureAtlas = SKTextureAtlas(named: "Police.atlas")
+    var textureAtlas = SKTextureAtlas(named: "Police")
     var textureArray = [SKTexture]()
     
-    init(){
+    init(size: CGSize, duration:TimeInterval){
         for i in 1...textureAtlas.textureNames.count{
-            let name = "police_0\(i).png"
+            let name = "police_0\(i)"
             textureArray.append(SKTexture(imageNamed: name))
         }
         
-        super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 175, height: 175))
+        super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 156/2, height: 156))
         self.yScale = fabs(self.yScale) * -1
+        self.zPosition = 1 
+        initPhysicsBody()
+        generatePosition(size)
+        begin(size, duration)
         
     }
     
@@ -28,18 +33,33 @@ class policeCar: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-    // We will probably need a function that takes the duration as a parameter to adjust as the 
-    // levels increase speed
-    func move(dest: CGPoint) {
-        let flash = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.3),
-                                    count:5)
-        /*let moveAction = SKAction.move(by: CGVector(dx:0,
-                                                    dy: -2*UIScreen.main.bounds.size.height), duration: 6)*/
-        let moveAction = SKAction.move(to: dest, duration: 3)
-        let group = SKAction.group([flash,moveAction])
+    func generatePosition(_ size:CGSize){
+        let randomPolicePosition = GKRandomDistribution(lowestValue: Int(-size.width/4) + Int(self.size.width/2),
+                                                        highestValue: Int(-self.size.width/2))
+        let position = CGFloat(randomPolicePosition.nextInt())
+        self.position = CGPoint(x:position, y: size.height/2 + self.size.height/2)
+        
+    }
+
+    
+    func initPhysicsBody() {
+        self.physicsBody?.isDynamic = true
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle.rawValue // of alien category
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue // object that collides with alien
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue // Not sure what this is doing... yet
+        self.physicsBody?.usesPreciseCollisionDetection = true
+
+    }
+    
+    func begin(_ size: CGSize, _ dur: TimeInterval) {
+        
+        let flash = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.3), count: 5)
+        let siren = SKAction.playSoundFileNamed("police_s.wav", waitForCompletion: false)
+        let moveAction = SKAction.move(to: CGPoint(x:self.position.x, y:-size.height/2 - self.size.height), duration: dur)
+        let group = SKAction.group([flash,moveAction,siren])
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([group,removeAction]))
- 
     }
     
 }

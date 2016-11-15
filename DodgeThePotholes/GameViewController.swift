@@ -14,6 +14,9 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //intializes all unset user defaults
+        initializeUserDefaults()
+        
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -51,5 +54,22 @@ class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func initializeUserDefaults() {
+        print("called initializeUserDefaults")
+        //set default car
+        if preferences.string(forKey: "car") == nil{
+            preferences.setValue("car1", forKey: "car")
+        }
+        //set default preference for sound effects
+        if preferences.string(forKey: "sfx") == nil{
+            preferences.setValue(true, forKey: "sfx")
+        }
+        //set default preference for in-game music
+        if preferences.string(forKey: "music") == nil{
+            preferences.setValue(true, forKey: "music")
+        }
+        preferences.synchronize()
     }
 }
