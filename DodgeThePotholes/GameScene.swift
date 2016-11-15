@@ -235,7 +235,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hornNode.position = player.position
         hornNode.position.y += 5
         
-        hornNode.physicsBody = SKPhysicsBody(circleOfRadius: hornNode.size.width * 5)
+        //hornNode.physicsBody = SKPhysicsBody(circleOfRadius: hornNode.size.width * 5)
+        hornNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: hornNode.size.width * 5, height: hornNode.size.height))
+        
         hornNode.physicsBody?.isDynamic = true
         
         hornNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue // of torpedo category
@@ -247,18 +249,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let animationDuration:TimeInterval = 1 //Can be calculated depending on screen size
         
-        var actionArray = [SKAction]()
+        var hornArray = [SKAction]()
+        var removeHornArray = [SKAction]()
+
         
-        
-        actionArray.append(SKAction.move(to: CGPoint(x: player.position.x,
+        hornArray.append(SKAction.move(to: CGPoint(x: player.position.x,
                                                      y: /*self.frame.size.height +*/ hornNode.size.height),
                                          duration: animationDuration))
-        actionArray.append(SKAction.resize(toWidth: hornNode.size.width * 15, duration: animationDuration))
-        let group = SKAction.group(actionArray)
-        var actionArray2 = [SKAction]()
-        actionArray2.append(group)
-        actionArray2.append(SKAction.removeFromParent())
-        hornNode.run(SKAction.sequence(actionArray2))
+        hornArray.append(SKAction.resize(toWidth: hornNode.size.width * 15, duration: animationDuration))
+        let hornGroup = SKAction.group(hornArray)
+        removeHornArray.append(hornGroup)
+        removeHornArray.append(SKAction.removeFromParent())
+        hornNode.run(SKAction.sequence(removeHornArray))
         
 
     }
