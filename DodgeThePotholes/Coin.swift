@@ -24,7 +24,7 @@ class Coin: SKSpriteNode {
     
     
     init(width:Int,height:Int){
-        super.init(texture: SKTexture(imageNamed:"dollar"), color: UIColor.clear, size: CGSize(width :width/2, height:height/2))
+        super.init(texture: SKTexture(imageNamed:"dollar"), color: UIColor.clear, size: CGSize(width: width/2, height: height/2))
         
     
     }
@@ -40,12 +40,22 @@ class Coin: SKSpriteNode {
     */
     
     func initPhysicsBody(){
+        self.zPosition = 1
         self.physicsBody?.isDynamic = true
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        //self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Coin.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
+    }
+    
+    func begin(tileHeight:Int, row:Int, size:CGSize, pattern:CGSize, dur:TimeInterval){
+        let y =  row * tileHeight + tileHeight/2
+        let yPos = Int(-size.height/2) + Int(-pattern.height/2) - y
+        let moveAction = SKAction.moveTo(y: CGFloat(yPos), duration: dur)
+        let removeAction = SKAction.removeFromParent()
+        self.run(SKAction.sequence([moveAction,removeAction]))
     }
     
     

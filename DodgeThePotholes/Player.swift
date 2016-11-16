@@ -43,7 +43,16 @@ class Player: SKSpriteNode, ObstacleCreate {
     
     func initPhysicsBody(){
         self.physicsBody?.isDynamic = true
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        //self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: self.size.width/2, y:self.size.height/2),
+                                CGPoint(x: -self.size.width/2, y:self.size.height/2),
+                                CGPoint(x: -self.size.width/2, y:0),
+                                CGPoint(x: self.size.width/2, y: 0)])
+        path.closeSubpath()
+        //self.physicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: self.size.width/2, y:self.size.height/2), to: CGPoint(x: -self.size.width/2, y:self.size.height/2))
+        self.physicsBody = SKPhysicsBody(polygonFrom: path)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue | PhysicsCategory.MoveableObstacle.rawValue |
             PhysicsCategory.Coin.rawValue

@@ -162,6 +162,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let gameOver = SKScene(fileNamed: "GameOverScene") as! GameOverScene
             gameOver.score = self.score
             gameOver.scaleMode = .aspectFill
+            self.removeAllActions()
+            self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
         }
     }
@@ -186,8 +188,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(dog)
     }
     func addCoinPattern(){
-        let coins = CoinPattern(scene:self, duration:TimeInterval(gameSpeed))
-        self.addChild(coins)
+        _ = CoinPattern(scene:self, duration:TimeInterval(gameSpeed))
+        //self.addChild(coins)
     }
 
 
@@ -311,7 +313,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case PhysicsCategory.Car.rawValue | PhysicsCategory.Coin.rawValue:
             print("Car hit a coin")
-            if contact.bodyA.categoryBitMask == PhysicsCategory.Horn.rawValue {
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
                 // do nothing rn
             }else{
                 //do nothing agian
