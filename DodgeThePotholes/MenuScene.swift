@@ -14,10 +14,8 @@ class MenuScene: SKScene {
     var settingsButtonNode:SKSpriteNode!
     var gameCenterButtonNode:SKSpriteNode!
     
-    
     override func didMove(to view: SKView) {
 
-        
         newGameButtonNode = self.childNode(withName: "NewGameButton") as! SKSpriteNode!
         settingsButtonNode = self.childNode(withName: "SettingsButton") as! SKSpriteNode!
         gameCenterButtonNode = self.childNode(withName: "GameCenterButton") as! SKSpriteNode!
@@ -33,13 +31,14 @@ class MenuScene: SKScene {
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             
             if nodesArray.first?.name == "NewGameButton" {
-                self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
+                if(preferences.bool(forKey: "sfx") == true){
+                    self.run(SKAction.playSoundFileNamed("start.wav", waitForCompletion: false))
+                }
                 let gameScene = GameScene(size: self.size)
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 self.view?.presentScene(gameScene, transition: transition)
             }
             else if nodesArray.first?.name == "SettingsButton"{
-                print("Settings Button Was Pushed")
                 let settingsScene = SKScene(fileNamed: "SettingsScene")
                 settingsScene?.scaleMode = .aspectFill
                 self.view?.presentScene(settingsScene!, transition: transition)
@@ -47,4 +46,6 @@ class MenuScene: SKScene {
         
         }
     }
+    
+
 }

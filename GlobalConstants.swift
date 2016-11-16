@@ -66,3 +66,7 @@ protocol ObstacleCreate {
     func initPhysicsBody()
     func begin(_ size:CGSize, _ dur: TimeInterval)
 }
+
+
+// MARK: User Preferences Reference
+let preferences = UserDefaults.standard

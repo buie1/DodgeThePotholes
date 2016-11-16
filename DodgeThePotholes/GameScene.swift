@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: -Temporary Booleans for TESTING
-    let sfx:Bool = true
+    let music:Bool = preferences.bool(forKey: "music")
     let noWrap:Bool = true
     
     
@@ -75,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //bg.shader = shader
         
         // Set up background Audio
-        if sfx {
+        if music {
             let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
             bgAudio.autoplayLooped = true;
             self.addChild(bgAudio)
@@ -232,39 +232,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fireTorpedo()
+        honkHorn()
     }
     
     
-    // MARK: - Firing Torpedo
+    // MARK: - honking horn
     
-    func fireTorpedo(){
+    func honkHorn(){
         self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
         
-        let torpedoNode = SKSpriteNode(imageNamed: "carHorn")
-        torpedoNode.position = player.position
-        torpedoNode.position.y += 5
+        let hornNode = SKSpriteNode(imageNamed: "carHorn")
+        hornNode.position = player.position
+        hornNode.position.y += 5
         
-        torpedoNode.physicsBody = SKPhysicsBody(circleOfRadius: torpedoNode.size.width / 2)
-        torpedoNode.physicsBody?.isDynamic = true
+        //hornNode.physicsBody = SKPhysicsBody(circleOfRadius: hornNode.size.width * 5)
+        hornNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: hornNode.size.width * 5, height: hornNode.size.height))
         
-        torpedoNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue // of torpedo category
-        torpedoNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue // object that collides with torpedo
-        torpedoNode.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
-        torpedoNode.physicsBody?.usesPreciseCollisionDetection = true
+        hornNode.physicsBody?.isDynamic = true
         
-        self.addChild(torpedoNode)
+        hornNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue // of torpedo category
+        hornNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue // object that collides with torpedo
+        hornNode.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
+        hornNode.physicsBody?.usesPreciseCollisionDetection = true
+        
+        self.addChild(hornNode)
         
         let animationDuration:TimeInterval = 1 //Can be calculated depending on screen size
         
-        var actionArray = [SKAction]()
+        var hornArray = [SKAction]()
+        var removeHornArray = [SKAction]()
+
         
-        actionArray.append(SKAction.move(to: CGPoint(x: player.position.x,
-                                                     y: self.frame.size.height/2 + torpedoNode.size.height),
+        hornArray.append(SKAction.move(to: CGPoint(x: player.position.x,
+                                                     y: /*self.frame.size.height +*/ hornNode.size.height),
                                          duration: animationDuration))
-        actionArray.append(SKAction.removeFromParent())
-        torpedoNode.run(SKAction.sequence(actionArray))
+        hornArray.append(SKAction.resize(toWidth: hornNode.size.width * 15, duration: animationDuration))
+        let hornGroup = SKAction.group(hornArray)
+        removeHornArray.append(hornGroup)
+        removeHornArray.append(SKAction.removeFromParent())
+        hornNode.run(SKAction.sequence(removeHornArray))
         
+
     }
     
     

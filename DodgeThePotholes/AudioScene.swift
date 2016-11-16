@@ -23,11 +23,20 @@ var music: Bool!
 
 class AudioScene: SKScene{
     
+    
     override func didMove(to view: SKView) {
         sfxToggleNode = self.childNode(withName: "SFXButton") as! SKSpriteNode!
         musicToggleNode = self.childNode(withName: "MusicButton") as! SKSpriteNode!
         backAudioNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
         //Get user's saved defaults for sfx and music and set sfx and music equal to these here
+        if(preferences.bool(forKey: "sfx") == false){
+            print("sfx is disabled")
+            sfxToggleNode.texture = SKTexture(imageNamed: "offButton")
+        }
+        if(preferences.bool(forKey: "music") == false){
+            print("music is disabled")
+            musicToggleNode.texture = SKTexture(imageNamed: "music_pressed")
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -48,7 +57,8 @@ class AudioScene: SKScene{
                     node?.texture = SKTexture(imageNamed: "onButton")
                     sfx = true
                 }
-                updateSoundDefaults()
+                preferences.setValue(sfx, forKey: "sfx")
+                preferences.synchronize()
             }
             else if nodesArray.first?.name == "MusicButton" {
                 if(node?.texture?.description == SKTexture(imageNamed: "music").description){
@@ -59,7 +69,8 @@ class AudioScene: SKScene{
                     node?.texture = SKTexture(imageNamed: "music")
                     music = true
                 }
-                updateSoundDefaults()
+                preferences.setValue(music, forKey: "music")
+                preferences.synchronize()
             }
             
             //Back Button is pressed
@@ -69,11 +80,5 @@ class AudioScene: SKScene{
                 self.view?.presentScene(settingsScene!, transition: transition)
             }
         }
-    }
-    
-    func updateSoundDefaults(){
-        //Updates user defaults for sound that are persisted
-        //If no file exists, a file is created and the defaults are stored
-        
     }
 }
