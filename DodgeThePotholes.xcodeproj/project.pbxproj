@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0CE6F41DDD142600273099 /* money_pattern3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CE6F31DDD142600273099 /* money_pattern3.json */; };
+		2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CE6F51DDD17E500273099 /* money_pattern4.json */; };
+		2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0CE6F71DDD1CF300273099 /* ConePattern.swift */; };
+		2C0CE6FA1DDD424A00273099 /* cone_pattern1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CE6F91DDD424A00273099 /* cone_pattern1.json */; };
+		2C0CE6FE1DDD462D00273099 /* money_pattern1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CE6FD1DDD462D00273099 /* money_pattern1.json */; };
+		2C0CE7001DDD463F00273099 /* cone_pattern2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CE6FF1DDD463F00273099 /* cone_pattern2.json */; };
 		2C10601C1DD175FC00668D23 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C10601B1DD175FC00668D23 /* MenuScene.sks */; };
 		2C10601E1DD178E300668D23 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C10601D1DD178E300668D23 /* PressStart2P.ttf */; };
 		2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */; };
@@ -25,7 +31,7 @@
 		2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3441DD1377400FE789A /* born-lucky.wav */; };
 		2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */; };
 		2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1AFF1DD7B5070042E002 /* Extensions.swift */; };
-		2C8A1B021DD7B6EB0042E002 /* pattern2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A1B011DD7B6EB0042E002 /* pattern2.json */; };
+		2C8A1B021DD7B6EB0042E002 /* money_pattern2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A1B011DD7B6EB0042E002 /* money_pattern2.json */; };
 		2C8B90D31DD275D6001C944A /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8B90D21DD275D6001C944A /* GameKit.framework */; };
 		2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8B90D41DD27D01001C944A /* GlobalConstants.swift */; };
 		2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C8B90D81DD50BF6001C944A /* carskid.wav */; };
@@ -40,14 +46,13 @@
 		2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55A1DD194F80029B800 /* shader1.fs */; };
 		2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2CB7A55D1DD19F7A0029B800 /* start.wav */; };
 		2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB7A5631DD247F60029B800 /* PoliceCar.swift */; };
-		2CDEC3A51DD6531F00D010DB /* pattern1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2CDEC3A41DD6531F00D010DB /* pattern1.json */; };
 		2CDEC3A71DD6536B00D010DB /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEC3A61DD6536B00D010DB /* Array2D.swift */; };
 		2CDEC3A91DD656F800D010DB /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEC3A81DD656F800D010DB /* Coin.swift */; };
 		2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEC3AA1DD65AE700D010DB /* CoinPattern.swift */; };
 		54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54FB84131DD58DC800AFBF7C /* GameOverScene.sks */; };
 		54FB84171DD58E1E00AFBF7C /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */; };
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
-		CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* TrafficCone.swift */; };
+		CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* Cone.swift */; };
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
 		EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353A61DD58586003ED2E4 /* AudioScene.sks */; };
 		EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353A71DD58586003ED2E4 /* AudioScene.swift */; };
@@ -58,6 +63,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C0CE6F31DDD142600273099 /* money_pattern3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = money_pattern3.json; sourceTree = "<group>"; };
+		2C0CE6F51DDD17E500273099 /* money_pattern4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = money_pattern4.json; sourceTree = "<group>"; };
+		2C0CE6F71DDD1CF300273099 /* ConePattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConePattern.swift; sourceTree = "<group>"; };
+		2C0CE6F91DDD424A00273099 /* cone_pattern1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1.json; sourceTree = "<group>"; };
+		2C0CE6FD1DDD462D00273099 /* money_pattern1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = money_pattern1.json; sourceTree = "<group>"; };
+		2C0CE6FF1DDD463F00273099 /* cone_pattern2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern2.json; sourceTree = "<group>"; };
 		2C10601B1DD175FC00668D23 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		2C10601D1DD178E300668D23 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		2C1BFE301DD104BE00ECBBB8 /* DodgeThePotholes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DodgeThePotholes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,7 +89,7 @@
 		2C7CC3441DD1377400FE789A /* born-lucky.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "born-lucky.wav"; sourceTree = "<group>"; };
 		2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "hot-pursuit.wav"; sourceTree = "<group>"; };
 		2C8A1AFF1DD7B5070042E002 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		2C8A1B011DD7B6EB0042E002 /* pattern2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pattern2.json; sourceTree = "<group>"; };
+		2C8A1B011DD7B6EB0042E002 /* money_pattern2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = money_pattern2.json; sourceTree = "<group>"; };
 		2C8B90D21DD275D6001C944A /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		2C8B90D41DD27D01001C944A /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlobalConstants.swift; path = ../GlobalConstants.swift; sourceTree = "<group>"; };
 		2C8B90D81DD50BF6001C944A /* carskid.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = carskid.wav; sourceTree = "<group>"; };
@@ -93,14 +104,13 @@
 		2CB7A55A1DD194F80029B800 /* shader1.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader1.fs; sourceTree = "<group>"; };
 		2CB7A55D1DD19F7A0029B800 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
 		2CB7A5631DD247F60029B800 /* PoliceCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PoliceCar.swift; path = ../PoliceCar.swift; sourceTree = "<group>"; };
-		2CDEC3A41DD6531F00D010DB /* pattern1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; lineEnding = 0; path = pattern1.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		2CDEC3A61DD6536B00D010DB /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		2CDEC3A81DD656F800D010DB /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		2CDEC3AA1DD65AE700D010DB /* CoinPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinPattern.swift; sourceTree = "<group>"; };
 		54FB84131DD58DC800AFBF7C /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
-		CAC19F691DD27E9E007A7197 /* TrafficCone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficCone.swift; sourceTree = "<group>"; };
+		CAC19F691DD27E9E007A7197 /* Cone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
 		EE8353A61DD58586003ED2E4 /* AudioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AudioScene.sks; sourceTree = "<group>"; };
 		EE8353A71DD58586003ED2E4 /* AudioScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioScene.swift; sourceTree = "<group>"; };
@@ -122,6 +132,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C0CE6F21DDD13FF00273099 /* Cone Patterns */ = {
+			isa = PBXGroup;
+			children = (
+				2C0CE6F91DDD424A00273099 /* cone_pattern1.json */,
+				2C0CE6FF1DDD463F00273099 /* cone_pattern2.json */,
+			);
+			name = "Cone Patterns";
+			sourceTree = "<group>";
+		};
 		2C1060191DD1756A00668D23 /* Game Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,9 +263,10 @@
 		2CB7A5651DD262D40029B800 /* Obstacle Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2C0CE6F71DDD1CF300273099 /* ConePattern.swift */,
 				CAC19F6B1DD28456007A7197 /* Pothole.swift */,
 				CA5233961DD2C90C00D2F59D /* Dog.swift */,
-				CAC19F691DD27E9E007A7197 /* TrafficCone.swift */,
+				CAC19F691DD27E9E007A7197 /* Cone.swift */,
 				2CB7A5631DD247F60029B800 /* PoliceCar.swift */,
 				2C8B90E21DD56856001C944A /* MoveableObstacle.swift */,
 			);
@@ -256,6 +276,7 @@
 		2CDEC3A21DD652F300D010DB /* JSON Files */ = {
 			isa = PBXGroup;
 			children = (
+				2C0CE6F21DDD13FF00273099 /* Cone Patterns */,
 				2CDEC3A31DD6530100D010DB /* Coin Patterns */,
 			);
 			name = "JSON Files";
@@ -264,8 +285,10 @@
 		2CDEC3A31DD6530100D010DB /* Coin Patterns */ = {
 			isa = PBXGroup;
 			children = (
-				2CDEC3A41DD6531F00D010DB /* pattern1.json */,
-				2C8A1B011DD7B6EB0042E002 /* pattern2.json */,
+				2C0CE6FD1DDD462D00273099 /* money_pattern1.json */,
+				2C8A1B011DD7B6EB0042E002 /* money_pattern2.json */,
+				2C0CE6F31DDD142600273099 /* money_pattern3.json */,
+				2C0CE6F51DDD17E500273099 /* money_pattern4.json */,
 			);
 			name = "Coin Patterns";
 			sourceTree = "<group>";
@@ -376,13 +399,14 @@
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
 				EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */,
+				2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
 				2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */,
 				2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */,
-				2C8A1B021DD7B6EB0042E002 /* pattern2.json in Resources */,
-				2CDEC3A51DD6531F00D010DB /* pattern1.json in Resources */,
+				2C0CE6F41DDD142600273099 /* money_pattern3.json in Resources */,
+				2C8A1B021DD7B6EB0042E002 /* money_pattern2.json in Resources */,
 				2C1BFE411DD104BE00ECBBB8 /* Assets.xcassets in Resources */,
 				2CB7A5561DD193810029B800 /* shader_water_movement.fsh in Resources */,
 				2C1BFE441DD104BE00ECBBB8 /* LaunchScreen.storyboard in Resources */,
@@ -390,14 +414,17 @@
 				2C10601C1DD175FC00668D23 /* MenuScene.sks in Resources */,
 				EE8353B21DD58643003ED2E4 /* CarScene.sks in Resources */,
 				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
+				2C0CE7001DDD463F00273099 /* cone_pattern2.json in Resources */,
 				2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */,
 				2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */,
+				2C0CE6FA1DDD424A00273099 /* cone_pattern1.json in Resources */,
 				2CB7A5571DD193810029B800 /* shader_water_reflection.fsh in Resources */,
 				54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
 				EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */,
+				2C0CE6FE1DDD462D00273099 /* money_pattern1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +441,7 @@
 				2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */,
 				EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */,
 				2C8B90E31DD56856001C944A /* MoveableObstacle.swift in Sources */,
-				CAC19F6A1DD27E9E007A7197 /* TrafficCone.swift in Sources */,
+				CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */,
 				2C1BFE3A1DD104BE00ECBBB8 /* GameScene.swift in Sources */,
 				2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */,
 				2CB7A54F1DD17B6B0029B800 /* MenuScene.swift in Sources */,
@@ -422,6 +449,7 @@
 				CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */,
 				CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */,
 				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,
+				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,

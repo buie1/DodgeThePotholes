@@ -40,9 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole","coin"]
-
-    //var possibleObstacles = ["pothole", "police","dog","coin"]
+    var possibleObstacles = ["pothole", "police","dog","coin","cone"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -191,19 +189,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         _ = CoinPattern(scene:self, duration:TimeInterval(gameSpeed))
         //self.addChild(coins)
     }
-
-
-    
- /*
     func addTrafficCone(){
-        let trafficCone = TrafficCone(frameHeight: self.frame.size.height, frameWidth: self.frame.size.width)
-        self.addChild(trafficCone.node)
-        var actionArray = [SKAction]()
-        actionArray.append(trafficCone.action)
-        trafficCone.node.run(SKAction.sequence(actionArray))
-
+        _ = ConePattern(scene: self, duration: TimeInterval(gameSpeed))
     }
-*/
+ 
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
@@ -219,10 +208,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "coin":
             addCoinPattern()
             break
-            /*
-        case "traffic_cone":
+        case "cone":
             addTrafficCone()
-            break*/
+            break
         default:
             addPothole()
             break
@@ -298,7 +286,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.Car.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
             
             // Here we don't care which body is which, the scene is ending
-            print("car hit moveable object")
             if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
                 carDidHitMoveableObstacle(car: contact.bodyA.node as! SKSpriteNode,
                                   obj: contact.bodyB.node as! MoveableObstacle)
@@ -322,9 +309,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.Car.rawValue | PhysicsCategory.Coin.rawValue:
             print("Car hit a coin")
             if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
-                // do nothing rn
+                carDidHitCoin(car: contact.bodyA.node as! SKSpriteNode,
+                              coin: contact.bodyB.node as! SKSpriteNode)
             }else{
-                //do nothing agian
+                carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode,
+                              coin: contact.bodyA.node as! SKSpriteNode)
             }
             
         default:
@@ -344,6 +333,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         horn.removeFromParent()
         obj.removeAllActions()
+        // If moveable obstacle is hit by horn remove the cat bit mask so it can't be hit again!
+        obj.physicsBody?.categoryBitMask = PhysicsCategory.None.rawValue
         obj.runAway(self.frame.size, 2)
         
     }
@@ -357,10 +348,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func carDidHitMoveableObstacle(car:SKSpriteNode, obj:SKSpriteNode){
-        
+        let name = obj.name
+        switch name! {
+        case "dog":
+            print("you hit a dog!")
+            
+        default:
+            print("hit a moveable obj")
+        }
         loseLife()
         obj.removeFromParent()
         
+    }
+    
+    func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
+        self.money += 1
+        coin.removeFromParent()
     }
     
     

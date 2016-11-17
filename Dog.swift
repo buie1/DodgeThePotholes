@@ -12,10 +12,7 @@ import CoreMotion
 
 class Dog: MoveableObstacle, ObstacleCreate {
     
-    enum dog: CGFloat {
-        case low = -1
-        case high = 1
-    }
+
     
     var textureAtlas = SKTextureAtlas(named: "German_Shepherd_Run")
     var textureArray = [SKTexture]()
@@ -30,6 +27,7 @@ class Dog: MoveableObstacle, ObstacleCreate {
         }
         
         super.init(texture: SKTexture(imageNamed:"Shepherd_default-1"), color: UIColor.clear, size: CGSize(width :60, height:60))
+        self.name = "dog"
         generatePosition(size)
         initPhysicsBody()
 

@@ -1,5 +1,5 @@
 //
-//  CoinPattern.swift
+//  ConePattern.swift
 //  DodgeThePotholes
 //
 //  Created by Jonathan Buie on 11/11/16.
@@ -12,19 +12,19 @@ import GameplayKit
 
 
 
-class CoinPattern:SKNode {
+class ConePattern {
     
-    var patterns = ["money_pattern1","money_pattern2","money_pattern3","money_pattern4"]
+    var patterns = ["cone_pattern1","cone_pattern2"]
     var minRows = 9 // Hardcoded value. No pattern will be less that 9 rows, yet....
     var NumColumns:Int!
     var NumRows:Int!
     var size:CGSize
     
     // This will need to be dynamic
-    let tileWidth = 25
-    let tileHeight = 50
+    let tileWidth = 26
+    let tileHeight = 26
     // This will need to be read from the json file
-    fileprivate var coins:Array2D<Coin>!
+    fileprivate var cones:Array2D<Cone>!
 
     init(scene: SKScene, duration:TimeInterval){
         //1. Chose a random pattern to generate
@@ -36,59 +36,49 @@ class CoinPattern:SKNode {
         let array = dictionary?["tiles"] as? [[Int]]
         NumColumns = dictionary?["numCols"] as? Int
         NumRows = dictionary?["numRows"] as? Int
-        coins = Array2D<Coin>(columns: NumColumns, rows: NumRows)
+        cones = Array2D<Cone>(columns: NumColumns, rows: NumRows)
         self.size = CGSize(width: tileWidth*NumColumns, height: tileHeight*NumRows)
         //3. Generate pattern
-        super.init()
+        //super.init()
         let rand = GKRandomDistribution(lowestValue: Int(-size.width/2) + Int(self.size.width/2),highestValue: Int(size.width/2) - Int(self.size.width/2))
         let randN = CGFloat(rand.nextInt())
-        print("random pt for money position  = \(randN)")
-        //4. Place on scene and move
+        print("random pt for cone position  = \(randN)")
         for (row,array) in (array?.enumerated())!{
             let currRow = NumRows - row - 1 // Start indexing at 0 not 1
             for (col, value) in array.enumerated(){
                 if value == 1 {
-                    // Add a Coin :)
-                    coins[col,currRow] = Coin(width: tileWidth, height: tileHeight)
-                    coins[col,currRow]?.position = pointFor(column: col, row: currRow,
+                    // Add a Cone :)
+                    cones[col,currRow] = Cone(width: tileWidth, height: tileHeight)
+                    cones[col,currRow]?.position = pointFor(column: col, row: currRow,
                                                             random:randN, size:scene.size)
-                    coins[col,currRow]?.begin(tileHeight: tileHeight, row: row, size:scene.size, pattern:self.size, dur:duration*Double(NumRows/minRows))
+                    cones[col,currRow]?.begin(tileHeight: tileHeight, row: row, size:scene.size, pattern:self.size, dur:duration*Double(NumRows/minRows))
 
-                    scene.addChild(coins[col,currRow]!)
+                    scene.addChild(cones[col,currRow]!)
                 }
             }
         }
     }
-    /*
-    func addCoins(scene:SKScene, duration:TimeInterval){
-        //self.position = CGPoint(x:CGFloat(rand.nextInt()),y:size.height/2 + self.size.height/2)
+    
+    func addCones(scene:SKScene, duration:TimeInterval){
         let rand = GKRandomDistribution(lowestValue: Int(-size.width/2) + Int(self.size.width/2),highestValue: Int(size.width/2) - Int(self.size.width/2))
         let randN = CGFloat(rand.nextInt())
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
-                let currCoin = self.coinAt(column: column, row: row)
-                if currCoin != nil {
-                    //let moneyNode = SKSpriteNode(imageNamed: "dollar")
-                    //let moneyNode = Coin(width: tileWidth, height: tileHeight)
-                    //moneyNode.position = pointFor(column: column, row: row, random:randN, size:scene.size)
-                    //moLayer.addChild(tileNode)
-                    scene.addChild(currCoin!)
-                    currCoin?.position  = pointFor(column: column, row: row, random:randN, size:scene.size)
-                    currCoin?.begin(tileHeight: tileHeight, row: row, size:scene.size, pattern:self.size, dur:duration)
+                let currCone = self.coneAt(column: column, row: row)
+                if currCone != nil {
+                    scene.addChild(currCone!)
+                    currCone?.position  = pointFor(column: column, row: row, random:randN, size:scene.size)
+                    currCone?.begin(tileHeight: tileHeight, row: row, size:scene.size, pattern:self.size, dur:duration)
                 }
             }
         }
     }
-    */
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     
-    func coinAt(column: Int, row: Int) -> Coin? {
+    func coneAt(column: Int, row: Int) -> Cone? {
         assert(column >= 0 && column < NumColumns)
         assert(row >= 0 && row < NumRows)
-        return coins[column, row]
+        return cones[column, row]
     }
 
     

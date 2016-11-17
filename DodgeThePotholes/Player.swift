@@ -37,7 +37,7 @@ class Player: SKSpriteNode, ObstacleCreate {
     
     
     func generatePosition(_ size:CGSize){
-        self.position = CGPoint(x: 0, y: self.size.height - size.height/2)
+        self.position = CGPoint(x: 0, y: 3*self.size.height/2 - size.height/2)
         self.zPosition = 1
     }
     

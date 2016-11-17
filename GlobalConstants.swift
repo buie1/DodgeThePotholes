@@ -39,18 +39,9 @@ enum PhysicsCategory:UInt32 {
 }
 
 // MARK: Ranges for Object generation
-enum positionRange {
-
-    
-    enum trafficCone: CGFloat {
-        case low = -0.375
-        case high = 0.375
-    }
-    
-    enum moneyRange:CGFloat {
-        case low = -0.5
-        case high = 0.5
-    }
+enum coneRange: CGFloat {
+    case low = -0.375
+    case high = 0.375
 }
 
 enum obstacleType {
@@ -58,6 +49,17 @@ enum obstacleType {
     case trafficCone
     case dog
 }
+
+enum dog: CGFloat {
+    case low = -1
+    case high = 1
+}
+
+enum pothole: CGFloat {
+    case low = -0.25
+    case high = 0.25
+}
+
 
 
 // MARK: Protocols
