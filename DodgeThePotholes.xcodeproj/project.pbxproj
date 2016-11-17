@@ -141,6 +141,21 @@
 			name = "Cone Patterns";
 			sourceTree = "<group>";
 		};
+		2C0CE7011DDD4B3900273099 /* Application Wide Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C8B90D41DD27D01001C944A /* GlobalConstants.swift */,
+				2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */,
+				2CDEC3A61DD6536B00D010DB /* Array2D.swift */,
+				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
+				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
+				2C1BFE421DD104BE00ECBBB8 /* LaunchScreen.storyboard */,
+				2C1BFE451DD104BE00ECBBB8 /* Info.plist */,
+				2C10601D1DD178E300668D23 /* PressStart2P.ttf */,
+			);
+			name = "Application Wide Files";
+			sourceTree = "<group>";
+		};
 		2C1060191DD1756A00668D23 /* Game Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,26 +195,19 @@
 		2C1BFE321DD104BE00ECBBB8 /* DodgeThePotholes */ = {
 			isa = PBXGroup;
 			children = (
-				2C8B90D41DD27D01001C944A /* GlobalConstants.swift */,
-				2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */,
-				2CDEC3A61DD6536B00D010DB /* Array2D.swift */,
-				2CDEC3A21DD652F300D010DB /* JSON Files */,
-				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
-				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
+				2C0CE7011DDD4B3900273099 /* Application Wide Files */,
 				2C1060191DD1756A00668D23 /* Game Scene */,
-				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
-				EE8353AA1DD58593003ED2E4 /* Settings Scene */,
-				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
-				EE8353AF1DD5862E003ED2E4 /* Car Scene */,
-				EE8353A51DD5851E003ED2E4 /* Audio Scene */,
 				2C1BFE531DD1062800ECBBB8 /* SceneNodeClasses */,
+				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
+				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
+				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
+				EE8353AA1DD58593003ED2E4 /* Settings Scene */,
+				EE8353A51DD5851E003ED2E4 /* Audio Scene */,
+				2CDEC3A21DD652F300D010DB /* JSON Files */,
+				EE8353AF1DD5862E003ED2E4 /* Car Scene */,
 				2C10601A1DD1759000668D23 /* Sprite Particles */,
-				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
 				2C1BFE401DD104BE00ECBBB8 /* Assets.xcassets */,
 				2C7CC3431DD136B600FE789A /* AudioFiles */,
-				2C1BFE421DD104BE00ECBBB8 /* LaunchScreen.storyboard */,
-				2C1BFE451DD104BE00ECBBB8 /* Info.plist */,
-				2C10601D1DD178E300668D23 /* PressStart2P.ttf */,
 				2CB7A55C1DD19C450029B800 /* ShaderFiles */,
 			);
 			path = DodgeThePotholes;

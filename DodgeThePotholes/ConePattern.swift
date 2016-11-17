@@ -40,7 +40,8 @@ class ConePattern {
         self.size = CGSize(width: tileWidth*NumColumns, height: tileHeight*NumRows)
         //3. Generate pattern
         //super.init()
-        let rand = GKRandomDistribution(lowestValue: Int(-size.width/2) + Int(self.size.width/2),highestValue: Int(size.width/2) - Int(self.size.width/2))
+        let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue) + Int(self.size.width/2),
+                                        highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width/2))
         let randN = CGFloat(rand.nextInt())
         print("random pt for cone position  = \(randN)")
         for (row,array) in (array?.enumerated())!{
