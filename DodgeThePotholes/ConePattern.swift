@@ -21,8 +21,8 @@ class ConePattern {
     var size:CGSize
     
     // This will need to be dynamic
-    let tileWidth = 26
-    let tileHeight = 26
+    let tileWidth = 40
+    let tileHeight = 40
     // This will need to be read from the json file
     fileprivate var cones:Array2D<Cone>!
 

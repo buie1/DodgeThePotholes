@@ -51,7 +51,6 @@ class Player: SKSpriteNode, ObstacleCreate {
                                 CGPoint(x: -self.size.width/2, y:0),
                                 CGPoint(x: self.size.width/2, y: 0)])
         path.closeSubpath()
-        //self.physicsBody = SKPhysicsBody(edgeFrom: CGPoint(x: self.size.width/2, y:self.size.height/2), to: CGPoint(x: -self.size.width/2, y:self.size.height/2))
         self.physicsBody = SKPhysicsBody(polygonFrom: path)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue | PhysicsCategory.MoveableObstacle.rawValue |
