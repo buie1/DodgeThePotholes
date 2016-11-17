@@ -14,6 +14,7 @@ class Cone:SKSpriteNode {
     
     init(width:Int,height:Int){
         super.init(texture: SKTexture(imageNamed:"cone"), color: UIColor.clear, size: CGSize(width: width/2, height: height/2))
+        self.name = "cone"
         initPhysicsBody()
         
     }

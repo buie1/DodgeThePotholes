@@ -76,4 +76,18 @@ class Player: SKSpriteNode, ObstacleCreate {
         let flash = SKAction.repeat(SKAction.animate(with: moveLeftTextureArray, timePerFrame: 0.2), count: 2)
         self.run(flash)
     }
+    
+    func spinOut(){
+        let group:SKAction
+        //let spin = SKAction.rotate(byAngle: 360, duration: 1)
+        let spin = SKAction.rotate(toAngle: 4*3.14, duration: 0.75, shortestUnitArc: false)
+        let reset = SKAction.setTexture(SKTexture(imageNamed: "car"))
+        if preferences.bool(forKey: "sfx") == true {
+            let sound = SKAction.playSoundFileNamed("carskid.wav", waitForCompletion: false)
+            group = SKAction.group([spin,sound])
+        }else{
+            group = spin
+        }
+        self.run(SKAction.sequence([group,reset]))
+    }
 }

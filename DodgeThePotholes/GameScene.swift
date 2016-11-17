@@ -275,10 +275,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("handle collision with car ")
 
             if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
-            carDidHitObstacle(car: contact.bodyA.node as! SKSpriteNode,
+            carDidHitObstacle(car: contact.bodyA.node as! Player,
                                        obj: contact.bodyB.node as! SKSpriteNode)
             } else{
-            carDidHitObstacle(car: contact.bodyB.node as! SKSpriteNode,
+            carDidHitObstacle(car: contact.bodyB.node as! Player,
                                        obj: contact.bodyA.node as! SKSpriteNode)
             }
             
@@ -287,10 +287,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Here we don't care which body is which, the scene is ending
             if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
-                carDidHitMoveableObstacle(car: contact.bodyA.node as! SKSpriteNode,
+                carDidHitMoveableObstacle(car: contact.bodyA.node as! Player,
                                   obj: contact.bodyB.node as! MoveableObstacle)
             } else{
-                carDidHitMoveableObstacle(car: contact.bodyB.node as! SKSpriteNode,
+                carDidHitMoveableObstacle(car: contact.bodyB.node as! Player,
                                   obj: contact.bodyA.node as! MoveableObstacle)
             }
             
@@ -340,14 +340,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    func carDidHitObstacle(car:SKSpriteNode, obj:SKSpriteNode){
+    func carDidHitObstacle(car:Player, obj:SKSpriteNode){
+        let name = obj.name
+        switch  name! {
+        case "pothole":
+            car.spinOut()
+        default:
+            print("do nothing")
+        }
         
         loseLife()
         obj.removeFromParent()
         
     }
     
-    func carDidHitMoveableObstacle(car:SKSpriteNode, obj:SKSpriteNode){
+    func carDidHitMoveableObstacle(car:Player, obj:SKSpriteNode){
         let name = obj.name
         switch name! {
         case "dog":
