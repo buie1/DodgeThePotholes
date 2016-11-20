@@ -101,12 +101,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(scoreLabel)
         
         // MARK: - For Money
-        moneyLabel = SKLabelNode(text: "Money: 0")
+        moneyLabel = SKLabelNode(text: "Money: \(preferences.value(forKey: "money"))")
         moneyLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*2)
         moneyLabel.fontName = "PressStart2P"
         moneyLabel.fontSize = 24
         moneyLabel.fontColor = UIColor.white
-        money = 0;
+        money = preferences.value(forKey: "money") as! Int
         self.addChild(moneyLabel)
         
         
@@ -370,6 +370,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
         self.money += 1
+        preferences.setValue(money, forKey: "money")
         coin.removeFromParent()
     }
     

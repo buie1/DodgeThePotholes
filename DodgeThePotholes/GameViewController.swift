@@ -56,6 +56,7 @@ class GameViewController: UIViewController {
         return true
     }
     
+    //MARK: Function for initializing user defaults
     func initializeUserDefaults() {
         print("called initializeUserDefaults")
         //set default car
@@ -69,6 +70,10 @@ class GameViewController: UIViewController {
         //set default preference for in-game music
         if preferences.string(forKey: "music") == nil{
             preferences.setValue(true, forKey: "music")
+        }
+        //set default user money ammount
+        if preferences.string(forKey: "money") == nil{
+            preferences.setValue(0, forKey: "money")
         }
         preferences.synchronize()
     }
