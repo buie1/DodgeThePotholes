@@ -14,6 +14,7 @@ class GameOverScene: SKScene {
     var gameOverLabelNode:SKLabelNode!
     var scoreLabelNode:SKLabelNode!
     var newGameButtonNode:SKSpriteNode!
+    var moneyLabelNode:SKLabelNode!
     
     override func didMove(to view: SKView) {
         
@@ -27,6 +28,10 @@ class GameOverScene: SKScene {
         
         newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
         newGameButtonNode.texture = SKTexture(imageNamed: "newGameButton")
+        
+        moneyLabelNode = self.childNode(withName: "moneyLabel") as! SKLabelNode!
+        moneyLabelNode.fontName = "PressStart2p"
+        moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money") as! Int)"
 
         
     }
