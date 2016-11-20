@@ -89,4 +89,21 @@ class Player: SKSpriteNode, ObstacleCreate {
         }
         self.run(SKAction.sequence([group,reset]))
     }
+    
+    func recover(){
+        
+        let hide = SKAction.run {
+            self.physicsBody?.categoryBitMask = PhysicsCategory.None.rawValue
+            print("remove category bit mask")
+        }
+        //let flash = SKAction.fadeAlpha(by: 0.25, duration: 1)
+        let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
+                                       SKAction.fadeIn(withDuration: 0.3)])
+        let flash = SKAction.repeat(flashAct, count: 4)
+        let restore = SKAction.run {
+            self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+        }
+        self.run(SKAction.sequence([hide,flash,restore]))
+        
+    }
 }
