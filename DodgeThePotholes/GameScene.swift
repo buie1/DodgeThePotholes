@@ -106,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         moneyLabel.fontName = "PressStart2P"
         moneyLabel.fontSize = 24
         moneyLabel.fontColor = UIColor.white
-        money = preferences.value(forKey: "money") as! Int
+        money = 0
         self.addChild(moneyLabel)
         
         
@@ -370,7 +370,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
         self.money += 1
-        preferences.setValue(money, forKey: "money")
+        preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
         coin.removeFromParent()
     }
     
