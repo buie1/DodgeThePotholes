@@ -20,6 +20,10 @@ class MoveableObstacle: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func destroy(){
+        
+    }
+    
     func runAway(_ Size: CGSize, _ dur: TimeInterval){
         
     }
