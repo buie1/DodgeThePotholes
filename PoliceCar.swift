@@ -20,9 +20,10 @@ class policeCar: SKSpriteNode, ObstacleCreate {
             textureArray.append(SKTexture(imageNamed: name))
         }
         
-        super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 156/2, height: 156))
+        super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 125/2, height: 125))
         self.yScale = fabs(self.yScale) * -1
-        self.zPosition = 1 
+        self.zPosition = 1
+        self.name = "police"
         initPhysicsBody()
         generatePosition(size)
         begin(size, duration)
@@ -45,9 +46,9 @@ class policeCar: SKSpriteNode, ObstacleCreate {
     func initPhysicsBody() {
         self.physicsBody?.isDynamic = true
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle.rawValue // of alien category
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue // object that collides with alien
-        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue // Not sure what this is doing... yet
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Obstacle.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
 
     }

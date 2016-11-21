@@ -11,13 +11,10 @@ import GameplayKit
 
 class Pothole: SKSpriteNode, ObstacleCreate {
     
-    enum pothole: CGFloat {
-        case low = -0.25
-        case high = 0.25
-    }
     
     init(size: CGSize, duration:TimeInterval){
         super.init(texture: SKTexture(imageNamed:"pothole1"), color: UIColor.clear, size: CGSize(width :40, height:40))
+        self.name = "pothole"
         generatePosition(size)
         initPhysicsBody()
         begin(size,duration)
@@ -46,7 +43,7 @@ class Pothole: SKSpriteNode, ObstacleCreate {
     
     
     func begin(_ size:CGSize, _ dur: TimeInterval){
-        let moveAction = SKAction.moveTo(y: -size.height/2 + self.size.height, duration: dur)
+        let moveAction = SKAction.moveTo(y: -size.height/2 - self.size.height, duration: dur)
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([moveAction,removeAction]))
         
