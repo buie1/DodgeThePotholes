@@ -62,6 +62,10 @@ class Dog: MoveableObstacle, ObstacleCreate {
         self.physicsBody?.usesPreciseCollisionDetection = true
     }
     
+    override func destroy(){
+        self.texture = SKTexture(imageNamed:"German_Shepherd_Dead")
+    }
+    
     
     func begin(_ size:CGSize, _ dur: TimeInterval){
         
