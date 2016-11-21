@@ -355,7 +355,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             print("do nothing")
         }
-        
+        car.recover()
         loseLife()
         obj.removeFromParent()
         
@@ -370,6 +370,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             print("hit a moveable obj")
         }
+        car.recover()
         loseLife()
         obj.removeFromParent()
         
