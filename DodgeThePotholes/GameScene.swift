@@ -106,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         moneyLabel.fontName = "PressStart2P"
         moneyLabel.fontSize = 24
         moneyLabel.fontColor = UIColor.white
-        money = preferences.value(forKey: "money") as! Int
+        money = 0
         self.addChild(moneyLabel)
         
         
@@ -161,6 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("GAME OVER")
             let transition = SKTransition.flipHorizontal(withDuration: 0.5)
             let gameOver = SKScene(fileNamed: "GameOverScene") as! GameOverScene
+            updateHighScore()
             gameOver.score = self.score
             gameOver.scaleMode = .aspectFill
             self.removeAllActions()
@@ -266,6 +267,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
+    //MARK: Upadate Highscore
+    func updateHighScore(){
+        if score > preferences.value(forKey: "highscore") as! Int {
+            preferences.set(score, forKey: "highscore")
+        }
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
         // Step 1. Bitiwse OR the bodies' categories to find out what kind of contact we have
@@ -351,7 +358,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             print("do nothing")
         }
-        
+        car.recover()
         loseLife()
         obj.removeFromParent()
         
@@ -369,6 +376,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("hit a moveable obj")
             obj.removeFromParent()
         }
+        car.recover()
         loseLife()
        
         
@@ -376,7 +384,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
         self.money += 1
-        preferences.setValue(money, forKey: "money")
+        preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
+        preferences.synchronize()
         coin.removeFromParent()
     }
     
