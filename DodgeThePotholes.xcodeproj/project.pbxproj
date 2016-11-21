@@ -201,7 +201,7 @@
 			children = (
 				2C0CE7011DDD4B3900273099 /* Application Wide Files */,
 				2C1060191DD1756A00668D23 /* Game Scene */,
-				EE0813961DE25B9000860FDE /* Highscores Scene */,
+				EE0813961DE25B9000860FDE /* Highscore Scene */,
 				2C1BFE531DD1062800ECBBB8 /* SceneNodeClasses */,
 				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
 				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
@@ -315,13 +315,13 @@
 			name = "GameOver Scene";
 			sourceTree = "<group>";
 		};
-		EE0813961DE25B9000860FDE /* Highscores Scene */ = {
+		EE0813961DE25B9000860FDE /* Highscore Scene */ = {
 			isa = PBXGroup;
 			children = (
 				EE0813971DE25BC900860FDE /* Highscore.sks */,
 				EE0813991DE25BE200860FDE /* Highscore.swift */,
 			);
-			name = "Highscores Scene";
+			name = "Highscore Scene";
 			sourceTree = "<group>";
 		};
 		EE8353A51DD5851E003ED2E4 /* Audio Scene */ = {
