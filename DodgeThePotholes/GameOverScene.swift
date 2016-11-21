@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameOverScene: SKScene {
+class GameOverScene: SKScene, Alerts {
     
     var score:Int = 0
     var gameOverLabelNode:SKLabelNode!
@@ -32,6 +32,11 @@ class GameOverScene: SKScene {
         moneyLabelNode = self.childNode(withName: "moneyLabel") as! SKLabelNode!
         moneyLabelNode.fontName = "PressStart2p"
         moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money") as! Int)"
+        
+        if previousHighscore < preferences.value(forKey: "highscore") as! Int{
+            showAlert(title: "New Highscore!!!", message: "Your new highscore is \(preferences.value(forKey: "highscore") as! Int)")
+            previousHighscore = preferences.value(forKey: "highscore") as! Int
+        }
 
         
     }

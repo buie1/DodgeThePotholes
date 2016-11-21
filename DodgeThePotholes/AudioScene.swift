@@ -14,15 +14,15 @@
 
 import SpriteKit
 
-var sfxToggleNode: SKSpriteNode!
-var musicToggleNode: SKSpriteNode!
-var backAudioNode: SKSpriteNode!
 
-var sfx: Bool!
-var music: Bool!
 
 class AudioScene: SKScene{
+    var sfxToggleNode: SKSpriteNode!
+    var musicToggleNode: SKSpriteNode!
+    var backAudioNode: SKSpriteNode!
     
+    var sfx: Bool!
+    var music: Bool!
     
     override func didMove(to view: SKView) {
         sfxToggleNode = self.childNode(withName: "SFXButton") as! SKSpriteNode!

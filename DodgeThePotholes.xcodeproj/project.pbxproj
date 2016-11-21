@@ -62,6 +62,7 @@
 		EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */; };
 		EE8353B21DD58643003ED2E4 /* CarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353B01DD58643003ED2E4 /* CarScene.sks */; };
 		EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353B11DD58643003ED2E4 /* CarScene.swift */; };
+		EEB8DFBC1DE280320068A074 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8DFBB1DE280320068A074 /* AlertProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,7 @@
 		EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		EE8353B01DD58643003ED2E4 /* CarScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CarScene.sks; sourceTree = "<group>"; };
 		EE8353B11DD58643003ED2E4 /* CarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarScene.swift; sourceTree = "<group>"; };
+		EEB8DFBB1DE280320068A074 /* AlertProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
 				EE8353AA1DD58593003ED2E4 /* Settings Scene */,
 				EE8353A51DD5851E003ED2E4 /* Audio Scene */,
+				EEB8DFBA1DE280120068A074 /* Protocols */,
 				2CDEC3A21DD652F300D010DB /* JSON Files */,
 				EE8353AF1DD5862E003ED2E4 /* Car Scene */,
 				2C10601A1DD1759000668D23 /* Sprite Particles */,
@@ -351,6 +354,14 @@
 			name = "Car Scene";
 			sourceTree = "<group>";
 		};
+		EEB8DFBA1DE280120068A074 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EEB8DFBB1DE280320068A074 /* AlertProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -476,6 +487,7 @@
 				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
+				EEB8DFBC1DE280320068A074 /* AlertProtocol.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
 				EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */,
