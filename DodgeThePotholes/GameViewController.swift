@@ -75,6 +75,9 @@ class GameViewController: UIViewController {
         if preferences.string(forKey: "money") == nil{
             preferences.setValue(0, forKey: "money")
         }
+        if preferences.string(forKey: "highscore") == nil{
+            preferences.setValue(0, forKey: "highscore")
+        }
         preferences.synchronize()
     }
 }

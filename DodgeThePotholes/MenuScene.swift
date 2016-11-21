@@ -43,7 +43,11 @@ class MenuScene: SKScene {
                 settingsScene?.scaleMode = .aspectFill
                 self.view?.presentScene(settingsScene!, transition: transition)
             }
-        
+            else if nodesArray.first?.name == "GameCenterButton"{
+                let highscoreScene = SKScene(fileNamed: "Highscore")
+                highscoreScene?.scaleMode = .aspectFill
+                self.view?.presentScene(highscoreScene!, transition: transition)
+            }
         }
     }
     
