@@ -12,10 +12,11 @@
 
 import SpriteKit
 
+var selectCarLabelNode: SKLabelNode!
 var car1Node: SKSpriteNode!
 var car2Node: SKSpriteNode!
 var car3Node: SKSpriteNode!
-var car4Node: SKSpriteNode!
+
 var backCarNode: SKSpriteNode!
 
 var currentCar: String!
@@ -23,10 +24,13 @@ var currentCar: String!
 class CarScene: SKScene{
     
     override func didMove(to view: SKView) {
+        selectCarLabelNode = self.childNode(withName: "CarLabel") as! SKLabelNode!
+        selectCarLabelNode.fontName = "PressStart2P"
+        
         car1Node = self.childNode(withName: "Car1") as! SKSpriteNode!
         car2Node = self.childNode(withName: "Car2") as! SKSpriteNode!
         car3Node = self.childNode(withName: "Car3") as! SKSpriteNode!
-        car4Node = self.childNode(withName: "Car4") as! SKSpriteNode!
+    
         backCarNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
     }
     
@@ -39,22 +43,17 @@ class CarScene: SKScene{
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             
             if nodesArray.first?.name == "Car1"{
-                currentCar = "Car1"
+                currentCar = "car1"
                 preferences.setValue(currentCar, forKey: "car")
                 preferences.synchronize()
             }
             else if nodesArray.first?.name == "Car2"{
-                currentCar = "Car2"
+                currentCar = "car2"
                 preferences.setValue(currentCar, forKey: "car")
                 preferences.synchronize()
             }
             else if nodesArray.first?.name == "Car3"{
-                currentCar = "Car3"
-                preferences.setValue(currentCar, forKey: "car")
-                preferences.synchronize()
-            }
-            else if nodesArray.first?.name == "Car4"{
-                currentCar = "Car4"
+                currentCar = "car3"
                 preferences.setValue(currentCar, forKey: "car")
                 preferences.synchronize()
             }
