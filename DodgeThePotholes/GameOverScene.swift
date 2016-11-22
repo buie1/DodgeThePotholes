@@ -8,13 +8,17 @@
 
 import SpriteKit
 
-class GameOverScene: SKScene, Alerts {
+class GameOverScene: SKScene{
     
     var score:Int = 0
     var gameOverLabelNode:SKLabelNode!
     var scoreLabelNode:SKLabelNode!
     var newGameButtonNode:SKSpriteNode!
     var moneyLabelNode:SKLabelNode!
+    var highscoreLabelNode:SKLabelNode!
+    
+    var money = 0
+    var previousHighscore = 0
     
     override func didMove(to view: SKView) {
         
@@ -31,11 +35,21 @@ class GameOverScene: SKScene, Alerts {
         
         moneyLabelNode = self.childNode(withName: "moneyLabel") as! SKLabelNode!
         moneyLabelNode.fontName = "PressStart2p"
-        moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money") as! Int)"
+        moneyLabelNode.text = "Money: $ \(money)"
+        
+        highscoreLabelNode = self.childNode(withName: "highscoreLabel") as! SKLabelNode!
+        highscoreLabelNode.fontName = "PressStart2p"
+        
         
         if previousHighscore < preferences.value(forKey: "highscore") as! Int{
-            showAlert(title: "New Highscore!!!", message: "Your new highscore is \(preferences.value(forKey: "highscore") as! Int)")
+            let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
+                                            SKAction.fadeIn(withDuration: 0.3)])
+            let flash = SKAction.repeat(flashAct, count: 30)
+            highscoreLabelNode.run(flash)
             previousHighscore = preferences.value(forKey: "highscore") as! Int
+        }
+        else{
+            highscoreLabelNode.isHidden = true
         }
 
         
