@@ -65,9 +65,17 @@ class Dog: MoveableObstacle, ObstacleCreate {
     override func destroy(){
         
         //self.texture = SKTexture(imageNamed:"German_Shepherd_Dead")
+        self.physicsBody?.categoryBitMask = PhysicsCategory.None.rawValue
+        
+        var group:SKAction
         let die = SKAction.animate(with: [SKTexture(imageNamed:"German_Shepherd_Dead")], timePerFrame: 1)
-        let wimper = SKAction.playSoundFileNamed("dog_wimper.mp3", waitForCompletion: false)
-        let group = SKAction.group([die,wimper])
+        if preferences.bool(forKey: "sfx") == true {
+            let wimper = SKAction.playSoundFileNamed("dog_wimper.mp3", waitForCompletion: false)
+            group = SKAction.group([die,wimper])
+        }else{
+            group = die
+        }
+        
         self.run(group)
     }
     

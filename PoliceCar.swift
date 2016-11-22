@@ -54,11 +54,16 @@ class policeCar: SKSpriteNode, ObstacleCreate {
     }
     
     func begin(_ size: CGSize, _ dur: TimeInterval) {
-        
+        var group:SKAction
         let flash = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.3), count: 5)
-        let siren = SKAction.playSoundFileNamed("police_s.wav", waitForCompletion: false)
         let moveAction = SKAction.move(to: CGPoint(x:self.position.x, y:-size.height/2 - self.size.height), duration: dur)
-        let group = SKAction.group([flash,moveAction,siren])
+        
+        if preferences.bool(forKey: "sfx") == true {
+            let siren = SKAction.playSoundFileNamed("police_s.wav", waitForCompletion: false)
+            group = SKAction.group([flash,moveAction,siren])
+        }else{
+            group = SKAction.group([flash,moveAction])
+        }        
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([group,removeAction]))
     }

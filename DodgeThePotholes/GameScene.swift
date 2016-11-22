@@ -175,11 +175,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Add Obstalces and Other GameplayItems to Screen
     func addPolice(){
-        // should be dynamic but hardcoded right now
-        // MAKE DYNAMIC
         let police = policeCar(size:self.size, duration:TimeInterval(gameSpeed))
-        //police.position = CGPoint(x:position ,y:self.frame.size.height/2 + police.size.height)
-        //police.move(dest: CGPoint(x: police.position.x, y: -self.frame.size.height/2 - police.size.height))
         self.addChild(police)
     }
     
@@ -233,20 +229,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - honking horn
     
     func honkHorn(){
-        self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
+        if preferences.bool(forKey: "sfx") == true {
+            self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
+        }
         
         let hornNode = SKSpriteNode(imageNamed: "carHorn")
         hornNode.position = player.position
         hornNode.position.y += 5
         
-        //hornNode.physicsBody = SKPhysicsBody(circleOfRadius: hornNode.size.width * 5)
         hornNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: hornNode.size.width * 5, height: hornNode.size.height))
         
         hornNode.physicsBody?.isDynamic = true
         
-        hornNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue // of torpedo category
-        hornNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue // object that collides with torpedo
-        hornNode.physicsBody?.collisionBitMask = 0 // Not sure what this is doing... yet
+        hornNode.physicsBody?.categoryBitMask = PhysicsCategory.Horn.rawValue
+        hornNode.physicsBody?.contactTestBitMask = PhysicsCategory.MoveableObstacle.rawValue
+        hornNode.physicsBody?.collisionBitMask = 0
         hornNode.physicsBody?.usesPreciseCollisionDetection = true
         
         self.addChild(hornNode)
