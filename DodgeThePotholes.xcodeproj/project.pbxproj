@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3E1A77567B407BFC288D94 /* Pods_DodgeThePotholes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E5CC4EB767E815B443877A /* Pods_DodgeThePotholes.framework */; };
 		2C0CE6F41DDD142600273099 /* money_pattern3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CE6F31DDD142600273099 /* money_pattern3.json */; };
 		2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CE6F51DDD17E500273099 /* money_pattern4.json */; };
 		2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0CE6F71DDD1CF300273099 /* ConePattern.swift */; };
@@ -57,6 +58,7 @@
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
 		EE0813981DE25BC900860FDE /* Highscore.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE0813971DE25BC900860FDE /* Highscore.sks */; };
 		EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0813991DE25BE200860FDE /* Highscore.swift */; };
+		EE6EFD1E1DE3DAB1000876F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE6EFD1D1DE3DAB1000876F5 /* GoogleService-Info.plist */; };
 		EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353A61DD58586003ED2E4 /* AudioScene.sks */; };
 		EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353A71DD58586003ED2E4 /* AudioScene.swift */; };
 		EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */; };
@@ -66,6 +68,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1690DAB4141A4DCD17FB2A0B /* Pods-DodgeThePotholes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.debug.xcconfig"; sourceTree = "<group>"; };
+		26E5CC4EB767E815B443877A /* Pods_DodgeThePotholes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DodgeThePotholes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C0CE6F31DDD142600273099 /* money_pattern3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = money_pattern3.json; sourceTree = "<group>"; };
 		2C0CE6F51DDD17E500273099 /* money_pattern4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = money_pattern4.json; sourceTree = "<group>"; };
 		2C0CE6F71DDD1CF300273099 /* ConePattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConePattern.swift; sourceTree = "<group>"; };
@@ -112,12 +116,14 @@
 		2CDEC3AA1DD65AE700D010DB /* CoinPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinPattern.swift; sourceTree = "<group>"; };
 		54FB84131DD58DC800AFBF7C /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		B9C71B6AD5A4A0FA24E96836 /* Pods-DodgeThePotholes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.release.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.release.xcconfig"; sourceTree = "<group>"; };
 		CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_wimper.mp3; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* Cone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
 		EE0813971DE25BC900860FDE /* Highscore.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Highscore.sks; sourceTree = "<group>"; };
 		EE0813991DE25BE200860FDE /* Highscore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
+		EE6EFD1D1DE3DAB1000876F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE8353A61DD58586003ED2E4 /* AudioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AudioScene.sks; sourceTree = "<group>"; };
 		EE8353A71DD58586003ED2E4 /* AudioScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioScene.swift; sourceTree = "<group>"; };
 		EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsScene.sks; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8B90D31DD275D6001C944A /* GameKit.framework in Frameworks */,
+				0E3E1A77567B407BFC288D94 /* Pods_DodgeThePotholes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +163,7 @@
 				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
 				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
 				2C1BFE421DD104BE00ECBBB8 /* LaunchScreen.storyboard */,
+				EE6EFD1D1DE3DAB1000876F5 /* GoogleService-Info.plist */,
 				2C1BFE451DD104BE00ECBBB8 /* Info.plist */,
 				2C10601D1DD178E300668D23 /* PressStart2P.ttf */,
 			);
@@ -187,6 +195,7 @@
 				2C1BFE321DD104BE00ECBBB8 /* DodgeThePotholes */,
 				2C1BFE311DD104BE00ECBBB8 /* Products */,
 				2C8B90D11DD275D6001C944A /* Frameworks */,
+				B3AEA5F76BEF5A05A759E42E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -252,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				2C8B90D21DD275D6001C944A /* GameKit.framework */,
+				26E5CC4EB767E815B443877A /* Pods_DodgeThePotholes.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -318,6 +328,15 @@
 			name = "GameOver Scene";
 			sourceTree = "<group>";
 		};
+		B3AEA5F76BEF5A05A759E42E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1690DAB4141A4DCD17FB2A0B /* Pods-DodgeThePotholes.debug.xcconfig */,
+				B9C71B6AD5A4A0FA24E96836 /* Pods-DodgeThePotholes.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EE0813961DE25B9000860FDE /* Highscore Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,9 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C1BFE481DD104BE00ECBBB8 /* Build configuration list for PBXNativeTarget "DodgeThePotholes" */;
 			buildPhases = (
+				4839D56123078E66AC9060C8 /* [CP] Check Pods Manifest.lock */,
 				2C1BFE2C1DD104BE00ECBBB8 /* Sources */,
 				2C1BFE2D1DD104BE00ECBBB8 /* Frameworks */,
 				2C1BFE2E1DD104BE00ECBBB8 /* Resources */,
+				940EBBBF6E8880D143D877E0 /* [CP] Embed Pods Frameworks */,
+				9647E96F1BD47F3342A630BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -448,6 +470,7 @@
 				54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
+				EE6EFD1E1DE3DAB1000876F5 /* GoogleService-Info.plist in Resources */,
 				EE0813981DE25BC900860FDE /* Highscore.sks in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
 				EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */,
@@ -456,6 +479,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4839D56123078E66AC9060C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		940EBBBF6E8880D143D877E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9647E96F1BD47F3342A630BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C1BFE2C1DD104BE00ECBBB8 /* Sources */ = {
@@ -604,6 +675,7 @@
 		};
 		2C1BFE491DD104BE00ECBBB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1690DAB4141A4DCD17FB2A0B /* Pods-DodgeThePotholes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U6J58C8CJT;
@@ -617,6 +689,7 @@
 		};
 		2C1BFE4A1DD104BE00ECBBB8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9C71B6AD5A4A0FA24E96836 /* Pods-DodgeThePotholes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U6J58C8CJT;
