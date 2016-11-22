@@ -72,4 +72,4 @@ protocol ObstacleCreate {
 
 // MARK: User Preferences Reference
 let preferences = UserDefaults.standard
-var previousHighscore = 0
+

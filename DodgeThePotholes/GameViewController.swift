@@ -79,6 +79,5 @@ class GameViewController: UIViewController {
             preferences.setValue(0, forKey: "highscore")
         }
         preferences.synchronize()
-        previousHighscore = preferences.value(forKey: "highscore") as! Int
     }
 }

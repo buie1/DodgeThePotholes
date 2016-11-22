@@ -158,9 +158,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("GAME OVER")
             let transition = SKTransition.flipHorizontal(withDuration: 0.5)
             let gameOver = SKScene(fileNamed: "GameOverScene") as! GameOverScene
+            gameOver.previousHighscore = preferences.value(forKey: "highscore") as! Int
             updateHighScore()
             gameOver.score = self.score
             gameOver.scaleMode = .aspectFill
+            gameOver.money = money
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
