@@ -7,6 +7,8 @@
 //
 
 import SpriteKit
+import AudioToolbox
+
 class Player: SKSpriteNode, ObstacleCreate {
     
     var moveLeftTextureAtlas = SKTextureAtlas(named: "Car_Left")
@@ -15,6 +17,7 @@ class Player: SKSpriteNode, ObstacleCreate {
     var moveRightTextureArray = [SKTexture]()
     
     init(size: CGSize){
+        /*
         for i in 1...moveLeftTextureAtlas.textureNames.count{
             let name = "car_left_\(i)"
             moveLeftTextureArray.append(SKTexture(imageNamed: name))
@@ -22,7 +25,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         for i in 1...moveRightTextureAtlas.textureNames.count{
             let name = "car_right_\(i)"
             moveRightTextureArray.append(SKTexture(imageNamed: name))
-        }
+        }*/
         
         
         super.init(texture: SKTexture(imageNamed:"car"), color: UIColor.clear, size: CGSize(width : 125/2, height:125))
@@ -91,6 +94,8 @@ class Player: SKSpriteNode, ObstacleCreate {
     }
     
     func recover(){
+        
+        AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
         
         let hide = SKAction.run {
             self.physicsBody?.categoryBitMask = PhysicsCategory.None.rawValue
