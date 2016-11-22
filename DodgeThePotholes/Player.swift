@@ -9,23 +9,23 @@
 import SpriteKit
 class Player: SKSpriteNode, ObstacleCreate {
     
-    var moveLeftTextureAtlas = SKTextureAtlas(named: "Car_Left")
+    var moveLeftTextureAtlas = SKTextureAtlas(named: "Car1_Left")
     var moveLeftTextureArray = [SKTexture]()
-    var moveRightTextureAtlas = SKTextureAtlas(named: "Car_Right")
+    var moveRightTextureAtlas = SKTextureAtlas(named: "Car1_Right")
     var moveRightTextureArray = [SKTexture]()
     
     init(size: CGSize){
         for i in 1...moveLeftTextureAtlas.textureNames.count{
-            let name = "car_left_\(i)"
+            let name = "car1_left_\(i)"
             moveLeftTextureArray.append(SKTexture(imageNamed: name))
         }
         for i in 1...moveRightTextureAtlas.textureNames.count{
-            let name = "car_right_\(i)"
+            let name = "car1_right_\(i)"
             moveRightTextureArray.append(SKTexture(imageNamed: name))
         }
         
         
-        super.init(texture: SKTexture(imageNamed:"car"), color: UIColor.clear, size: CGSize(width : 125/2, height:125))
+        super.init(texture: SKTexture(imageNamed:"car1"), color: UIColor.clear, size: CGSize(width : 125/2, height:125))
         generatePosition(size)
         initPhysicsBody()
     }
@@ -80,7 +80,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         let group:SKAction
         //let spin = SKAction.rotate(byAngle: 360, duration: 1)
         let spin = SKAction.rotate(toAngle: 4*3.14, duration: 0.75, shortestUnitArc: false)
-        let reset = SKAction.setTexture(SKTexture(imageNamed: "car"))
+        let reset = SKAction.setTexture(SKTexture(imageNamed: "car1"))
         if preferences.bool(forKey: "sfx") == true {
             let sound = SKAction.playSoundFileNamed("carskid.wav", waitForCompletion: false)
             group = SKAction.group([spin,sound])
