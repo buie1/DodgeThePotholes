@@ -166,7 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameOver.scaleMode = .aspectFill
             gameOver.money = money
             
-            
+            // In order to stop the game from playing before game over scene
             bgTimer.invalidate()
             gameTimer.invalidate()
             self.removeAllActions()
