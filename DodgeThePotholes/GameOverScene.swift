@@ -14,6 +14,7 @@ class GameOverScene: SKScene{
     var gameOverLabelNode:SKLabelNode!
     var scoreLabelNode:SKLabelNode!
     var newGameButtonNode:SKSpriteNode!
+    var mainMenuButtonNode:SKSpriteNode!
     var moneyLabelNode:SKLabelNode!
     var highscoreLabelNode:SKLabelNode!
     
@@ -32,6 +33,9 @@ class GameOverScene: SKScene{
         
         newGameButtonNode = self.childNode(withName: "newGameButton") as! SKSpriteNode
         newGameButtonNode.texture = SKTexture(imageNamed: "newGameButton")
+        
+        mainMenuButtonNode = self.childNode(withName: "mainMenuButton") as! SKSpriteNode
+        mainMenuButtonNode.texture = SKTexture(imageNamed: "mainMenu_Btn")
         
         moneyLabelNode = self.childNode(withName: "moneyLabel") as! SKLabelNode!
         moneyLabelNode.fontName = "PressStart2p"
@@ -71,6 +75,11 @@ class GameOverScene: SKScene{
                 gameScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
                 gameScene.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene, transition: transition)
+            }
+            else if nodesArray.first?.name == "mainMenuButton" {
+                let menuScene = SKScene(fileNamed: "MenuScene")
+                menuScene?.scaleMode = .aspectFill
+                self.view?.presentScene(menuScene!, transition: transition)
             }
         }
     }
