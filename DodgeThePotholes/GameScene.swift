@@ -150,9 +150,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func loseLife() {
         let lifeNode = self.livesArray.first
-        lifeNode!.removeFromParent()
-        self.livesArray.removeFirst()
-        
+        if lifeNode != nil {
+            lifeNode!.removeFromParent()
+            self.livesArray.removeFirst()
+        } else {
+            print("Out of lives.  Cannot remove another life.")
+        }
         if self.livesArray.count == 0 {
             //let transition = SKTransition.flipHorizontal(withDuration: 0.5)
             print("GAME OVER")
@@ -284,10 +287,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("handle collision with car ")
 
             if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
-            carDidHitObstacle(car: contact.bodyA.node as! Player,
+                carDidHitObstacle(car: contact.bodyA.node as! Player,
                                        obj: contact.bodyB.node as! SKSpriteNode)
             } else{
-            carDidHitObstacle(car: contact.bodyB.node as! Player,
+                carDidHitObstacle(car: contact.bodyB.node as! Player,
                                        obj: contact.bodyA.node as! SKSpriteNode)
             }
             
@@ -363,18 +366,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func carDidHitMoveableObstacle(car:Player, obj:SKSpriteNode){
+    //func carDidHitMoveableObstacle(car:Player, obj:SKSpriteNode){
+    func carDidHitMoveableObstacle(car:Player, obj:MoveableObstacle){
         let name = obj.name
         switch name! {
         case "dog":
             print("you hit a dog!")
+            obj.destroy()
             
         default:
             print("hit a moveable obj")
+            obj.removeFromParent()
         }
         car.recover()
         loseLife()
-        obj.removeFromParent()
+       
         
     }
     

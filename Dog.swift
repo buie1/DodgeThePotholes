@@ -62,6 +62,15 @@ class Dog: MoveableObstacle, ObstacleCreate {
         self.physicsBody?.usesPreciseCollisionDetection = true
     }
     
+    override func destroy(){
+        
+        //self.texture = SKTexture(imageNamed:"German_Shepherd_Dead")
+        let die = SKAction.animate(with: [SKTexture(imageNamed:"German_Shepherd_Dead")], timePerFrame: 1)
+        let wimper = SKAction.playSoundFileNamed("dog_wimper.mp3", waitForCompletion: false)
+        let group = SKAction.group([die,wimper])
+        self.run(group)
+    }
+    
     
     func begin(_ size:CGSize, _ dur: TimeInterval){
         
