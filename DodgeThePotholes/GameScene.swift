@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player:Player!
     var gameTimer:Timer!
-    var gameTimer2:Timer!
+    var bgTimer:Timer!
 
     
     // MARK: HUD Variables
@@ -61,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg.start(duration: gameSpeed)
         
         // TIMER TO PERIODICALLY SPEED UP GAME
-        _ = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
+        bgTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
         
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
@@ -117,9 +117,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // aparently a better way to implement this is with SKActions and using a "wait" time
         // instead of the gametimers
         
-
+        print("run game timer")
         gameTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
-
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -166,6 +165,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameOver.score = self.score
             gameOver.scaleMode = .aspectFill
             gameOver.money = money
+            
+            
+            bgTimer.invalidate()
+            gameTimer.invalidate()
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
