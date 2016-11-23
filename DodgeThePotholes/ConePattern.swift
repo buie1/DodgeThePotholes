@@ -12,9 +12,9 @@ import GameplayKit
 
 
 
-class ConePattern {
+class ConePattern:SKNode {
     
-    var patterns = ["cone_pattern1","cone_pattern2"]
+    var patterns = ["cone_pattern1"]
     var minRows = 9 // Hardcoded value. No pattern will be less that 9 rows, yet....
     var NumColumns:Int!
     var NumRows:Int!
@@ -39,9 +39,9 @@ class ConePattern {
         cones = Array2D<Cone>(columns: NumColumns, rows: NumRows)
         self.size = CGSize(width: tileWidth*NumColumns, height: tileHeight*NumRows)
         //3. Generate pattern
-        //super.init()
-        let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue) + Int(self.size.width/2),
-                                        highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width/2))
+        super.init()
+        let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),
+                                        highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width))
         let randN = CGFloat(rand.nextInt())
         print("random pt for cone position  = \(randN)")
         for (row,array) in (array?.enumerated())!{
@@ -58,6 +58,10 @@ class ConePattern {
                 }
             }
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func addCones(scene:SKScene, duration:TimeInterval){

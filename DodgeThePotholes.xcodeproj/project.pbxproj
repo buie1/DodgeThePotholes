@@ -28,6 +28,12 @@
 		2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */; };
 		2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */; };
 		2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */; };
+		2C62C70C1DE55449002AD508 /* cone_pattern1_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C70B1DE55449002AD508 /* cone_pattern1_0.json */; };
+		2C62C70E1DE55459002AD508 /* cone_pattern1_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C70D1DE55459002AD508 /* cone_pattern1_1.json */; };
+		2C62C7101DE55460002AD508 /* cone_pattern1_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C70F1DE55460002AD508 /* cone_pattern1_2.json */; };
+		2C62C7121DE5546B002AD508 /* cone_pattern1_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C7111DE5546B002AD508 /* cone_pattern1_3.json */; };
+		2C62C7141DE55472002AD508 /* cone_pattern1_4.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C7131DE55472002AD508 /* cone_pattern1_4.json */; };
+		2C62C7161DE55478002AD508 /* cone_pattern1_5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C7151DE55478002AD508 /* cone_pattern1_5.json */; };
 		2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3441DD1377400FE789A /* born-lucky.wav */; };
 		2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */; };
 		2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1AFF1DD7B5070042E002 /* Extensions.swift */; };
@@ -92,6 +98,12 @@
 		2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roadBackground.swift; sourceTree = "<group>"; };
+		2C62C70B1DE55449002AD508 /* cone_pattern1_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_0.json; sourceTree = "<group>"; };
+		2C62C70D1DE55459002AD508 /* cone_pattern1_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_1.json; sourceTree = "<group>"; };
+		2C62C70F1DE55460002AD508 /* cone_pattern1_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_2.json; sourceTree = "<group>"; };
+		2C62C7111DE5546B002AD508 /* cone_pattern1_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_3.json; sourceTree = "<group>"; };
+		2C62C7131DE55472002AD508 /* cone_pattern1_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_4.json; sourceTree = "<group>"; };
+		2C62C7151DE55478002AD508 /* cone_pattern1_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_5.json; sourceTree = "<group>"; };
 		2C7CC3441DD1377400FE789A /* born-lucky.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "born-lucky.wav"; sourceTree = "<group>"; };
 		2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "hot-pursuit.wav"; sourceTree = "<group>"; };
 		2C8A1AFF1DD7B5070042E002 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -148,6 +160,12 @@
 			isa = PBXGroup;
 			children = (
 				2C0CE6F91DDD424A00273099 /* cone_pattern1.json */,
+				2C62C70B1DE55449002AD508 /* cone_pattern1_0.json */,
+				2C62C70D1DE55459002AD508 /* cone_pattern1_1.json */,
+				2C62C70F1DE55460002AD508 /* cone_pattern1_2.json */,
+				2C62C7111DE5546B002AD508 /* cone_pattern1_3.json */,
+				2C62C7131DE55472002AD508 /* cone_pattern1_4.json */,
+				2C62C7151DE55478002AD508 /* cone_pattern1_5.json */,
 				2C0CE6FF1DDD463F00273099 /* cone_pattern2.json */,
 			);
 			name = "Cone Patterns";
@@ -431,6 +449,7 @@
 				2C10601E1DD178E300668D23 /* PressStart2P.ttf in Resources */,
 				2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */,
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
+				2C62C7121DE5546B002AD508 /* cone_pattern1_3.json in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
 				EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */,
 				2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */,
@@ -448,15 +467,20 @@
 				2C10601C1DD175FC00668D23 /* MenuScene.sks in Resources */,
 				EE8353B21DD58643003ED2E4 /* CarScene.sks in Resources */,
 				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
+				2C62C70E1DE55459002AD508 /* cone_pattern1_1.json in Resources */,
+				2C62C7161DE55478002AD508 /* cone_pattern1_5.json in Resources */,
 				2C0CE7001DDD463F00273099 /* cone_pattern2.json in Resources */,
 				2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */,
+				2C62C7141DE55472002AD508 /* cone_pattern1_4.json in Resources */,
 				2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */,
 				CA67CFB71DE54D2500DEB87A /* oh_my_god.mp3 in Resources */,
 				2C0CE6FA1DDD424A00273099 /* cone_pattern1.json in Resources */,
 				2CB7A5571DD193810029B800 /* shader_water_reflection.fsh in Resources */,
 				CA473A501DE29D5D00F16DA5 /* dog_wimper.mp3 in Resources */,
 				54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */,
+				2C62C7101DE55460002AD508 /* cone_pattern1_2.json in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
+				2C62C70C1DE55449002AD508 /* cone_pattern1_0.json in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
 				EE0813981DE25BC900860FDE /* Highscore.sks in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
