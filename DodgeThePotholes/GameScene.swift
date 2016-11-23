@@ -190,6 +190,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dog = Dog(size:self.frame.size, duration: TimeInterval(gameSpeed))
         self.addChild(dog)
     }
+    func addHuman(){
+        let human = Human(size:self.frame.size, duration: TimeInterval(gameSpeed))
+        self.addChild(human)
+    }
     func addCoinPattern(){
         _ = CoinPattern(scene:self, duration:TimeInterval(gameSpeed))
         //self.addChild(coins)
@@ -199,7 +203,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
  
     func addObastacle(){
-        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
+        addHuman()
+        /*possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
             addPothole()
@@ -219,7 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             addPothole()
             break
-        }
+        }*/
     }
 
     
@@ -372,6 +377,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch name! {
         case "dog":
             print("you hit a dog!")
+            obj.destroy()
+        case "human":
+            print("you hit a human!")
             obj.destroy()
             
         default:
