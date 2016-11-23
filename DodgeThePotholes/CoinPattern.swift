@@ -60,27 +60,6 @@ class CoinPattern:SKNode {
             }
         }
     }
-    /*
-    func addCoins(scene:SKScene, duration:TimeInterval){
-        //self.position = CGPoint(x:CGFloat(rand.nextInt()),y:size.height/2 + self.size.height/2)
-        let rand = GKRandomDistribution(lowestValue: Int(-size.width/2) + Int(self.size.width/2),highestValue: Int(size.width/2) - Int(self.size.width/2))
-        let randN = CGFloat(rand.nextInt())
-        for row in 0..<NumRows {
-            for column in 0..<NumColumns {
-                let currCoin = self.coinAt(column: column, row: row)
-                if currCoin != nil {
-                    //let moneyNode = SKSpriteNode(imageNamed: "dollar")
-                    //let moneyNode = Coin(width: tileWidth, height: tileHeight)
-                    //moneyNode.position = pointFor(column: column, row: row, random:randN, size:scene.size)
-                    //moLayer.addChild(tileNode)
-                    scene.addChild(currCoin!)
-                    currCoin?.position  = pointFor(column: column, row: row, random:randN, size:scene.size)
-                    currCoin?.begin(tileHeight: tileHeight, row: row, size:scene.size, pattern:self.size, dur:duration)
-                }
-            }
-        }
-    }
-    */
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

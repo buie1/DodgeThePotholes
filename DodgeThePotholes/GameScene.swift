@@ -118,7 +118,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // instead of the gametimers
         
         print("run game timer")
-        gameTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -195,7 +195,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //self.addChild(coins)
     }
     func addTrafficCone(){
+        gameTimer.invalidate()
         _ = ConePattern(scene: self, duration: TimeInterval(gameSpeed))
+        let resumeGameTimer = SKAction.run {
+            self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
+        }
+        run(SKAction.sequence([pauseForObstacles,resumeGameTimer]))
     }
  
     func addObastacle(){
