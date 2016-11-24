@@ -196,6 +196,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func addConePattern(){
         self.gameTimer.invalidate()
+        let alertLabel = SKLabelNode(text: "Traffic Zone Approaching!")
+        alertLabel.position = CGPoint(x:self.size.width*2, y:0)
+        alertLabel.run(flyAction)
+        
+        let alertSign = SKSpriteNode(imageNamed: "alert")
+        alertSign.position = CGPoint(x: 0, y: self.size.height - alertSign.size.height/2)
+        alertSign.run(flashAction)        
+        
         _ = ConePattern(scene: self, duration: TimeInterval(self.gameSpeed))
         let resumeGameTimer = SKAction.run {
             self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)

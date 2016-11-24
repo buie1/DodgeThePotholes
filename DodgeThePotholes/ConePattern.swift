@@ -33,7 +33,7 @@ class ConePattern:SKNode {
         NumColumns = 0
         NumRows = 0
         cones = Array2D<Cone>(columns: NumColumns, rows: NumRows)
-        size = CGSize(width: 0, height: 0)
+        self.size = CGSize(width: 0, height: 0)
         super.init()
         var array:[[Int]]!
         let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),

@@ -70,6 +70,15 @@ let preferences = UserDefaults.standard
 
 // MARK: Animations
 
-let pauseForObstacles = SKAction.wait(forDuration: 6)
+
+let pauseForObstacles = SKAction.wait(forDuration: 10)
+let flyIn = SKAction.moveTo(x: 0, duration: 1.5)
+let pauseForAlert = SKAction.wait(forDuration: 1)
+let flyOut = SKAction.moveTo(x: 1000, duration: 1.5)
+let flyAction = SKAction.group([flyIn,pauseForAlert,flyOut])
+
+let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
+                                  SKAction.fadeIn(withDuration: 0.3)])
+let flashAction = SKAction.repeat(flashAct, count: 4)
 
 
