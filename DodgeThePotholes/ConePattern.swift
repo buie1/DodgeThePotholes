@@ -36,6 +36,12 @@ class ConePattern:SKNode {
         size = CGSize(width: 0, height: 0)
         super.init()
         var array:[[Int]]!
+        let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),
+                                        highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width))
+        let randN = CGFloat(rand.nextInt())
+        
+        
+        
         DispatchQueue.global(qos: .background).async {
             print("This is run on the background queue")
             let dictionary = Dictionary<String,Any>.loadJSONFromBundle(filename: self.patterns[0])
@@ -48,9 +54,6 @@ class ConePattern:SKNode {
             
             DispatchQueue.main.async {
                 print("This is run on the main queue, after the previous code in outer block")
-                let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),
-                                                highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width))
-                let randN = CGFloat(rand.nextInt())
                 print("random pt for cone position  = \(randN)")
                 for (row,array) in (array.enumerated()){
                     let currRow = self.NumRows - row - 1 // Start indexing at 0 not 1
