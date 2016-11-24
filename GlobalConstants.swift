@@ -12,18 +12,11 @@ import SpriteKit
 
 
 
-// MARK: Physics Categories
-/*let alienCategory:UInt32 = 0x1 << 1
-enum obstacleBitmasks: UInt32 {
-    case none = 0x0
-    case generic = 0x1
-    case torpedo = 0x2
-}*/
+
 
 // MARK: Physics Categories
 // update when adding new physics categories for the physics bodies
 
-let photonTorpedoCategory:UInt32 = 0x100
 
 enum PhysicsCategory:UInt32 {
     case None               = 0
@@ -77,6 +70,6 @@ let preferences = UserDefaults.standard
 
 // MARK: Animations
 
-let pauseForObstacles = SKAction.wait(forDuration: 5)
+let pauseForObstacles = SKAction.wait(forDuration: 6)
 
 
