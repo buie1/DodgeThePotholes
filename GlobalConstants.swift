@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
 
 
@@ -72,4 +73,10 @@ protocol ObstacleCreate {
 
 // MARK: User Preferences Reference
 let preferences = UserDefaults.standard
+
+
+// MARK: Animations
+
+let pauseForObstacles = SKAction.wait(forDuration: 5)
+
 
