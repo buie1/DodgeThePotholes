@@ -30,34 +30,49 @@ class ConePattern:SKNode {
         //1. Chose a random pattern to generate
         
         patterns = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: patterns) as! [String]
-        
-        //2. load json file and set initial values
-        let dictionary = Dictionary<String,Any>.loadJSONFromBundle(filename: patterns[0])
-        let array = dictionary?["tiles"] as? [[Int]]
-        NumColumns = dictionary?["numCols"] as? Int
-        NumRows = dictionary?["numRows"] as? Int
+        NumColumns = 0
+        NumRows = 0
         cones = Array2D<Cone>(columns: NumColumns, rows: NumRows)
-        self.size = CGSize(width: tileWidth*NumColumns, height: tileHeight*NumRows)
-        //3. Generate pattern
+        size = CGSize(width: 0, height: 0)
         super.init()
-        let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),
-                                        highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width))
-        let randN = CGFloat(rand.nextInt())
-        print("random pt for cone position  = \(randN)")
-        for (row,array) in (array?.enumerated())!{
-            let currRow = NumRows - row - 1 // Start indexing at 0 not 1
-            for (col, value) in array.enumerated(){
-                if value == 1 {
-                    // Add a Cone :)
-                    cones[col,currRow] = Cone(width: tileWidth, height: tileHeight)
-                    cones[col,currRow]?.position = pointFor(column: col, row: currRow,
-                                                            random:randN, size:scene.size)
-                    cones[col,currRow]?.begin(tileHeight: tileHeight, row: row, size:scene.size, pattern:self.size, dur:duration*Double(NumRows/minRows))
-
-                    scene.addChild(cones[col,currRow]!)
+        var array:[[Int]]!
+        DispatchQueue.global(qos: .background).async {
+            print("This is run on the background queue")
+            let dictionary = Dictionary<String,Any>.loadJSONFromBundle(filename: self.patterns[0])
+            array = (dictionary?["tiles"] as? [[Int]])!
+            self.NumColumns = dictionary?["numCols"] as? Int
+            self.NumRows = dictionary?["numRows"] as? Int
+            self.cones = Array2D<Cone>(columns: self.NumColumns, rows: self.NumRows)
+            self.size = CGSize(width: self.tileWidth*self.NumColumns,
+                               height: self.tileHeight*self.NumRows)
+            
+            DispatchQueue.main.async {
+                print("This is run on the main queue, after the previous code in outer block")
+                let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),
+                                                highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width))
+                let randN = CGFloat(rand.nextInt())
+                print("random pt for cone position  = \(randN)")
+                for (row,array) in (array.enumerated()){
+                    let currRow = self.NumRows - row - 1 // Start indexing at 0 not 1
+                    for (col, value) in array.enumerated(){
+                        if value == 1 {
+                            // Add a Cone :)
+                            self.cones[col,currRow] = Cone(width: self.tileWidth, height: self.tileHeight)
+                            self.cones[col,currRow]?.position = self.pointFor(column: col, row: currRow,
+                                                                              random:randN, size:scene.size)
+                            self.cones[col,currRow]?.begin(tileHeight: self.tileHeight, row: row, size:scene.size, pattern:self.size, dur:duration*Double(self.NumRows/self.minRows))
+                            
+                            scene.addChild(self.cones[col,currRow]!)
+                        }
+                    }
                 }
             }
         }
+        
+        
+        //2. load json file and set initial values
+
+        //3. Generate pattern
     }
     
     required init?(coder aDecoder: NSCoder) {

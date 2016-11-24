@@ -19,6 +19,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let noWrap:Bool = true
     
     
+    let backgroundQueue = DispatchQueue(label: "com.app.queue",
+                                        qos: .background,
+                                        target: nil)
+    
+    
     var player:Player!
     var gameTimer:Timer!
     var bgTimer:Timer!
@@ -50,6 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        
 
         // Set up game background
         let bg = roadBackground(size: self.size)
@@ -118,7 +124,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // instead of the gametimers
         
         print("run game timer")
-        gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(addObastacle), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
+        
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -131,6 +138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
+    
     
     // MARK: Initialize Lives
     func addLives (){
@@ -186,6 +194,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let pothole = Pothole(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(pothole)
     }
+    func addConePattern(){
+        self.gameTimer.invalidate()
+        _ = ConePattern(scene: self, duration: TimeInterval(self.gameSpeed))
+        let resumeGameTimer = SKAction.run {
+            self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
+        }
+        self.run(SKAction.sequence([pauseForObstacles,resumeGameTimer]))
+    }
     func addDog(){
         let dog = Dog(size:self.frame.size, duration: TimeInterval(gameSpeed))
         self.addChild(dog)
@@ -195,18 +211,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(human)
     }
     func addCoinPattern(){
-        _ = CoinPattern(scene:self, duration:TimeInterval(gameSpeed))
-        //self.addChild(coins)
+        _ = CoinPattern(scene:self, duration:TimeInterval(self.gameSpeed))
+
     }
-    func addTrafficCone(){
-        gameTimer.invalidate()
-        _ = ConePattern(scene: self, duration: TimeInterval(gameSpeed))
-        let resumeGameTimer = SKAction.run {
-            self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
-        }
-        run(SKAction.sequence([pauseForObstacles,resumeGameTimer]))
-    }
- 
+    
     func addObastacle(){
                 possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
@@ -223,7 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addCoinPattern()
             break
         case "cone":
-            addTrafficCone()
+            addConePattern()
             break
         case "human":
             addHuman()

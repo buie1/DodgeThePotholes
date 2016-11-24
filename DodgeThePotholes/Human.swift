@@ -63,7 +63,6 @@ class Human: MoveableObstacle, ObstacleCreate {
     
     override func destroy(){
         
-        //self.texture = SKTexture(imageNamed:"German_Shepherd_Dead")
         self.physicsBody?.categoryBitMask = PhysicsCategory.None.rawValue
         
         var group:SKAction
