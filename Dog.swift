@@ -99,8 +99,7 @@ class Dog: MoveableObstacle, ObstacleCreate {
         let runDir = SKAction.moveTo(x:orientation*(Size.width/2 + self.size.width), duration: dur*0.25)
         let moveAction = SKAction.moveTo(y: -Size.height/2 - self.size.height, duration: dur/2)
         let runAction = SKAction.group([runAway,runDir,moveAction])
-        let removeAction = SKAction.removeFromParent()
-        self.run(SKAction.sequence([runAction,removeAction]))
+        self.run(SKAction.sequence([runAction,removeNodeAction]))
 
     }
 }

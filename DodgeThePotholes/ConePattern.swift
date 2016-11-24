@@ -14,7 +14,7 @@ import GameplayKit
 
 class ConePattern:SKNode {
     
-    var patterns = ["cone_pattern1"]
+    var patterns = ["cone_pattern1","cone_pattern2"]
     var minRows = 9 // Hardcoded value. No pattern will be less that 9 rows, yet....
     var NumColumns:Int!
     var NumRows:Int!
@@ -36,11 +36,6 @@ class ConePattern:SKNode {
         self.size = CGSize(width: 0, height: 0)
         super.init()
         var array:[[Int]]!
-        let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),
-                                        highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width))
-        let randN = CGFloat(rand.nextInt())
-        
-        
         
         DispatchQueue.global(qos: .background).async {
             print("This is run on the background queue")
@@ -51,6 +46,9 @@ class ConePattern:SKNode {
             self.cones = Array2D<Cone>(columns: self.NumColumns, rows: self.NumRows)
             self.size = CGSize(width: self.tileWidth*self.NumColumns,
                                height: self.tileHeight*self.NumRows)
+            let rand = GKRandomDistribution(lowestValue: Int(scene.size.width*coneRange.low.rawValue),
+                                            highestValue: Int(scene.size.width*coneRange.high.rawValue) - Int(self.size.width))
+            let randN = CGFloat(rand.nextInt())
             
             DispatchQueue.main.async {
                 print("This is run on the main queue, after the previous code in outer block")

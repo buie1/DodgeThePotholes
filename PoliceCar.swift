@@ -64,8 +64,7 @@ class policeCar: SKSpriteNode, ObstacleCreate {
         }else{
             group = SKAction.group([flash,moveAction])
         }        
-        let removeAction = SKAction.removeFromParent()
-        self.run(SKAction.sequence([group,removeAction]))
+        self.run(SKAction.sequence([group,removeNodeAction]))
     }
     
 }

@@ -35,7 +35,7 @@ enum PhysicsCategory:UInt32 {
 // MARK: Ranges for Object generation
 enum coneRange: CGFloat {
     case low = -0.375
-    case high = 0.375
+    case high = 0.25
 }
 
 enum obstacleType {
@@ -75,10 +75,12 @@ let pauseForObstacles = SKAction.wait(forDuration: 10)
 let flyIn = SKAction.moveTo(x: 0, duration: 1.5)
 let pauseForAlert = SKAction.wait(forDuration: 1)
 let flyOut = SKAction.moveTo(x: 1000, duration: 1.5)
-let flyAction = SKAction.group([flyIn,pauseForAlert,flyOut])
+let flyAction = SKAction.sequence([flyIn,pauseForAlert,flyOut])
 
 let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
                                   SKAction.fadeIn(withDuration: 0.3)])
 let flashAction = SKAction.repeat(flashAct, count: 4)
+let removeNodeAction = SKAction.removeFromParent()
+
 
 

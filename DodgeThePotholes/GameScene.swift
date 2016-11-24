@@ -197,12 +197,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addConePattern(){
         self.gameTimer.invalidate()
         let alertLabel = SKLabelNode(text: "Traffic Zone Approaching!")
-        alertLabel.position = CGPoint(x:self.size.width*2, y:0)
-        alertLabel.run(flyAction)
+        alertLabel.fontName = "PressStart2P"
+        alertLabel.fontSize = 24
+        alertLabel.fontColor = UIColor.red
+        alertLabel.position = CGPoint(x:self.size.width, y:0)
+        self.addChild(alertLabel)
+        alertLabel.run(SKAction.sequence([SKAction.group([flashAction,flyAction]),removeNodeAction]))
         
         let alertSign = SKSpriteNode(imageNamed: "alert")
-        alertSign.position = CGPoint(x: 0, y: self.size.height - alertSign.size.height/2)
-        alertSign.run(flashAction)        
+        alertSign.position = CGPoint(x: 0, y: self.size.height/2 - alertSign.size.height)
+        alertSign.size = CGSize(width: alertSign.size.width*3, height: alertSign.size.height*3)
+        self.addChild(alertSign)
+        alertSign.run(SKAction.sequence([flashAction,removeNodeAction]))
         
         _ = ConePattern(scene: self, duration: TimeInterval(self.gameSpeed))
         let resumeGameTimer = SKAction.run {

@@ -40,8 +40,7 @@ class Cone:SKSpriteNode {
         let y =  row * tileHeight + tileHeight/2
         let yPos = Int(-size.height/2) + Int(-pattern.height/2) - y
         let moveAction = SKAction.moveTo(y: CGFloat(yPos), duration: dur)
-        let removeAction = SKAction.removeFromParent()
-        self.run(SKAction.sequence([moveAction,removeAction]))
+        self.run(SKAction.sequence([moveAction,removeNodeAction]))
     }
     
 }
