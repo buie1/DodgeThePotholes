@@ -86,7 +86,7 @@ class Human: MoveableObstacle, ObstacleCreate {
         
         let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
         let moveAction = SKAction.moveTo(y: -size.height - self.size.height, duration: dur)
-        let runDir = SKAction.moveTo(x: orientation*(size.width/4), duration: dur*0.75)
+        let runDir = SKAction.moveTo(x: orientation*(size.width/8), duration: dur*0.5)
         // Add barking sounds
         let runGroup = SKAction.group([run,runDir,moveAction])
         

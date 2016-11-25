@@ -238,15 +238,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
+            print("pothole obstacle")
             addPothole()
             break
         case "police":
+            print("police obstacle")
             addPolice()
             break
         case "dog":
+            print("dog obstacle")
             addDog()
             break
         case "car":
+            print("car obstacle")
             addCars()
             break
         case "coin":
@@ -256,9 +260,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addConePattern()
             break
         case "human":
+            print("human obstacle")
             addHuman()
             break
         case "ambulance":
+            print("ambulance obstacle")
             addAmbulance()
             break
         default:

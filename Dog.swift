@@ -83,7 +83,7 @@ class Dog: MoveableObstacle, ObstacleCreate {
         
         let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
         let moveAction = SKAction.moveTo(y: -size.height - self.size.height, duration: dur)
-        let runDir = SKAction.moveTo(x: 0, duration: dur*0.75)
+        let runDir = SKAction.moveTo(x: 0, duration: dur*0.6)
         // Add barking sounds
         let runGroup = SKAction.group([run,runDir,moveAction])
         
