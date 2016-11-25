@@ -48,9 +48,8 @@ class Dog: MoveableObstacle, ObstacleCreate {
         } else{
             orientation = 1
         }
-        self.position = CGPoint(x: orientation*(size.width*0.375 - self.size.width/2), y: size.height/2 + self.size.height)
+        self.position = CGPoint(x: orientation*(size.width*0.375 + self.size.width/2), y: size.height/2 + self.size.height/2)
         self.xScale = fabs(self.xScale) * orientation
-        //self.position = CGPoint(x:CGFloat(rand.nextInt()),y:size.height/2 + self.size.height/2)
     }
     
     func initPhysicsBody(){
@@ -83,7 +82,7 @@ class Dog: MoveableObstacle, ObstacleCreate {
     func begin(_ size:CGSize, _ dur: TimeInterval){
         
         let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
-        let moveAction = SKAction.moveTo(y: -size.height /*- self.size.height*/, duration: dur)
+        let moveAction = SKAction.moveTo(y: -size.height - self.size.height, duration: dur)
         let runDir = SKAction.moveTo(x: 0, duration: dur*0.75)
         // Add barking sounds
         let runGroup = SKAction.group([run,runDir,moveAction])

@@ -24,7 +24,7 @@ class Human: MoveableObstacle, ObstacleCreate {
             textureArray.append(SKTexture(imageNamed: name))
         }
         
-        super.init(texture: SKTexture(imageNamed:"old_man_walk_0"), color: UIColor.clear, size: CGSize(width :60/2, height:60))
+        super.init(texture: SKTexture(imageNamed:"old_man_walk_0"), color: UIColor.clear, size: CGSize(width :80/2, height:80))
         self.name = "human"
         generatePosition(size)
         initPhysicsBody()
@@ -46,7 +46,7 @@ class Human: MoveableObstacle, ObstacleCreate {
         } else{
             orientation = 1
         }
-        self.position = CGPoint(x: orientation*(size.width/2), y: size.height/2 + self.size.height)
+        self.position = CGPoint(x: orientation*(size.width/2), y: size.height/2 + self.size.height/2)
         self.xScale = fabs(self.xScale) * orientation
         //self.position = CGPoint(x:CGFloat(rand.nextInt()),y:size.height/2 + self.size.height/2)
     }
