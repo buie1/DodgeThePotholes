@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog","coin", "human","ambulance","cone"]
+    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -185,6 +185,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(amb)
     }
     
+    func addCars(){
+        let c = MovingCar(size:self.size, duration:TimeInterval(gameSpeed))
+        self.addChild(c)
+    }
+    
     func addPolice(){
         let police = policeCar(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(police)
@@ -198,7 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameTimer.invalidate()
         let alertLabel = SKLabelNode(text: "Traffic Zone Approaching!")
         alertLabel.fontName = "PressStart2P"
-        alertLabel.fontSize = 24
+        alertLabel.fontSize = 28
         alertLabel.fontColor = UIColor.red
         alertLabel.position = CGPoint(x:self.size.width, y:0)
         self.addChild(alertLabel)
@@ -240,6 +245,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         case "dog":
             addDog()
+            break
+        case "car":
+            addCars()
             break
         case "coin":
             addCoinPattern()

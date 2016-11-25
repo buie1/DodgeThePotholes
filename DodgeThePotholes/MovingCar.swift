@@ -23,23 +23,23 @@ class MovingCar: SKSpriteNode, ObstacleCreate{
         var possibleCars = ["taxi","truck","sedan"]
         possibleCars = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleCars) as! [String]
         
-        super.init(texture: textureArray[0], color: UIColor.clear , size: CGSize(width: 125/2, height: 125))
+        super.init(texture: SKTexture(imageNamed: "\(possibleCars[0])"), color: UIColor.clear , size: CGSize(width: 125/2, height: 125))
         let rand1 = arc4random_uniform(2)
         if rand1 == 0{
             dir = "left"
-            startPos = CGPoint(x: self.size.width/2, y: size.height/2 + self.size.height/2)
-            endPos = CGPoint(x: 3 * self.size.width/2, y: size.height/2 + self.size.height/2)
+            startPos = CGPoint(x: 0.3375 * size.width/2, y: size.height/2 + self.size.height/2)
+            endPos = CGPoint(x: 0.2 * size.width/2, y: -1 * (size.height/2 + self.size.height/2))
         } else{
             dir = "right"
-            startPos = CGPoint(x: 3 * self.size.width/2, y: size.height/2 + self.size.height/2)
-            endPos = CGPoint(x: self.size.width/2, y: size.height/2 + self.size.height/2)
+            startPos = CGPoint(x: 0.2 * size.width/2, y: size.height/2 + self.size.height/2)
+            endPos = CGPoint(x: 0.3375 * size.width/2, y: -1 * (size.height/2 + self.size.height/2))
         }
         
-        textureAtlas = SKTextureAtlas(named: "\(possibleCars[0])_\(dir)")
+        textureAtlas = SKTextureAtlas(named: "\(possibleCars[0])_\(dir!)")
         
         
         for i in 0..<textureAtlas.textureNames.count{
-            let name = "\(possibleCars[0])_\(dir)_\(i)"
+            let name = "\(possibleCars[0])_\(dir!)_\(i)"
             textureArray.append(SKTexture(imageNamed: name))
         }
         
