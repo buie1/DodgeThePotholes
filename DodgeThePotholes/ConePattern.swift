@@ -19,6 +19,7 @@ class ConePattern:SKNode {
     var NumColumns:Int!
     var NumRows:Int!
     var size:CGSize
+    var pauseTime:TimeInterval!
     
     // This will need to be dynamic
     let tileWidth = 40
@@ -34,6 +35,7 @@ class ConePattern:SKNode {
         NumRows = 0
         cones = Array2D<Cone>(columns: NumColumns, rows: NumRows)
         self.size = CGSize(width: 0, height: 0)
+        pauseTime = 20 * (Double(duration)/startGameSpeed)
         super.init()
         var array:[[Int]]!
         
@@ -108,6 +110,10 @@ class ConePattern:SKNode {
         let y =  row * tileHeight + tileHeight/2
         let yPos = Int(size.height/2) + Int(self.size.height/2) + y
         return CGPoint(x: xPos,y: yPos)
+    }
+    
+    func returnPauseTime()->TimeInterval{
+        return self.pauseTime
     }
     
 }

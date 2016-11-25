@@ -11,6 +11,10 @@ import UIKit
 import SpriteKit
 
 
+// MARK: Gameplay Constants
+
+let bgTimeInterval = 10.0
+let startGameSpeed = 2.0
 
 
 
@@ -71,11 +75,17 @@ let preferences = UserDefaults.standard
 // MARK: Animations
 
 
-let pauseForObstacles = SKAction.wait(forDuration: 10)
-let flyIn = SKAction.moveTo(x: 0, duration: 1.5)
-let pauseForAlert = SKAction.wait(forDuration: 1)
-let flyOut = SKAction.moveTo(x: 1000, duration: 1.5)
-let flyAction = SKAction.sequence([flyIn,pauseForAlert,flyOut])
+func pauseFunction(t:TimeInterval)->SKAction{
+    return SKAction.wait(forDuration: t)
+}
+
+
+func flyInFunction(t:TimeInterval)->SKAction{
+    let flyIn = SKAction.moveTo(x: 0, duration: t)
+    let pauseForAlert = SKAction.wait(forDuration: t)
+    let flyOut = SKAction.moveTo(x: -1000, duration: t)
+    return SKAction.sequence([flyIn,pauseForAlert,flyOut])
+}
 
 let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
                                   SKAction.fadeIn(withDuration: 0.3)])

@@ -28,6 +28,10 @@
 		2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */; };
 		2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */; };
 		2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */; };
+		2C4622151DE7B2D000956B94 /* Ambulance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4622141DE7B2D000956B94 /* Ambulance.swift */; };
+		2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622161DE7B32800956B94 /* ambulance_s.mp3 */; };
+		2C4622191DE7C01B00956B94 /* money.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622181DE7C01B00956B94 /* money.aiff */; };
+		2C46221B1DE7C58D00956B94 /* MovingCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46221A1DE7C58D00956B94 /* MovingCar.swift */; };
 		2C62C70C1DE55449002AD508 /* cone_pattern1_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C70B1DE55449002AD508 /* cone_pattern1_0.json */; };
 		2C62C70E1DE55459002AD508 /* cone_pattern1_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C70D1DE55459002AD508 /* cone_pattern1_1.json */; };
 		2C62C7101DE55460002AD508 /* cone_pattern1_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C62C70F1DE55460002AD508 /* cone_pattern1_2.json */; };
@@ -98,6 +102,10 @@
 		2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roadBackground.swift; sourceTree = "<group>"; };
+		2C4622141DE7B2D000956B94 /* Ambulance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ambulance.swift; sourceTree = "<group>"; };
+		2C4622161DE7B32800956B94 /* ambulance_s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambulance_s.mp3; sourceTree = "<group>"; };
+		2C4622181DE7C01B00956B94 /* money.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = money.aiff; sourceTree = "<group>"; };
+		2C46221A1DE7C58D00956B94 /* MovingCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingCar.swift; sourceTree = "<group>"; };
 		2C62C70B1DE55449002AD508 /* cone_pattern1_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_0.json; sourceTree = "<group>"; };
 		2C62C70D1DE55459002AD508 /* cone_pattern1_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_1.json; sourceTree = "<group>"; };
 		2C62C70F1DE55460002AD508 /* cone_pattern1_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern1_2.json; sourceTree = "<group>"; };
@@ -259,17 +267,19 @@
 		2C7CC3431DD136B600FE789A /* AudioFiles */ = {
 			isa = PBXGroup;
 			children = (
-				2C8B90D81DD50BF6001C944A /* carskid.wav */,
-				2C8B90D91DD50BF7001C944A /* police_s.wav */,
-				2C8B90DC1DD516C3001C944A /* car_honk.mp3 */,
-				2CB7A55D1DD19F7A0029B800 /* start.wav */,
-				CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */,
-				CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */,
-				CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */,
-				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
-				2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */,
+				2C4622161DE7B32800956B94 /* ambulance_s.mp3 */,
 				2C7CC3441DD1377400FE789A /* born-lucky.wav */,
+				2C8B90DC1DD516C3001C944A /* car_honk.mp3 */,
+				2C8B90D81DD50BF6001C944A /* carskid.wav */,
+				CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */,
 				2C1BFE4B1DD1061300ECBBB8 /* explosion.mp3 */,
+				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
+				2C4622181DE7C01B00956B94 /* money.aiff */,
+				CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */,
+				2C8B90D91DD50BF7001C944A /* police_s.wav */,
+				CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */,
+				2CB7A55D1DD19F7A0029B800 /* start.wav */,
+				2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */,
 			);
 			name = AudioFiles;
 			sourceTree = "<group>";
@@ -305,6 +315,8 @@
 		2CB7A5651DD262D40029B800 /* Obstacle Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2C4622141DE7B2D000956B94 /* Ambulance.swift */,
+				2C46221A1DE7C58D00956B94 /* MovingCar.swift */,
 				2C0CE6F71DDD1CF300273099 /* ConePattern.swift */,
 				CA5C1C891DE4B223005EBFB1 /* Human.swift */,
 				CAC19F6B1DD28456007A7197 /* Pothole.swift */,
@@ -451,10 +463,12 @@
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
 				2C62C7121DE5546B002AD508 /* cone_pattern1_3.json in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
+				2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */,
 				EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */,
 				2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
+				2C4622191DE7C01B00956B94 /* money.aiff in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
 				2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */,
 				2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */,
@@ -499,6 +513,7 @@
 			files = (
 				2CDEC3A91DD656F800D010DB /* Coin.swift in Sources */,
 				2CDEC3A71DD6536B00D010DB /* Array2D.swift in Sources */,
+				2C4622151DE7B2D000956B94 /* Ambulance.swift in Sources */,
 				EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */,
 				2C8B90DF1DD54950001C944A /* Player.swift in Sources */,
 				2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */,
@@ -518,6 +533,7 @@
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
+				2C46221B1DE7C58D00956B94 /* MovingCar.swift in Sources */,
 				EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */,
 				54FB84171DD58E1E00AFBF7C /* GameOverScene.swift in Sources */,
 			);

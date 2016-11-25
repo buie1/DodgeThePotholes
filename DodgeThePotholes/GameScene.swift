@@ -16,13 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: -Temporary Booleans for TESTING
     let music:Bool = preferences.bool(forKey: "music")
-    let noWrap:Bool = true
-    
-    
-    let backgroundQueue = DispatchQueue(label: "com.app.queue",
-                                        qos: .background,
-                                        target: nil)
-    
+    let noWrap:Bool = true    
     
     var player:Player!
     var gameTimer:Timer!
@@ -45,12 +39,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog","coin","cone", "human"]
+    var possibleObstacles = ["pothole", "police","dog","coin", "human","ambulance","cone"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
     
-    var gameSpeed: CGFloat = 2.0
+    var gameSpeed: CGFloat = CGFloat(startGameSpeed)
     
     
     
@@ -67,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg.start(duration: gameSpeed)
         
         // TIMER TO PERIODICALLY SPEED UP GAME
-        bgTimer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
+        bgTimer = Timer.scheduledTimer(timeInterval: bgTimeInterval, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
         
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
@@ -185,6 +179,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: Add Obstalces and Other GameplayItems to Screen
+    
+    func addAmbulance(){
+        let amb = Ambulance(size:self.size, duration:TimeInterval(gameSpeed))
+        self.addChild(amb)
+    }
+    
     func addPolice(){
         let police = policeCar(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(police)
@@ -202,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         alertLabel.fontColor = UIColor.red
         alertLabel.position = CGPoint(x:self.size.width, y:0)
         self.addChild(alertLabel)
-        alertLabel.run(SKAction.sequence([SKAction.group([flashAction,flyAction]),removeNodeAction]))
+        alertLabel.run(SKAction.sequence([flyInFunction(t: TimeInterval(Double(gameSpeed)/startGameSpeed)),removeNodeAction]))
         
         let alertSign = SKSpriteNode(imageNamed: "alert")
         alertSign.position = CGPoint(x: 0, y: self.size.height/2 - alertSign.size.height)
@@ -210,11 +210,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(alertSign)
         alertSign.run(SKAction.sequence([flashAction,removeNodeAction]))
         
-        _ = ConePattern(scene: self, duration: TimeInterval(self.gameSpeed))
+        let conePat = ConePattern(scene: self, duration: TimeInterval(self.gameSpeed))
         let resumeGameTimer = SKAction.run {
             self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
         }
-        self.run(SKAction.sequence([pauseForObstacles,resumeGameTimer]))
+        self.run(SKAction.sequence([pauseFunction(t: conePat.returnPauseTime()),resumeGameTimer]))
     }
     func addDog(){
         let dog = Dog(size:self.frame.size, duration: TimeInterval(gameSpeed))
@@ -249,7 +249,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         case "human":
             addHuman()
-            break;
+            break
+        case "ambulance":
+            addAmbulance()
+            break
         default:
             addPothole()
             break
@@ -422,6 +425,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
+        if preferences.bool(forKey: "sfx") == true {
+            self.run(SKAction.playSoundFileNamed("money.aiff", waitForCompletion: false))
+        }
         self.money += 1
         preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
         preferences.synchronize()
@@ -468,13 +474,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg.zPosition = -1;
         
         if(gameSpeed > 0.2){
-        gameSpeed -= 0.1
-        bg.start(duration: gameSpeed)
-        print("current game speed is \n")
-        print(gameSpeed)
-        }
-        else{
-        bg.loopForever(duration: gameSpeed)
+            gameSpeed -= 0.1
+            bg.start(duration: gameSpeed)
+            print("current game speed is")
+            print(gameSpeed)
+        }else{
+            bg.loopForever(duration: gameSpeed)
         }
     }
  
