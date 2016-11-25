@@ -46,9 +46,8 @@ class Human: MoveableObstacle, ObstacleCreate {
         } else{
             orientation = 1
         }
-        self.position = CGPoint(x: orientation*(size.width/2), y: size.height/2 + self.size.height/2)
+        self.position = CGPoint(x: orientation*(size.width*0.375 + self.size.width/2), y: size.height/2 + self.size.height/2)
         self.xScale = fabs(self.xScale) * orientation
-        //self.position = CGPoint(x:CGFloat(rand.nextInt()),y:size.height/2 + self.size.height/2)
     }
     
     func initPhysicsBody(){
