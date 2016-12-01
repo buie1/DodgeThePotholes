@@ -7,12 +7,16 @@
 //
 
 import SpriteKit
+import FirebaseDatabase
+
 
 class Highscore: SKScene {
     
     var highscoreTitleLabelNode:SKLabelNode!
     var highscoreLabelNode:SKLabelNode!
     var backNode:SKSpriteNode!
+    var firebaseRef: FIRDatabaseReference!
+    var leaders: NSDictionary!
     
     override func didMove(to view: SKView) {
         
@@ -24,6 +28,22 @@ class Highscore: SKScene {
         highscoreLabelNode.text = "\(preferences.value(forKey: "highscore") as! Int)"
 
         backNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
+        print("---------------------------------\n FirebaseReference \n---------------------\n")
+        
+        firebaseRef = FIRDatabase.database().reference(fromURL: "https://dodge-the-potholes-55009884.firebaseio.com/Leaderboard")
+        firebaseRef.observe(.value, with: { (snapshot) in
+            self.leaders = snapshot.value as! NSDictionary
+            print("!!!!CHILD COUNT: \(self.leaders)")
+            
+        })
+        firebaseRef.setValue(["cts20": 2016])
+        firebaseRef.observe(.value, with: { (snapshot) in
+            self.leaders = snapshot.value as! NSDictionary
+            print("!!!!CHILD COUNT: \(self.leaders)")
+            
+        })
+        
+        //print("\(leaderboard)")
         
     }
     
