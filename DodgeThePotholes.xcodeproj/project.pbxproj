@@ -58,6 +58,8 @@
 		CA473A501DE29D5D00F16DA5 /* dog_wimper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */; };
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
 		CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5C1C891DE4B223005EBFB1 /* Human.swift */; };
+		CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FE2041DF09CA400B2EC57 /* Plant.swift */; };
+		CA5FE2071DF0E2D200B2EC57 /* RAMPAGE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */; };
 		CA67CFB51DE54C9600DEB87A /* scream_in_pain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */; };
 		CA67CFB71DE54D2500DEB87A /* oh_my_god.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */; };
 		CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* Cone.swift */; };
@@ -126,6 +128,8 @@
 		CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_wimper.mp3; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CA5C1C891DE4B223005EBFB1 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		CA5FE2041DF09CA400B2EC57 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RAMPAGE.mp3; sourceTree = "<group>"; };
 		CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scream_in_pain.mp3; sourceTree = "<group>"; };
 		CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oh_my_god.mp3; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* Cone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cone.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				2C1BFE4B1DD1061300ECBBB8 /* explosion.mp3 */,
 				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
 				2C4622181DE7C01B00956B94 /* money.aiff */,
+				CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */,
 				CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */,
 				2C8B90D91DD50BF7001C944A /* police_s.wav */,
 				CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */,
@@ -306,6 +311,7 @@
 				CAC19F691DD27E9E007A7197 /* Cone.swift */,
 				2CB7A5631DD247F60029B800 /* PoliceCar.swift */,
 				2C8B90E21DD56856001C944A /* MoveableObstacle.swift */,
+				CA5FE2041DF09CA400B2EC57 /* Plant.swift */,
 			);
 			name = "Obstacle Classes";
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 				54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
+				CA5FE2071DF0E2D200B2EC57 /* RAMPAGE.mp3 in Resources */,
 				EE0813981DE25BC900860FDE /* Highscore.sks in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
 				EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */,
@@ -506,6 +513,7 @@
 				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,
 				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
+				CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
