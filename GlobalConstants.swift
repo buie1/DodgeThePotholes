@@ -98,7 +98,7 @@ func flyInFunction(t:TimeInterval)->SKAction{
 
 let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
                                   SKAction.fadeIn(withDuration: 0.3)])
-let flashAction = SKAction.repeat(flashAct, count: 4)
+let flashAction = SKAction.repeat(flashAct, count: 8)
 let removeNodeAction = SKAction.removeFromParent()
 
 

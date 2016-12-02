@@ -26,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: HUD Variables
     var scoreLabel:SKLabelNode!
     var moneyLabel:SKLabelNode!
+    var timerLabel:SKLabelNode!
     var livesArray:[SKSpriteNode]!
 
     var money:Int = 0 {
@@ -39,7 +40,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
+    var powerUpTime:Int = 15 {
+        didSet {
+            timerLabel.text = String(format: "Time: 00:%02d", powerUpTime)
+        }
+    }
+    
+    //var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
+    var possibleObstacles = ["wrap"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -61,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg.start(duration: gameSpeed)
         
         // TIMER TO PERIODICALLY SPEED UP GAME
-        var bgTimer = Timer.scheduledTimer(timeInterval: bgTimeInterval, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
+        bgTimer = Timer.scheduledTimer(timeInterval: bgTimeInterval, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
         
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
@@ -91,7 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view?.showsPhysics = true;
         
         
-        // MARK: - For score
+        // MARK: Set up HUD
         scoreLabel = SKLabelNode(text: "Score: 0")
         scoreLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60)
         scoreLabel.fontName = "PressStart2P"
@@ -100,7 +108,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = 0;
         self.addChild(scoreLabel)
         
-        // MARK: - For Money
         moneyLabel = SKLabelNode(text: "Money: \(preferences.value(forKey: "money"))")
         moneyLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*2)
         moneyLabel.fontName = "PressStart2P"
@@ -109,6 +116,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         money = 0
         self.addChild(moneyLabel)
         
+        timerLabel = SKLabelNode(text: "Time: \(powerUpTime)")
+        timerLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*3)
+        timerLabel.fontName = "PressStart2P"
+        timerLabel.fontSize = 24
+        timerLabel.fontColor = UIColor.yellow
+        timerLabel.isHidden = true
+        self.addChild(timerLabel)
         
         addLives()
 
@@ -234,6 +248,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
+    func addWrap(){
+        let powWrap = PowerupWrap(scene:self, duration:TimeInterval(self.gameSpeed))
+        self.addChild(powWrap)
+    }
+    
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
@@ -266,6 +285,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "ambulance":
             print("ambulance obstacle")
             addAmbulance()
+            break
+        case "wrap":
+            addWrap()
             break
         default:
             addPothole()
@@ -309,7 +331,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         
         hornArray.append(SKAction.move(to: CGPoint(x: player.position.x,
-                                                     y: /*self.frame.size.height +*/ hornNode.size.height),
+                                                   y: self.frame.size.height/4 + hornNode.size.height),
                                          duration: animationDuration))
         hornArray.append(SKAction.resize(toWidth: hornNode.size.width * 15, duration: animationDuration))
         let hornGroup = SKAction.group(hornArray)
@@ -380,12 +402,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         case PhysicsCategory.Car.rawValue | PhysicsCategory.Wrap.rawValue:
             print("Car hit a wrap powerup")
-            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
-                carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
-                              wrap: contact.bodyB.node as! SKSpriteNode)
-            }else{
-                carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
-                              wrap: contact.bodyA.node as! SKSpriteNode)
+            
+            if(!powerUps.wrap){
+                // if you can already wrap ignore it!
+                if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                    carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
+                                wrap: contact.bodyB.node as! PowerupWrap)
+                }else{
+                    carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
+                               wrap: contact.bodyA.node as! PowerupWrap)
+                }
             }
             
         default:
@@ -401,8 +427,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Collision Handlers
     
-    func carCanWrap(car:SKSpriteNode, wrap:SKSpriteNode){
-        print("Able to wrap Screen for 30 seconds?")
+    func carCanWrap(car:SKSpriteNode, wrap:PowerupWrap){
+        print("Able to wrap Screen for 15 seconds?")
+        wrap.removeFromParent()
+        powerUpTime = 15
+        wrap.timerStart(self,TimeInterval(self.gameSpeed))
+        print("wrap is true")
         powerUps.wrap = true
     }
     

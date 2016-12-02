@@ -11,12 +11,16 @@ import GameplayKit
 
 class PowerupWrap: SKSpriteNode {
     
-    init(size: CGSize, duration:TimeInterval){
+    var wrapTimer:Int = 15
+    var gameSK:GameScene!
+    
+    init(scene: GameScene, duration:TimeInterval){
+        gameSK = scene
         super.init(texture: SKTexture(imageNamed:"pow_wrap"), color: UIColor.clear, size: CGSize(width :40, height:40))
         self.name = "wrap"
-        generatePosition(size)
+        generatePosition(scene.size)
         initPhysicsBody()
-        begin(size,duration)
+        begin(scene,duration)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,10 +45,46 @@ class PowerupWrap: SKSpriteNode {
     }
     
     
-    func begin(_ size:CGSize, _ dur: TimeInterval){
-        let moveAction = SKAction.moveTo(y: -size.height/2 - self.size.height, duration: dur)
+    func begin(_ scene:GameScene, _ dur: TimeInterval){
+        let moveAction = SKAction.moveTo(y: -scene.size.height/2 - self.size.height, duration: dur)
         self.run(SKAction.sequence([moveAction,removeNodeAction]))
-        
+    }
+    
+    func timerStart(_ scene:GameScene, _ dur: TimeInterval){
+        var timer = Timer()
+        let show = SKAction.run {
+            scene.timerLabel.isHidden = false
+        }
+        let countdown = SKAction.run {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(PowerupWrap.countdown),
+                                     userInfo: nil,
+                                     repeats: true)
+            
+            
+            //scene.timerLabel.text = String(self.wrapTimer)
+        }
+        let seconds = SKAction.wait(forDuration: TimeInterval(self.wrapTimer + 1))
+        /*
+        let flash = SKAction.sequence([
+            SKAction.wait(forDuration: 10),
+            SKAction.group([SKAction.wait(forDuration: 5),flashAction])
+            ])
+        */
+        let hide = SKAction.run{
+            scene.timerLabel.isHidden = true
+            powerUps.wrap = false
+            timer.invalidate()
+            print("wrap is false")
+        }
+        scene.run(SKAction.sequence([
+            show,
+            SKAction.group([seconds,countdown]),
+            hide]))
+    }
+    
+    func countdown(){
+        gameSK.powerUpTime -= 1
     }
     
 }
