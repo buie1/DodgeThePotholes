@@ -65,6 +65,7 @@
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
 		EE0813981DE25BC900860FDE /* Highscore.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE0813971DE25BC900860FDE /* Highscore.sks */; };
 		EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0813991DE25BE200860FDE /* Highscore.swift */; };
+		EE6F9E2A1DF127DF006D1F05 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6F9E291DF127DF006D1F05 /* Alerts.swift */; };
 		EE8111C51DEFA24C00EF3573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE8111C41DEFA24C00EF3573 /* GoogleService-Info.plist */; };
 		EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353A61DD58586003ED2E4 /* AudioScene.sks */; };
 		EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353A71DD58586003ED2E4 /* AudioScene.swift */; };
@@ -137,6 +138,7 @@
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
 		EE0813971DE25BC900860FDE /* Highscore.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Highscore.sks; sourceTree = "<group>"; };
 		EE0813991DE25BE200860FDE /* Highscore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
+		EE6F9E291DF127DF006D1F05 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		EE8111C41DEFA24C00EF3573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE8353A61DD58586003ED2E4 /* AudioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AudioScene.sks; sourceTree = "<group>"; };
 		EE8353A71DD58586003ED2E4 /* AudioScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioScene.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				2C8B90D41DD27D01001C944A /* GlobalConstants.swift */,
 				2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */,
 				2CDEC3A61DD6536B00D010DB /* Array2D.swift */,
+				EE6F9E291DF127DF006D1F05 /* Alerts.swift */,
 				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
 				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
 				2C1BFE421DD104BE00ECBBB8 /* LaunchScreen.storyboard */,
@@ -566,6 +569,7 @@
 				2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */,
 				EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */,
 				2C8B90E31DD56856001C944A /* MoveableObstacle.swift in Sources */,
+				EE6F9E2A1DF127DF006D1F05 /* Alerts.swift in Sources */,
 				CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */,
 				2C1BFE3A1DD104BE00ECBBB8 /* GameScene.swift in Sources */,
 				2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */,

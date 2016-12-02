@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import SpriteKit
-
+import Firebase
 
 // MARK: Gameplay Constants
 
@@ -91,6 +91,8 @@ let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
                                   SKAction.fadeIn(withDuration: 0.3)])
 let flashAction = SKAction.repeat(flashAct, count: 4)
 let removeNodeAction = SKAction.removeFromParent()
+
+let leaderboardquery = FIRDatabase.database().reference(fromURL: "https://dodge-the-potholes-55009884.firebaseio.com/Leaderboard")
 
 
 

@@ -14,6 +14,18 @@ class Highscore: SKScene {
     
     var highscoreTitleLabelNode:SKLabelNode!
     var highscoreLabelNode:SKLabelNode!
+    
+    var firstLabel:SKLabelNode!
+    var secondLabel:SKLabelNode!
+    var thirdLabel:SKLabelNode!
+    var fourthLabel:SKLabelNode!
+    var fifthLabel:SKLabelNode!
+    var sixthLabel:SKLabelNode!
+    var seventhLabel:SKLabelNode!
+    var eighthLabel:SKLabelNode!
+    var ninethLabel:SKLabelNode!
+    var tenthLabel:SKLabelNode!
+    
     var backNode:SKSpriteNode!
     var firebaseRef: FIRDatabaseReference!
     
@@ -21,6 +33,29 @@ class Highscore: SKScene {
         
         highscoreTitleLabelNode = self.childNode(withName: "highscoreTitleLabel") as! SKLabelNode!
         highscoreTitleLabelNode.fontName = "PressStart2p"
+        
+        firstLabel = self.childNode(withName: "first") as! SKLabelNode!
+        firstLabel.fontName = "PressStart2p"
+        secondLabel = self.childNode(withName: "second") as! SKLabelNode!
+        secondLabel.fontName = "PressStart2p"
+        thirdLabel = self.childNode(withName: "third") as! SKLabelNode!
+        thirdLabel.fontName = "PressStart2p"
+        fourthLabel = self.childNode(withName: "fourth") as! SKLabelNode!
+        fourthLabel.fontName = "PressStart2p"
+        fifthLabel = self.childNode(withName: "fifth") as! SKLabelNode!
+        fifthLabel.fontName = "PressStart2p"
+        sixthLabel = self.childNode(withName: "sixth") as! SKLabelNode!
+        sixthLabel.fontName = "PressStart2p"
+        seventhLabel = self.childNode(withName: "seventh") as! SKLabelNode!
+        seventhLabel.fontName = "PressStart2p"
+        eighthLabel = self.childNode(withName: "eighth") as! SKLabelNode!
+        eighthLabel.fontName = "PressStart2p"
+        ninethLabel = self.childNode(withName: "nineth") as! SKLabelNode!
+        ninethLabel.fontName = "PressStart2p"
+        tenthLabel = self.childNode(withName: "tenth") as! SKLabelNode!
+        tenthLabel.fontName = "PressStart2p"
+        
+        var leaderboardScores = [firstLabel, secondLabel, thirdLabel, fourthLabel, fifthLabel, sixthLabel, seventhLabel, eighthLabel, ninethLabel, tenthLabel]
     
         highscoreLabelNode = self.childNode(withName: "highscoreLabel") as! SKLabelNode!
         highscoreLabelNode.fontName = "PressStart2p"
@@ -29,16 +64,35 @@ class Highscore: SKScene {
         backNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
         print("---------------------------------\n FirebaseReference \n---------------------\n")
         
-        firebaseRef = FIRDatabase.database().reference(fromURL: "https://dodge-the-potholes-55009884.firebaseio.com/Leaderboard")
 
-        let leaderboardquery = firebaseRef.queryLimited(toFirst: 100).queryOrderedByValue()
-        leaderboardquery.observe(.value, with: { snapshot in
-            var myDict = snapshot.value as! NSDictionary
+        
+        
+        //There is a better way to do this.....
+        leaderboardquery.queryOrderedByValue().observe(.value, with: { snapshot in
+            let myDict = snapshot.value as! NSDictionary
+            var unSorted = Array<Int>()
+            for (key, value) in myDict{
+                unSorted.append(value as! Int)
+            }
+            unSorted.sort{ return $0 > $1 }
+            
+            if unSorted.count < 10{
+                for index in 0...unSorted.count-1{
+                    print("\(unSorted[index])")
+                    print("\(myDict.allKeys(for: unSorted[index]))")
+                    leaderboardScores[index]!.text = "\(unSorted[index])" + "   \(myDict.allKeys(for: unSorted[index])[0])"
+                }
+            }
+            else{
+            for index in 0...4{
+                print("\(unSorted[index])")
+                print("\(myDict.allKeys(for: unSorted[index]))")
+                leaderboardScores[index]!.text = "\(unSorted[index])" + "   \(myDict.allKeys(for: unSorted[index])[0])"
+            }
+            }
+            
             print("\(myDict)")
         })
-        //let userscore = ("cts1992", 20)
-        //firebaseRef.child("1").setValue(userscore)
-
         
     }
     
