@@ -43,4 +43,5 @@ class Cone:SKSpriteNode {
         self.run(SKAction.sequence([moveAction,removeNodeAction]))
     }
     
+        
 }
