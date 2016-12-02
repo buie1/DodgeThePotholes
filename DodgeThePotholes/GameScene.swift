@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: -Temporary Booleans for TESTING
     let music:Bool = preferences.bool(forKey: "music")
-    let noWrap:Bool = true    
+    //let noWrap:Bool = true
     
     var player:Player!
     var gameTimer:Timer!
@@ -61,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg.start(duration: gameSpeed)
         
         // TIMER TO PERIODICALLY SPEED UP GAME
-        bgTimer = Timer.scheduledTimer(timeInterval: bgTimeInterval, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
+        var bgTimer = Timer.scheduledTimer(timeInterval: bgTimeInterval, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
         
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
@@ -378,6 +378,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode,
                               coin: contact.bodyA.node as! SKSpriteNode)
             }
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.Wrap.rawValue:
+            print("Car hit a wrap powerup")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
+                              wrap: contact.bodyB.node as! SKSpriteNode)
+            }else{
+                carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
+                              wrap: contact.bodyA.node as! SKSpriteNode)
+            }
             
         default:
             
@@ -391,6 +400,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: Collision Handlers
+    
+    func carCanWrap(car:SKSpriteNode, wrap:SKSpriteNode){
+        print("Able to wrap Screen for 30 seconds?")
+        powerUps.wrap = true
+    }
     
     func hornDidHitMoveableObstacle(horn:SKSpriteNode, obj:MoveableObstacle){
         
@@ -417,7 +431,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    //func carDidHitMoveableObstacle(car:Player, obj:SKSpriteNode){
     func carDidHitMoveableObstacle(car:Player, obj:MoveableObstacle){
         let name = obj.name
         switch name! {
@@ -456,7 +469,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didSimulatePhysics() {
         self.player.position.x += xAcceleration * 50
         
-        if noWrap{
+        if !powerUps.wrap{
             if player.position.x < -self.size.width/2 + player.frame.width/4 {
                 player.position = CGPoint(x: -self.size.width/2 + player.frame.width/4, y:player.position.y)
             }else if player.position.x > self.size.width/2 - player.frame.width/4{
@@ -474,7 +487,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        score += 1
+        score += (1 * powerUps.multiplier)
         
     }
     

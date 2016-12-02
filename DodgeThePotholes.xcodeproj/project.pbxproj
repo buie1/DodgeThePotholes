@@ -32,6 +32,8 @@
 		2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622161DE7B32800956B94 /* ambulance_s.mp3 */; };
 		2C4622191DE7C01B00956B94 /* money.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622181DE7C01B00956B94 /* money.aiff */; };
 		2C46221B1DE7C58D00956B94 /* MovingCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46221A1DE7C58D00956B94 /* MovingCar.swift */; };
+		2C79B8F41DF0FCE50067FFBD /* MultiplierPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */; };
+		2C79B8F61DF0FF980067FFBD /* PowerupWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */; };
 		2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3441DD1377400FE789A /* born-lucky.wav */; };
 		2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */; };
 		2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1AFF1DD7B5070042E002 /* Extensions.swift */; };
@@ -100,6 +102,8 @@
 		2C4622161DE7B32800956B94 /* ambulance_s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambulance_s.mp3; sourceTree = "<group>"; };
 		2C4622181DE7C01B00956B94 /* money.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = money.aiff; sourceTree = "<group>"; };
 		2C46221A1DE7C58D00956B94 /* MovingCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingCar.swift; sourceTree = "<group>"; };
+		2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplierPowerUp.swift; sourceTree = "<group>"; };
+		2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupWrap.swift; sourceTree = "<group>"; };
 		2C7CC3441DD1377400FE789A /* born-lucky.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "born-lucky.wav"; sourceTree = "<group>"; };
 		2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "hot-pursuit.wav"; sourceTree = "<group>"; };
 		2C8A1AFF1DD7B5070042E002 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
 				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
 				EE8353AA1DD58593003ED2E4 /* Settings Scene */,
+				2C79B8F21DF0FCBE0067FFBD /* PowerUps */,
 				EE8353A51DD5851E003ED2E4 /* Audio Scene */,
 				2CDEC3A21DD652F300D010DB /* JSON Files */,
 				EE8353AF1DD5862E003ED2E4 /* Car Scene */,
@@ -244,6 +249,15 @@
 				2C8A1AFF1DD7B5070042E002 /* Extensions.swift */,
 			);
 			name = SceneNodeClasses;
+			sourceTree = "<group>";
+		};
+		2C79B8F21DF0FCBE0067FFBD /* PowerUps */ = {
+			isa = PBXGroup;
+			children = (
+				2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */,
+				2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */,
+			);
+			name = PowerUps;
 			sourceTree = "<group>";
 		};
 		2C7CC3431DD136B600FE789A /* AudioFiles */ = {
@@ -502,6 +516,8 @@
 				2C1BFE3C1DD104BE00ECBBB8 /* GameViewController.swift in Sources */,
 				CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */,
 				CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */,
+				2C79B8F61DF0FF980067FFBD /* PowerupWrap.swift in Sources */,
+				2C79B8F41DF0FCE50067FFBD /* MultiplierPowerUp.swift in Sources */,
 				CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */,
 				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,
 				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,

@@ -30,6 +30,8 @@ enum PhysicsCategory:UInt32 {
     case Horn               = 0x4
     case Obstacle           = 0x8
     case MoveableObstacle   = 0x10
+    case Multiplier         = 0x20
+    case Wrap               = 0x40
     //case Invincible         = UniqueID
     //case Jump               = UniqueID
     //case BlackIce           = UniqueID
@@ -70,6 +72,13 @@ protocol ObstacleCreate {
 
 // MARK: User Preferences Reference
 let preferences = UserDefaults.standard
+
+
+struct powerUpStructure {
+    var multiplier = 1
+    var wrap:Bool = false
+}
+var powerUps = powerUpStructure()
 
 
 // MARK: Animations
