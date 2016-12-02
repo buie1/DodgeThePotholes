@@ -112,12 +112,20 @@ class Human: MoveableObstacle, ObstacleCreate {
             print("\(name) is jumping")
             textureArray.append(SKTexture(imageNamed: name))
         }
-        let scream = SKAction.playSoundFileNamed("oh_my_god.mp3", waitForCompletion: false)
+        
+        
         let runAway = SKAction.animate(with: textureArray, timePerFrame: 0.05)
+        var group:SKAction
         //let runAway = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.1), count: 10)
         let runDir = SKAction.moveTo(x:orientation*(Size.width/2 + self.size.width), duration: dur*0.25)
         let moveAction = SKAction.moveTo(y: -Size.height/2 - self.size.height, duration: dur/2)
-        let runAction = SKAction.group([runAway,runDir,moveAction, scream])
+        if preferences.bool(forKey: "sfx") == true {
+           let scream = SKAction.playSoundFileNamed("oh_my_god.mp3", waitForCompletion: false)
+            group = SKAction.group([runAway,runDir,moveAction, scream])
+        }else{
+            group =  SKAction.group([runAway,runDir,moveAction])
+        }
+        let runAction = SKAction.group([group])
         self.run(SKAction.sequence([runAction,removeNodeAction]))
         
     }
