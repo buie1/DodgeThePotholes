@@ -267,7 +267,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     func addObastacle(){
-        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
+        addHuman()
+        /*possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
             print("pothole obstacle")
@@ -305,7 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             addPothole()
             break
-        }
+        }*/
     }
 
     

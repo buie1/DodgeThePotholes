@@ -73,6 +73,12 @@ enum plant: CGFloat {
     case numplantsMax = 10
 }
 
+enum human: CGFloat {
+    //case low =
+    //case high =
+    case width = 40
+    case height = 80
+}
 
 
 // MARK: Protocols

@@ -29,7 +29,7 @@ class Human: MoveableObstacle, ObstacleCreate {
             textureArray.append(SKTexture(imageNamed: name))
         }
         
-        super.init(texture: SKTexture(imageNamed:"\(possibleHumans[0])_walk_0"), color: UIColor.clear, size: CGSize(width :80/2, height:80))
+        super.init(texture: SKTexture(imageNamed:"\(possibleHumans[0])_walk_0"), color: UIColor.clear, size: CGSize(width: human.width.rawValue, height:human.height.rawValue))
         self.name = "human"
         generatePosition(size)
         initPhysicsBody()
@@ -90,11 +90,13 @@ class Human: MoveableObstacle, ObstacleCreate {
     func begin(_ size:CGSize, _ dur: TimeInterval){
         
         let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
-        let moveAction = SKAction.moveTo(y: -size.height - self.size.height, duration: dur)
-        let runDir = SKAction.moveTo(x: orientation*(size.width/8), duration: dur*0.5)
-        // Add barking sounds
-        let runGroup = SKAction.group([run,runDir,moveAction])
+        let rand = GKRandomDistribution(lowestValue: 1,highestValue: 10).nextInt()
+        let randFloat = CGFloat(rand)
+        let runDir = SKAction.moveTo(x: orientation*(size.width/randFloat), duration: dur)
+        let moveAction = SKAction.moveTo(y: -size.height /*- self.size.height */, duration: dur)
+
         
+        let runGroup = SKAction.group([run,runDir,moveAction])
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([runGroup,removeAction]))
         
