@@ -16,7 +16,6 @@ class Highscore: SKScene {
     var highscoreLabelNode:SKLabelNode!
     var backNode:SKSpriteNode!
     var firebaseRef: FIRDatabaseReference!
-    var leaders: NSDictionary!
     
     override func didMove(to view: SKView) {
         
@@ -31,19 +30,15 @@ class Highscore: SKScene {
         print("---------------------------------\n FirebaseReference \n---------------------\n")
         
         firebaseRef = FIRDatabase.database().reference(fromURL: "https://dodge-the-potholes-55009884.firebaseio.com/Leaderboard")
-        firebaseRef.observe(.value, with: { (snapshot) in
-            self.leaders = snapshot.value as! NSDictionary
-            print("!!!!CHILD COUNT: \(self.leaders)")
-            
+
+        let leaderboardquery = firebaseRef.queryLimited(toFirst: 100).queryOrderedByValue()
+        leaderboardquery.observe(.value, with: { snapshot in
+            var myDict = snapshot.value as! NSDictionary
+            print("\(myDict)")
         })
-        firebaseRef.setValue(["cts20": 2016])
-        firebaseRef.observe(.value, with: { (snapshot) in
-            self.leaders = snapshot.value as! NSDictionary
-            print("!!!!CHILD COUNT: \(self.leaders)")
-            
-        })
-        
-        //print("\(leaderboard)")
+        //let userscore = ("cts1992", 20)
+        //firebaseRef.child("1").setValue(userscore)
+
         
     }
     
