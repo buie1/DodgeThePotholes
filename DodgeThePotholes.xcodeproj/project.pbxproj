@@ -57,15 +57,20 @@
 		2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEC3AA1DD65AE700D010DB /* CoinPattern.swift */; };
 		54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54FB84131DD58DC800AFBF7C /* GameOverScene.sks */; };
 		54FB84171DD58E1E00AFBF7C /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */; };
+		A79764D74B1672FA205A8AF0 /* Pods_DodgeThePotholes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBABEDF43AE1F71F5F9D95 /* Pods_DodgeThePotholes.framework */; };
 		CA473A501DE29D5D00F16DA5 /* dog_wimper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */; };
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
 		CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5C1C891DE4B223005EBFB1 /* Human.swift */; };
+		CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FE2041DF09CA400B2EC57 /* Plant.swift */; };
+		CA5FE2071DF0E2D200B2EC57 /* RAMPAGE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */; };
 		CA67CFB51DE54C9600DEB87A /* scream_in_pain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */; };
 		CA67CFB71DE54D2500DEB87A /* oh_my_god.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */; };
 		CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* Cone.swift */; };
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
 		EE0813981DE25BC900860FDE /* Highscore.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE0813971DE25BC900860FDE /* Highscore.sks */; };
 		EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0813991DE25BE200860FDE /* Highscore.swift */; };
+		EE6F9E2A1DF127DF006D1F05 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6F9E291DF127DF006D1F05 /* Alerts.swift */; };
+		EE8111C51DEFA24C00EF3573 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE8111C41DEFA24C00EF3573 /* GoogleService-Info.plist */; };
 		EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353A61DD58586003ED2E4 /* AudioScene.sks */; };
 		EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353A71DD58586003ED2E4 /* AudioScene.swift */; };
 		EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */; };
@@ -125,17 +130,24 @@
 		2CDEC3A61DD6536B00D010DB /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		2CDEC3A81DD656F800D010DB /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		2CDEC3AA1DD65AE700D010DB /* CoinPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinPattern.swift; sourceTree = "<group>"; };
+		3AEBABEDF43AE1F71F5F9D95 /* Pods_DodgeThePotholes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DodgeThePotholes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54FB84131DD58DC800AFBF7C /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		5EE660437CBED4DAB16B749E /* Pods-DodgeThePotholes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.debug.xcconfig"; sourceTree = "<group>"; };
+		83CDE68F2E3D6E81F593D7D1 /* Pods-DodgeThePotholes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.release.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.release.xcconfig"; sourceTree = "<group>"; };
 		CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_wimper.mp3; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CA5C1C891DE4B223005EBFB1 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
+		CA5FE2041DF09CA400B2EC57 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RAMPAGE.mp3; sourceTree = "<group>"; };
 		CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scream_in_pain.mp3; sourceTree = "<group>"; };
 		CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oh_my_god.mp3; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* Cone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
 		EE0813971DE25BC900860FDE /* Highscore.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Highscore.sks; sourceTree = "<group>"; };
 		EE0813991DE25BE200860FDE /* Highscore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
+		EE6F9E291DF127DF006D1F05 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		EE8111C41DEFA24C00EF3573 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE8353A61DD58586003ED2E4 /* AudioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AudioScene.sks; sourceTree = "<group>"; };
 		EE8353A71DD58586003ED2E4 /* AudioScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioScene.swift; sourceTree = "<group>"; };
 		EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsScene.sks; sourceTree = "<group>"; };
@@ -150,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8B90D31DD275D6001C944A /* GameKit.framework in Frameworks */,
+				A79764D74B1672FA205A8AF0 /* Pods_DodgeThePotholes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +184,7 @@
 				2C8B90D41DD27D01001C944A /* GlobalConstants.swift */,
 				2C1BFE331DD104BE00ECBBB8 /* AppDelegate.swift */,
 				2CDEC3A61DD6536B00D010DB /* Array2D.swift */,
+				EE6F9E291DF127DF006D1F05 /* Alerts.swift */,
 				2C1BFE3B1DD104BE00ECBBB8 /* GameViewController.swift */,
 				2C1BFE3D1DD104BE00ECBBB8 /* Main.storyboard */,
 				2C1BFE421DD104BE00ECBBB8 /* LaunchScreen.storyboard */,
@@ -202,9 +216,11 @@
 		2C1BFE271DD104BE00ECBBB8 = {
 			isa = PBXGroup;
 			children = (
+				EE8111C41DEFA24C00EF3573 /* GoogleService-Info.plist */,
 				2C1BFE321DD104BE00ECBBB8 /* DodgeThePotholes */,
 				2C1BFE311DD104BE00ECBBB8 /* Products */,
 				2C8B90D11DD275D6001C944A /* Frameworks */,
+				DE6741586FECC9A7F4DF61F1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -271,6 +287,7 @@
 				2C1BFE4B1DD1061300ECBBB8 /* explosion.mp3 */,
 				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
 				2C4622181DE7C01B00956B94 /* money.aiff */,
+				CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */,
 				CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */,
 				2C8B90D91DD50BF7001C944A /* police_s.wav */,
 				CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */,
@@ -284,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				2C8B90D21DD275D6001C944A /* GameKit.framework */,
+				3AEBABEDF43AE1F71F5F9D95 /* Pods_DodgeThePotholes.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -320,6 +338,7 @@
 				CAC19F691DD27E9E007A7197 /* Cone.swift */,
 				2CB7A5631DD247F60029B800 /* PoliceCar.swift */,
 				2C8B90E21DD56856001C944A /* MoveableObstacle.swift */,
+				CA5FE2041DF09CA400B2EC57 /* Plant.swift */,
 			);
 			name = "Obstacle Classes";
 			sourceTree = "<group>";
@@ -351,6 +370,15 @@
 				54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */,
 			);
 			name = "GameOver Scene";
+			sourceTree = "<group>";
+		};
+		DE6741586FECC9A7F4DF61F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5EE660437CBED4DAB16B749E /* Pods-DodgeThePotholes.debug.xcconfig */,
+				83CDE68F2E3D6E81F593D7D1 /* Pods-DodgeThePotholes.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		EE0813961DE25B9000860FDE /* Highscore Scene */ = {
@@ -396,9 +424,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C1BFE481DD104BE00ECBBB8 /* Build configuration list for PBXNativeTarget "DodgeThePotholes" */;
 			buildPhases = (
+				9DE658601B46CC798FFF357F /* [CP] Check Pods Manifest.lock */,
 				2C1BFE2C1DD104BE00ECBBB8 /* Sources */,
 				2C1BFE2D1DD104BE00ECBBB8 /* Frameworks */,
 				2C1BFE2E1DD104BE00ECBBB8 /* Resources */,
+				C8AAF98B461DA62A729C70BC /* [CP] Embed Pods Frameworks */,
+				153A60938BC08650BE435E85 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -486,15 +517,65 @@
 				54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
+				CA5FE2071DF0E2D200B2EC57 /* RAMPAGE.mp3 in Resources */,
 				EE0813981DE25BC900860FDE /* Highscore.sks in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
 				EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */,
+				EE8111C51DEFA24C00EF3573 /* GoogleService-Info.plist in Resources */,
 				CA67CFB51DE54C9600DEB87A /* scream_in_pain.mp3 in Resources */,
 				2C0CE6FE1DDD462D00273099 /* money_pattern1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		153A60938BC08650BE435E85 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DE658601B46CC798FFF357F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C8AAF98B461DA62A729C70BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C1BFE2C1DD104BE00ECBBB8 /* Sources */ = {
@@ -509,6 +590,7 @@
 				2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */,
 				EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */,
 				2C8B90E31DD56856001C944A /* MoveableObstacle.swift in Sources */,
+				EE6F9E2A1DF127DF006D1F05 /* Alerts.swift in Sources */,
 				CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */,
 				2C1BFE3A1DD104BE00ECBBB8 /* GameScene.swift in Sources */,
 				2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */,
@@ -522,6 +604,7 @@
 				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,
 				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
+				CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
@@ -650,6 +733,7 @@
 		};
 		2C1BFE491DD104BE00ECBBB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EE660437CBED4DAB16B749E /* Pods-DodgeThePotholes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U6J58C8CJT;
@@ -663,6 +747,7 @@
 		};
 		2C1BFE4A1DD104BE00ECBBB8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83CDE68F2E3D6E81F593D7D1 /* Pods-DodgeThePotholes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U6J58C8CJT;

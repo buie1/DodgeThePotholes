@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameOverScene: SKScene{
+class GameOverScene: SKScene, Alerts{
     
     var score:Int = 0
     var gameOverLabelNode:SKLabelNode!
@@ -17,6 +17,8 @@ class GameOverScene: SKScene{
     var mainMenuButtonNode:SKSpriteNode!
     var moneyLabelNode:SKLabelNode!
     var highscoreLabelNode:SKLabelNode!
+    
+    var submissionName:String!
     
     var money = 0
     var previousHighscore = 0
@@ -43,14 +45,14 @@ class GameOverScene: SKScene{
         
         highscoreLabelNode = self.childNode(withName: "highscoreLabel") as! SKLabelNode!
         highscoreLabelNode.fontName = "PressStart2p"
-        
-        
+
         if previousHighscore < preferences.value(forKey: "highscore") as! Int{
             let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
                                             SKAction.fadeIn(withDuration: 0.3)])
             let flash = SKAction.repeat(flashAct, count: 30)
             highscoreLabelNode.run(flash)
             previousHighscore = preferences.value(forKey: "highscore") as! Int
+            showAlert(title: "New High Score!", message: "Insert 3 Characters")
         }
         else{
             highscoreLabelNode.isHidden = true

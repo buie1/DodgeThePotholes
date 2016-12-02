@@ -11,9 +11,16 @@ import GameplayKit
 
 class Pothole: SKSpriteNode, ObstacleCreate {
     
+    var possiblePotholes = ["pothole","pothole2"]
+
     
     init(size: CGSize, duration:TimeInterval){
-        super.init(texture: SKTexture(imageNamed:"pothole"), color: UIColor.clear, size: CGSize(width :40, height:40))
+        
+        
+        possiblePotholes = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possiblePotholes) as! [String]
+        super.init(texture: SKTexture(imageNamed:possiblePotholes[0]), color: UIColor.clear, size: CGSize(width :pothole.width.rawValue, height:pothole.height.rawValue))
+
+        
         self.name = "pothole"
         generatePosition(size)
         initPhysicsBody()

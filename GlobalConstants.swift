@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import SpriteKit
-
+import Firebase
 
 // MARK: Gameplay Constants
 
@@ -48,16 +48,29 @@ enum obstacleType {
     case pothole
     case trafficCone
     case dog
+    case plant
 }
 
 enum dog: CGFloat {
     case low = -1
     case high = 1
+    case height = 50
+    case width = 51
 }
 
 enum pothole: CGFloat {
     case low = -0.25
     case high = 0.25
+    case height = 65
+    case width = 66
+}
+
+enum plant: CGFloat {
+    case low = 0.4375
+    case height = 100
+    case width = 101
+    case numPlantsMin = 0
+    case numplantsMax = 10
 }
 
 
@@ -100,6 +113,8 @@ let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
                                   SKAction.fadeIn(withDuration: 0.3)])
 let flashAction = SKAction.repeat(flashAct, count: 8)
 let removeNodeAction = SKAction.removeFromParent()
+
+let leaderboardquery = FIRDatabase.database().reference(fromURL: "https://dodge-the-potholes-55009884.firebaseio.com/Leaderboard")
 
 
 

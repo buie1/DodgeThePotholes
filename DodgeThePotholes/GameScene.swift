@@ -21,6 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player:Player!
     var gameTimer:Timer!
     var bgTimer:Timer!
+    var envTimer:Timer!
 
     
     // MARK: HUD Variables
@@ -134,6 +135,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("run game timer")
         gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
         
+        envTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.addEnvObstacle), userInfo: nil, repeats: true)
+        
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -185,6 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // In order to stop the game from playing before game over scene
             bgTimer.invalidate()
             gameTimer.invalidate()
+            envTimer.invalidate()
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
@@ -243,16 +247,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let human = Human(size:self.frame.size, duration: TimeInterval(gameSpeed))
         self.addChild(human)
     }
+    func addPlant(){
+        //self.gameTimer.invalidate()
+        let plant = Plant(size:self.frame.size, duration: TimeInterval(gameSpeed))
+        self.addChild(plant)
+    }
     func addCoinPattern(){
         _ = CoinPattern(scene:self, duration:TimeInterval(self.gameSpeed))
 
     }
-    
     func addWrap(){
         let powWrap = PowerupWrap(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powWrap)
     }
-    
+    func addEnvObstacle(){
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 3)
+        if (rand.nextInt()  >= 2){
+            self.addPlant()
+        }
+    }
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
