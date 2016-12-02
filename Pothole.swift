@@ -13,7 +13,7 @@ class Pothole: SKSpriteNode, ObstacleCreate {
     
     
     init(size: CGSize, duration:TimeInterval){
-        super.init(texture: SKTexture(imageNamed:"pothole1"), color: UIColor.clear, size: CGSize(width :40, height:40))
+        super.init(texture: SKTexture(imageNamed:"pothole"), color: UIColor.clear, size: CGSize(width :40, height:40))
         self.name = "pothole"
         generatePosition(size)
         initPhysicsBody()

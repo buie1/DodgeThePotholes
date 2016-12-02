@@ -17,14 +17,19 @@ class Human: MoveableObstacle, ObstacleCreate {
     
     var orientation: CGFloat = 1
     
+    var possibleHumans = ["old_man","buff_guy"]
+    
     init(size: CGSize, duration:TimeInterval){
         
+        possibleHumans = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleHumans) as! [String]
+        textureAtlas = SKTextureAtlas(named: "\(possibleHumans[0])_walk")
         for i in 0...textureAtlas.textureNames.count-1{
-            let name = "old_man_walk_\(i)"
+            //let name = "old_man_walk_\(i)"
+             let name = "\(possibleHumans[0])_walk_\(i)"
             textureArray.append(SKTexture(imageNamed: name))
         }
         
-        super.init(texture: SKTexture(imageNamed:"old_man_walk_0"), color: UIColor.clear, size: CGSize(width :80/2, height:80))
+        super.init(texture: SKTexture(imageNamed:"\(possibleHumans[0])_walk_0"), color: UIColor.clear, size: CGSize(width :80/2, height:80))
         self.name = "human"
         generatePosition(size)
         initPhysicsBody()
@@ -98,8 +103,11 @@ class Human: MoveableObstacle, ObstacleCreate {
     override func runAway(_ Size:CGSize, _ dur: TimeInterval){
         self.xScale = -1*orientation
         textureArray.removeAll()
+        textureAtlas = SKTextureAtlas(named: "\(possibleHumans[0])_jump")
         for i in 0...textureAtlas.textureNames.count-1{
-            let name = "old_man_jump_0\(i)"
+            //let name = "old_man_jump_0\(i)"
+            let name = "\(possibleHumans[0])_jump_\(i)"
+            print("\(name) is jumping")
             textureArray.append(SKTexture(imageNamed: name))
         }
         let scream = SKAction.playSoundFileNamed("oh_my_god.mp3", waitForCompletion: false)
