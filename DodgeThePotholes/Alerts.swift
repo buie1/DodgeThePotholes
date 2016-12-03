@@ -16,31 +16,18 @@ extension Alerts where Self: GameOverScene {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addTextField()
         
-        let submitAction = UIAlertAction(title: "Submit", style: .cancel) { _ in
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
             print(alertController.textFields?.first?.text! ?? "scrub")
-            self.submissionName = alertController.textFields?.first?.text!
+            let indexStartOfText = alertController.textFields?.first?.text!.index((alertController.textFields?.first?.text!.startIndex)!, offsetBy: 3)
+            let first_three = alertController.textFields?.first?.text!.substring(to: indexStartOfText!)
+            self.submissionName = first_three! + "," + UIDevice.current.identifierForVendor!.uuidString
             leaderboardquery.child(self.submissionName).setValue(preferences.value(forKey: "highscore"))
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in}
         alertController.addAction(submitAction)
+        alertController.addAction(cancelAction)
         
         self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     
-    func showAlertWithSettings(title: String, message: String) {
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .cancel) { _ in }
-        alertController.addAction(okAction)
-        
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
-            
-            if let url = NSURL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.shared.openURL(url as URL)
-            }
-        }
-        alertController.addAction(settingsAction)
-        
-        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-    }
 }
