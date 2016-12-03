@@ -31,6 +31,8 @@
 		2C241F3A1DF370F0003ABD58 /* race_duel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C241F381DF370F0003ABD58 /* race_duel.wav */; };
 		2C241F3B1DF370F0003ABD58 /* urban_chase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C241F391DF370F0003ABD58 /* urban_chase.wav */; };
 		2C241F3D1DF37138003ABD58 /* catch_me.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C241F3C1DF37138003ABD58 /* catch_me.wav */; };
+		2C241F3F1DF38132003ABD58 /* cone_pattern3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C241F3E1DF38132003ABD58 /* cone_pattern3.json */; };
+		2C241F411DF38F7D003ABD58 /* Barricade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C241F401DF38F7D003ABD58 /* Barricade.swift */; };
 		2C4622151DE7B2D000956B94 /* Ambulance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4622141DE7B2D000956B94 /* Ambulance.swift */; };
 		2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622161DE7B32800956B94 /* ambulance_s.mp3 */; };
 		2C4622191DE7C01B00956B94 /* money.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622181DE7C01B00956B94 /* money.aiff */; };
@@ -110,6 +112,8 @@
 		2C241F381DF370F0003ABD58 /* race_duel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = race_duel.wav; sourceTree = "<group>"; };
 		2C241F391DF370F0003ABD58 /* urban_chase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = urban_chase.wav; sourceTree = "<group>"; };
 		2C241F3C1DF37138003ABD58 /* catch_me.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = catch_me.wav; sourceTree = "<group>"; };
+		2C241F3E1DF38132003ABD58 /* cone_pattern3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern3.json; sourceTree = "<group>"; };
+		2C241F401DF38F7D003ABD58 /* Barricade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barricade.swift; sourceTree = "<group>"; };
 		2C4622141DE7B2D000956B94 /* Ambulance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ambulance.swift; sourceTree = "<group>"; };
 		2C4622161DE7B32800956B94 /* ambulance_s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambulance_s.mp3; sourceTree = "<group>"; };
 		2C4622181DE7C01B00956B94 /* money.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = money.aiff; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			children = (
 				2C0CE6F91DDD424A00273099 /* cone_pattern1.json */,
 				2C0CE6FF1DDD463F00273099 /* cone_pattern2.json */,
+				2C241F3E1DF38132003ABD58 /* cone_pattern3.json */,
 			);
 			name = "Cone Patterns";
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				2C4622141DE7B2D000956B94 /* Ambulance.swift */,
 				2C46221A1DE7C58D00956B94 /* MovingCar.swift */,
 				2C0CE6F71DDD1CF300273099 /* ConePattern.swift */,
+				2C241F401DF38F7D003ABD58 /* Barricade.swift */,
 				CA5C1C891DE4B223005EBFB1 /* Human.swift */,
 				CAC19F6B1DD28456007A7197 /* Pothole.swift */,
 				CA5233961DD2C90C00D2F59D /* Dog.swift */,
@@ -520,6 +526,7 @@
 				2C1BFE501DD1061300ECBBB8 /* Explosion.sks in Resources */,
 				2C10601C1DD175FC00668D23 /* MenuScene.sks in Resources */,
 				EE8353B21DD58643003ED2E4 /* CarScene.sks in Resources */,
+				2C241F3F1DF38132003ABD58 /* cone_pattern3.json in Resources */,
 				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
 				2C0CE7001DDD463F00273099 /* cone_pattern2.json in Resources */,
 				2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */,
@@ -614,6 +621,7 @@
 				CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */,
 				CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */,
 				2C79B8F61DF0FF980067FFBD /* PowerupWrap.swift in Sources */,
+				2C241F411DF38F7D003ABD58 /* Barricade.swift in Sources */,
 				2C79B8F41DF0FCE50067FFBD /* MultiplierPowerUp.swift in Sources */,
 				CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */,
 				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,

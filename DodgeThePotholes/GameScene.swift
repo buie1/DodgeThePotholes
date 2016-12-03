@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
+    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone","wrap"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -286,7 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
-        case "pothole":
+        /*case "pothole":
             print("pothole obstacle")
             addPothole()
             break
@@ -305,9 +305,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "coin":
             addCoinPattern()
             break
-        case "cone":
-            addConePattern()
-            break
         case "human":
             print("human obstacle")
             addHuman()
@@ -318,6 +315,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         case "wrap":
             addWrap()
+            break 
+             */
+        case "cone":
+            addConePattern()
             break
         default:
             addPothole()
