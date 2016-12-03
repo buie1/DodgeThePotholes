@@ -74,22 +74,15 @@ class Highscore: SKScene {
             for (key, value) in myDict{
                 unSorted.append(value as! Int)
             }
+            if(unSorted.count != myDict.count){print("unSorted count != myDict count")}
             unSorted.sort{ return $0 > $1 }
             
-            if unSorted.count < 10{
-                for index in 0...unSorted.count-1{
-                    print("\(unSorted[index])")
-                    print("\(myDict.allKeys(for: unSorted[index]))")
-                    leaderboardScores[index]!.text = "\(unSorted[index])" + "   \(myDict.allKeys(for: unSorted[index])[0])"
-                }
-            }
-            else{
-            for index in 0...4{
+            for index in 0...9{
                 print("\(unSorted[index])")
                 print("\(myDict.allKeys(for: unSorted[index]))")
                 leaderboardScores[index]!.text = "\(unSorted[index])" + "   \(myDict.allKeys(for: unSorted[index])[0])"
             }
-            }
+           
             
             print("\(myDict)")
         })
