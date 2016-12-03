@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bgTimer:Timer!
     var envTimer:Timer!
     var powerUpTimer:Timer!
+    var monsterTruckTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
     
     // MARK: HUD Variables
@@ -193,6 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameTimer.invalidate()
             envTimer.invalidate()
             powerUpTimer.invalidate()
+            monsterTruckTimer.invalidate()
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
@@ -279,12 +281,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addWrap()
         }
     }
+    func addMonsterTruck(){
+        let powMonsterTruck = PowerupMosterTruck(scene:self, duration:TimeInterval(self.gameSpeed))
+        self.addChild(powMonsterTruck)
+    }
     func addOneUp(){
         let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powOneUp)
     }
     func addObastacle(){
-        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
+        addMonsterTruck()
+        /*possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
             print("pothole obstacle")
@@ -322,7 +329,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             addPothole()
             break
-        }
+        }*/
     }
 
     
@@ -446,7 +453,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.Car.rawValue | PhysicsCategory.OneUp.rawValue:
             print("Plus one Life!")
             carDidHitOneUp(car: contact.bodyA.node as! SKSpriteNode, oneup: contact.bodyB.node as! PowerupOneUp)
+            break
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.MonsterTruck.rawValue:
+            print ("You are now a MOOOONSTER TRUUUUUCK")
+            carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
             
+            break
             
         default:
             
@@ -494,7 +506,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    
+    func carDidHitStar(car: SKSpriteNode, star: PowerupMosterTruck){
+        //sdf
+        star.removeFromParent()
+        player.becomeMonsterTruck()
+        monsterTruckTimer = Timer.scheduledTimer(timeInterval: TimeInterval(GameTimers.MonsterTruck.rawValue), target: self, selector: #selector(self.becomeCar), userInfo: nil, repeats: false)
+    }
+    func becomeCar(){
+        player.becomeCar()
+        monsterTruckTimer.invalidate()
+    }
     func carDidHitObstacle(car:Player, obj:SKSpriteNode){
         let name = obj.name
         switch  name! {

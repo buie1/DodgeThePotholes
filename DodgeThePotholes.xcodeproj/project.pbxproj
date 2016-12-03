@@ -58,6 +58,7 @@
 		54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54FB84131DD58DC800AFBF7C /* GameOverScene.sks */; };
 		54FB84171DD58E1E00AFBF7C /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */; };
 		A79764D74B1672FA205A8AF0 /* Pods_DodgeThePotholes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBABEDF43AE1F71F5F9D95 /* Pods_DodgeThePotholes.framework */; };
+		CA0DB3081DF370A8001A6A37 /* PowerupMonsterTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0DB3071DF370A8001A6A37 /* PowerupMonsterTruck.swift */; };
 		CA473A501DE29D5D00F16DA5 /* dog_wimper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */; };
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
 		CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5C1C891DE4B223005EBFB1 /* Human.swift */; };
@@ -136,6 +137,7 @@
 		54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		5EE660437CBED4DAB16B749E /* Pods-DodgeThePotholes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.debug.xcconfig"; sourceTree = "<group>"; };
 		83CDE68F2E3D6E81F593D7D1 /* Pods-DodgeThePotholes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.release.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.release.xcconfig"; sourceTree = "<group>"; };
+		CA0DB3071DF370A8001A6A37 /* PowerupMonsterTruck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupMonsterTruck.swift; sourceTree = "<group>"; };
 		CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_wimper.mp3; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CA5C1C891DE4B223005EBFB1 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */,
 				2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */,
 				CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */,
+				CA0DB3071DF370A8001A6A37 /* PowerupMonsterTruck.swift */,
 			);
 			name = PowerUps;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */,
 				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,
 				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,
+				CA0DB3081DF370A8001A6A37 /* PowerupMonsterTruck.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
 				CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,

@@ -110,4 +110,11 @@ class Player: SKSpriteNode, ObstacleCreate {
         self.run(SKAction.sequence([hide,flashAction,restore]))
         
     }
+    
+    func becomeMonsterTruck(){
+        self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTruck.rawValue
+    }
+    func becomeCar(){
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+    }
 }

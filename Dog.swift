@@ -28,8 +28,6 @@ class Dog: MoveableObstacle, ObstacleCreate {
         self.name = "dog"
         generatePosition(size)
         initPhysicsBody()
-
-        
         begin(size,duration)
     }
     
@@ -76,8 +74,22 @@ class Dog: MoveableObstacle, ObstacleCreate {
         self.run(group)
     }
     
-    
     func begin(_ size:CGSize, _ dur: TimeInterval){
+        
+        let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
+        let rand = GKRandomDistribution(lowestValue: 1,highestValue: 10).nextInt()
+        let randFloat = CGFloat(rand)
+        let runDir = SKAction.moveTo(x: orientation*(size.width/randFloat), duration: dur)
+        let moveAction = SKAction.moveTo(y: -size.height /*- self.size.height */, duration: dur)
+        
+        
+        let runGroup = SKAction.group([run,runDir,moveAction])
+        let removeAction = SKAction.removeFromParent()
+        self.run(SKAction.sequence([runGroup,removeAction]))
+        
+    }
+    
+    /*func begin(_ size:CGSize, _ dur: TimeInterval){
         
         let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
         let moveAction = SKAction.moveTo(y: -size.height - self.size.height, duration: dur)
@@ -88,7 +100,7 @@ class Dog: MoveableObstacle, ObstacleCreate {
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([runGroup,removeAction]))
         
-    }
+    }*/
     
     override func runAway(_ Size:CGSize, _ dur: TimeInterval){
         self.xScale = -1*orientation
