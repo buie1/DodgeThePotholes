@@ -28,6 +28,9 @@
 		2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */; };
 		2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */; };
 		2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */; };
+		2C241F3A1DF370F0003ABD58 /* race_duel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C241F381DF370F0003ABD58 /* race_duel.wav */; };
+		2C241F3B1DF370F0003ABD58 /* urban_chase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C241F391DF370F0003ABD58 /* urban_chase.wav */; };
+		2C241F3D1DF37138003ABD58 /* catch_me.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C241F3C1DF37138003ABD58 /* catch_me.wav */; };
 		2C4622151DE7B2D000956B94 /* Ambulance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4622141DE7B2D000956B94 /* Ambulance.swift */; };
 		2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622161DE7B32800956B94 /* ambulance_s.mp3 */; };
 		2C4622191DE7C01B00956B94 /* money.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622181DE7C01B00956B94 /* money.aiff */; };
@@ -104,6 +107,9 @@
 		2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roadBackground.swift; sourceTree = "<group>"; };
+		2C241F381DF370F0003ABD58 /* race_duel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = race_duel.wav; sourceTree = "<group>"; };
+		2C241F391DF370F0003ABD58 /* urban_chase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = urban_chase.wav; sourceTree = "<group>"; };
+		2C241F3C1DF37138003ABD58 /* catch_me.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = catch_me.wav; sourceTree = "<group>"; };
 		2C4622141DE7B2D000956B94 /* Ambulance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ambulance.swift; sourceTree = "<group>"; };
 		2C4622161DE7B32800956B94 /* ambulance_s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambulance_s.mp3; sourceTree = "<group>"; };
 		2C4622181DE7C01B00956B94 /* money.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = money.aiff; sourceTree = "<group>"; };
@@ -282,6 +288,9 @@
 		2C7CC3431DD136B600FE789A /* AudioFiles */ = {
 			isa = PBXGroup;
 			children = (
+				2C241F381DF370F0003ABD58 /* race_duel.wav */,
+				2C241F391DF370F0003ABD58 /* urban_chase.wav */,
+				2C241F3C1DF37138003ABD58 /* catch_me.wav */,
 				2C4622161DE7B32800956B94 /* ambulance_s.mp3 */,
 				2C7CC3441DD1377400FE789A /* born-lucky.wav */,
 				2C8B90DC1DD516C3001C944A /* car_honk.mp3 */,
@@ -493,8 +502,10 @@
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
 				2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */,
+				2C241F3A1DF370F0003ABD58 /* race_duel.wav in Resources */,
 				EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */,
 				2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */,
+				2C241F3B1DF370F0003ABD58 /* urban_chase.wav in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
 				2C4622191DE7C01B00956B94 /* money.aiff in Resources */,
@@ -520,6 +531,7 @@
 				54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
+				2C241F3D1DF37138003ABD58 /* catch_me.wav in Resources */,
 				CA5FE2071DF0E2D200B2EC57 /* RAMPAGE.mp3 in Resources */,
 				EE0813981DE25BC900860FDE /* Highscore.sks in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
