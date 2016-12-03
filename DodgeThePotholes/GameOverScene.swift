@@ -49,7 +49,7 @@ class GameOverScene: SKScene, Alerts{
         if previousHighscore < preferences.value(forKey: "highscore") as! Int{
             let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
                                             SKAction.fadeIn(withDuration: 0.3)])
-            let flash = SKAction.repeat(flashAct, count: 30)
+            let flash = SKAction.repeat(flashAct, count: 100)
             highscoreLabelNode.run(flash)
             previousHighscore = preferences.value(forKey: "highscore") as! Int
             showAlert(title: "New High Score!", message: "Insert 3 Characters")

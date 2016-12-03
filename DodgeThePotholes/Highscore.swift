@@ -13,6 +13,7 @@ import FirebaseDatabase
 class Highscore: SKScene {
     
     var highscoreTitleLabelNode:SKLabelNode!
+    var leaderboardTitleLabelNode:SKLabelNode!
     var highscoreLabelNode:SKLabelNode!
     
     var firstLabel:SKLabelNode!
@@ -33,6 +34,9 @@ class Highscore: SKScene {
         
         highscoreTitleLabelNode = self.childNode(withName: "highscoreTitleLabel") as! SKLabelNode!
         highscoreTitleLabelNode.fontName = "PressStart2p"
+        
+        leaderboardTitleLabelNode = self.childNode(withName: "Leaderboard") as! SKLabelNode!
+        leaderboardTitleLabelNode.fontName = "PressStart2p"
         
         firstLabel = self.childNode(withName: "first") as! SKLabelNode!
         firstLabel.fontName = "PressStart2p"
@@ -71,7 +75,7 @@ class Highscore: SKScene {
         leaderboardquery.queryOrderedByValue().observe(.value, with: { snapshot in
             let myDict = snapshot.value as! NSDictionary
             var unSorted = Array<Int>()
-            for (key, value) in myDict{
+            for (_, value) in myDict{
                 unSorted.append(value as! Int)
             }
             if(unSorted.count != myDict.count){print("unSorted count != myDict count")}
@@ -80,10 +84,9 @@ class Highscore: SKScene {
             for index in 0...9{
                 print("\(unSorted[index])")
                 print("\(myDict.allKeys(for: unSorted[index]))")
-                leaderboardScores[index]!.text = "\(unSorted[index])" + "   \(myDict.allKeys(for: unSorted[index])[0])"
+                let indentifier = (myDict.allKeys(for: unSorted[index])[0] as AnyObject).components(separatedBy: ",")
+                leaderboardScores[index]!.text = "\(unSorted[index])" + "   \(indentifier[0])"
             }
-           
-            
             print("\(myDict)")
         })
         
