@@ -32,10 +32,16 @@ enum PhysicsCategory:UInt32 {
     case MoveableObstacle   = 0x10
     case Multiplier         = 0x20
     case Wrap               = 0x40
+    case OneUp              = 0x80
     //case Invincible         = UniqueID
     //case Jump               = UniqueID
     //case BlackIce           = UniqueID
     
+}
+
+enum GameSettings: Int {
+    case MaxLives       = 4
+    case BeginningLifeCount = 3
 }
 
 // MARK: Ranges for Object generation
@@ -73,6 +79,17 @@ enum plant: CGFloat {
     case numplantsMax = 10
 }
 
+enum human: CGFloat {
+    //case low =
+    //case high =
+    case width = 40
+    case height = 80
+}
+
+enum oneup: CGFloat {
+    case width = 50
+    case height = 51
+}
 
 
 // MARK: Protocols

@@ -67,6 +67,7 @@
 		CA67CFB71DE54D2500DEB87A /* oh_my_god.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */; };
 		CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* Cone.swift */; };
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
+		CAF9173F1DF226E600B4C499 /* PowerupOneUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */; };
 		EE0813981DE25BC900860FDE /* Highscore.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE0813971DE25BC900860FDE /* Highscore.sks */; };
 		EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0813991DE25BE200860FDE /* Highscore.swift */; };
 		EE6F9E2A1DF127DF006D1F05 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6F9E291DF127DF006D1F05 /* Alerts.swift */; };
@@ -144,6 +145,7 @@
 		CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oh_my_god.mp3; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* Cone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
+		CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupOneUp.swift; sourceTree = "<group>"; };
 		EE0813971DE25BC900860FDE /* Highscore.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Highscore.sks; sourceTree = "<group>"; };
 		EE0813991DE25BE200860FDE /* Highscore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
 		EE6F9E291DF127DF006D1F05 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */,
 				2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */,
+				CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */,
 			);
 			name = PowerUps;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
+				CAF9173F1DF226E600B4C499 /* PowerupOneUp.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
 				2C46221B1DE7C58D00956B94 /* MovingCar.swift in Sources */,
 				EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */,
@@ -739,7 +743,7 @@
 				DEVELOPMENT_TEAM = U6J58C8CJT;
 				INFOPLIST_FILE = DodgeThePotholes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.jab165.DodgeThePotholes;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DodgeThePotholes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -753,7 +757,7 @@
 				DEVELOPMENT_TEAM = U6J58C8CJT;
 				INFOPLIST_FILE = DodgeThePotholes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.jab165.DodgeThePotholes;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.DodgeThePotholes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

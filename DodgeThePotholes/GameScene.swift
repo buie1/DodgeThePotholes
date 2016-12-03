@@ -22,7 +22,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameTimer:Timer!
     var bgTimer:Timer!
     var envTimer:Timer!
-
+    var powerUpTimer:Timer!
+    var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
     
     // MARK: HUD Variables
     var scoreLabel:SKLabelNode!
@@ -47,8 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    //var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
-    var possibleObstacles = ["wrap"]
+    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -125,7 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timerLabel.isHidden = true
         self.addChild(timerLabel)
         
-        addLives()
+        addLivesDisplay(num_lives: self.lifeCount)
 
         
         // MARK: - GameTimer code
@@ -137,6 +137,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         envTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.addEnvObstacle), userInfo: nil, repeats: true)
         
+        powerUpTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.addPowerUp), userInfo: nil, repeats: true)
+       
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -152,14 +154,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     // MARK: Initialize Lives
-    func addLives (){
+    func addLivesDisplay (num_lives:Int){
         
         livesArray = [SKSpriteNode]()
         
-        for live in 1 ... 3 {
+        for live in 1 ... num_lives {
             let liveNode = SKSpriteNode(imageNamed: "wheel")
             liveNode.name = "live\(live)"
-            liveNode.position = CGPoint(x: self.frame.size.width/2 - 30 - CGFloat((4 - live)) * liveNode.size.width, y: self.frame.size.height/2 - 60)
+            liveNode.position = CGPoint(x: self.frame.size.width/2 - 40 - CGFloat((4 - live)) * liveNode.size.width, y: self.frame.size.height/2 - 60)
             liveNode.size = CGSize(width: 4*scoreLabel.frame.size.height, height: 4*scoreLabel.frame.size.height)
             self.addChild(liveNode)
             livesArray.append(liveNode)
@@ -171,6 +173,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if lifeNode != nil {
             lifeNode!.removeFromParent()
             self.livesArray.removeFirst()
+            self.lifeCount -= 1
         } else {
             print("Out of lives.  Cannot remove another life.")
         }
@@ -189,6 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bgTimer.invalidate()
             gameTimer.invalidate()
             envTimer.invalidate()
+            powerUpTimer.invalidate()
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
@@ -265,6 +269,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (rand.nextInt()  >= 2){
             self.addPlant()
         }
+    }
+    func addPowerUp(){
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 5)
+        if (rand.nextInt()  == 4){
+            self.addOneUp()
+        }
+        if(rand.nextInt() == 3){
+            addWrap()
+        }
+    }
+    func addOneUp(){
+        let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
+        self.addChild(powOneUp)
     }
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
@@ -426,6 +443,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                wrap: contact.bodyA.node as! PowerupWrap)
                 }
             }
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.OneUp.rawValue:
+            print("Plus one Life!")
+            carDidHitOneUp(car: contact.bodyA.node as! SKSpriteNode, oneup: contact.bodyB.node as! PowerupOneUp)
+            
             
         default:
             
@@ -459,6 +480,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func carDidHitOneUp(car: SKSpriteNode, oneup: PowerupOneUp){
+        print("added life!?")
+        
+        oneup.removeFromParent()
+        if self.lifeCount < 4 {
+            for life in 0...self.lifeCount-1 {
+                self.livesArray[life].removeFromParent()
+            }
+            self.lifeCount+=1
+            self.addLivesDisplay(num_lives: self.lifeCount)
+        }
+        
+        
+    }
     
     func carDidHitObstacle(car:Player, obj:SKSpriteNode){
         let name = obj.name

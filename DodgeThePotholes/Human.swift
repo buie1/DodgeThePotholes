@@ -29,7 +29,7 @@ class Human: MoveableObstacle, ObstacleCreate {
             textureArray.append(SKTexture(imageNamed: name))
         }
         
-        super.init(texture: SKTexture(imageNamed:"\(possibleHumans[0])_walk_0"), color: UIColor.clear, size: CGSize(width :80/2, height:80))
+        super.init(texture: SKTexture(imageNamed:"\(possibleHumans[0])_walk_0"), color: UIColor.clear, size: CGSize(width: human.width.rawValue, height:human.height.rawValue))
         self.name = "human"
         generatePosition(size)
         initPhysicsBody()
@@ -90,11 +90,13 @@ class Human: MoveableObstacle, ObstacleCreate {
     func begin(_ size:CGSize, _ dur: TimeInterval){
         
         let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
-        let moveAction = SKAction.moveTo(y: -size.height - self.size.height, duration: dur)
-        let runDir = SKAction.moveTo(x: orientation*(size.width/8), duration: dur*0.5)
-        // Add barking sounds
-        let runGroup = SKAction.group([run,runDir,moveAction])
+        let rand = GKRandomDistribution(lowestValue: 1,highestValue: 10).nextInt()
+        let randFloat = CGFloat(rand)
+        let runDir = SKAction.moveTo(x: orientation*(size.width/randFloat), duration: dur)
+        let moveAction = SKAction.moveTo(y: -size.height /*- self.size.height */, duration: dur)
+
         
+        let runGroup = SKAction.group([run,runDir,moveAction])
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([runGroup,removeAction]))
         
@@ -110,12 +112,20 @@ class Human: MoveableObstacle, ObstacleCreate {
             print("\(name) is jumping")
             textureArray.append(SKTexture(imageNamed: name))
         }
-        let scream = SKAction.playSoundFileNamed("oh_my_god.mp3", waitForCompletion: false)
+        
+        
         let runAway = SKAction.animate(with: textureArray, timePerFrame: 0.05)
+        var group:SKAction
         //let runAway = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.1), count: 10)
         let runDir = SKAction.moveTo(x:orientation*(Size.width/2 + self.size.width), duration: dur*0.25)
         let moveAction = SKAction.moveTo(y: -Size.height/2 - self.size.height, duration: dur/2)
-        let runAction = SKAction.group([runAway,runDir,moveAction, scream])
+        if preferences.bool(forKey: "sfx") == true {
+           let scream = SKAction.playSoundFileNamed("oh_my_god.mp3", waitForCompletion: false)
+            group = SKAction.group([runAway,runDir,moveAction, scream])
+        }else{
+            group =  SKAction.group([runAway,runDir,moveAction])
+        }
+        let runAction = SKAction.group([group])
         self.run(SKAction.sequence([runAction,removeNodeAction]))
         
     }
