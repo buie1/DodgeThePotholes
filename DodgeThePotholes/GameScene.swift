@@ -22,6 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameTimer:Timer!
     var bgTimer:Timer!
     var envTimer:Timer!
+    var powerUpTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
     
     // MARK: HUD Variables
@@ -47,8 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    //var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
-    var possibleObstacles = ["wrap"]
+    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -137,6 +137,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         envTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.addEnvObstacle), userInfo: nil, repeats: true)
         
+        powerUpTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.addPowerUp), userInfo: nil, repeats: true)
+       
         
         // MARK: Initialization for Motion Manage gyro (accelerometer)
         motionManager.accelerometerUpdateInterval = 0.2
@@ -190,6 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bgTimer.invalidate()
             gameTimer.invalidate()
             envTimer.invalidate()
+            powerUpTimer.invalidate()
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
@@ -267,13 +270,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addPlant()
         }
     }
+    func addPowerUp(){
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 5)
+        if (rand.nextInt()  == 4){
+            self.addOneUp()
+        }
+        if(rand.nextInt() == 3){
+            addWrap()
+        }
+    }
     func addOneUp(){
         let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powOneUp)
     }
     func addObastacle(){
-        addOneUp()
-        /*possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
+        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
             print("pothole obstacle")
@@ -311,7 +322,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             addPothole()
             break
-        }*/
+        }
     }
 
     
@@ -471,11 +482,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func carDidHitOneUp(car: SKSpriteNode, oneup: PowerupOneUp){
         print("added life!?")
-        for life in 0...self.lifeCount-1 {
-            self.livesArray[life].removeFromParent()
-        }
+        
         oneup.removeFromParent()
         if self.lifeCount < 4 {
+            for life in 0...self.lifeCount-1 {
+                self.livesArray[life].removeFromParent()
+            }
             self.lifeCount+=1
             self.addLivesDisplay(num_lives: self.lifeCount)
         }

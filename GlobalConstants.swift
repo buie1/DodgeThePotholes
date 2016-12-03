@@ -41,7 +41,7 @@ enum PhysicsCategory:UInt32 {
 
 enum GameSettings: Int {
     case MaxLives       = 4
-    case BeginningLifeCount
+    case BeginningLifeCount = 3
 }
 
 // MARK: Ranges for Object generation
