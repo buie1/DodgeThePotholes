@@ -11,7 +11,7 @@ import GameplayKit
 
 class Pothole: SKSpriteNode, ObstacleCreate {
     
-    var possiblePotholes = ["pothole","pothole2"]
+    var possiblePotholes = ["pothole1","pothole2"]
 
     
     init(size: CGSize, duration:TimeInterval){

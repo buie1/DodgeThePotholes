@@ -56,8 +56,11 @@ class Player: SKSpriteNode, ObstacleCreate {
         path.closeSubpath()
         self.physicsBody = SKPhysicsBody(polygonFrom: path)
         self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue | PhysicsCategory.MoveableObstacle.rawValue |
-            PhysicsCategory.Coin.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue |
+            PhysicsCategory.MoveableObstacle.rawValue |
+            PhysicsCategory.Coin.rawValue |
+            PhysicsCategory.Wrap.rawValue |
+            PhysicsCategory.Multiplier.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
     }
