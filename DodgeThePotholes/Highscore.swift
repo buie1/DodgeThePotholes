@@ -71,7 +71,7 @@ class Highscore: SKScene {
         leaderboardquery.queryOrderedByValue().observe(.value, with: { snapshot in
             let myDict = snapshot.value as! NSDictionary
             var unSorted = Array<Int>()
-            for (key, value) in myDict{
+            for (_, value) in myDict{
                 unSorted.append(value as! Int)
             }
             unSorted.sort{ return $0 > $1 }
