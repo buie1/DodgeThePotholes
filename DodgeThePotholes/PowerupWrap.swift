@@ -16,7 +16,7 @@ class PowerupWrap: SKSpriteNode {
     
     init(scene: GameScene, duration:TimeInterval){
         gameSK = scene
-        super.init(texture: SKTexture(imageNamed:"pow_wrap"), color: UIColor.clear, size: CGSize(width :40, height:40))
+        super.init(texture: SKTexture(imageNamed:"pow_wrap"), color: UIColor.clear, size: CGSize(width :50, height:50))
         self.name = "wrap"
         generatePosition(scene.size)
         initPhysicsBody()

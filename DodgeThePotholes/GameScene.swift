@@ -51,10 +51,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var possibleObstacles = ["pothole", "pothole", "pothole", "pothole", "pothole",
                                      "police", "police",
                                      "dog", "dog", "dog",
-                                     "coin", "coin", "coin", "coin",
-                                     "car", "car", "car",
+                                     "car", "car", "car","car",
                                      "human", "human", "human", "human",
-                                     "ambulance", "ambulance",
+                                     "ambulance", "ambulance","ambulance",
                                      "cone"]
     
     let motionManager = CMMotionManager()
@@ -85,8 +84,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // http://chrislanguage.blogspot.com/2015/02/fragment-shaders-with-spritekit.html
         // https://www.raywenderlich.com/70208/opengl-es-pixel-shaders-tutorial
         
-        //let shader = SKShader(fileNamed: "shader_water_movement.fsh")
-        //bg.shader = shader
         
         // Set up background Audio
         if music {
@@ -248,7 +245,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let resumeGameTimer = SKAction.run {
             self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
         }
-        print("pause time before next obstacle")
+        print("pause time before next obstacle: \(conePat.returnPauseTime())")
         self.run(SKAction.sequence([pauseFunction(t: conePat.returnPauseTime()),resumeGameTimer]))
     }
     func addDog(){
@@ -274,7 +271,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addMultiplier(){
-        
+        var val:Int!
+        let rand = arc4random_uniform(2)
+        if rand == 0{
+            val = 2
+        } else{
+            val = 3
+        }
+        let mult = MultiplierPowerUp(scene:self, duration:TimeInterval(self.gameSpeed), val:val)
+        self.addChild(mult)
     }
     
     func addEnvObstacle(){
@@ -289,10 +294,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let rand = GKRandomDistribution(lowestValue: 0,highestValue: 5)
         if (rand.nextInt()  == 4){
             self.addOneUp()
-        }
-        if(rand.nextInt() == 3){
+        }else if(rand.nextInt() == 3){
             addWrap()
+        }else if(rand.nextInt() == 2){
+            addMultiplier()
         }
+        
     }
     func addOneUp(){
         let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
@@ -316,9 +323,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "car":
             print("car obstacle")
             addCars()
-            break
-        case "coin":
-            addCoinPattern()
             break
         case "human":
             print("human obstacle")
@@ -474,8 +478,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Collision Handlers
     
+    
+    func carHitMultiplier(car:SKPhysicsBody, mult:MultiplierPowerUp){
+        mult.removeFromParent()
+        powerUpTime = 15
+        mult.timerStart(self, TimeInterval(self.gameSpeed))
+    }
+    
     func carCanWrap(car:SKSpriteNode, wrap:PowerupWrap){
-        print("Able to wrap Screen for 15 seconds?")
+        print("Able to wrap Screen for 15 seconds")
         wrap.removeFromParent()
         powerUpTime = 15
         wrap.timerStart(self,TimeInterval(self.gameSpeed))
@@ -553,10 +564,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    
-    
-    // This function is to wrap around the screen
-    // Is this dynamic enough?
     override func didSimulatePhysics() {
         self.player.position.x += xAcceleration * 50
         
