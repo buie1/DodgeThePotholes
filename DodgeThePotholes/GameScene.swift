@@ -32,7 +32,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var moneyLabel:SKLabelNode!
     var timerLabel:SKLabelNode!
     var livesArray:[SKSpriteNode]!
-
+    var playerIsInvincible = false
+    
     var money:Int = 0 {
         didSet {
             moneyLabel.text = "Money: $ \(money)"
@@ -195,7 +196,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameTimer.invalidate()
             envTimer.invalidate()
             powerUpTimer.invalidate()
-            monsterTruckTimer.invalidate()
+           // monsterTruckTimer.invalidate()
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
@@ -294,6 +295,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(powOneUp)
     }
     func addObastacle(){
+        addCoinPattern()
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
@@ -326,9 +328,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("ambulance obstacle")
             addAmbulance()
             break
-        case "wrap":
-            addWrap()
-            break
         default:
             addPothole()
             break
@@ -346,7 +345,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func honkHorn(){
         if preferences.bool(forKey: "sfx") == true {
-            self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
+            self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: true))
         }
         
         let hornNode = SKSpriteNode(imageNamed: "carHorn")
@@ -461,11 +460,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Coin.rawValue:
             print("Monstertruck hit a coin")
             if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
-                carDidHitCoin(car: contact.bodyA.node as! SKSpriteNode,
-                              coin: contact.bodyB.node as! SKSpriteNode)
+                carDidHitCoin(car: contact.bodyA.node as! SKSpriteNode, coin: contact.bodyB.node as! SKSpriteNode)
             }else{
-                carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode,
-                              coin: contact.bodyA.node as! SKSpriteNode)
+                carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode, coin: contact.bodyA.node as! SKSpriteNode)
             }
         case PhysicsCategory.Car.rawValue | PhysicsCategory.Wrap.rawValue:
             print("Car hit a wrap powerup")
@@ -572,14 +569,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     func carDidHitStar(car: SKSpriteNode, star: PowerupMosterTruck){
-        //sdf
+        self.playerIsInvincible = true
         bgAudio.removeFromParent()
         star.removeFromParent()
         player.becomeMonsterTruck()
         monsterTruckTimer = Timer.scheduledTimer(timeInterval: TimeInterval(GameTimers.MonsterTruck.rawValue), target: self, selector: #selector(self.becomeCar), userInfo: nil, repeats: false)
     }
     func becomeCar(){
-        //bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+        self.playerIsInvincible = false
         bgAudio.autoplayLooped = true;
         self.addChild(bgAudio)
         player.becomeCar()
@@ -620,8 +617,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
-        if preferences.bool(forKey: "sfx") == true {
-            self.run(SKAction.playSoundFileNamed("money.aiff", waitForCompletion: false))
+        if preferences.bool(forKey: "sfx") == true && playerIsInvincible == false {
+            self.run(SKAction.playSoundFileNamed("money.aiff", waitForCompletion: true))
         }
         self.money += 1
         preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
@@ -635,8 +632,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(explosion!)
         
         obj.removeFromParent()
-        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
         
+        if preferences.bool(forKey: "sfx") == true {
+            self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+        }
         self.run(SKAction.wait(forDuration: 2)){
             explosion?.removeFromParent()
         }
