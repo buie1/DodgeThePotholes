@@ -17,6 +17,8 @@ let bgTimeInterval = 10.0
 let startGameSpeed = 2.0
 
 
+//There is no way this is up to data.... stupid computer.
+
 
 // MARK: Physics Categories
 // update when adding new physics categories for the physics bodies
@@ -152,7 +154,10 @@ let flashAct = SKAction.sequence([SKAction.fadeOut(withDuration: 0.3),
 let flashAction = SKAction.repeat(flashAct, count: 8)
 let removeNodeAction = SKAction.removeFromParent()
 
+// MARK: Firebase info
 let leaderboardquery = FIRDatabase.database().reference(fromURL: "https://dodge-the-potholes-55009884.firebaseio.com/Leaderboard")
 
-
-
+// MARK: Store constants
+let carCost = 2
+let lifeCost = 5
+let invincibilityUpgrade = 5000
