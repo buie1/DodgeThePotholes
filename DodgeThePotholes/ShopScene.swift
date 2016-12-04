@@ -20,6 +20,8 @@ class ShopScene: SKScene, Alerts{
     var carBackground:SKSpriteNode!
     var buyLife:SKSpriteNode!
     var lifeBackground:SKSpriteNode!
+    var buyTank:SKSpriteNode!
+    var tankBackground:SKSpriteNode!
     var backButton:SKSpriteNode!
     
     
@@ -30,14 +32,12 @@ class ShopScene: SKScene, Alerts{
         
         moneyLabelNode = self.childNode(withName: "MoneyLabel") as! SKLabelNode!
         moneyLabelNode.fontName = "PressStart2p"
-        var money = preferences.value(forKey: "money"){
-            didSet{
-                moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
-            }
-        }
+        moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
+        
         carCostLabelNode = self.childNode(withName: "CarCost") as! SKLabelNode!
         carCostLabelNode.fontName = "PressStart2p"
         carCostLabelNode.text = " $ \(carCost)"
+        
         
         lifeCostLabelNode = self.childNode(withName: "LifeCost") as! SKLabelNode!
         lifeCostLabelNode.fontName = "PressStart2p"
@@ -46,16 +46,14 @@ class ShopScene: SKScene, Alerts{
         backButton = self.childNode(withName: "BackButton") as! SKSpriteNode!
         
         buyNewCar = self.childNode(withName: "PurchaseCar") as! SKSpriteNode!
-        //var boughtRed = preferences.value(forKey: "redcar") as! Bool{
-        //    didSet{
-        //        buyNewCar.texture = SKTexture(imageNamed: "car3")
-        //    }
-        //}
         updateCarTexture()
         carBackground = self.childNode(withName: "CarBackground") as! SKSpriteNode!
         
         buyLife = self.childNode(withName: "PurchaseLife") as! SKSpriteNode!
         lifeBackground = self.childNode(withName: "LifeBackground") as! SKSpriteNode!
+        
+        buyTank = self.childNode(withName: "PurchaseTank") as! SKSpriteNode!
+        tankBackground = self.childNode(withName: "TankBackground") as! SKSpriteNode!
         
     }
     
@@ -87,13 +85,13 @@ class ShopScene: SKScene, Alerts{
                     }
                     if(preferences.value(forKey: car) as! Bool == false){
                         doPurchase(title: "Purchase Car", message: "Do you want to buy this car?", cost: carCost, item: car)
+                        updateCarTexture()
                     }
                     else{
                         //already purchased alert
                         alreadyPurchased()
                     }
                 }
-                updateCarTexture()
             }
             else if nodesArray.first?.name == "PurchaseLife" || nodesArray.first?.name == "LifeBackground"{
                 if(lifeCost > preferences.value(forKey: "money") as! Int){
@@ -102,7 +100,7 @@ class ShopScene: SKScene, Alerts{
                 }
                 else{
                     if(preferences.value(forKey: "life") as! Bool == false){
-                        doPurchase(title: "Purchase Extra Life", message: "Do you want to purchase an extra life?", cost: carCost, item: "life")
+                        doPurchase(title: "Purchase Extra Life", message: "Do you want to purchase an extra life?", cost: lifeCost, item: "life")
                     }
                     else{
                         //already purchased alert
@@ -110,9 +108,26 @@ class ShopScene: SKScene, Alerts{
                     }
                 }
             }
-            moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
+            else if nodesArray.first?.name == "PurchaseTank" || nodesArray.first?.name == "TankBackground"{
+                if(tankCost > preferences.value(forKey: "money") as! Int){
+                    insufficientFunds(title: "Insufficient Funds!!!", message: "This item costs $\(tankCost)")
+                }
+                else{
+                    if(preferences.value(forKey: "tank") as! Bool == false){
+                        doPurchase(title: "Purchase Tank", message: "Do you want to purchase a tank to replace the monster truck?", cost: tankCost, item: "tank")
+                    }
+                    else{
+                        //already purchased alert
+                        alreadyPurchased()
+                    }
+                }
+            }
         }
-        updateCarTexture()
+        
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
     }
     
     func updateCarTexture(){
@@ -123,4 +138,5 @@ class ShopScene: SKScene, Alerts{
             buyNewCar.texture = SKTexture(imageNamed: "car3")
         }
     }
+    
 }
