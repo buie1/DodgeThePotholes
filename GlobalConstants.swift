@@ -158,4 +158,4 @@ let leaderboardquery = FIRDatabase.database().reference(fromURL: "https://dodge-
 // MARK: Store constants
 let carCost = 2
 let lifeCost = 5
-let invincibilityUpgrade = 5000
+let tankCost = 5
