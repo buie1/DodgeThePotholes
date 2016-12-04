@@ -30,4 +30,81 @@ extension Alerts where Self: GameOverScene {
         self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     
+<<<<<<< HEAD
+=======
+    func doPurchase(title: String, message: String, cost: Int){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addTextField()
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            if(cost > preferences.value(forKey: "money") as! Int){
+                //insufficient funds: Call insufficient funds alert
+                self.insufficientFunds(title: "Insufficient Funds!!!", message: "This item costs $\(cost)")
+            }
+            else{
+                //update money
+                preferences.set(preferences.value(forKey: "money") as! Int - cost, forKey: "money")
+                //update unlocked items
+            }
+        }
+        let noAction = UIAlertAction(title: "No", style: .cancel){ _ in}
+        
+        
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func insufficientFunds(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addTextField()
+        
+        let okAction = UIAlertAction(title: "Ok", style: .cancel){ _ in}
+        alertController.addAction(okAction)
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+extension Alerts where Self: SKScene{
+    func doPurchase(title: String, message: String, cost: Int, item: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addTextField()
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            //update money
+            preferences.set(preferences.value(forKey: "money") as! Int - cost, forKey: "money")
+            //update unlocked items
+            preferences.set(true, forKey: item)
+        }
+        let noAction = UIAlertAction(title: "No", style: .cancel){ _ in}
+        
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func insufficientFunds(title: String, message: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .cancel){ _ in}
+        alertController.addAction(okAction)
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func notUnlocked(){
+        let alertController = UIAlertController(title: "Item Locked", message: "This item is not yet unlocked! You must first purchase it in the store!", preferredStyle: .alert)
+        
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel){ _ in}
+        alertController.addAction(dismissAction)
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func alreadyPurchased(){
+        let alertController = UIAlertController(title: "Item Already Purchased!", message: "You have this item!", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel){ _ in}
+        alertController.addAction(dismissAction)
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+>>>>>>> parent of 1c31334... Adjusted update of car texture for shop
 }
