@@ -102,6 +102,7 @@ class ShopScene: SKScene, Alerts{
                 }
             }
             updateCarTexture()
+            moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
         }
     }
     
