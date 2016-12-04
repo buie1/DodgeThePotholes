@@ -25,6 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var powerUpTimer:Timer!
     var monsterTruckTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
+    var bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
     
     // MARK: HUD Variables
     var scoreLabel:SKLabelNode!
@@ -84,7 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Set up background Audio
         if music {
-            let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+            //let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
             bgAudio.autoplayLooped = true;
             self.addChild(bgAudio)
         }
@@ -572,11 +573,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func carDidHitStar(car: SKSpriteNode, star: PowerupMosterTruck){
         //sdf
+        bgAudio.removeFromParent()
         star.removeFromParent()
         player.becomeMonsterTruck()
         monsterTruckTimer = Timer.scheduledTimer(timeInterval: TimeInterval(GameTimers.MonsterTruck.rawValue), target: self, selector: #selector(self.becomeCar), userInfo: nil, repeats: false)
     }
     func becomeCar(){
+        //bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+        bgAudio.autoplayLooped = true;
+        self.addChild(bgAudio)
         player.becomeCar()
         monsterTruckTimer.invalidate()
     }

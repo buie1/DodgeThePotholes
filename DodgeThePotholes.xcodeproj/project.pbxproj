@@ -69,6 +69,7 @@
 		CA83191A1DF38DAB008B96CA /* RAMPAGE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA8319191DF38DAB008B96CA /* RAMPAGE.mp3 */; };
 		CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* Cone.swift */; };
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
+		CAC5815A1DF3E29C00927665 /* monster_truck_jam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAC581591DF3E29C00927665 /* monster_truck_jam.mp3 */; };
 		CAF9173F1DF226E600B4C499 /* PowerupOneUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */; };
 		EE0813981DE25BC900860FDE /* Highscore.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE0813971DE25BC900860FDE /* Highscore.sks */; };
 		EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0813991DE25BE200860FDE /* Highscore.swift */; };
@@ -150,6 +151,7 @@
 		CA8319191DF38DAB008B96CA /* RAMPAGE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RAMPAGE.mp3; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* Cone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
+		CAC581591DF3E29C00927665 /* monster_truck_jam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monster_truck_jam.mp3; sourceTree = "<group>"; };
 		CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupOneUp.swift; sourceTree = "<group>"; };
 		EE0813971DE25BC900860FDE /* Highscore.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Highscore.sks; sourceTree = "<group>"; };
 		EE0813991DE25BE200860FDE /* Highscore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */,
 				CA8319191DF38DAB008B96CA /* RAMPAGE.mp3 */,
 				2C1BFE4B1DD1061300ECBBB8 /* explosion.mp3 */,
+				CAC581591DF3E29C00927665 /* monster_truck_jam.mp3 */,
 				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
 				2C4622181DE7C01B00956B94 /* money.aiff */,
 				CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */,
@@ -514,6 +517,7 @@
 				2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
+				CAC5815A1DF3E29C00927665 /* monster_truck_jam.mp3 in Resources */,
 				2C4622191DE7C01B00956B94 /* money.aiff in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
 				2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */,
