@@ -280,6 +280,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(rand.nextInt() == 3){
             addWrap()
         }
+        if(rand.nextInt() < 3){
+            addMonsterTruck()
+        }
     }
     func addMonsterTruck(){
         let powMonsterTruck = PowerupMosterTruck(scene:self, duration:TimeInterval(self.gameSpeed))
@@ -290,7 +293,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(powOneUp)
     }
     func addObastacle(){
-        addMonsterTruck()
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
