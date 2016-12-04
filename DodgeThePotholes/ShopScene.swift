@@ -86,7 +86,6 @@ class ShopScene: SKScene, Alerts{
                     }
                 }
                 updateCarTexture()
-                moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
             }
             else if nodesArray.first?.name == "PurchaseLife" || nodesArray.first?.name == "LifeBackground"{
                 if(lifeCost > preferences.value(forKey: "money") as! Int){
@@ -103,6 +102,7 @@ class ShopScene: SKScene, Alerts{
                     }
                 }
             }
+            moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
         }
     }
     
