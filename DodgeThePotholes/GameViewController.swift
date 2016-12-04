@@ -75,9 +75,28 @@ class GameViewController: UIViewController {
         if preferences.string(forKey: "money") == nil{
             preferences.setValue(0, forKey: "money")
         }
+        //initialize highscore
         if preferences.string(forKey: "highscore") == nil{
             preferences.setValue(0, forKey: "highscore")
         }
+        //intialize unlocked state of redcar
+        if preferences.string(forKey: "redcar") == nil{
+            preferences.setValue(false, forKey: "redcar")
+        }
+        //initialize unlocked state of greencar
+        if preferences.string(forKey: "greencar") == nil{
+            preferences.setValue(false, forKey: "greencar")
+        }
+        //initialize extra life state
+        if preferences.string(forKey: "life") == nil {
+            preferences.setValue(false, forKey: "life")
+        }
+        //initialize value for tank - invincibility upgrade
+        if preferences.string(forKey: "tank") == nil{
+            preferences.setValue(false, forKey: "tank")
+        }
+        //TODO: add in prefences for song choice and song unlocked
+        
         preferences.synchronize()
     }
 }

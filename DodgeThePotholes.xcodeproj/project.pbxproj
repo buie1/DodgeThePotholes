@@ -78,6 +78,8 @@
 		EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */; };
 		EE8353B21DD58643003ED2E4 /* CarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353B01DD58643003ED2E4 /* CarScene.sks */; };
 		EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353B11DD58643003ED2E4 /* CarScene.swift */; };
+		EEF3961C1DF3790200FBA6AC /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF3961B1DF3790200FBA6AC /* ShopScene.swift */; };
+		EEF3961E1DF3790F00FBA6AC /* ShopScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EEF3961D1DF3790F00FBA6AC /* ShopScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +158,8 @@
 		EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		EE8353B01DD58643003ED2E4 /* CarScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CarScene.sks; sourceTree = "<group>"; };
 		EE8353B11DD58643003ED2E4 /* CarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarScene.swift; sourceTree = "<group>"; };
+		EEF3961B1DF3790200FBA6AC /* ShopScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopScene.swift; sourceTree = "<group>"; };
+		EEF3961D1DF3790F00FBA6AC /* ShopScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShopScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +247,7 @@
 				2C1BFE531DD1062800ECBBB8 /* SceneNodeClasses */,
 				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
 				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
+				EEF3961A1DF378EB00FBA6AC /* Shop Scene */,
 				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
 				EE8353AA1DD58593003ED2E4 /* Settings Scene */,
 				2C79B8F21DF0FCBE0067FFBD /* PowerUps */,
@@ -420,6 +425,15 @@
 			name = "Car Scene";
 			sourceTree = "<group>";
 		};
+		EEF3961A1DF378EB00FBA6AC /* Shop Scene */ = {
+			isa = PBXGroup;
+			children = (
+				EEF3961D1DF3790F00FBA6AC /* ShopScene.sks */,
+				EEF3961B1DF3790200FBA6AC /* ShopScene.swift */,
+			);
+			name = "Shop Scene";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -500,6 +514,7 @@
 				2C4622191DE7C01B00956B94 /* money.aiff in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
 				2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */,
+				EEF3961E1DF3790F00FBA6AC /* ShopScene.sks in Resources */,
 				2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */,
 				2C0CE6F41DDD142600273099 /* money_pattern3.json in Resources */,
 				2C8A1B021DD7B6EB0042E002 /* money_pattern2.json in Resources */,
@@ -608,6 +623,7 @@
 				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
 				CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */,
+				EEF3961C1DF3790200FBA6AC /* ShopScene.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				CAF9173F1DF226E600B4C499 /* PowerupOneUp.swift in Sources */,
