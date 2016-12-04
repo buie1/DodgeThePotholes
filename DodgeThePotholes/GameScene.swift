@@ -472,6 +472,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
                     carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
                                 wrap: contact.bodyB.node as! PowerupWrap)
+                } else if (contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue) {
+                        
+                    
                 }else{
                     carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
                                wrap: contact.bodyA.node as! PowerupWrap)
@@ -482,7 +485,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if(!powerUps.wrap){
                 // if you can already wrap ignore it!
-                if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
                     carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
                                wrap: contact.bodyB.node as! PowerupWrap)
                 }else{
