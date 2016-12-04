@@ -297,6 +297,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(powOneUp)
     }
     func addObastacle(){
+        addMonsterTruck()
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
