@@ -297,19 +297,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addCoinPattern()
         }
     }
-    /*
+    
     func addPowerUp(){
         let rand = GKRandomDistribution(lowestValue: 0,highestValue: 5)
         if (rand.nextInt()  == 5){
             self.addOneUp()
         }else if(rand.nextInt() == 4){
             addWrap()
-        }else if(rand.nextInt() < 3){
+        }else if(rand.nextInt() == 3){
             addMultiplier()
-        }else if(rand.nextInt() < 2){
+        }else if(rand.nextInt() <= 1){
             addMonsterTruck()
         }
-    }*/
+    }
+    /*
     func addPowerUp(){
         let rand = GKRandomDistribution(lowestValue: 0,highestValue: 1)
         if (rand.nextInt()  == 0){
@@ -317,7 +318,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }else{
             self.addMultiplier()
         }
-    }
+    }*/
     func addMonsterTruck(){
         let powMonsterTruck = PowerupMosterTruck(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powMonsterTruck)
