@@ -569,7 +569,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Multiplier.rawValue:
                 if(powerUps.multiplier == 1){
-                    if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                    if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
                         carHitMultiplier(car: contact.bodyA.node as! SKSpriteNode,
                                          mult: contact.bodyB.node as! MultiplierPowerUp)
                     }else{
