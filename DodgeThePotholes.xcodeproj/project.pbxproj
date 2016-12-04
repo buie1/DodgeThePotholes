@@ -34,6 +34,8 @@
 		2C3AFC221DF3D58A0051AD57 /* race_duel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC1F1DF3D58A0051AD57 /* race_duel.wav */; };
 		2C3AFC231DF3D58A0051AD57 /* urban_chase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC201DF3D58A0051AD57 /* urban_chase.wav */; };
 		2C3AFC251DF3E0260051AD57 /* Barricade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AFC241DF3E0260051AD57 /* Barricade.swift */; };
+		2C3AFC2B1DF3E5110051AD57 /* CarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC2A1DF3E5110051AD57 /* CarScene.sks */; };
+		2C3AFC2D1DF3E5200051AD57 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC2C1DF3E5200051AD57 /* MenuScene.sks */; };
 		2C4622151DE7B2D000956B94 /* Ambulance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4622141DE7B2D000956B94 /* Ambulance.swift */; };
 		2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622161DE7B32800956B94 /* ambulance_s.mp3 */; };
 		2C4622191DE7C01B00956B94 /* money.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622181DE7C01B00956B94 /* money.aiff */; };
@@ -83,8 +85,6 @@
 		EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */; };
 		EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */; };
 		EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8353B11DD58643003ED2E4 /* CarScene.swift */; };
-		EEA54BC51DF3D07100424660 /* CarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EEA54BC41DF3D07100424660 /* CarScene.sks */; };
-		EEA54BC71DF3D0CC00424660 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EEA54BC61DF3D0CC00424660 /* MenuScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +117,8 @@
 		2C3AFC1F1DF3D58A0051AD57 /* race_duel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = race_duel.wav; sourceTree = "<group>"; };
 		2C3AFC201DF3D58A0051AD57 /* urban_chase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = urban_chase.wav; sourceTree = "<group>"; };
 		2C3AFC241DF3E0260051AD57 /* Barricade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barricade.swift; sourceTree = "<group>"; };
+		2C3AFC2A1DF3E5110051AD57 /* CarScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CarScene.sks; sourceTree = "<group>"; };
+		2C3AFC2C1DF3E5200051AD57 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		2C4622141DE7B2D000956B94 /* Ambulance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ambulance.swift; sourceTree = "<group>"; };
 		2C4622161DE7B32800956B94 /* ambulance_s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambulance_s.mp3; sourceTree = "<group>"; };
 		2C4622181DE7C01B00956B94 /* money.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = money.aiff; sourceTree = "<group>"; };
@@ -169,8 +171,6 @@
 		EE8353AB1DD585B0003ED2E4 /* SettingsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SettingsScene.sks; sourceTree = "<group>"; };
 		EE8353AC1DD585B0003ED2E4 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScene.swift; sourceTree = "<group>"; };
 		EE8353B11DD58643003ED2E4 /* CarScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarScene.swift; sourceTree = "<group>"; };
-		EEA54BC41DF3D07100424660 /* CarScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CarScene.sks; sourceTree = "<group>"; };
-		EEA54BC61DF3D0CC00424660 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,7 +353,7 @@
 		2CB7A55F1DD19F8A0029B800 /* Menu Scene */ = {
 			isa = PBXGroup;
 			children = (
-				EEA54BC61DF3D0CC00424660 /* MenuScene.sks */,
+				2C3AFC2C1DF3E5200051AD57 /* MenuScene.sks */,
 				2CB7A54E1DD17B6A0029B800 /* MenuScene.swift */,
 			);
 			name = "Menu Scene";
@@ -445,7 +445,7 @@
 		EE8353AF1DD5862E003ED2E4 /* Car Scene */ = {
 			isa = PBXGroup;
 			children = (
-				EEA54BC41DF3D07100424660 /* CarScene.sks */,
+				2C3AFC2A1DF3E5110051AD57 /* CarScene.sks */,
 				EE8353B11DD58643003ED2E4 /* CarScene.swift */,
 			);
 			name = "Car Scene";
@@ -521,6 +521,7 @@
 			files = (
 				2C10601E1DD178E300668D23 /* PressStart2P.ttf in Resources */,
 				2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */,
+				2C3AFC2D1DF3E5200051AD57 /* MenuScene.sks in Resources */,
 				2C3AFC231DF3D58A0051AD57 /* urban_chase.wav in Resources */,
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
 				2C1BFE4F1DD1061300ECBBB8 /* explosion.mp3 in Resources */,
@@ -534,6 +535,7 @@
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
 				2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */,
 				2C3AFC181DF3C9F30051AD57 /* ShopScene.sks in Resources */,
+				2C3AFC2B1DF3E5110051AD57 /* CarScene.sks in Resources */,
 				2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */,
 				2C0CE6F41DDD142600273099 /* money_pattern3.json in Resources */,
 				2C8A1B021DD7B6EB0042E002 /* money_pattern2.json in Resources */,
@@ -543,8 +545,6 @@
 				2C1BFE501DD1061300ECBBB8 /* Explosion.sks in Resources */,
 				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
 				2C0CE7001DDD463F00273099 /* cone_pattern2.json in Resources */,
-				EEA54BC51DF3D07100424660 /* CarScene.sks in Resources */,
-				EEA54BC71DF3D0CC00424660 /* MenuScene.sks in Resources */,
 				2C8B90DB1DD50BF7001C944A /* police_s.wav in Resources */,
 				2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */,
 				CA67CFB71DE54D2500DEB87A /* oh_my_god.mp3 in Resources */,

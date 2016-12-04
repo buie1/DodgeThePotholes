@@ -13,12 +13,14 @@ class MenuScene: SKScene {
     var newGameButtonNode:SKSpriteNode!
     var settingsButtonNode:SKSpriteNode!
     var leaderboardButtonNode:SKSpriteNode!
+    var shopButtonNode:SKSpriteNode!
     
     override func didMove(to view: SKView) {
-
+        
         newGameButtonNode = self.childNode(withName: "NewGameButton") as! SKSpriteNode!
         settingsButtonNode = self.childNode(withName: "SettingsButton") as! SKSpriteNode!
         leaderboardButtonNode = self.childNode(withName: "LeaderboardButton") as! SKSpriteNode!
+        shopButtonNode = self.childNode(withName: "ShopButton") as! SKSpriteNode!
         
     }
     
@@ -48,8 +50,13 @@ class MenuScene: SKScene {
                 highscoreScene?.scaleMode = .aspectFill
                 self.view?.presentScene(highscoreScene!, transition: transition)
             }
+            else if nodesArray.first?.name == "ShopButton"{
+                let shopScene = SKScene(fileNamed: "ShopScene")
+                shopScene?.scaleMode = .aspectFill
+                self.view?.presentScene(shopScene!, transition: transition)
+            }
         }
     }
     
-
+    
 }

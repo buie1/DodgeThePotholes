@@ -54,6 +54,7 @@ class PowerupWrap: SKSpriteNode {
         var timer = Timer()
         let show = SKAction.run {
             scene.timerLabel.isHidden = false
+            
         }
         let countdown = SKAction.run {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self,

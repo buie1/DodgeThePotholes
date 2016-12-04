@@ -60,15 +60,15 @@ class Highscore: SKScene {
         tenthLabel.fontName = "PressStart2p"
         
         var leaderboardScores = [firstLabel, secondLabel, thirdLabel, fourthLabel, fifthLabel, sixthLabel, seventhLabel, eighthLabel, ninethLabel, tenthLabel]
-    
+        
         highscoreLabelNode = self.childNode(withName: "highscoreLabel") as! SKLabelNode!
         highscoreLabelNode.fontName = "PressStart2p"
         highscoreLabelNode.text = "\(preferences.value(forKey: "highscore") as! Int)"
-
+        
         backNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
         print("---------------------------------\n FirebaseReference \n---------------------\n")
         
-
+        
         
         
         //There is a better way to do this.....
@@ -86,6 +86,9 @@ class Highscore: SKScene {
                 print("\(myDict.allKeys(for: unSorted[index]))")
                 let indentifier = (myDict.allKeys(for: unSorted[index])[0] as AnyObject).components(separatedBy: ",")
                 leaderboardScores[index]!.text = "\(unSorted[index])" + "   \(indentifier[0])"
+                if indentifier[1] == UIDevice.current.identifierForVendor!.uuidString{
+                    leaderboardScores[index]!.fontColor = UIColor.yellow
+                }
             }
             print("\(myDict)")
         })
@@ -107,5 +110,5 @@ class Highscore: SKScene {
             }
         }
     }
-
+    
 }

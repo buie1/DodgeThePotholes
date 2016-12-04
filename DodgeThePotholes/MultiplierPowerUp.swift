@@ -11,7 +11,7 @@ import GameplayKit
 
 class MultiplierPowerUp: SKSpriteNode {
     
-    var multTimer:Int = 15
+    var multTimer:Int = 30
     var gameSK:GameScene!
     var value:Int!
     
@@ -59,10 +59,13 @@ class MultiplierPowerUp: SKSpriteNode {
         powerUps.multiplier = value
         print("multiplier is \(value)")
         let show = SKAction.run {
+            
             scene.timerLabel.isHidden = false
-            notifier = SKSpriteNode(imageNamed: "pow_x\(self.value)")
+            print("pow_x\(self.value)")
+            notifier = SKSpriteNode(imageNamed: "pow_x\(self.value!)")
+            notifier.size = self.size
             notifier.position = scene.moneyLabel.position
-            notifier.position.x += 15
+            notifier.position.x = 0
             scene.addChild(notifier)
         }
         let countdown = SKAction.run {
