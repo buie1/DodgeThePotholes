@@ -27,13 +27,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var powerUpTimer:Timer!
     var monsterTruckTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
+    var bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
     
     // MARK: HUD Variables
     var scoreLabel:SKLabelNode!
     var moneyLabel:SKLabelNode!
     var timerLabel:SKLabelNode!
     var livesArray:[SKSpriteNode]!
-
+    var playerIsInvincible = false
+    
     var money:Int = 0 {
         didSet {
             moneyLabel.text = "Money: $ \(money)"
@@ -90,7 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Set up background Audio
         if music {
-            let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+            //let bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
             bgAudio.autoplayLooped = true;
             self.addChild(bgAudio)
         }
@@ -328,6 +330,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(powOneUp)
     }
     func addObastacle(){
+        addCoinPattern()
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
@@ -375,7 +378,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func honkHorn(){
         if preferences.bool(forKey: "sfx") == true {
-            self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: false))
+            self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: true))
         }
         
         let hornNode = SKSpriteNode(imageNamed: "carHorn")
@@ -635,12 +638,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     func carDidHitStar(car: SKSpriteNode, star: PowerupMosterTruck){
-        //sdf
+        self.playerIsInvincible = true
+        bgAudio.removeFromParent()
         star.removeFromParent()
         player.becomeMonsterTruck()
         monsterTruckTimer = Timer.scheduledTimer(timeInterval: TimeInterval(GameTimers.MonsterTruck.rawValue), target: self, selector: #selector(self.becomeCar), userInfo: nil, repeats: false)
     }
     func becomeCar(){
+        self.playerIsInvincible = false
+        bgAudio.autoplayLooped = true;
+        self.addChild(bgAudio)
         player.becomeCar()
         monsterTruckTimer.invalidate()
     }
@@ -679,8 +686,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
-        if preferences.bool(forKey: "sfx") == true {
-            self.run(SKAction.playSoundFileNamed("money.aiff", waitForCompletion: false))
+        if preferences.bool(forKey: "sfx") == true && playerIsInvincible == false {
+            self.run(SKAction.playSoundFileNamed("money.aiff", waitForCompletion: true))
         }
         self.money += (1 * powerUps.multiplier)
         preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
@@ -694,8 +701,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(explosion!)
         
         obj.removeFromParent()
-        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
         
+        if preferences.bool(forKey: "sfx") == true {
+            self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+        }
         self.run(SKAction.wait(forDuration: 2)){
             explosion?.removeFromParent()
         }

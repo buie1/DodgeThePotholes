@@ -47,7 +47,7 @@ enum GameSettings: Int {
 }
 
 enum GameTimers: TimeInterval {
-    case MonsterTruck = 15
+    case MonsterTruck = 18
 }
 
 // MARK: Ranges for Object generation

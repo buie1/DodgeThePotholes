@@ -116,10 +116,22 @@ class Player: SKSpriteNode, ObstacleCreate {
     
     func becomeMonsterTruck(){
         self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTrucker.rawValue
-        let scream = SKAction.playSoundFileNamed("RAMPAGE.mp3", waitForCompletion: false)
+        var monsterTruckTexture:SKAction
         //MonsterTruck
-        let monsterTruckTexture = SKAction.setTexture(SKTexture(imageNamed: "MonsterTruck"))
-        self.run(SKAction.sequence([monsterTruckTexture,scream]))
+        if preferences.bool(forKey: "tank")  == true {
+             monsterTruckTexture = SKAction.setTexture(SKTexture(imageNamed: "tank"))
+        } else {
+             monsterTruckTexture = SKAction.setTexture(SKTexture(imageNamed: "MonsterTruck"))
+        }
+        if preferences.bool(forKey: "sfx") == true {
+            let scream = SKAction.playSoundFileNamed("RAMPAGE.mp3", waitForCompletion: true)
+            let monsterTruckMusic = SKAction.playSoundFileNamed("monster_truck_jam.mp3", waitForCompletion: true)
+            let soundGroup = SKAction.group([scream, monsterTruckMusic])
+            self.run(SKAction.sequence([monsterTruckTexture,soundGroup]))
+        } else {
+            self.run(SKAction.sequence([monsterTruckTexture]))
+        }
+        
         self.size.height = monstertruck_player.height.rawValue
         self.size.width = monstertruck_player.width.rawValue
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
