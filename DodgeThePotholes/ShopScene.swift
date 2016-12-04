@@ -30,8 +30,11 @@ class ShopScene: SKScene, Alerts{
         
         moneyLabelNode = self.childNode(withName: "MoneyLabel") as! SKLabelNode!
         moneyLabelNode.fontName = "PressStart2p"
-        moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
-        
+        var money = preferences.value(forKey: "money"){
+            didSet{
+                moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
+            }
+        }
         carCostLabelNode = self.childNode(withName: "CarCost") as! SKLabelNode!
         carCostLabelNode.fontName = "PressStart2p"
         carCostLabelNode.text = " $ \(carCost)"
@@ -43,6 +46,11 @@ class ShopScene: SKScene, Alerts{
         backButton = self.childNode(withName: "BackButton") as! SKSpriteNode!
         
         buyNewCar = self.childNode(withName: "PurchaseCar") as! SKSpriteNode!
+        //var boughtRed = preferences.value(forKey: "redcar") as! Bool{
+        //    didSet{
+        //        buyNewCar.texture = SKTexture(imageNamed: "car3")
+        //    }
+        //}
         updateCarTexture()
         carBackground = self.childNode(withName: "CarBackground") as! SKSpriteNode!
         
@@ -104,6 +112,7 @@ class ShopScene: SKScene, Alerts{
             }
             moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
         }
+        updateCarTexture()
     }
     
     func updateCarTexture(){
