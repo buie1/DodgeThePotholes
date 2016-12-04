@@ -33,7 +33,9 @@ enum PhysicsCategory:UInt32 {
     case Multiplier         = 0x20
     case Wrap               = 0x40
     case OneUp              = 0x80
-    //case Invincible         = UniqueID
+    case Star               = 0x100
+    case Recover            = 0x200
+    case MonsterTrucker     = 0x400
     //case Jump               = UniqueID
     //case BlackIce           = UniqueID
     
@@ -42,6 +44,10 @@ enum PhysicsCategory:UInt32 {
 enum GameSettings: Int {
     case MaxLives       = 4
     case BeginningLifeCount = 3
+}
+
+enum GameTimers: TimeInterval {
+    case MonsterTruck = 15
 }
 
 // MARK: Ranges for Object generation
@@ -89,6 +95,21 @@ enum human: CGFloat {
 enum oneup: CGFloat {
     case width = 50
     case height = 51
+}
+
+enum monstertruck: CGFloat {
+    case width = 50
+    case height = 51
+}
+
+enum monstertruck_player: CGFloat {
+    case width = 300
+    case height = 301
+}
+
+enum player: CGFloat {
+    case width = 75
+    case height = 125
 }
 
 

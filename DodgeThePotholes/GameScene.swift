@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bgTimer:Timer!
     var envTimer:Timer!
     var powerUpTimer:Timer!
+    var monsterTruckTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
     
     // MARK: HUD Variables
@@ -197,6 +198,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameTimer.invalidate()
             envTimer.invalidate()
             powerUpTimer.invalidate()
+            monsterTruckTimer.invalidate()
             self.removeAllActions()
             self.removeAllChildren()
             self.view?.presentScene(gameOver, transition: transition)
@@ -413,7 +415,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 carDidHitObstacle(car: contact.bodyB.node as! Player,
                                        obj: contact.bodyA.node as! SKSpriteNode)
             }
+        case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Obstacle.rawValue:
+            print("handle collision with Monster Truck ")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue{
+                monsterTruckDidHitObstacle(car: contact.bodyA.node as! Player,
+                                  obj: contact.bodyB.node as! SKSpriteNode)
+            } else{
+                monsterTruckDidHitObstacle(car: contact.bodyB.node as! Player,
+                                  obj: contact.bodyA.node as! SKSpriteNode)
+            }
             
+        case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
+            
+            if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue{
+                monsterTruckDidHitObstacle(car: contact.bodyA.node as! Player,
+                                          obj: contact.bodyB.node as! MoveableObstacle)
+            } else{
+                monsterTruckDidHitObstacle(car: contact.bodyB.node as! Player,
+                                          obj: contact.bodyA.node as! MoveableObstacle)
+            }
             
         case PhysicsCategory.Car.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
             
@@ -447,6 +467,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode,
                               coin: contact.bodyA.node as! SKSpriteNode)
             }
+        case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Coin.rawValue:
+            print("Monstertruck hit a coin")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
+                carDidHitCoin(car: contact.bodyA.node as! SKSpriteNode,
+                              coin: contact.bodyB.node as! SKSpriteNode)
+            }else{
+                carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode,
+                              coin: contact.bodyA.node as! SKSpriteNode)
+            }
         case PhysicsCategory.Car.rawValue | PhysicsCategory.Wrap.rawValue:
             print("Car hit a wrap powerup")
             
@@ -455,6 +484,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
                     carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
                                 wrap: contact.bodyB.node as! PowerupWrap)
+                } else if (contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue) {
+                        
+                    
+                }else{
+                    carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
+                               wrap: contact.bodyA.node as! PowerupWrap)
+                }
+            }
+        case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Wrap.rawValue:
+            print("Car hit a wrap powerup")
+            
+            if(!powerUps.wrap){
+                // if you can already wrap ignore it!
+                if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
+                    carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
+                               wrap: contact.bodyB.node as! PowerupWrap)
                 }else{
                     carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
                                wrap: contact.bodyA.node as! PowerupWrap)
@@ -462,8 +507,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         case PhysicsCategory.Car.rawValue | PhysicsCategory.OneUp.rawValue:
             print("Plus one Life!")
-            carDidHitOneUp(car: contact.bodyA.node as! SKSpriteNode, oneup: contact.bodyB.node as! PowerupOneUp)
-            
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                carDidHitOneUp(car: contact.bodyA.node as! SKSpriteNode, oneup: contact.bodyB.node as! PowerupOneUp)
+            }else{
+                carDidHitOneUp(car: contact.bodyB.node as! SKSpriteNode, oneup: contact.bodyA.node as! PowerupOneUp)
+            }
+        case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.OneUp.rawValue:
+            print("Plus one Life!")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
+                carDidHitOneUp(car: contact.bodyA.node as! SKSpriteNode, oneup: contact.bodyB.node as! PowerupOneUp)
+            }else{
+                carDidHitOneUp(car: contact.bodyB.node as! SKSpriteNode, oneup: contact.bodyA.node as! PowerupOneUp)
+            }
+        case PhysicsCategory.Car.rawValue | PhysicsCategory.Star.rawValue:
+            print ("You are now a MOOOONSTER TRUUUUUCK")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
+            }else{
+                carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
+            }
+        case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Star.rawValue:
+            print ("You are now a MOOOONSTER TRUUUUUCK")
+            if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
+               // carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
+            }else{
+               //carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
+            }
             
         default:
             
@@ -518,7 +587,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-    
+    func carDidHitStar(car: SKSpriteNode, star: PowerupMosterTruck){
+        //sdf
+        star.removeFromParent()
+        player.becomeMonsterTruck()
+        monsterTruckTimer = Timer.scheduledTimer(timeInterval: TimeInterval(GameTimers.MonsterTruck.rawValue), target: self, selector: #selector(self.becomeCar), userInfo: nil, repeats: false)
+    }
+    func becomeCar(){
+        player.becomeCar()
+        monsterTruckTimer.invalidate()
+    }
     func carDidHitObstacle(car:Player, obj:SKSpriteNode){
         let name = obj.name
         switch  name! {

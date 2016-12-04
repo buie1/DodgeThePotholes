@@ -63,13 +63,14 @@
 		54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54FB84131DD58DC800AFBF7C /* GameOverScene.sks */; };
 		54FB84171DD58E1E00AFBF7C /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */; };
 		A79764D74B1672FA205A8AF0 /* Pods_DodgeThePotholes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBABEDF43AE1F71F5F9D95 /* Pods_DodgeThePotholes.framework */; };
+		CA0DB3081DF370A8001A6A37 /* PowerupMonsterTruck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0DB3071DF370A8001A6A37 /* PowerupMonsterTruck.swift */; };
 		CA473A501DE29D5D00F16DA5 /* dog_wimper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */; };
 		CA5233971DD2C90C00D2F59D /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5233961DD2C90C00D2F59D /* Dog.swift */; };
 		CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5C1C891DE4B223005EBFB1 /* Human.swift */; };
 		CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FE2041DF09CA400B2EC57 /* Plant.swift */; };
-		CA5FE2071DF0E2D200B2EC57 /* RAMPAGE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */; };
 		CA67CFB51DE54C9600DEB87A /* scream_in_pain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */; };
 		CA67CFB71DE54D2500DEB87A /* oh_my_god.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */; };
+		CA83191A1DF38DAB008B96CA /* RAMPAGE.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA8319191DF38DAB008B96CA /* RAMPAGE.mp3 */; };
 		CAC19F6A1DD27E9E007A7197 /* Cone.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F691DD27E9E007A7197 /* Cone.swift */; };
 		CAC19F6C1DD28456007A7197 /* Pothole.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC19F6B1DD28456007A7197 /* Pothole.swift */; };
 		CAF9173F1DF226E600B4C499 /* PowerupOneUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */; };
@@ -147,13 +148,14 @@
 		54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		5EE660437CBED4DAB16B749E /* Pods-DodgeThePotholes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.debug.xcconfig"; sourceTree = "<group>"; };
 		83CDE68F2E3D6E81F593D7D1 /* Pods-DodgeThePotholes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.release.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.release.xcconfig"; sourceTree = "<group>"; };
+		CA0DB3071DF370A8001A6A37 /* PowerupMonsterTruck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupMonsterTruck.swift; sourceTree = "<group>"; };
 		CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog_wimper.mp3; sourceTree = "<group>"; };
 		CA5233961DD2C90C00D2F59D /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dog.swift; path = ../Dog.swift; sourceTree = "<group>"; };
 		CA5C1C891DE4B223005EBFB1 /* Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
 		CA5FE2041DF09CA400B2EC57 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
-		CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RAMPAGE.mp3; sourceTree = "<group>"; };
 		CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scream_in_pain.mp3; sourceTree = "<group>"; };
 		CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oh_my_god.mp3; sourceTree = "<group>"; };
+		CA8319191DF38DAB008B96CA /* RAMPAGE.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RAMPAGE.mp3; sourceTree = "<group>"; };
 		CAC19F691DD27E9E007A7197 /* Cone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cone.swift; sourceTree = "<group>"; };
 		CAC19F6B1DD28456007A7197 /* Pothole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pothole.swift; path = ../Pothole.swift; sourceTree = "<group>"; };
 		CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupOneUp.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */,
 				2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */,
 				CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */,
+				CA0DB3071DF370A8001A6A37 /* PowerupMonsterTruck.swift */,
 			);
 			name = PowerUps;
 			sourceTree = "<group>";
@@ -313,10 +316,10 @@
 				2C8B90DC1DD516C3001C944A /* car_honk.mp3 */,
 				2C8B90D81DD50BF6001C944A /* carskid.wav */,
 				CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */,
+				CA8319191DF38DAB008B96CA /* RAMPAGE.mp3 */,
 				2C1BFE4B1DD1061300ECBBB8 /* explosion.mp3 */,
 				2C7CC3481DD13B9300FE789A /* hot-pursuit.wav */,
 				2C4622181DE7C01B00956B94 /* money.aiff */,
-				CA5FE2061DF0E2D200B2EC57 /* RAMPAGE.mp3 */,
 				CA67CFB61DE54D2500DEB87A /* oh_my_god.mp3 */,
 				2C8B90D91DD50BF7001C944A /* police_s.wav */,
 				CA67CFB41DE54C9600DEB87A /* scream_in_pain.mp3 */,
@@ -637,6 +640,7 @@
 				CA5C1C8A1DE4B223005EBFB1 /* Human.swift in Sources */,
 				EE8353B31DD58643003ED2E4 /* CarScene.swift in Sources */,
 				2C0CE6F81DDD1CF300273099 /* ConePattern.swift in Sources */,
+				CA0DB3081DF370A8001A6A37 /* PowerupMonsterTruck.swift in Sources */,
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
 				CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */,
 				2C3AFC191DF3C9F30051AD57 /* ShopScene.swift in Sources */,
