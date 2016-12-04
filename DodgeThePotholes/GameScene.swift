@@ -290,8 +290,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(powOneUp)
     }
     func addObastacle(){
-        addMonsterTruck()
-        /*possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
+        possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
             print("pothole obstacle")
@@ -329,7 +328,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         default:
             addPothole()
             break
-        }*/
+        }
     }
 
     
@@ -477,7 +476,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                wrap: contact.bodyA.node as! PowerupWrap)
                 }
             }
-        case PhysicsCategory.Car.rawValue | PhysicsCategory.Wrap.rawValue:
+        case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Wrap.rawValue:
             print("Car hit a wrap powerup")
             
             if(!powerUps.wrap){
@@ -514,9 +513,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Star.rawValue:
             print ("You are now a MOOOONSTER TRUUUUUCK")
             if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
-                carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
+               // carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
             }else{
-               carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
+               //carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
             }
             
         default:
@@ -620,7 +619,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func monsterTruckDidHitObstacle(car:SKSpriteNode, obj:SKSpriteNode){
+        let explosion = SKEmitterNode(fileNamed: "Explosion")
+        explosion?.position = obj.position
+        self.addChild(explosion!)
+        
         obj.removeFromParent()
+        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+        
+        self.run(SKAction.wait(forDuration: 2)){
+            explosion?.removeFromParent()
+        }
     }
     
     

@@ -61,7 +61,9 @@ class Player: SKSpriteNode, ObstacleCreate {
             PhysicsCategory.MoveableObstacle.rawValue |
             PhysicsCategory.Coin.rawValue |
             PhysicsCategory.Wrap.rawValue |
-            PhysicsCategory.Multiplier.rawValue
+            PhysicsCategory.Multiplier.rawValue |
+            PhysicsCategory.Star.rawValue |
+            PhysicsCategory.OneUp.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
     }
@@ -132,11 +134,14 @@ class Player: SKSpriteNode, ObstacleCreate {
             PhysicsCategory.MoveableObstacle.rawValue |
             PhysicsCategory.Coin.rawValue |
             PhysicsCategory.Wrap.rawValue |
-            PhysicsCategory.Multiplier.rawValue
+            PhysicsCategory.Multiplier.rawValue |
+            PhysicsCategory.Star.rawValue |
+            PhysicsCategory.OneUp.rawValue
+
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         //self.physicsBody = SKPhysicsBody(polygonFrom: path)
         self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTrucker.rawValue
-
+        self.physicsBody?.usesPreciseCollisionDetection = true
     }
     func becomeCar(){
         self.size.height = monstertruck_player.height.rawValue
@@ -157,9 +162,13 @@ class Player: SKSpriteNode, ObstacleCreate {
             PhysicsCategory.MoveableObstacle.rawValue |
             PhysicsCategory.Coin.rawValue |
             PhysicsCategory.Wrap.rawValue |
-            PhysicsCategory.Multiplier.rawValue
+            PhysicsCategory.Multiplier.rawValue |
+            PhysicsCategory.Star.rawValue |
+            PhysicsCategory.OneUp.rawValue
+
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+        self.physicsBody?.usesPreciseCollisionDetection = true
     }
     
 
