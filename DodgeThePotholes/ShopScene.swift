@@ -15,6 +15,7 @@ class ShopScene: SKScene, Alerts{
     var moneyLabelNode:SKLabelNode!
     var lifeCostLabelNode:SKLabelNode!
     var carCostLabelNode:SKLabelNode!
+    var tankCostLabelNode:SKLabelNode!
     
     var buyNewCar:SKSpriteNode!
     var carBackground:SKSpriteNode!
@@ -42,6 +43,10 @@ class ShopScene: SKScene, Alerts{
         lifeCostLabelNode = self.childNode(withName: "LifeCost") as! SKLabelNode!
         lifeCostLabelNode.fontName = "PressStart2p"
         lifeCostLabelNode.text = " $ \(lifeCost)"
+        
+        tankCostLabelNode = self.childNode(withName: "TankCost") as! SKLabelNode!
+        tankCostLabelNode.fontName = "PressStart2p"
+        tankCostLabelNode.text = " & \(tankCost)"
         
         backButton = self.childNode(withName: "BackButton") as! SKSpriteNode!
         
