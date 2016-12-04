@@ -35,7 +35,7 @@ class PowerupMosterTruck: SKSpriteNode {
     func initPhysicsBody(){
         self.physicsBody?.isDynamic = true
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
-        self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTruck.rawValue
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Star.rawValue
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Car.rawValue
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true

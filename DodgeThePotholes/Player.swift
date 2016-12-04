@@ -15,6 +15,7 @@ class Player: SKSpriteNode, ObstacleCreate {
     var moveLeftTextureArray = [SKTexture]()
     var moveRightTextureAtlas = SKTextureAtlas(named: "\(preferences.value(forKey: "car"))_Right")
     var moveRightTextureArray = [SKTexture]()
+   // var monsterTruckTexture = [SKTexture]()
     
     init(size: CGSize){
         /*
@@ -28,7 +29,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         }*/
         
         
-        super.init(texture: SKTexture(imageNamed: preferences.value(forKey: "car") as! String), color: UIColor.clear, size: CGSize(width : 125/2, height:125))
+        super.init(texture: SKTexture(imageNamed: preferences.value(forKey: "car") as! String), color: UIColor.clear, size: CGSize(width : player.width.rawValue, height:player.height.rawValue))
         generatePosition(size)
         initPhysicsBody()
     }
@@ -112,9 +113,54 @@ class Player: SKSpriteNode, ObstacleCreate {
     }
     
     func becomeMonsterTruck(){
-        self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTruck.rawValue
+        self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTrucker.rawValue
+        let scream = SKAction.playSoundFileNamed("RAMPAGE.mp3", waitForCompletion: false)
+        //MonsterTruck
+        let monsterTruckTexture = SKAction.setTexture(SKTexture(imageNamed: "MonsterTruck"))
+        self.run(SKAction.sequence([monsterTruckTexture,scream]))
+        self.size.height = monstertruck_player.height.rawValue
+        self.size.width = monstertruck_player.width.rawValue
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: self.size.width/2, y:self.size.height/2),
+                                CGPoint(x: -self.size.width/2, y:self.size.height/2),
+                                CGPoint(x: -self.size.width/2, y:0),
+                                CGPoint(x: self.size.width/2, y: 0)])
+        path.closeSubpath()
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue |
+            PhysicsCategory.MoveableObstacle.rawValue |
+            PhysicsCategory.Coin.rawValue |
+            PhysicsCategory.Wrap.rawValue |
+            PhysicsCategory.Multiplier.rawValue
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
+        //self.physicsBody = SKPhysicsBody(polygonFrom: path)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTrucker.rawValue
+
     }
     func becomeCar(){
+        self.size.height = monstertruck_player.height.rawValue
+        self.size.width = monstertruck_player.width.rawValue
+        let carTexture = SKAction.setTexture(SKTexture(imageNamed: preferences.value(forKey: "car") as! String))
+        self.run(SKAction.sequence([carTexture]))
+        self.size.height = player.height.rawValue
+        self.size.width = player.width.rawValue
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: self.size.width/2, y:self.size.height/2),
+                                CGPoint(x: -self.size.width/2, y:self.size.height/2),
+                                CGPoint(x: -self.size.width/2, y:0),
+                                CGPoint(x: self.size.width/2, y: 0)])
+        path.closeSubpath()
+        self.physicsBody = SKPhysicsBody(polygonFrom: path)
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Obstacle.rawValue |
+            PhysicsCategory.MoveableObstacle.rawValue |
+            PhysicsCategory.Coin.rawValue |
+            PhysicsCategory.Wrap.rawValue |
+            PhysicsCategory.Multiplier.rawValue
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
         self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
     }
+    
+
 }
