@@ -69,6 +69,10 @@ class Ambulance: SKSpriteNode, ObstacleCreate{
         let removeAction = SKAction.removeFromParent()
         self.run(SKAction.sequence([group,removeAction]))
     }
+    
+    func destroy(){
+        
+    }
 
     
 }
