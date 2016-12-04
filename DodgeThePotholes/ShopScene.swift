@@ -85,6 +85,8 @@ class ShopScene: SKScene, Alerts{
                         alreadyPurchased()
                     }
                 }
+                updateCarTexture()
+                moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
             }
             else if nodesArray.first?.name == "PurchaseLife" || nodesArray.first?.name == "LifeBackground"{
                 if(lifeCost > preferences.value(forKey: "money") as! Int){
@@ -93,7 +95,7 @@ class ShopScene: SKScene, Alerts{
                 }
                 else{
                     if(preferences.value(forKey: "life") as! Bool == false){
-                        doPurchase(title: "Purchase Car", message: "Do you want to buy this car?", cost: carCost, item: "life")
+                        doPurchase(title: "Purchase Extra Life", message: "Do you want to purchase an extra life?", cost: carCost, item: "life")
                     }
                     else{
                         //already purchased alert
@@ -101,8 +103,6 @@ class ShopScene: SKScene, Alerts{
                     }
                 }
             }
-            updateCarTexture()
-            moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
         }
     }
     
