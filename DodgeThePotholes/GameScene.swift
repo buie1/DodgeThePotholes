@@ -300,8 +300,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addWrap()
         }else if(rand.nextInt() == 2){
             addMultiplier()
+        }else if(rand.nextInt() < 2){
+            addMonsterTruck()
         }
-        
+    }
+    func addMonsterTruck(){
+        let powMonsterTruck = PowerupMosterTruck(scene:self, duration:TimeInterval(self.gameSpeed))
+        self.addChild(powMonsterTruck)
     }
     func addOneUp(){
         let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
@@ -641,7 +646,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coin.removeFromParent()
     }
     
+    func monsterTruckDidHitObstacle(car:SKSpriteNode, obj:SKSpriteNode){
+        let explosion = SKEmitterNode(fileNamed: "Explosion")
+        explosion?.position = obj.position
+        self.addChild(explosion!)
+        
+        obj.removeFromParent()
+        self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+        
+        self.run(SKAction.wait(forDuration: 2)){
+            explosion?.removeFromParent()
+        }
+    }
     
+    
+    // This function is to wrap around the screen
+    // Is this dynamic enough?
     override func didSimulatePhysics() {
         self.player.position.x += xAcceleration * 50
         
