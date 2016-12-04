@@ -48,7 +48,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog", "car","human","ambulance","cone",]
+    var possibleObstacles = ["pothole", "pothole", "pothole", "pothole", "pothole",
+                                     "police", "police",
+                                     "dog", "dog", "dog",
+                                     "coin", "coin", "coin", "coin",
+                                     "car", "car", "car",
+                                     "human", "human", "human", "human",
+                                     "ambulance", "ambulance",
+                                     "cone"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
