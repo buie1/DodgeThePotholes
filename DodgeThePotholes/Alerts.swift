@@ -64,6 +64,8 @@ extension Alerts where Self: GameOverScene {
     
 }
 
+
+//Alerts for shop and car selection
 extension Alerts where Self: SKScene{
     func doPurchase(title: String, message: String, cost: Int, item: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -101,7 +101,7 @@ class ShopScene: SKScene, Alerts{
                     }
                 }
             }
-            
+            updateCarTexture()
         }
     }
     
