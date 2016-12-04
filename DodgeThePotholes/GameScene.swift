@@ -48,7 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone","wrap"]
+    var possibleObstacles = ["pothole", "police","dog", "car","human","ambulance","cone",]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -241,6 +241,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let resumeGameTimer = SKAction.run {
             self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
         }
+        print("pause time before next obstacle")
         self.run(SKAction.sequence([pauseFunction(t: conePat.returnPauseTime()),resumeGameTimer]))
     }
     func addDog(){
@@ -264,10 +265,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let powWrap = PowerupWrap(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powWrap)
     }
+    
+    func addMultiplier(){
+        
+    }
+    
     func addEnvObstacle(){
-        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 3)
-        if (rand.nextInt()  >= 2){
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 10)
+        if (rand.nextInt()  > 1){
             self.addPlant()
+        }else{
+            addCoinPattern()
         }
     }
     func addPowerUp(){
@@ -286,7 +294,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addObastacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
-        /*case "pothole":
+        case "pothole":
             print("pothole obstacle")
             addPothole()
             break
@@ -313,11 +321,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("ambulance obstacle")
             addAmbulance()
             break
-        case "wrap":
-            addWrap()
-            break 
-             */
         case "cone":
+            print("cone pattern")
             addConePattern()
             break
         default:
@@ -534,7 +539,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if preferences.bool(forKey: "sfx") == true {
             self.run(SKAction.playSoundFileNamed("money.aiff", waitForCompletion: false))
         }
-        self.money += 1
+        self.money += (1 * powerUps.multiplier)
         preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
         preferences.synchronize()
         coin.removeFromParent()
@@ -566,7 +571,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        score += (1 * powerUps.multiplier)
+        score += 1
         
     }
     

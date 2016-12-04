@@ -15,7 +15,7 @@ import GameplayKit
 class ConePattern:SKNode {
     
     var patterns = ["cone_pattern1","cone_pattern2","cone_pattern3"]
-    var minRows = 120 // Hardcoded value. No pattern will be less that 9 rows, yet....
+    var minRows = 9 // Hardcoded value. No pattern will be less that 9 rows, yet....
     var NumColumns:Int!
     var NumRows:Int!
     var size:CGSize
@@ -67,11 +67,16 @@ class ConePattern:SKNode {
                             
                             scene.addChild(self.cones[col,currRow]!)
                         }
-                        else{
-                            if (currRow == 0) || (col == self.NumRows-1){
+                        else if value == 2 {
+                            if (row == 0) || (row == self.NumRows-1){
                                 let barricade = Barricade(width: self.tileWidth,
                                                           height: self.tileHeight)
+                                barricade.position = self.pointFor(column: col,
+                                                                   row: currRow,
+                                                                   random: randN,
+                                                                   size: scene.size)
                                 barricade.begin(tileHeight: self.tileHeight, row: row, size: scene.size, pattern: self.size, dur: duration*Double(self.NumRows/self.minRows))
+                                scene.addChild(barricade)
                             }
                         }
                     }
