@@ -19,7 +19,6 @@ class ShopScene: SKScene, Alerts{
     var tankCostLabelNode:SKLabelNode!
     var songCostLabelNode:SKLabelNode!
     
-    
     //Shop Scene Buttons
     var buyNewCar:SKSpriteNode!
     var carBackground:SKSpriteNode!
@@ -77,9 +76,7 @@ class ShopScene: SKScene, Alerts{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        
         if let location = touch?.location(in: self) {
-            
             let nodesArray = self.nodes(at: location)
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             

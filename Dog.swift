@@ -19,11 +19,12 @@ class Dog: MoveableObstacle, ObstacleCreate {
     
     init(size: CGSize, duration:TimeInterval){
         
+        //Generate an array of Dog Running Textures
         for i in 1...textureAtlas.textureNames.count{
             let name = "Shepherd_run_\(i)"
             textureArray.append(SKTexture(imageNamed: name))
         }
-        
+        //Initialize the SKSPriteNode
         super.init(texture: SKTexture(imageNamed:"Shepherd_default-1"), color: UIColor.clear, size: CGSize(width :dog.width.rawValue, height:dog.height.rawValue))
         self.name = "dog"
         generatePosition(size)
@@ -75,18 +76,20 @@ class Dog: MoveableObstacle, ObstacleCreate {
     }
     
     func begin(_ size:CGSize, _ dur: TimeInterval){
-        
+        //Create dog running animation
         let run = SKAction.repeat(SKAction.animate(with: textureArray, timePerFrame: 0.2), count: 5)
+        //Generate a random starting postition
         let rand = GKRandomDistribution(lowestValue: 1,highestValue: 10).nextInt()
         let randFloat = CGFloat(rand)
         let runDir = SKAction.moveTo(x: orientation*(size.width/randFloat), duration: dur)
-        let moveAction = SKAction.moveTo(y: -size.height /*- self.size.height */, duration: dur)
-        
-        
+        //Create a destination for the Dog
+        let moveAction = SKAction.moveTo(y: -size.height, duration: dur)
+        //Group together all of the Run Actions
         let runGroup = SKAction.group([run,runDir,moveAction])
+        //Remove from the scene
         let removeAction = SKAction.removeFromParent()
+        //Perform run method on the Running animation and node removal in a sequence
         self.run(SKAction.sequence([runGroup,removeAction]))
-        
     }
     
     /*func begin(_ size:CGSize, _ dur: TimeInterval){
