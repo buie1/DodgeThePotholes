@@ -17,8 +17,6 @@ let bgTimeInterval = 10.0
 let startGameSpeed = 2.0
 
 
-//There is no way this is up to data.... stupid computer.
-
 
 // MARK: Physics Categories
 // update when adding new physics categories for the physics bodies
@@ -117,7 +115,7 @@ enum monstertruck_player: CGFloat {
 }
 
 enum player: CGFloat {
-    case width = 75
+    case width = 64
     case height = 125
 }
 
