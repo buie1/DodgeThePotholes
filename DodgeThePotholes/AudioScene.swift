@@ -36,7 +36,8 @@ class AudioScene: SKScene{
         backAudioNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
         songSelectedLabel = self.childNode(withName: "SongSelected") as! SKLabelNode!
         songSelectedLabel.fontName = "PressStart2p"
-        songSelectedLabel.text = preferences.value(forKey: "song_selected") as? String
+        let songName = "\(preferences.value(forKey: "song_selected")!)".components(separatedBy: ".")
+        songSelectedLabel.text = songName[0]
         
         nextLabel = self.childNode(withName: "NextSong") as! SKLabelNode!
         nextLabel.fontName = "PressStart2p"
@@ -89,27 +90,12 @@ class AudioScene: SKScene{
                 preferences.synchronize()
             }
             else if nodesArray.first?.name == "NextSong" {
-                print("Song options = \(songsArray.count)")
-                print("\(songsArray)")
                 if songsArray.count > 1{
                     var index = songsArray.index(of: songSelectedLabel.text!)
-                    print("index of results: \(index)")
                     index = (index! + 1) % songsArray.count
-                    //if index! == songsArray.count{
-                        //index = 0
-                        //print("index is : \(index!)")
-                        //preferences.set(songsArray[index!], forKey: "selected_song")
-                    //}
-                    //else{
-                        //index = index! + 1
-                        print("index is : \(index!)")
-                        print("value at index is \(songsArray[index!])")
-                        preferences.set(songsArray[index!], forKey: "song_selected")
-                    //}
-                    
-                    songSelectedLabel.text = preferences.value(forKey: "song_selected") as? String
-                    print("Song Label Should Say This: \(songSelectedLabel.text)")
-                    print("Preferences has this: \(preferences.value(forKey: "song_selected")!)")
+                    preferences.set(songsArray[index!], forKey: "song_selected")
+                    let songName = "\(preferences.value(forKey: "song_selected")!)".components(separatedBy: ".")
+                    songSelectedLabel.text = songName[0]
                 }
             }
             
@@ -132,6 +118,7 @@ class AudioScene: SKScene{
         }
     }
     override func update(_ currentTime: TimeInterval) {
-        songSelectedLabel.text = "\(preferences.value(forKey: "song_selected")!)"
+        let songName = "\(preferences.value(forKey: "song_selected")!)".components(separatedBy: ".")
+        songSelectedLabel.text = songName[0]
     }
 }
