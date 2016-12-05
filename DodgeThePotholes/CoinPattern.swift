@@ -40,8 +40,8 @@ class CoinPattern:SKNode {
         self.size = CGSize(width: tileWidth*NumColumns, height: tileHeight*NumRows)
         //3. Generate pattern
         super.init()
-        let rand = GKRandomDistribution(lowestValue: Int(-scene.size.width/2) + Int(self.size.width/2),
-                                        highestValue: Int(scene.size.width/2) - Int(self.size.width/2))
+        let rand = GKRandomDistribution(lowestValue: Int(-scene.size.width) + Int(self.size.width/2),
+                                        highestValue: Int(scene.size.width) - Int(self.size.width/2))
         let randN = CGFloat(rand.nextInt())
         print("random pt for money position  = \(randN)")
         //4. Place on scene and move
