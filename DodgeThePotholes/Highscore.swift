@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class Highscore: SKScene {
     
+    //Highscore Labels
     var highscoreTitleLabelNode:SKLabelNode!
     var leaderboardTitleLabelNode:SKLabelNode!
     var highscoreLabelNode:SKLabelNode!
@@ -27,11 +28,13 @@ class Highscore: SKScene {
     var ninethLabel:SKLabelNode!
     var tenthLabel:SKLabelNode!
     
+    //Back Button
     var backNode:SKSpriteNode!
-    var firebaseRef: FIRDatabaseReference!
+
     
     override func didMove(to view: SKView) {
         
+        //Initializing Labels
         highscoreTitleLabelNode = self.childNode(withName: "highscoreTitleLabel") as! SKLabelNode!
         highscoreTitleLabelNode.fontName = "PressStart2p"
         
@@ -59,6 +62,7 @@ class Highscore: SKScene {
         tenthLabel = self.childNode(withName: "tenth") as! SKLabelNode!
         tenthLabel.fontName = "PressStart2p"
         
+        //Array of leaderboard labels
         var leaderboardScores = [firstLabel, secondLabel, thirdLabel, fourthLabel, fifthLabel, sixthLabel, seventhLabel, eighthLabel, ninethLabel, tenthLabel]
         
         highscoreLabelNode = self.childNode(withName: "highscoreLabel") as! SKLabelNode!
@@ -72,6 +76,7 @@ class Highscore: SKScene {
         
         
         //There is a better way to do this.....
+        //Sorts the results from firebase query of leaderboard and displays the top ten
         leaderboardquery.queryOrderedByValue().observe(.value, with: { snapshot in
             let myDict = snapshot.value as! NSDictionary
             var unSorted = Array<Int>()
@@ -95,6 +100,7 @@ class Highscore: SKScene {
         
     }
     
+    //Handles touching the back button to transition back to the main menu
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         

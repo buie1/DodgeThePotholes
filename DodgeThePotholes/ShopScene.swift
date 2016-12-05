@@ -126,6 +126,7 @@ class ShopScene: SKScene, Alerts{
                     }
                 }
             }
+            //User is trying to purchase a tank
             else if nodesArray.first?.name == "PurchaseTank" || nodesArray.first?.name == "TankBackground"{
                 if(tankCost > preferences.value(forKey: "money") as! Int){
                     insufficientFunds(title: "Insufficient Funds!!!", message: "This item costs $\(tankCost)")
@@ -140,20 +141,33 @@ class ShopScene: SKScene, Alerts{
                     }
                 }
             }
+            
+            //User is trying to purchase a song
             else if nodesArray.first?.name == "PurchaseSong"{
                 if songCost > preferences.value(forKey: "money") as! Int{
                     insufficientFunds(title: "Insufficient Funds!!!", message: "This item costs $\(songCost)")
                 }
                 else{
-                    let songList = preferences.dictionary(forKey: "songs")!
-                    for (key, _) in songList{
-                        if let songPresent = songList[key] as? Bool{
-                            if songPresent == false{
-                                let songName = key.components(separatedBy: ".")
-                                doPurchase(title: "Purchase Song", message: "Do you want to purchase the \(songName[0]) song for use in-game?", cost: songCost, item: "song", itemName: key)
-                                break
+                    let songList = preferences.dictionary(forKey: "songs") as! Dictionary<String, Bool>
+                    var songsArray = Array<String>()
+                    for (key,value) in songList{
+                        if value == true {
+                            songsArray.append(key)
+                        }
+                    }
+                    if songsArray.count != songList.count{
+                        for (key, _) in songList{
+                            if let songPresent = songList[key]! as Bool!{
+                                if songPresent == false{
+                                    let songName = key.components(separatedBy: ".")
+                                    doPurchase(title: "Purchase Song", message: "Do you want to purchase the \(songName[0]) song for use in-game?", cost: songCost, item: "song", itemName: key)
+                                    break
+                                }
                             }
                         }
+                    }
+                    else{
+                        alreadyPurchased()
                     }
                 }
             }
@@ -161,10 +175,12 @@ class ShopScene: SKScene, Alerts{
         
     }
     
+    //Updates user's money shown as items are purchased
     override func update(_ currentTime: TimeInterval) {
         moneyLabelNode.text = "Money: $ \(preferences.value(forKey: "money")!)"
     }
     
+    //Updates the car texture to reflect the car being purchased
     func updateCarTexture(){
         if(preferences.value(forKey: "redcar") as! Bool == false){
             buyNewCar.texture = SKTexture(imageNamed: "car2")
