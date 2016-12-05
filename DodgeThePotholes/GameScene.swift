@@ -27,7 +27,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     var envTimer:Timer!
     var powerUpTimer:Timer!
     var monsterTruckTimer:Timer!
-    var textTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
     var bgAudio = SKAudioNode(fileNamed: preferences.value(forKey: "song_selected")! as! String)
     
@@ -254,7 +253,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         
     }
     func addTextMessage(){
-        textCount += 1
+        
         let textMessage = TextMessage(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(textMessage)
     }
@@ -794,16 +793,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             car.spinOut()
             break
         case "phone":
-            obj.removeFromParent()
             if(textCount >= GameSettings.maxTextCount.rawValue){
                 textCount = 0
-                textTimer.invalidate()
-            } else {
-                showText(index: textCount)
-                textTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.addTextMessage), userInfo: nil, repeats: true)
             }
-            
+            obj.removeFromParent()
+            showText(index: textCount)
+            textCount += 1
+            playTextTone()
+            self.oneCollision = false
             return
+        case "movingCar":
+            playCrashSoundEffect()
+            break
+        case "police":
+            playCrashSoundEffect()
+            break
+        case "ambulance":
+            playCrashSoundEffect()
+            break;
+        case "plant":
+            playCrashSoundEffect()
+            break
         default:
             print("do nothing")
         }
@@ -811,7 +821,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         loseLife()
         obj.removeFromParent()
     }
-    
+    func playTextTone(){
+        if preferences.bool(forKey: "sfx") == true && playerIsInvincible == false {
+            self.run(SKAction.playSoundFileNamed("text_tone.mp3", waitForCompletion: true))
+        }
+    }
+    func playCrashSoundEffect(){
+        if preferences.bool(forKey: "sfx") == true && playerIsInvincible == false {
+            self.run(SKAction.playSoundFileNamed("crash1.mp3", waitForCompletion: true))
+        }
+    }
     func carDidHitMoveableObstacle(car:Player, obj:MoveableObstacle){
         let name = obj.name
         switch name! {
@@ -822,13 +841,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             print("you hit a human!")
             obj.destroy()
         default:
+            playCrashSoundEffect()
             print("hit a moveable obj")
             obj.removeFromParent()
         }
         car.recover(scene:self)
         loseLife()
-       
-        
     }
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
@@ -847,9 +865,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         let explosion = SKEmitterNode(fileNamed: "Explosion")
         explosion?.position = obj.position
         self.addChild(explosion!)
-        
         obj.removeFromParent()
-        
         if preferences.bool(forKey: "sfx") == true {
             self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
         }
