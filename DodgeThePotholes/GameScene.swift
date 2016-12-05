@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 import CoreMotion
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     
     
     // MARK: -Temporary Booleans for TESTING
@@ -26,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var envTimer:Timer!
     var powerUpTimer:Timer!
     var monsterTruckTimer:Timer!
+    var textTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
     var bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
     
@@ -35,6 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var timerLabel:SKLabelNode!
     var livesArray:[SKSpriteNode]!
     var playerIsInvincible = false
+    var textCount:Int = 0
     
     var money:Int = 0 {
         didSet {
@@ -142,7 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // instead of the gametimers
         
         print("run game timer")
-        gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObstacle), userInfo: nil, repeats: true)
         
         envTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.addEnvObstacle), userInfo: nil, repeats: true)
         
@@ -234,6 +236,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let pothole = Pothole(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(pothole)
     }
+    func addTextMessage(){
+        textCount += 1
+        let textMessage = TextMessage(size:self.size, duration:TimeInterval(gameSpeed))
+        self.addChild(textMessage)
+    }
+   
     func addConePattern(){
         self.gameTimer.invalidate()
         let alertLabel = SKLabelNode(text: "Traffic Zone Approaching!")
@@ -252,7 +260,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let conePat = ConePattern(scene: self, duration: TimeInterval(self.gameSpeed))
         let resumeGameTimer = SKAction.run {
-            self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObastacle), userInfo: nil, repeats: true)
+            self.gameTimer = Timer.scheduledTimer(timeInterval: 1.75, target: self, selector: #selector(self.addObstacle), userInfo: nil, repeats: true)
         }
         print("pause time before next obstacle: \(conePat.returnPauseTime())")
         self.run(SKAction.sequence([pauseFunction(t: conePat.returnPauseTime()),resumeGameTimer]))
@@ -633,8 +641,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.lifeCount+=1
             self.addLivesDisplay(num_lives: self.lifeCount)
         }
-        
-        
     }
     func carDidHitStar(car: SKSpriteNode, star: PowerupMosterTruck){
         self.playerIsInvincible = true
@@ -655,13 +661,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch  name! {
         case "pothole":
             car.spinOut()
+            break
+        case "phone":
+            obj.removeFromParent()
+            if(textCount >= GameSettings.maxTextCount.rawValue){
+                textCount = 0
+                textTimer.invalidate()
+            } else {
+                showText(index: textCount)
+                textTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.addTextMessage), userInfo: nil, repeats: true)
+            }
+            
+            return
         default:
             print("do nothing")
         }
         car.recover()
         loseLife()
         obj.removeFromParent()
-        
     }
     
     func carDidHitMoveableObstacle(car:Player, obj:MoveableObstacle){
@@ -673,7 +690,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "human":
             print("you hit a human!")
             obj.destroy()
-            
         default:
             print("hit a moveable obj")
             obj.removeFromParent()

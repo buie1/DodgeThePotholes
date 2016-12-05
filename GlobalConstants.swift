@@ -44,6 +44,7 @@ enum PhysicsCategory:UInt32 {
 enum GameSettings: Int {
     case MaxLives       = 4
     case BeginningLifeCount = 3
+    case maxTextCount = 25
 }
 
 enum GameTimers: TimeInterval {
@@ -86,8 +87,13 @@ enum plant: CGFloat {
 }
 
 enum human: CGFloat {
-    //case low =
-    //case high =
+    case width = 40
+    case height = 80
+}
+
+enum phone: CGFloat {
+    case low = -0.4
+    case high = 0.4
     case width = 40
     case height = 80
 }
