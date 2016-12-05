@@ -291,7 +291,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             addWrap()
         }
         if(rand.nextInt() < 3){
-          //  addMonsterTruck()
+           addMonsterTruck()
         }
     }
     func addMonsterTruck(){
