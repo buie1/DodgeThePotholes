@@ -171,7 +171,7 @@ let removeNodeAction = SKAction.removeFromParent()
 let leaderboardquery = FIRDatabase.database().reference(fromURL: "https://dodge-the-potholes-55009884.firebaseio.com/Leaderboard")
 
 // MARK: Store constants
-let carCost = 2
-let lifeCost = 5
-let tankCost = 5
-let songCost = 5
+let carCost = 500
+let lifeCost = 1000
+let tankCost = 5000
+let songCost = 500

@@ -18,15 +18,29 @@ extension Alerts where Self: GameOverScene {
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
             print(alertController.textFields?.first?.text! ?? "scrub")
-            let indexStartOfText = alertController.textFields?.first?.text!.index((alertController.textFields?.first?.text!.startIndex)!, offsetBy: 3)
-            let first_three = alertController.textFields?.first?.text!.substring(to: indexStartOfText!)
-            self.submissionName = first_three! + "," + UIDevice.current.identifierForVendor!.uuidString
-            leaderboardquery.child(self.submissionName).setValue(preferences.value(forKey: "highscore"))
+            if (alertController.textFields?.first?.text!.characters.count)! > 2{
+                let indexStartOfText = alertController.textFields?.first?.text!.index((alertController.textFields?.first?.text!.startIndex)!, offsetBy: 3)
+                let first_three = alertController.textFields?.first?.text!.substring(to: indexStartOfText!)
+                self.submissionName = first_three! + "," + UIDevice.current.identifierForVendor!.uuidString
+                leaderboardquery.child(self.submissionName).setValue(preferences.value(forKey: "highscore"))
+            }
+            else{
+                self.tooFewCharacters()
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in}
         alertController.addAction(submitAction)
         alertController.addAction(cancelAction)
         
+        self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func tooFewCharacters(){
+        let alertController = UIAlertController(title: "Too Short!", message: "Please enter 3 characters!", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default) { _ in
+            self.showAlert(title: "New High Score!", message: "Insert 3 Characters")
+        }
+        alertController.addAction(dismissAction)
         self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     
