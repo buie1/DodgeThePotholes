@@ -11,6 +11,7 @@ import SpriteKit
 
 class ShopScene: SKScene, Alerts{
     
+    //Shop Scene Labels
     var shopLabelNode:SKLabelNode!
     var moneyLabelNode:SKLabelNode!
     var lifeCostLabelNode:SKLabelNode!
@@ -18,6 +19,8 @@ class ShopScene: SKScene, Alerts{
     var tankCostLabelNode:SKLabelNode!
     var songCostLabelNode:SKLabelNode!
     
+    
+    //Shop Scene Buttons
     var buyNewCar:SKSpriteNode!
     var carBackground:SKSpriteNode!
     var buyLife:SKSpriteNode!
@@ -29,6 +32,8 @@ class ShopScene: SKScene, Alerts{
     
     
     override func didMove(to view: SKView) {
+        
+        //Intinializing Scene Labels
         shopLabelNode = self.childNode(withName: "ShopLabel") as! SKLabelNode!
         shopLabelNode.fontName = "PressStart2p"
         shopLabelNode.text = "Shop"
@@ -144,7 +149,8 @@ class ShopScene: SKScene, Alerts{
                     for (key, _) in songList{
                         if let songPresent = songList[key] as? Bool{
                             if songPresent == false{
-                                doPurchase(title: "Purchase Song", message: "Do you want to purchase a the \(key) song for use in game?", cost: songCost, item: "song", itemName: key)
+                                let songName = key.components(separatedBy: ".")
+                                doPurchase(title: "Purchase Song", message: "Do you want to purchase the \(songName[0]) song for use in-game?", cost: songCost, item: "song", itemName: key)
                                 break
                             }
                         }

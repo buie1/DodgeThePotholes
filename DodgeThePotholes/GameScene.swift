@@ -512,6 +512,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                     carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode,
                                   coin: contact.bodyA.node as! SKSpriteNode)
                 }
+            case PhysicsCategory.Recover.rawValue | PhysicsCategory.Coin.rawValue:
+                print("Car (recover) hit a coin")
+                if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
+                    carDidHitCoin(car: contact.bodyA.node as! SKSpriteNode,
+                                  coin: contact.bodyB.node as! SKSpriteNode)
+                }else{
+                    carDidHitCoin(car: contact.bodyB.node as! SKSpriteNode,
+                                  coin: contact.bodyA.node as! SKSpriteNode)
+                }
+                
             case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Coin.rawValue:
                 print("Monstertruck hit a coin")
                 if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
@@ -537,8 +547,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                                    wrap: contact.bodyA.node as! PowerupWrap)
                     }
                 }
-            case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Wrap.rawValue:
+            case PhysicsCategory.Recover.rawValue | PhysicsCategory.Wrap.rawValue:
                 print("Car hit a wrap powerup")
+                
+                if(!powerUps.wrap){
+                    // if you can already wrap ignore it!
+                    if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
+                        carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
+                                   wrap: contact.bodyB.node as! PowerupWrap)
+                    } else if (contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue) {
+                        
+                        
+                    }else{
+                        carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
+                                   wrap: contact.bodyA.node as! PowerupWrap)
+                    }
+                }
+
+            case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Wrap.rawValue:
+                print("Car (recover) hit a wrap powerup")
                 
                 if(!powerUps.wrap){
                     // if you can already wrap ignore it!
@@ -557,6 +584,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 }else{
                     carDidHitOneUp(car: contact.bodyB.node as! SKSpriteNode, oneup: contact.bodyA.node as! PowerupOneUp)
                 }
+                
+            case PhysicsCategory.Recover.rawValue | PhysicsCategory.OneUp.rawValue:
+                print("Plus one Life!")
+                if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
+                    carDidHitOneUp(car: contact.bodyA.node as! SKSpriteNode, oneup: contact.bodyB.node as! PowerupOneUp)
+                }else{
+                    carDidHitOneUp(car: contact.bodyB.node as! SKSpriteNode, oneup: contact.bodyA.node as! PowerupOneUp)
+                }
+                
             case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.OneUp.rawValue:
                 print("Plus one Life!")
                 if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
@@ -564,6 +600,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 }else{
                     carDidHitOneUp(car: contact.bodyB.node as! SKSpriteNode, oneup: contact.bodyA.node as! PowerupOneUp)
                 }
+                
             case PhysicsCategory.Car.rawValue | PhysicsCategory.Star.rawValue:
                 print ("You are now a MOOOONSTER TRUUUUUCK")
                 if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
@@ -571,13 +608,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 }else{
                     carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
                 }
+                
+            case PhysicsCategory.Recover.rawValue | PhysicsCategory.Star.rawValue:
+                print ("Recovery and now you are a MOOOONSTER TRUUUUUCK")
+                if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
+                    carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
+                }else{
+                    carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
+                }
             case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Star.rawValue:
                 print ("You are now a MOOOONSTER TRUUUUUCK")
-                if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
-                   // carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
-                }else{
-                   //carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
-                }
+                
                 
             case PhysicsCategory.Car.rawValue | PhysicsCategory.Multiplier.rawValue:
                 if(powerUps.multiplier == 1){
@@ -590,7 +631,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                     }
                 }
                 print("already have a multiplier applied")
-
+                
+            case PhysicsCategory.Recover.rawValue | PhysicsCategory.Multiplier.rawValue:
+                if(powerUps.multiplier == 1){
+                    if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
+                        carHitMultiplier(car: contact.bodyA.node as! SKSpriteNode,
+                                         mult: contact.bodyB.node as! MultiplierPowerUp)
+                    }else{
+                        carHitMultiplier(car: contact.bodyB.node as! SKSpriteNode,
+                                         mult: contact.bodyA.node as! MultiplierPowerUp)
+                    }
+                }
+                print("already have a multiplier applied")
+                
             case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Multiplier.rawValue:
                 if(powerUps.multiplier == 1){
                     if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue {
