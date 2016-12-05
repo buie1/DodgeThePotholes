@@ -46,7 +46,7 @@ enum PhysicsCategory:UInt32 {
 enum GameSettings: Int {
     case MaxLives       = 4
     case BeginningLifeCount = 3
-    case maxTextCount = 25
+    case maxTextCount = 57
 }
 
 enum GameTimers: TimeInterval {

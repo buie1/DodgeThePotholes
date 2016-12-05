@@ -73,6 +73,7 @@
 		CAC5815A1DF3E29C00927665 /* monster_truck_jam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAC581591DF3E29C00927665 /* monster_truck_jam.mp3 */; };
 		CAD6D3521DF4878500AE565C /* TextMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6D3511DF4878500AE565C /* TextMessage.swift */; };
 		CAD6D3541DF52C1900AE565C /* crash1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAD6D3531DF52C1900AE565C /* crash1.mp3 */; };
+		CAD6D3561DF5360F00AE565C /* text_tone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAD6D3551DF5360F00AE565C /* text_tone.mp3 */; };
 		CAF9173F1DF226E600B4C499 /* PowerupOneUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */; };
 		EE0813981DE25BC900860FDE /* Highscore.sks in Resources */ = {isa = PBXBuildFile; fileRef = EE0813971DE25BC900860FDE /* Highscore.sks */; };
 		EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0813991DE25BE200860FDE /* Highscore.swift */; };
@@ -161,6 +162,7 @@
 		CAC581591DF3E29C00927665 /* monster_truck_jam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monster_truck_jam.mp3; sourceTree = "<group>"; };
 		CAD6D3511DF4878500AE565C /* TextMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessage.swift; sourceTree = "<group>"; };
 		CAD6D3531DF52C1900AE565C /* crash1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crash1.mp3; sourceTree = "<group>"; };
+		CAD6D3551DF5360F00AE565C /* text_tone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = text_tone.mp3; sourceTree = "<group>"; };
 		CAF9173E1DF226E600B4C499 /* PowerupOneUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupOneUp.swift; sourceTree = "<group>"; };
 		EE0813971DE25BC900860FDE /* Highscore.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Highscore.sks; sourceTree = "<group>"; };
 		EE0813991DE25BE200860FDE /* Highscore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				2C4622161DE7B32800956B94 /* ambulance_s.mp3 */,
 				2C7CC3441DD1377400FE789A /* born-lucky.wav */,
 				2C8B90DC1DD516C3001C944A /* car_honk.mp3 */,
+				CAD6D3551DF5360F00AE565C /* text_tone.mp3 */,
 				2C8B90D81DD50BF6001C944A /* carskid.wav */,
 				CAD6D3531DF52C1900AE565C /* crash1.mp3 */,
 				CA473A4F1DE29D5D00F16DA5 /* dog_wimper.mp3 */,
@@ -551,6 +554,7 @@
 				2C1BFE441DD104BE00ECBBB8 /* LaunchScreen.storyboard in Resources */,
 				2C1BFE501DD1061300ECBBB8 /* Explosion.sks in Resources */,
 				2C7CC3491DD13B9300FE789A /* hot-pursuit.wav in Resources */,
+				CAD6D3561DF5360F00AE565C /* text_tone.mp3 in Resources */,
 				CAD6D3541DF52C1900AE565C /* crash1.mp3 in Resources */,
 				2C0CE7001DDD463F00273099 /* cone_pattern2.json in Resources */,
 				EEA54BC51DF3D07100424660 /* CarScene.sks in Resources */,
