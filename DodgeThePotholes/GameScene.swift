@@ -407,7 +407,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     func honkHorn(){
         if preferences.bool(forKey: "sfx") == true {
             if (self.playerIsInvincible){
-                self.run(SKAction.playSoundFileNamed("pew-pew-lei", waitForCompletion: true))
+                self.run(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: true))
             }else {
                 self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: true))
             }
