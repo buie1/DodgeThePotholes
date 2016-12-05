@@ -36,6 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     var timerLabel:SKLabelNode!
     var livesArray:[SKSpriteNode]!
     var playerIsInvincible = false
+    var drunkDriving = false
+    var drinkingGoggles = SKSpriteNode()
     var textCount:Int = 0
     
     var money:Int = 0 {
@@ -84,8 +86,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         bg.zPosition = -1;
         bg.start(duration: gameSpeed)
         
+        
         // TIMER TO PERIODICALLY SPEED UP GAME
         bgTimer = Timer.scheduledTimer(timeInterval: bgTimeInterval, target: self, selector: #selector(GameScene.updateBackground), userInfo: nil, repeats: true)
+
         
         // MARK: Shaders may be the key to blurring the screen but I have no idea how to use them... yet
         // jab165 11/8/16
@@ -118,6 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         scoreLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60)
         scoreLabel.fontName = "PressStart2P"
         scoreLabel.fontSize = 24
+        scoreLabel.zPosition = 2
         scoreLabel.fontColor = UIColor.white
         score = 0;
         self.addChild(scoreLabel)
@@ -126,6 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         moneyLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*2)
         moneyLabel.fontName = "PressStart2P"
         moneyLabel.fontSize = 24
+        moneyLabel.zPosition = 2
         moneyLabel.fontColor = UIColor.white
         money = 0
         self.addChild(moneyLabel)
@@ -134,6 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         timerLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*3)
         timerLabel.fontName = "PressStart2P"
         timerLabel.fontSize = 24
+        timerLabel.zPosition = 2
         timerLabel.fontColor = UIColor.yellow
         timerLabel.isHidden = true
         self.addChild(timerLabel)
@@ -222,21 +229,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     func addAmbulance(){
         let amb = Ambulance(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(amb)
+        
+    }
+    
+    func addBooze(){
+        let alc = Booze(scene:self,duration:TimeInterval(gameSpeed))
+        self.addChild(alc)
     }
     
     func addCars(){
         let c = MovingCar(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(c)
+        
+
     }
     
     func addPolice(){
         let police = policeCar(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(police)
+        
     }
     
     func addPothole(){
         let pothole = Pothole(size:self.size, duration:TimeInterval(gameSpeed))
         self.addChild(pothole)
+        
     }
     func addTextMessage(){
         
@@ -309,31 +326,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             addCoinPattern()
         }
     }
-    
+    /*
     func addPowerUp(){
-        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 5)
-        if (rand.nextInt()  == 5){
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 10)
+        if (rand.nextInt()  == 6){
             self.addOneUp()
-        }else if(rand.nextInt() == 4){
+        }else if(rand.nextInt() == 5){
             self.addWrap()
-        }else if(rand.nextInt() == 3){
+        }else if(rand.nextInt() == 4){
             self.addMultiplier()
-        }else if(rand.nextInt() == 2){
+        }else if(rand.nextInt() == 3){
             print("Incoming text!")
             self.addTextMessage()
-        }else if(rand.nextInt() <= 1){
+        }else if (rand.nextInt() == 2){
+            self.addBooze()
+        }else if(rand.nextInt() > 6){
+            self.addMonsterTruck()
+        }
+    }*/
+    func addPowerUp(){
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 10)
+        if(rand.nextInt() > 0){
             self.addMonsterTruck()
         }
     }
-    /*
-    func addPowerUp(){
-        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 1)
-        if (rand.nextInt()  == 0){
-            self.addWrap()
-        }else{
-            self.addMultiplier()
-        }
-    }*/
+
+
     func addMonsterTruck(){
         let powMonsterTruck = PowerupMosterTruck(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powMonsterTruck)
@@ -397,10 +415,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     
     func honkHorn(){
         if preferences.bool(forKey: "sfx") == true {
-            self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: true))
+            if (self.playerIsInvincible){
+                self.run(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: true))
+            }else {
+                self.run(SKAction.playSoundFileNamed("car_honk.mp3", waitForCompletion: true))
+            }
         }
-        
-        let hornNode = SKSpriteNode(imageNamed: "carHorn")
+        var hornNode = SKSpriteNode()
+        if(self.playerIsInvincible){
+            hornNode = SKSpriteNode(imageNamed: "missle")
+        }else{
+            hornNode = SKSpriteNode(imageNamed: "carHorn")
+        }
         hornNode.position = player.position
         hornNode.position.y += 5
         
@@ -424,9 +450,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         hornArray.append(SKAction.move(to: CGPoint(x: player.position.x,
                                                    y: self.frame.size.height/4 + hornNode.size.height),
                                          duration: animationDuration))
-        hornArray.append(SKAction.resize(toWidth: hornNode.size.width * 15, duration: animationDuration))
+        if(!self.playerIsInvincible){
+            hornArray.append(SKAction.resize(toWidth: hornNode.size.width * 15, duration: animationDuration))
+        }
         let hornGroup = SKAction.group(hornArray)
         removeHornArray.append(hornGroup)
+        if(self.playerIsInvincible){
+            let explode = SKAction.run {
+                let explosion = SKEmitterNode(fileNamed: "Explosion")
+                explosion?.position = hornNode.position
+                self.addChild(explosion!)
+                if preferences.bool(forKey: "sfx") == true {
+                    self.run(SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false))
+                }
+                self.run(SKAction.wait(forDuration: 2)){
+                    explosion?.removeFromParent()
+                }
+                
+            }
+            removeHornArray.append(explode)
+        }
         removeHornArray.append(SKAction.removeFromParent())
         hornNode.run(SKAction.sequence(removeHornArray))
         
@@ -553,12 +596,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 if(!powerUps.wrap){
                     // if you can already wrap ignore it!
                     if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
+
                         carCanWrap(car: contact.bodyA.node as! SKSpriteNode,
                                    wrap: contact.bodyB.node as! PowerupWrap)
                     } else if (contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue) {
                         
                         
                     }else{
+
                         carCanWrap(car: contact.bodyB.node as! SKSpriteNode,
                                    wrap: contact.bodyA.node as! PowerupWrap)
                     }
@@ -611,9 +656,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 
             case PhysicsCategory.Recover.rawValue | PhysicsCategory.Star.rawValue:
                 print ("Recovery and now you are a MOOOONSTER TRUUUUUCK")
+                self.oneCollision = false
                 if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
+                    let play = contact.bodyA.node as! SKSpriteNode
+                    play.removeAllActions()
                     carDidHitStar(car: contact.bodyA.node as! SKSpriteNode, star: contact.bodyB.node as! PowerupMosterTruck)
                 }else{
+                    let play = contact.bodyB.node as! SKSpriteNode
+                    play.removeAllActions()
                     carDidHitStar(car: contact.bodyB.node as! SKSpriteNode, star: contact.bodyA.node as! PowerupMosterTruck)
                 }
             case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Star.rawValue:
@@ -655,7 +705,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                     }
                 }
                 print("already have a multiplier applied")
-
+                
+            case PhysicsCategory.Car.rawValue | PhysicsCategory.Booze.rawValue:
+                if(!drunkDriving){
+                    if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue {
+                        carDrunkDriving(car: contact.bodyA.node as! SKSpriteNode, bottle: contact.bodyB.node as! Booze)
+                    }else{
+                        let play = contact.bodyB.node as! SKSpriteNode
+                        play.removeAllActions()
+                        carDrunkDriving(car: contact.bodyB.node as! SKSpriteNode, bottle: contact.bodyA.node as! Booze)
+                    }
+                }
                 
             default:
                 
@@ -670,7 +730,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     }
     
     // MARK: Collision Handlers
-    
+    func carDrunkDriving(car:SKSpriteNode, bottle:Booze){
+        let alertLabel = SKLabelNode(text: "Don't Drink and Drive!")
+        alertLabel.fontName = "PressStart2P"
+        alertLabel.fontSize = 28
+        alertLabel.fontColor = UIColor.red
+        alertLabel.zPosition = 4
+        alertLabel.position = CGPoint(x:self.size.width, y:0)
+        self.addChild(alertLabel)
+        alertLabel.run(SKAction.sequence([flyInFunction(t: TimeInterval(Double(gameSpeed)/startGameSpeed)),removeNodeAction]))
+        bottle.timerStart(self,TimeInterval(self.gameSpeed))
+    }
     
     func carHitMultiplier(car:SKSpriteNode, mult:MultiplierPowerUp){
         mult.removeFromParent()
@@ -791,7 +861,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     
     func carDidHitCoin(car:SKSpriteNode, coin:SKSpriteNode){
         if preferences.bool(forKey: "sfx") == true && playerIsInvincible == false {
-            self.run(SKAction.playSoundFileNamed("money.aiff", waitForCompletion: true))
+            self.run(SKAction.group([
+                SKAction.playSoundFileNamed("money.aiff", waitForCompletion: true),
+                SKAction.changeVolume(to: 0.75, duration: 0)]))
         }
         self.money += (1 * powerUps.multiplier)
         preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
@@ -816,8 +888,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     // This function is to wrap around the screen
     // Is this dynamic enough?
     override func didSimulatePhysics() {
-        self.player.position.x += xAcceleration * 50
         
+        if drunkDriving{
+            self.player.position.x -= xAcceleration * 50
+        }else{
+            self.player.position.x += xAcceleration * 50
+        }
         if !powerUps.wrap{
             if player.position.x < -self.size.width/2 + player.frame.width/4 {
                 player.position = CGPoint(x: -self.size.width/2 + player.frame.width/4, y:player.position.y)

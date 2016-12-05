@@ -30,6 +30,8 @@
 		2C3127DC1DF53E3E000F12F3 /* catch_me.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3127DB1DF53E3E000F12F3 /* catch_me.wav */; };
 		2C3127DE1DF53E4B000F12F3 /* race_duel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3127DD1DF53E4B000F12F3 /* race_duel.wav */; };
 		2C3127E01DF53E55000F12F3 /* urban_chase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3127DF1DF53E55000F12F3 /* urban_chase.wav */; };
+		2C3127E21DF5454C000F12F3 /* Booze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3127E11DF5454C000F12F3 /* Booze.swift */; };
+		2C3127E41DF613B9000F12F3 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3127E31DF60E57000F12F3 /* pew-pew-lei.caf */; };
 		2C3AFC181DF3C9F30051AD57 /* ShopScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC151DF3C9F30051AD57 /* ShopScene.sks */; };
 		2C3AFC191DF3C9F30051AD57 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AFC161DF3C9F30051AD57 /* ShopScene.swift */; };
 		2C3AFC1D1DF3D5760051AD57 /* cone_pattern3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC1C1DF3D5760051AD57 /* cone_pattern3.json */; };
@@ -119,6 +121,8 @@
 		2C3127DB1DF53E3E000F12F3 /* catch_me.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = catch_me.wav; sourceTree = "<group>"; };
 		2C3127DD1DF53E4B000F12F3 /* race_duel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = race_duel.wav; sourceTree = "<group>"; };
 		2C3127DF1DF53E55000F12F3 /* urban_chase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = urban_chase.wav; sourceTree = "<group>"; };
+		2C3127E11DF5454C000F12F3 /* Booze.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Booze.swift; sourceTree = "<group>"; };
+		2C3127E31DF60E57000F12F3 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		2C3AFC151DF3C9F30051AD57 /* ShopScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShopScene.sks; sourceTree = "<group>"; };
 		2C3AFC161DF3C9F30051AD57 /* ShopScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopScene.swift; sourceTree = "<group>"; };
 		2C3AFC1C1DF3D5760051AD57 /* cone_pattern3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern3.json; sourceTree = "<group>"; };
@@ -270,8 +274,8 @@
 				EE0813961DE25B9000860FDE /* Highscore Scene */,
 				2C1BFE531DD1062800ECBBB8 /* SceneNodeClasses */,
 				2CB7A5651DD262D40029B800 /* Obstacle Classes */,
-				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
 				2CB7A55F1DD19F8A0029B800 /* Menu Scene */,
+				54FB84151DD58DF900AFBF7C /* GameOver Scene */,
 				EE8353AA1DD58593003ED2E4 /* Settings Scene */,
 				2C79B8F21DF0FCBE0067FFBD /* PowerUps */,
 				EE8353A51DD5851E003ED2E4 /* Audio Scene */,
@@ -322,6 +326,7 @@
 			children = (
 				2C3127DF1DF53E55000F12F3 /* urban_chase.wav */,
 				2C3127DD1DF53E4B000F12F3 /* race_duel.wav */,
+				2C3127E31DF60E57000F12F3 /* pew-pew-lei.caf */,
 				2C3127DB1DF53E3E000F12F3 /* catch_me.wav */,
 				2C4622161DE7B32800956B94 /* ambulance_s.mp3 */,
 				2C7CC3441DD1377400FE789A /* born-lucky.wav */,
@@ -378,6 +383,7 @@
 			children = (
 				2C4622141DE7B2D000956B94 /* Ambulance.swift */,
 				2CA3A8EE1DF51584006EBA31 /* Barricade.swift */,
+				2C3127E11DF5454C000F12F3 /* Booze.swift */,
 				CAD6D3511DF4878500AE565C /* TextMessage.swift */,
 				2C46221A1DE7C58D00956B94 /* MovingCar.swift */,
 				2C0CE6F71DDD1CF300273099 /* ConePattern.swift */,
@@ -544,6 +550,7 @@
 				EE8353AD1DD585B0003ED2E4 /* SettingsScene.sks in Resources */,
 				2C0CE6F61DDD17E500273099 /* money_pattern4.json in Resources */,
 				2C1BFE3F1DD104BE00ECBBB8 /* Main.storyboard in Resources */,
+				2C3127E41DF613B9000F12F3 /* pew-pew-lei.caf in Resources */,
 				2C3AFC1D1DF3D5760051AD57 /* cone_pattern3.json in Resources */,
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
 				CAC5815A1DF3E29C00927665 /* monster_truck_jam.mp3 in Resources */,
@@ -645,6 +652,7 @@
 				2C4622151DE7B2D000956B94 /* Ambulance.swift in Sources */,
 				EE08139A1DE25BE200860FDE /* Highscore.swift in Sources */,
 				2C8B90DF1DD54950001C944A /* Player.swift in Sources */,
+				2C3127E21DF5454C000F12F3 /* Booze.swift in Sources */,
 				2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */,
 				EE8353AE1DD585B0003ED2E4 /* SettingsScene.swift in Sources */,
 				2C8B90E31DD56856001C944A /* MoveableObstacle.swift in Sources */,
