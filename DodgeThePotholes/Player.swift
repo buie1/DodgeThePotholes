@@ -109,6 +109,7 @@ class Player: SKSpriteNode, ObstacleCreate {
     func becomeMonsterTruck(){
         self.physicsBody?.categoryBitMask = PhysicsCategory.MonsterTrucker.rawValue
         var monsterTruckTexture:SKAction
+        self.alpha = 1
         //MonsterTruck
         if preferences.bool(forKey: "tank")  == true {
              monsterTruckTexture = SKAction.setTexture(SKTexture(imageNamed: "tank"))
@@ -151,6 +152,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         self.size.width = monstertruck_player.width.rawValue
         let carTexture = SKAction.setTexture(SKTexture(imageNamed: preferences.value(forKey: "car") as! String))
         self.run(SKAction.sequence([carTexture]))
+        self.alpha = 1
         self.size.height = player.height.rawValue
         self.size.width = player.width.rawValue
         let path = CGMutablePath()

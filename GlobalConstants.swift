@@ -38,6 +38,7 @@ enum PhysicsCategory:UInt32 {
     case MonsterTrucker     = 0x400
     //case Jump               = UniqueID
     case BlackIce           = 0x800
+    case Booze              = 0x1000
     
 }
 
