@@ -29,6 +29,7 @@ extension Alerts where Self: GameOverScene {
         
         self.view?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
+    
 }
 
 extension Alerts where Self: ShopScene{

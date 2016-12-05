@@ -60,15 +60,15 @@ class Highscore: SKScene {
         tenthLabel.fontName = "PressStart2p"
         
         var leaderboardScores = [firstLabel, secondLabel, thirdLabel, fourthLabel, fifthLabel, sixthLabel, seventhLabel, eighthLabel, ninethLabel, tenthLabel]
-    
+        
         highscoreLabelNode = self.childNode(withName: "highscoreLabel") as! SKLabelNode!
         highscoreLabelNode.fontName = "PressStart2p"
         highscoreLabelNode.text = "\(preferences.value(forKey: "highscore") as! Int)"
-
+        
         backNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
         print("---------------------------------\n FirebaseReference \n---------------------\n")
         
-
+        
         
         
         //There is a better way to do this.....
@@ -110,5 +110,5 @@ class Highscore: SKScene {
             }
         }
     }
-
+    
 }

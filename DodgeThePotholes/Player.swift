@@ -18,20 +18,11 @@ class Player: SKSpriteNode, ObstacleCreate {
    // var monsterTruckTexture = [SKTexture]()
     
     init(size: CGSize){
-        /*
-        for i in 1...moveLeftTextureAtlas.textureNames.count{
-            let name = "car1_left_\(i)"
-            moveLeftTextureArray.append(SKTexture(imageNamed: name))
-        }
-        for i in 1...moveRightTextureAtlas.textureNames.count{
-            let name = "car1_right_\(i)"
-            moveRightTextureArray.append(SKTexture(imageNamed: name))
-        }*/
-        
         
         super.init(texture: SKTexture(imageNamed: preferences.value(forKey: "car") as! String), color: UIColor.clear, size: CGSize(width : player.width.rawValue, height:player.height.rawValue))
         generatePosition(size)
         initPhysicsBody()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,7 +90,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         self.run(SKAction.sequence([group,reset]))
     }
     
-    func recover(){
+    func recover(scene:GameScene){
         
         AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
         
@@ -109,6 +100,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         }
         let restore = SKAction.run {
             self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+            scene.oneCollision = false
         }
         self.run(SKAction.sequence([hide,flashAction,restore]))
         
@@ -125,7 +117,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         }
         if preferences.bool(forKey: "sfx") == true {
             let scream = SKAction.playSoundFileNamed("RAMPAGE.mp3", waitForCompletion: true)
-            let monsterTruckMusic = SKAction.playSoundFileNamed("monster_truck_jam.mp3", waitForCompletion: true)
+            let monsterTruckMusic = SKAction.playSoundFileNamed("monster_truck_jam.mp3", waitForCompletion: false)
             let soundGroup = SKAction.group([scream, monsterTruckMusic])
             self.run(SKAction.sequence([monsterTruckTexture,soundGroup]))
         } else {
