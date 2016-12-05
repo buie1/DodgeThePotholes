@@ -16,6 +16,7 @@ class ShopScene: SKScene, Alerts{
     var lifeCostLabelNode:SKLabelNode!
     var carCostLabelNode:SKLabelNode!
     var tankCostLabelNode:SKLabelNode!
+    var songCostLabelNode:SKLabelNode!
     
     var buyNewCar:SKSpriteNode!
     var carBackground:SKSpriteNode!
@@ -23,6 +24,7 @@ class ShopScene: SKScene, Alerts{
     var lifeBackground:SKSpriteNode!
     var buyTank:SKSpriteNode!
     var tankBackground:SKSpriteNode!
+    var buySong:SKSpriteNode!
     var backButton:SKSpriteNode!
     
     
@@ -46,7 +48,11 @@ class ShopScene: SKScene, Alerts{
         
         tankCostLabelNode = self.childNode(withName: "TankCost") as! SKLabelNode!
         tankCostLabelNode.fontName = "PressStart2p"
-        tankCostLabelNode.text = " & \(tankCost)"
+        tankCostLabelNode.text = " $ \(tankCost)"
+        
+        songCostLabelNode = self.childNode(withName: "SongCost") as! SKLabelNode!
+        songCostLabelNode.fontName = "PressStart2p"
+        songCostLabelNode.text = " $ \(songCost)"
         
         backButton = self.childNode(withName: "BackButton") as! SKSpriteNode!
         
@@ -59,6 +65,8 @@ class ShopScene: SKScene, Alerts{
         
         buyTank = self.childNode(withName: "PurchaseTank") as! SKSpriteNode!
         tankBackground = self.childNode(withName: "TankBackground") as! SKSpriteNode!
+        
+        buySong = self.childNode(withName: "PurchaseCar") as! SKSpriteNode!
         
     }
     
@@ -124,6 +132,22 @@ class ShopScene: SKScene, Alerts{
                     else{
                         //already purchased alert
                         alreadyPurchased()
+                    }
+                }
+            }
+            else if nodesArray.first?.name == "PurchaseSong"{
+                if songCost > preferences.value(forKey: "money") as! Int{
+                    insufficientFunds(title: "Insufficient Funds!!!", message: "This item costs $\(songCost)")
+                }
+                else{
+                    let songList = preferences.dictionary(forKey: "songs")!
+                    for (key, _) in songList{
+                        if let songPresent = songList[key] as? Bool{
+                            if songPresent == false{
+                                doPurchase(title: "Purchase Song", message: "Do you want to purchase a the \(key) song for use in game?", cost: songCost, item: "song", itemName: key)
+                                break
+                            }
+                        }
                     }
                 }
             }
