@@ -26,7 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     var monsterTruckTimer:Timer!
     var textTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
-    var bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+    var bgAudio = SKAudioNode(fileNamed: preferences.value(forKey: "song_selected")! as! String)
     
     // MARK: HUD Variables
     var scoreLabel:SKLabelNode!

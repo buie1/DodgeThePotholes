@@ -167,3 +167,4 @@ let leaderboardquery = FIRDatabase.database().reference(fromURL: "https://dodge-
 let carCost = 2
 let lifeCost = 5
 let tankCost = 5
+let songCost = 5

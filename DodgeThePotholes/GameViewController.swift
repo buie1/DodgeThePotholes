@@ -94,7 +94,14 @@ class GameViewController: UIViewController {
         if preferences.string(forKey: "tank") == nil{
             preferences.setValue(false, forKey: "tank")
         }
-        //TODO: add in prefences for song choice and song unlocked
+        //Prefences for song choice and song unlocked
+        if preferences.dictionary(forKey: "songs") == nil{
+            let songList = ["hot-pursuit.wav": true, "urban_chase.wav" : false, "catch_me.wav" : false, "race_duel.wav" : false]
+            preferences.set(songList, forKey: "songs")
+        }
+        if preferences.string(forKey: "song_selected") == nil{
+            preferences.set("hot-pursuit.wav", forKey: "song_selected")
+        }
         preferences.synchronize()
     }
 }
