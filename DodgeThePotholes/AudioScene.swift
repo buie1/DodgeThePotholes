@@ -91,7 +91,7 @@ class AudioScene: SKScene{
             }
             else if nodesArray.first?.name == "NextSong" {
                 if songsArray.count > 1{
-                    var index = songsArray.index(of: songSelectedLabel.text!)
+                    var index = songsArray.index(of: preferences.value(forKey: "song_selected") as! String)
                     index = (index! + 1) % songsArray.count
                     preferences.set(songsArray[index!], forKey: "song_selected")
                     let songName = "\(preferences.value(forKey: "song_selected")!)".components(separatedBy: ".")
@@ -110,7 +110,6 @@ class AudioScene: SKScene{
     
     func createSongsArray(){
         let songsList = preferences.dictionary(forKey: "songs") as? Dictionary<String, Bool>
-        print("\(songsList)" )
         for (key,value) in songsList!{
             if value == true {
                 songsArray.append(key)
