@@ -172,7 +172,6 @@ class Player: SKSpriteNode, ObstacleCreate {
             PhysicsCategory.OneUp.rawValue
 
         self.physicsBody?.collisionBitMask = PhysicsCategory.None.rawValue
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
         self.physicsBody?.usesPreciseCollisionDetection = true
     }
     

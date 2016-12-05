@@ -122,6 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         scoreLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60)
         scoreLabel.fontName = "PressStart2P"
         scoreLabel.fontSize = 24
+        scoreLabel.zPosition = 2
         scoreLabel.fontColor = UIColor.white
         score = 0;
         self.addChild(scoreLabel)
@@ -130,6 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         moneyLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*2)
         moneyLabel.fontName = "PressStart2P"
         moneyLabel.fontSize = 24
+        moneyLabel.zPosition = 2
         moneyLabel.fontColor = UIColor.white
         money = 0
         self.addChild(moneyLabel)
@@ -138,6 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         timerLabel.position = CGPoint(x:-self.size.width*0.25, y: self.frame.height / 2 - 60*3)
         timerLabel.fontName = "PressStart2P"
         timerLabel.fontSize = 24
+        timerLabel.zPosition = 2
         timerLabel.fontColor = UIColor.yellow
         timerLabel.isHidden = true
         self.addChild(timerLabel)
@@ -323,9 +326,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             addCoinPattern()
         }
     }
-    
+    /*
     func addPowerUp(){
-        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 6)
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 10)
         if (rand.nextInt()  == 6){
             self.addOneUp()
         }else if(rand.nextInt() == 5){
@@ -337,10 +340,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             self.addTextMessage()
         }else if (rand.nextInt() == 2){
             self.addBooze()
-        }else if(rand.nextInt() > 2){
+        }else if(rand.nextInt() > 6){
+            self.addMonsterTruck()
+        }
+    }*/
+    func addPowerUp(){
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 10)
+        if(rand.nextInt() > 0){
             self.addMonsterTruck()
         }
     }
+
 
     func addMonsterTruck(){
         let powMonsterTruck = PowerupMosterTruck(scene:self, duration:TimeInterval(self.gameSpeed))
@@ -646,7 +656,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 
             case PhysicsCategory.Recover.rawValue | PhysicsCategory.Star.rawValue:
                 print ("Recovery and now you are a MOOOONSTER TRUUUUUCK")
-
+                self.oneCollision = false
                 if contact.bodyA.categoryBitMask == PhysicsCategory.Recover.rawValue {
                     let play = contact.bodyA.node as! SKSpriteNode
                     play.removeAllActions()
@@ -913,7 +923,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         //bg.size.height = 4*self.size.height
         //bg.size.width = self.size.width
         self.addChild(bg)
-        
         bg.zPosition = -1;
         
         if(gameSpeed > 0.2){
