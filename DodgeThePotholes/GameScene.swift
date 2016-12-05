@@ -53,7 +53,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         }
     }
     
-    var possibleObstacles = ["pothole", "police","dog","coin", "car","human","ambulance","cone", "phone"]
+    var possibleObstacles = ["pothole", "pothole", "pothole", "pothole",
+                             "police", "police",
+                             "dog", "dog", "dog",
+                             "coin", "coin", "coin",
+                             "car", "car", "car",
+                             "human", "human", "human", "human",
+                             "ambulance", "ambulance",
+                             "cone",
+                             "phone", "phone",
+                             "ice", "ice", "ice"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -102,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self; // include SKPhysicsContactDelegate
-        self.view?.showsPhysics = true;
+        self.view?.showsPhysics = false;
         
         
         // MARK: Set up HUD
@@ -302,6 +311,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powOneUp)
     }
+    func addIce(){
+        let ice = blackIce(size:self.frame.size, duration:TimeInterval(self.gameSpeed))
+        self.addChild(ice)
+    }
     func addObstacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
@@ -338,6 +351,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         case "phone":
             print("Incoming text!")
             addTextMessage()
+            break
+        case "ice":
+            print("Black Ice!")
+            addIce()
             break
         default:
             addPothole()
@@ -594,6 +611,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         let name = obj.name
         switch  name! {
         case "pothole":
+            car.spinOut()
+            break
+        case "ice":
             car.spinOut()
             break
         case "phone":

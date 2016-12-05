@@ -56,6 +56,7 @@
 		2CDEC3A71DD6536B00D010DB /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEC3A61DD6536B00D010DB /* Array2D.swift */; };
 		2CDEC3A91DD656F800D010DB /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEC3A81DD656F800D010DB /* Coin.swift */; };
 		2CDEC3AB1DD65AE700D010DB /* CoinPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEC3AA1DD65AE700D010DB /* CoinPattern.swift */; };
+		544892551DF52452003D6A00 /* blackIce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544892541DF52452003D6A00 /* blackIce.swift */; };
 		54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54FB84131DD58DC800AFBF7C /* GameOverScene.sks */; };
 		54FB84171DD58E1E00AFBF7C /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */; };
 		A79764D74B1672FA205A8AF0 /* Pods_DodgeThePotholes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AEBABEDF43AE1F71F5F9D95 /* Pods_DodgeThePotholes.framework */; };
@@ -141,6 +142,7 @@
 		2CDEC3A81DD656F800D010DB /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		2CDEC3AA1DD65AE700D010DB /* CoinPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinPattern.swift; sourceTree = "<group>"; };
 		3AEBABEDF43AE1F71F5F9D95 /* Pods_DodgeThePotholes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DodgeThePotholes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		544892541DF52452003D6A00 /* blackIce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blackIce.swift; sourceTree = "<group>"; };
 		54FB84131DD58DC800AFBF7C /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		54FB84161DD58E1E00AFBF7C /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		5EE660437CBED4DAB16B749E /* Pods-DodgeThePotholes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DodgeThePotholes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DodgeThePotholes/Pods-DodgeThePotholes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				CAD6D3511DF4878500AE565C /* TextMessage.swift */,
 				2C46221A1DE7C58D00956B94 /* MovingCar.swift */,
 				2C0CE6F71DDD1CF300273099 /* ConePattern.swift */,
+				544892541DF52452003D6A00 /* blackIce.swift */,
 				CA5C1C891DE4B223005EBFB1 /* Human.swift */,
 				CAC19F6B1DD28456007A7197 /* Pothole.swift */,
 				CA5233961DD2C90C00D2F59D /* Dog.swift */,
@@ -651,6 +654,7 @@
 				CAD6D3521DF4878500AE565C /* TextMessage.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,
 				CAF9173F1DF226E600B4C499 /* PowerupOneUp.swift in Sources */,
+				544892551DF52452003D6A00 /* blackIce.swift in Sources */,
 				2CB7A5641DD247F60029B800 /* PoliceCar.swift in Sources */,
 				2C46221B1DE7C58D00956B94 /* MovingCar.swift in Sources */,
 				EE8353A91DD58586003ED2E4 /* AudioScene.swift in Sources */,

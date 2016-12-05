@@ -91,7 +91,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         let spin = SKAction.rotate(toAngle: 4*3.14, duration: 0.75, shortestUnitArc: false)
         let reset = SKAction.setTexture(SKTexture(imageNamed: preferences.value(forKey: "car") as! String))
         if preferences.bool(forKey: "sfx") == true {
-            let sound = SKAction.playSoundFileNamed("carskid.wav", waitForCompletion: false)
+            let sound = SKAction.playSoundFileNamed("carskid.wav", waitForCompletion: true)
             group = SKAction.group([spin,sound])
         }else{
             group = spin
@@ -125,7 +125,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         }
         if preferences.bool(forKey: "sfx") == true {
             let scream = SKAction.playSoundFileNamed("RAMPAGE.mp3", waitForCompletion: true)
-            let monsterTruckMusic = SKAction.playSoundFileNamed("monster_truck_jam.mp3", waitForCompletion: true)
+            let monsterTruckMusic = SKAction.playSoundFileNamed("monster_truck_jam.mp3", waitForCompletion: false)
             let soundGroup = SKAction.group([scream, monsterTruckMusic])
             self.run(SKAction.sequence([monsterTruckTexture,soundGroup]))
         } else {

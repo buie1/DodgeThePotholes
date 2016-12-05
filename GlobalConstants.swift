@@ -39,7 +39,7 @@ enum PhysicsCategory:UInt32 {
     case Recover            = 0x200
     case MonsterTrucker     = 0x400
     //case Jump               = UniqueID
-    //case BlackIce           = UniqueID
+    case BlackIce           = 0x800
     
 }
 
@@ -64,6 +64,7 @@ enum obstacleType {
     case trafficCone
     case dog
     case plant
+    case ice
 }
 
 enum dog: CGFloat {
@@ -118,6 +119,13 @@ enum monstertruck_player: CGFloat {
 enum player: CGFloat {
     case width = 75
     case height = 125
+}
+
+enum ice: CGFloat {
+    case low = -0.25
+    case high = 0.25
+    case height = 65
+    case width = 66
 }
 
 
