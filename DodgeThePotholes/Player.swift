@@ -95,8 +95,8 @@ class Player: SKSpriteNode, ObstacleCreate {
         AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
         
         let hide = SKAction.run {
-            self.physicsBody?.categoryBitMask = PhysicsCategory.None.rawValue
-            print("remove category bit mask")
+            self.physicsBody?.categoryBitMask = PhysicsCategory.Recover.rawValue
+            print("recover category bit mask")
         }
         let restore = SKAction.run {
             self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue

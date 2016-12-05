@@ -27,6 +27,9 @@
 		2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */; };
 		2C1BFE521DD1061300ECBBB8 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */; };
 		2C1BFE551DD1063800ECBBB8 /* roadBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */; };
+		2C3127DC1DF53E3E000F12F3 /* catch_me.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3127DB1DF53E3E000F12F3 /* catch_me.wav */; };
+		2C3127DE1DF53E4B000F12F3 /* race_duel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3127DD1DF53E4B000F12F3 /* race_duel.wav */; };
+		2C3127E01DF53E55000F12F3 /* urban_chase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3127DF1DF53E55000F12F3 /* urban_chase.wav */; };
 		2C3AFC181DF3C9F30051AD57 /* ShopScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC151DF3C9F30051AD57 /* ShopScene.sks */; };
 		2C3AFC191DF3C9F30051AD57 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AFC161DF3C9F30051AD57 /* ShopScene.swift */; };
 		2C3AFC1D1DF3D5760051AD57 /* cone_pattern3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC1C1DF3D5760051AD57 /* cone_pattern3.json */; };
@@ -111,6 +114,9 @@
 		2C1BFE4D1DD1061300ECBBB8 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		2C1BFE4E1DD1061300ECBBB8 /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		2C1BFE541DD1063800ECBBB8 /* roadBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = roadBackground.swift; sourceTree = "<group>"; };
+		2C3127DB1DF53E3E000F12F3 /* catch_me.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = catch_me.wav; sourceTree = "<group>"; };
+		2C3127DD1DF53E4B000F12F3 /* race_duel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = race_duel.wav; sourceTree = "<group>"; };
+		2C3127DF1DF53E55000F12F3 /* urban_chase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = urban_chase.wav; sourceTree = "<group>"; };
 		2C3AFC151DF3C9F30051AD57 /* ShopScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShopScene.sks; sourceTree = "<group>"; };
 		2C3AFC161DF3C9F30051AD57 /* ShopScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopScene.swift; sourceTree = "<group>"; };
 		2C3AFC1C1DF3D5760051AD57 /* cone_pattern3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cone_pattern3.json; sourceTree = "<group>"; };
@@ -310,9 +316,9 @@
 		2C7CC3431DD136B600FE789A /* AudioFiles */ = {
 			isa = PBXGroup;
 			children = (
-				EEEB07AA1DF4FA0200E639A1 /* urban_chase.wav */,
-				EEEB07A81DF4F9EA00E639A1 /* catch_me.wav */,
-				EEEB07A61DF4F9D200E639A1 /* race_duel.wav */,
+				2C3127DF1DF53E55000F12F3 /* urban_chase.wav */,
+				2C3127DD1DF53E4B000F12F3 /* race_duel.wav */,
+				2C3127DB1DF53E3E000F12F3 /* catch_me.wav */,
 				2C4622161DE7B32800956B94 /* ambulance_s.mp3 */,
 				2C7CC3441DD1377400FE789A /* born-lucky.wav */,
 				2C8B90DC1DD516C3001C944A /* car_honk.mp3 */,
@@ -524,8 +530,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C10601E1DD178E300668D23 /* PressStart2P.ttf in Resources */,
-				EEEB07A71DF4F9D200E639A1 /* race_duel.wav in Resources */,
-				EEEB07AB1DF4FA0200E639A1 /* urban_chase.wav in Resources */,
 				2CB7A55B1DD194F80029B800 /* shader1.fs in Resources */,
 				2C3AFC2D1DF3E5200051AD57 /* MenuScene.sks in Resources */,
 				2CB7A5531DD192E30029B800 /* shaderBlur.fsh in Resources */,
@@ -538,15 +542,16 @@
 				2C1BFE511DD1061300ECBBB8 /* Starfield.sks in Resources */,
 				CAC5815A1DF3E29C00927665 /* monster_truck_jam.mp3 in Resources */,
 				2C4622191DE7C01B00956B94 /* money.aiff in Resources */,
+				2C3127DE1DF53E4B000F12F3 /* race_duel.wav in Resources */,
 				2C1BFE361DD104BE00ECBBB8 /* GameScene.sks in Resources */,
 				2C8B90DD1DD516C3001C944A /* car_honk.mp3 in Resources */,
 				2C3AFC181DF3C9F30051AD57 /* ShopScene.sks in Resources */,
 				2C3AFC2B1DF3E5110051AD57 /* CarScene.sks in Resources */,
 				2CB7A55E1DD19F7A0029B800 /* start.wav in Resources */,
 				2C0CE6F41DDD142600273099 /* money_pattern3.json in Resources */,
+				2C3127DC1DF53E3E000F12F3 /* catch_me.wav in Resources */,
 				2C8A1B021DD7B6EB0042E002 /* money_pattern2.json in Resources */,
 				2C1BFE411DD104BE00ECBBB8 /* Assets.xcassets in Resources */,
-				EEEB07A91DF4F9EA00E639A1 /* catch_me.wav in Resources */,
 				2CB7A5561DD193810029B800 /* shader_water_movement.fsh in Resources */,
 				2C1BFE441DD104BE00ECBBB8 /* LaunchScreen.storyboard in Resources */,
 				2C1BFE501DD1061300ECBBB8 /* Explosion.sks in Resources */,
@@ -559,6 +564,7 @@
 				2C0CE6FA1DDD424A00273099 /* cone_pattern1.json in Resources */,
 				2CB7A5571DD193810029B800 /* shader_water_reflection.fsh in Resources */,
 				CA473A501DE29D5D00F16DA5 /* dog_wimper.mp3 in Resources */,
+				2C3127E01DF53E55000F12F3 /* urban_chase.wav in Resources */,
 				54FB84141DD58DC800AFBF7C /* GameOverScene.sks in Resources */,
 				2C1BFE381DD104BE00ECBBB8 /* Actions.sks in Resources */,
 				2C8B90DA1DD50BF7001C944A /* carskid.wav in Resources */,
