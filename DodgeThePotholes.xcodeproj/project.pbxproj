@@ -31,7 +31,6 @@
 		2C3AFC191DF3C9F30051AD57 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AFC161DF3C9F30051AD57 /* ShopScene.swift */; };
 		2C3AFC1D1DF3D5760051AD57 /* cone_pattern3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC1C1DF3D5760051AD57 /* cone_pattern3.json */; };
 		2C3AFC211DF3D58A0051AD57 /* catch_me.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC1E1DF3D58A0051AD57 /* catch_me.wav */; };
-		2C3AFC221DF3D58A0051AD57 /* race_duel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC1F1DF3D58A0051AD57 /* race_duel.wav */; };
 		2C3AFC231DF3D58A0051AD57 /* urban_chase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC201DF3D58A0051AD57 /* urban_chase.wav */; };
 		2C3AFC251DF3E0260051AD57 /* Barricade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AFC241DF3E0260051AD57 /* Barricade.swift */; };
 		2C3AFC2B1DF3E5110051AD57 /* CarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C3AFC2A1DF3E5110051AD57 /* CarScene.sks */; };
@@ -40,6 +39,7 @@
 		2C4622171DE7B32800956B94 /* ambulance_s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622161DE7B32800956B94 /* ambulance_s.mp3 */; };
 		2C4622191DE7C01B00956B94 /* money.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C4622181DE7C01B00956B94 /* money.aiff */; };
 		2C46221B1DE7C58D00956B94 /* MovingCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46221A1DE7C58D00956B94 /* MovingCar.swift */; };
+		2C7660BD1DF5106E00C5C801 /* Barricade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7660BC1DF5106E00C5C801 /* Barricade.swift */; };
 		2C79B8F41DF0FCE50067FFBD /* MultiplierPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */; };
 		2C79B8F61DF0FF980067FFBD /* PowerupWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */; };
 		2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2C7CC3441DD1377400FE789A /* born-lucky.wav */; };
@@ -125,6 +125,7 @@
 		2C4622161DE7B32800956B94 /* ambulance_s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambulance_s.mp3; sourceTree = "<group>"; };
 		2C4622181DE7C01B00956B94 /* money.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = money.aiff; sourceTree = "<group>"; };
 		2C46221A1DE7C58D00956B94 /* MovingCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingCar.swift; sourceTree = "<group>"; };
+		2C7660BC1DF5106E00C5C801 /* Barricade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barricade.swift; sourceTree = "<group>"; };
 		2C79B8F31DF0FCE50067FFBD /* MultiplierPowerUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplierPowerUp.swift; sourceTree = "<group>"; };
 		2C79B8F51DF0FF980067FFBD /* PowerupWrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupWrap.swift; sourceTree = "<group>"; };
 		2C7CC3441DD1377400FE789A /* born-lucky.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "born-lucky.wav"; sourceTree = "<group>"; };
@@ -367,8 +368,9 @@
 		2CB7A5651DD262D40029B800 /* Obstacle Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2C7660BC1DF5106E00C5C801 /* Barricade.swift */,
 				2C4622141DE7B2D000956B94 /* Ambulance.swift */,
-				2C3AFC241DF3E0260051AD57 /* Barricade.swift */,
+				CAD6D3511DF4878500AE565C /* TextMessage.swift */,
 				2C46221A1DE7C58D00956B94 /* MovingCar.swift */,
 				2C0CE6F71DDD1CF300273099 /* ConePattern.swift */,
 				CA5C1C891DE4B223005EBFB1 /* Human.swift */,
@@ -564,7 +566,6 @@
 				EE0813981DE25BC900860FDE /* Highscore.sks in Resources */,
 				2C7CC3451DD1377400FE789A /* born-lucky.wav in Resources */,
 				EE8353A81DD58586003ED2E4 /* AudioScene.sks in Resources */,
-				2C3AFC221DF3D58A0051AD57 /* race_duel.wav in Resources */,
 				EE8111C51DEFA24C00EF3573 /* GoogleService-Info.plist in Resources */,
 				CA67CFB51DE54C9600DEB87A /* scream_in_pain.mp3 in Resources */,
 				2C0CE6FE1DDD462D00273099 /* money_pattern1.json in Resources */,
@@ -652,6 +653,7 @@
 				2C8B90D51DD27D01001C944A /* GlobalConstants.swift in Sources */,
 				CA5FE2051DF09CA400B2EC57 /* Plant.swift in Sources */,
 				2C3AFC191DF3C9F30051AD57 /* ShopScene.swift in Sources */,
+				2C7660BD1DF5106E00C5C801 /* Barricade.swift in Sources */,
 				2C8A1B001DD7B5070042E002 /* Extensions.swift in Sources */,
 				CAD6D3521DF4878500AE565C /* TextMessage.swift in Sources */,
 				2C1BFE341DD104BE00ECBBB8 /* AppDelegate.swift in Sources */,

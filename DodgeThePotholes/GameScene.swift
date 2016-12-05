@@ -337,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powOneUp)
     }
-    func addObastacle(){
+    func addObstacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
         switch possibleObstacles[0] {
         case "pothole":
@@ -355,6 +355,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         case "car":
             print("car obstacle")
             addCars()
+            break/*
+        case "coin":
+            addCoinPattern()
+            break
+ */
+        case "cone":
+            addConePattern()
             break
         case "human":
             print("human obstacle")
@@ -364,9 +371,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             print("ambulance obstacle")
             addAmbulance()
             break
-        case "cone":
-            print("cone pattern")
-            addConePattern()
+        case "phone":
+            print("Incoming text!")
+            addTextMessage()
             break
         default:
             addPothole()
