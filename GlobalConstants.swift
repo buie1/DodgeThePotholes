@@ -108,7 +108,7 @@ enum monstertruck_player: CGFloat {
 }
 
 enum player: CGFloat {
-    case width = 75
+    case width = 64
     case height = 125
 }
 
