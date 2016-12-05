@@ -73,7 +73,7 @@ class GameViewController: UIViewController {
         }
         //set default user money ammount
         if preferences.string(forKey: "money") == nil{
-            preferences.setValue(10, forKey: "money")
+            preferences.setValue(0, forKey: "money")
         }
         if preferences.string(forKey: "highscore") == nil{
             preferences.setValue(0, forKey: "highscore")
