@@ -35,7 +35,7 @@ class ConePattern:SKNode {
         NumRows = 0
         cones = Array2D<Cone>(columns: NumColumns, rows: NumRows)
         self.size = CGSize(width: 0, height: 0)
-        pauseTime = 20 * (Double(duration)/startGameSpeed)
+        pauseTime = 25 * (Double(duration)/startGameSpeed)
         super.init()
         var array:[[Int]]!
         
