@@ -21,6 +21,12 @@ class AudioScene: SKScene{
     var musicToggleNode: SKSpriteNode!
     var backAudioNode: SKSpriteNode!
     
+    var songSelectedLabel: SKLabelNode!
+    var nextLabel: SKLabelNode!
+    var musicTitle: SKLabelNode!
+    
+    var songsArray = Array<String>()
+    
     var sfx: Bool!
     var music: Bool!
     
@@ -28,6 +34,16 @@ class AudioScene: SKScene{
         sfxToggleNode = self.childNode(withName: "SFXButton") as! SKSpriteNode!
         musicToggleNode = self.childNode(withName: "MusicButton") as! SKSpriteNode!
         backAudioNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
+        songSelectedLabel = self.childNode(withName: "SongSelected") as! SKLabelNode!
+        songSelectedLabel.fontName = "PressStart2p"
+        songSelectedLabel.text = preferences.value(forKey: "song_selected") as? String
+        
+        nextLabel = self.childNode(withName: "NextSong") as! SKLabelNode!
+        nextLabel.fontName = "PressStart2p"
+        musicTitle = self.childNode(withName: "InGameMusic") as! SKLabelNode!
+        nextLabel.fontName = "PressStart2p"
+        createSongsArray()
+        
         //Get user's saved defaults for sfx and music and set sfx and music equal to these here
         if(preferences.bool(forKey: "sfx") == false){
             print("sfx is disabled")
@@ -72,6 +88,30 @@ class AudioScene: SKScene{
                 preferences.setValue(music, forKey: "music")
                 preferences.synchronize()
             }
+            else if nodesArray.first?.name == "NextSong" {
+                print("Song options = \(songsArray.count)")
+                print("\(songsArray)")
+                if songsArray.count > 1{
+                    var index = songsArray.index(of: songSelectedLabel.text!)
+                    print("index of results: \(index)")
+                    index = (index! + 1) % songsArray.count
+                    //if index! == songsArray.count{
+                        //index = 0
+                        //print("index is : \(index!)")
+                        //preferences.set(songsArray[index!], forKey: "selected_song")
+                    //}
+                    //else{
+                        //index = index! + 1
+                        print("index is : \(index!)")
+                        print("value at index is \(songsArray[index!])")
+                        preferences.set(songsArray[index!], forKey: "song_selected")
+                    //}
+                    
+                    songSelectedLabel.text = preferences.value(forKey: "song_selected") as? String
+                    print("Song Label Should Say This: \(songSelectedLabel.text)")
+                    print("Preferences has this: \(preferences.value(forKey: "song_selected")!)")
+                }
+            }
             
             //Back Button is pressed
             else if nodesArray.first?.name == "BackButton"{
@@ -80,5 +120,18 @@ class AudioScene: SKScene{
                 self.view?.presentScene(settingsScene!, transition: transition)
             }
         }
+    }
+    
+    func createSongsArray(){
+        let songsList = preferences.dictionary(forKey: "songs") as? Dictionary<String, Bool>
+        print("\(songsList)" )
+        for (key,value) in songsList!{
+            if value == true {
+                songsArray.append(key)
+            }
+        }
+    }
+    override func update(_ currentTime: TimeInterval) {
+        songSelectedLabel.text = "\(preferences.value(forKey: "song_selected")!)"
     }
 }

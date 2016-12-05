@@ -33,14 +33,21 @@ extension Alerts where Self: GameOverScene {
 }
 
 extension Alerts where Self: ShopScene{
-    func doPurchase(title: String, message: String, cost: Int, item: String){
+    func doPurchase(title: String, message: String, cost: Int, item: String, itemName: String?=nil){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
             //update money
             preferences.set(preferences.value(forKey: "money") as! Int - cost, forKey: "money")
             //update unlocked items
-            preferences.set(true, forKey: item)
+            if item != "song"{
+                preferences.set(true, forKey: item)
+            }
+            else{
+                var songList = preferences.dictionary(forKey: "songs") as? Dictionary<String, Bool>
+                songList?[itemName!] = true
+                preferences.set(songList, forKey: "songs")
+            }
             self.updateCarTexture()
         }
         let noAction = UIAlertAction(title: "No", style: .cancel){ _ in}

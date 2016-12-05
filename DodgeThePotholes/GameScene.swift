@@ -29,7 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     var monsterTruckTimer:Timer!
     var textTimer:Timer!
     var lifeCount:Int = GameSettings.BeginningLifeCount.rawValue
-    var bgAudio = SKAudioNode(fileNamed: "hot-pursuit.wav")
+    var bgAudio = SKAudioNode(fileNamed: preferences.value(forKey: "song_selected")! as! String)
     
     // MARK: HUD Variables
     var scoreLabel:SKLabelNode!
@@ -56,13 +56,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         }
     }
     
-    var possibleObstacles = ["pothole", "pothole", "pothole", "pothole", "pothole",
-                                     "police", "police",
-                                     "dog", "dog", "dog",
-                                     "car", "car", "car","car",
-                                     "human", "human", "human", "human",
-                                     "ambulance", "ambulance","ambulance",
-                                     "cone"]
+    var possibleObstacles = ["pothole", "pothole", "pothole", "pothole",
+                             "police", "police",
+                             "dog", "dog", "dog",
+                             "coin", "coin", "coin",
+                             "car", "car", "car",
+                             "human", "human", "human", "human",
+                             "ambulance", "ambulance",
+                             "cone",
+                             "ice", "ice", "ice"]
     
     let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
@@ -109,7 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.physicsWorld.contactDelegate = self; // include SKPhysicsContactDelegate
-        self.view?.showsPhysics = true;
+        self.view?.showsPhysics = false;
         
         
         // MARK: Set up HUD
@@ -318,6 +320,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         }else if(rand.nextInt() == 3){
             self.addMultiplier()
         }else if(rand.nextInt() == 2){
+            print("Incoming text!")
             self.addTextMessage()
         }else if(rand.nextInt() <= 1){
             self.addMonsterTruck()
@@ -339,6 +342,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     func addOneUp(){
         let powOneUp = PowerupOneUp(scene:self, duration:TimeInterval(self.gameSpeed))
         self.addChild(powOneUp)
+    }
+    func addIce(){
+        let ice = blackIce(size:self.frame.size, duration:TimeInterval(self.gameSpeed))
+        self.addChild(ice)
     }
     func addObstacle(){
         possibleObstacles = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleObstacles) as! [String]
@@ -369,6 +376,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         case "ambulance":
             print("ambulance obstacle")
             addAmbulance()
+            break
+        case "ice":
+            print("Black Ice!")
+            addIce()
             break
         default:
             addPothole()
@@ -624,8 +635,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         powerUps.wrap = true
     }
     
-    func hornDidHitMoveableObstacle(horn:SKSpriteNode, obj:MoveableObstacle){
-        
+    func hornDidHitMoveableObstacle(horn:SKSpriteNode, obj:MoveableObstacle){        
         horn.removeFromParent()
         obj.removeAllActions()
         // If moveable obstacle is hit by horn remove the cat bit mask so it can't be hit again!
@@ -635,8 +645,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     }
     
     func carDidHitOneUp(car: SKSpriteNode, oneup: PowerupOneUp){
-        print("added life!?")
-        
+        print("added life!")
         oneup.removeFromParent()
         if self.lifeCount < 4 {
             for life in 0...self.lifeCount-1 {
@@ -653,6 +662,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         player.becomeMonsterTruck()
         monsterTruckTimer = Timer.scheduledTimer(timeInterval: TimeInterval(GameTimers.MonsterTruck.rawValue), target: self, selector: #selector(self.becomeCar), userInfo: nil, repeats: false)
     }
+    
     func becomeCar(){
         self.playerIsInvincible = false
         bgAudio.autoplayLooped = true;
@@ -660,10 +670,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         player.becomeCar()
         monsterTruckTimer.invalidate()
     }
+    
     func carDidHitObstacle(car:Player, obj:SKSpriteNode){
         let name = obj.name
         switch  name! {
         case "pothole":
+            car.spinOut()
+            break
+        case "ice":
             car.spinOut()
             break
         case "phone":
