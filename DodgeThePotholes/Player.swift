@@ -99,7 +99,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         self.run(SKAction.sequence([group,reset]))
     }
     
-    func recover(){
+    func recover(scene:GameScene){
         
         AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
         
@@ -109,6 +109,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         }
         let restore = SKAction.run {
             self.physicsBody?.categoryBitMask = PhysicsCategory.Car.rawValue
+            scene.oneCollision = false
         }
         self.run(SKAction.sequence([hide,flashAction,restore]))
         

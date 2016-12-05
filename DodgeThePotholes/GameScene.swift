@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     let music:Bool = preferences.bool(forKey: "music")
     //let noWrap:Bool = true
     var isGameOver:Bool!
+    var oneCollision:Bool = false
     
     
     var player:Player!
@@ -313,11 +314,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         if (rand.nextInt()  == 5){
             self.addOneUp()
         }else if(rand.nextInt() == 4){
-            addWrap()
+            self.addWrap()
         }else if(rand.nextInt() == 3){
-            addMultiplier()
+            self.addMultiplier()
+        }else if(rand.nextInt() == 2){
+            self.addTextMessage()
         }else if(rand.nextInt() <= 1){
-            addMonsterTruck()
+            self.addMonsterTruck()
         }
     }
     /*
@@ -355,11 +358,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         case "car":
             print("car obstacle")
             addCars()
-            break/*
-        case "coin":
-            addCoinPattern()
             break
- */
         case "cone":
             addConePattern()
             break
@@ -370,10 +369,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         case "ambulance":
             print("ambulance obstacle")
             addAmbulance()
-            break
-        case "phone":
-            print("Incoming text!")
-            addTextMessage()
             break
         default:
             addPothole()
@@ -442,17 +437,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             switch contactMask {
                 
             case PhysicsCategory.Car.rawValue | PhysicsCategory.Obstacle.rawValue:
-                
-                // Step 2. Disambiguate the bodies in the contact
                 print("handle collision with car ")
-
-                if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
-                    carDidHitObstacle(car: contact.bodyA.node as! Player,
-                                           obj: contact.bodyB.node as! SKSpriteNode)
-                } else{
-                    carDidHitObstacle(car: contact.bodyB.node as! Player,
-                                           obj: contact.bodyA.node as! SKSpriteNode)
+                if(!self.oneCollision){
+                    self.oneCollision = true
+                    if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
+                        carDidHitObstacle(car: contact.bodyA.node as! Player,
+                                               obj: contact.bodyB.node as! SKSpriteNode)
+                    } else{
+                        carDidHitObstacle(car: contact.bodyB.node as! Player,
+                                               obj: contact.bodyA.node as! SKSpriteNode)
+                    }
                 }
+                
             case PhysicsCategory.MonsterTrucker.rawValue | PhysicsCategory.Obstacle.rawValue:
                 print("handle collision with Monster Truck ")
                 if contact.bodyA.categoryBitMask == PhysicsCategory.MonsterTrucker.rawValue{
@@ -475,15 +471,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 
             case PhysicsCategory.Car.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
                 
-                // Here we don't care which body is which, the scene is ending
-                if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
-                    carDidHitMoveableObstacle(car: contact.bodyA.node as! Player,
-                                      obj: contact.bodyB.node as! MoveableObstacle)
-                } else{
-                    carDidHitMoveableObstacle(car: contact.bodyB.node as! Player,
-                                      obj: contact.bodyA.node as! MoveableObstacle)
+                if(!self.oneCollision){
+                    self.oneCollision = true
+                    if contact.bodyA.categoryBitMask == PhysicsCategory.Car.rawValue{
+                        carDidHitMoveableObstacle(car: contact.bodyA.node as! Player,
+                                          obj: contact.bodyB.node as! MoveableObstacle)
+                    } else{
+                        carDidHitMoveableObstacle(car: contact.bodyB.node as! Player,
+                                          obj: contact.bodyA.node as! MoveableObstacle)
+                    }
                 }
-                
                 
                 
             case PhysicsCategory.Horn.rawValue | PhysicsCategory.MoveableObstacle.rawValue:
@@ -683,7 +680,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         default:
             print("do nothing")
         }
-        car.recover()
+        car.recover(scene:self)
         loseLife()
         obj.removeFromParent()
     }
@@ -701,7 +698,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             print("hit a moveable obj")
             obj.removeFromParent()
         }
-        car.recover()
+        car.recover(scene:self)
         loseLife()
        
         
