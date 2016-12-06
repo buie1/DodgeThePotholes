@@ -56,11 +56,13 @@ extension Alerts where Self: ShopScene{
             //update unlocked items
             if item != "song"{
                 preferences.set(true, forKey: item)
+                preferences.synchronize()
             }
             else{
                 var songList = preferences.dictionary(forKey: "songs") as? Dictionary<String, Bool>
                 songList?[itemName!] = true
                 preferences.set(songList, forKey: "songs")
+                preferences.synchronize()
             }
             self.updateCarTexture()
         }

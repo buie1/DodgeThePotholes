@@ -860,8 +860,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
                 SKAction.changeVolume(to: 0.75, duration: 0)]))
         }
         self.money += (1 * powerUps.multiplier)
-        preferences.setValue(preferences.value(forKey:"money") as! Int + 1, forKey: "money")
-        preferences.synchronize()
         coin.removeFromParent()
     }
     

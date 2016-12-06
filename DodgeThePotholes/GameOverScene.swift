@@ -42,6 +42,8 @@ class GameOverScene: SKScene, Alerts{
         moneyLabelNode = self.childNode(withName: "moneyLabel") as! SKLabelNode!
         moneyLabelNode.fontName = "PressStart2p"
         moneyLabelNode.text = "Money: $ \(money)"
+        preferences.set(preferences.value(forKey: "money") as! Int + money, forKey: "money")
+        preferences.synchronize()
         
         highscoreLabelNode = self.childNode(withName: "highscoreLabel") as! SKLabelNode!
         highscoreLabelNode.fontName = "PressStart2p"
