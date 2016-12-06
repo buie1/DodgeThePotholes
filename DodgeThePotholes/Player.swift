@@ -116,7 +116,7 @@ class Player: SKSpriteNode, ObstacleCreate {
         } else {
              monsterTruckTexture = SKAction.setTexture(SKTexture(imageNamed: "MonsterTruck"))
         }
-        if preferences.bool(forKey: "sfx") == true {
+        if preferences.bool(forKey: "music") == true {
             let scream = SKAction.playSoundFileNamed("RAMPAGE.mp3", waitForCompletion: true)
             let monsterTruckMusic = SKAction.playSoundFileNamed("monster_truck_jam.mp3", waitForCompletion: false)
             let soundGroup = SKAction.group([scream, monsterTruckMusic])

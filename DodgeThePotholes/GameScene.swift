@@ -146,8 +146,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         timerLabel.isHidden = true
         self.addChild(timerLabel)
         
+        if(preferences.bool(forKey: "life")){
+            self.lifeCount += 1
+            preferences.setValue(false, forKey: "life")
+        }
         addLivesDisplay(num_lives: self.lifeCount)
-
         
         // MARK: - GameTimer code
         // aparently a better way to implement this is with SKActions and using a "wait" time
@@ -781,8 +784,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     
     func becomeCar(){
         self.playerIsInvincible = false
-        bgAudio.autoplayLooped = true;
-        self.addChild(bgAudio)
+        if music {
+            bgAudio.autoplayLooped = true;
+            self.addChild(bgAudio)
+        }
         player.becomeCar()
         monsterTruckTimer.invalidate()
     }
