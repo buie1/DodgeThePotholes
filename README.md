@@ -66,4 +66,6 @@ Leaderboard:
 10, their score will have a yellow font instead of the default white.
 
 
-
+Additional Note:
+If there are any warnings after building in XCode, run: Product > Clean
+If there is an older version of CocoaPods that exists there may be a warning, but not an issue with the code.
