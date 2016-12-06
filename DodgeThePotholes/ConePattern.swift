@@ -83,11 +83,6 @@ class ConePattern:SKNode {
                 }
             }
         }
-        
-        
-        //2. load json file and set initial values
-
-        //3. Generate pattern
     }
     
     required init?(coder aDecoder: NSCoder) {
