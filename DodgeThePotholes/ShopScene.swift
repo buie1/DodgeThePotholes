@@ -5,6 +5,13 @@
 //  Created by Colby Stanley on 12/3/16.
 //  Copyright © 2016 Jonathan Buie. All rights reserved.
 //
+/** This scene contains all the items that can be purchased using
+    the money earned in the game. The user's money is displayed on 
+    screen as well as the cost of each of the items below the items.
+    If an item has been purchased, an alert saying so will appear 
+    when the user tries to buy it.
+ 
+*/
 
 import SpriteKit
 
@@ -155,6 +162,7 @@ class ShopScene: SKScene, Alerts{
                             songsArray.append(key)
                         }
                     }
+                    //If there are songs that haven't been purchased, purchase the one that hasn't been purchased.
                     if songsArray.count != songList.count{
                         for (key, _) in songList{
                             if let songPresent = songList[key]! as Bool!{
@@ -166,6 +174,7 @@ class ShopScene: SKScene, Alerts{
                             }
                         }
                     }
+                    //If all songs have been purchased, display an alert
                     else{
                         alreadyPurchased()
                     }

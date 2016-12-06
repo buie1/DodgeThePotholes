@@ -5,6 +5,11 @@
 //  Created by Colby Stanley on 11/20/16.
 //  Copyright © 2016 Jonathan Buie. All rights reserved.
 //
+/** This scene displays both a local highscore as well as a leaderboard
+    showing the top ten scores reached in the game by all users. If the 
+    user's score is in the top ten, it is displayed in yellow text.
+ 
+ */
 
 import SpriteKit
 import FirebaseDatabase
@@ -86,6 +91,7 @@ class Highscore: SKScene {
             if(unSorted.count != myDict.count){print("unSorted count != myDict count")}
             unSorted.sort{ return $0 > $1 }
             
+            //Setting text for each of the top ten leader spots
             for index in 0...9{
                 print("\(unSorted[index])")
                 print("\(myDict.allKeys(for: unSorted[index]))")

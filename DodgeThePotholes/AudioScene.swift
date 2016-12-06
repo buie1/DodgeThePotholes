@@ -5,7 +5,7 @@
 //  Created by Colby Stanley on 11/8/16.
 //  Copyright © 2016 Jonathan Buie. All rights reserved.
 //  
-/** This scene has three buttons: sfx, music, and back.
+/** This scene has three buttons: sfx, music, next song and back.
     Upon selecting the sfx button it is either enabled or disabled
     depending on what is currently stored as the user default (same for the music button).
     The button is changed from on to off or vice versa when pressed
@@ -31,6 +31,8 @@ class AudioScene: SKScene{
     var music: Bool!
     
     override func didMove(to view: SKView) {
+        
+        //Initializing Buttons and Labels for scene
         sfxToggleNode = self.childNode(withName: "SFXButton") as! SKSpriteNode!
         musicToggleNode = self.childNode(withName: "MusicButton") as! SKSpriteNode!
         backAudioNode = self.childNode(withName: "BackButton") as! SKSpriteNode!
@@ -65,6 +67,7 @@ class AudioScene: SKScene{
             let transition = SKTransition.flipHorizontal(withDuration: 1.0)
             let node = nodesArray.first as? SKSpriteNode
             
+            //Sound Effects On/Off pressed - update value in preferences
             if nodesArray.first?.name == "SFXButton" {
                 if(node?.texture?.description == SKTexture(imageNamed: "onButton").description){
                     node?.texture = SKTexture(imageNamed: "offButton")
@@ -77,6 +80,7 @@ class AudioScene: SKScene{
                 preferences.setValue(sfx, forKey: "sfx")
                 preferences.synchronize()
             }
+            //Music Button On/Off pressed - update value in preferences
             else if nodesArray.first?.name == "MusicButton" {
                 if(node?.texture?.description == SKTexture(imageNamed: "music").description){
                     node?.texture = SKTexture(imageNamed: "music_pressed")
@@ -89,6 +93,7 @@ class AudioScene: SKScene{
                 preferences.setValue(music, forKey: "music")
                 preferences.synchronize()
             }
+            //Next song button pressed - change displayed song's text and user preferences for selected_song
             else if nodesArray.first?.name == "NextSong" {
                 if songsArray.count > 1{
                     var index = songsArray.index(of: preferences.value(forKey: "song_selected") as! String)
@@ -108,6 +113,7 @@ class AudioScene: SKScene{
         }
     }
     
+    //Creates an array of the names of all unlocked songs
     func createSongsArray(){
         let songsList = preferences.dictionary(forKey: "songs") as? Dictionary<String, Bool>
         for (key,value) in songsList!{
@@ -116,6 +122,7 @@ class AudioScene: SKScene{
             }
         }
     }
+    //Updates the selected song text label
     override func update(_ currentTime: TimeInterval) {
         let songName = "\(preferences.value(forKey: "song_selected")!)".components(separatedBy: ".")
         songSelectedLabel.text = songName[0]
