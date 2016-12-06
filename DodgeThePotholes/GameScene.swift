@@ -784,8 +784,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
     
     func becomeCar(){
         self.playerIsInvincible = false
-        bgAudio.autoplayLooped = true;
-        self.addChild(bgAudio)
+        if music {
+            bgAudio.autoplayLooped = true;
+            self.addChild(bgAudio)
+        }
         player.becomeCar()
         monsterTruckTimer.invalidate()
     }
