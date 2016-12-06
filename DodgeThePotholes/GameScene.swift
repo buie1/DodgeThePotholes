@@ -109,6 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
         
         player = Player(size: self.size)
         self.addChild(player)
+        powerUps.wrap = false
         
         // MARK: Physics World
         
