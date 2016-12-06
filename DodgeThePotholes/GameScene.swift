@@ -326,9 +326,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             addCoinPattern()
         }
     }
-    /*
     func addPowerUp(){
-        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 10)
+        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 6)
         if (rand.nextInt()  == 6){
             self.addOneUp()
         }else if(rand.nextInt() == 5){
@@ -340,13 +339,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, Alerts {
             self.addTextMessage()
         }else if (rand.nextInt() == 2){
             self.addBooze()
-        }else if(rand.nextInt() > 6){
-            self.addMonsterTruck()
-        }
-    }*/
-    func addPowerUp(){
-        let rand = GKRandomDistribution(lowestValue: 0,highestValue: 10)
-        if(rand.nextInt() > 0){
+        }else if(rand.nextInt() < 2){
             self.addMonsterTruck()
         }
     }
